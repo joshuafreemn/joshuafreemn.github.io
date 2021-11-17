@@ -1,0 +1,688 @@
+/* Just a simple reset section */
+
+.footer ul {
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+
+.projects,.contact,footer {
+    text-align: center
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 16px;
+    -webkit-tap-highlight-color: transparent
+}
+
+*,*::before,*::after {
+    box-sizing: inherit
+}
+
+html,body,ul,ol,figure {
+    margin: 0;
+    padding: 0
+}
+
+::-moz-selection {
+    background: #eee
+}
+
+::selection {
+    background: #eee
+}
+
+img {
+    vertical-align: middle
+}
+
+h1,h2,h3 {
+    margin: 0
+}
+
+p {
+    font-size: 1em;
+    margin-top: 0;
+    margin-bottom: 1.5em
+}
+
+.popUpdesc {
+    display: none;
+}
+
+/* End of Reset section */
+
+/************************/
+
+/* Main body styles */
+
+body {
+    font: 100% "Work Sans", Helvetica, sans-serif;
+    color: #616161;
+    background-color: #fafafa;
+    line-height: 1.5;
+    position: relative;
+}
+
+a {
+    color: #9e9e9e;
+    font-weight: 300;
+    position: relative;
+    -webkit-transition: color 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out;
+    text-decoration: none;
+    white-space: nowrap;
+    outline: none
+}
+
+a:hover,a:focus {
+    color: #757575;
+    outline: none
+}
+
+p {
+    font-weight: 300
+}
+
+b {
+    font-weight: 400
+}
+
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+    z-index: 600
+}
+
+/* Main body styles end */
+
+/************************/
+
+/* Intro section styles */
+
+.Hi {
+    max-width: 74rem;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0 2rem
+}
+
+@media (max-width: 768px) {
+    .Hi {
+        padding:0 1rem
+    }
+}
+
+.content {
+    background-color: #fafafa;
+    padding-top: 8rem;
+    text-align: center
+}
+
+.intro {
+    position: fixed;
+    top: 0;
+    height: 80vh;
+    width: 100%;
+    z-index: -1
+}
+
+.intro .intro-text {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 100%
+}
+
+.intro span {
+    color: rgb(3, 42, 233);
+}
+
+.intro h1 {
+    width: 50%;
+    font-size: 2rem;
+    font-size: calc(2rem + 1vw);
+    line-height: 1.4;
+    font-weight: 400
+}
+
+@media (max-width: 768px) {
+    .intro {
+        text-align:center
+    }
+
+    .intro h1 {
+        width: 100%
+    }
+}
+
+.intro .down {
+    bottom: 2.5rem
+}
+
+.intro .down:hover {
+    bottom: 2rem
+}
+
+/* Intro section style ends */
+
+/****************************/
+
+/* Project section begins */
+
+.projects {
+    margin-top: 80vh;
+    background-color: #eee;
+}
+
+.projects .projects-collage {
+    /* max-width: 96rem;    Enable this if you want some margin down the sides of the projects. */
+    margin: 0 auto
+}
+
+.projects .projects-collage::after {
+    content: "";
+    display: table;
+    clear: both
+}
+
+.projects .projects-collage img {
+    max-width: 100%;
+    height: auto
+}
+
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(60, 60, 77);
+    opacity: 0;
+    -webkit-transition: all .3s ease-in;
+    transition: all .3s ease-in
+}
+
+a.project-item {
+    position: relative;
+    display: block;
+    line-height: 0;
+    overflow: hidden;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out
+}
+
+@media (min-width: 769px) {
+    a.project-item {
+        width:50%;
+        float: left
+    }
+}
+
+a.project-item:hover .project-overlay {
+    opacity: .7
+}
+
+a.project-item:hover .project-text {
+    top: 50%;
+    opacity: 1
+}
+
+a.project-item:hover .project-text h2:after {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1)
+}
+
+@media (max-width: 768px) {
+    a.project-item .project-overlay {
+        opacity:.7
+    }
+
+    a.project-item .project-text {
+        top: 50%;
+        opacity: 1
+    }
+}
+
+.project-text {
+    position: absolute;
+    top: 40%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    line-height: 1;
+    width: 100%;
+    opacity: 0;
+    -webkit-transition: all 0.4s ease-out;
+    transition: all 0.4s ease-out;
+    font-weight: 300;
+    color: #fafafa
+}
+
+.project-text h2 {
+    position: relative;
+    font-size: 2rem;
+    padding-bottom: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: .125rem
+}
+
+.project-text p {
+    margin: 0;
+    padding-top: 1.5rem
+}
+
+img {
+    height: 375px;
+    width: 100%
+}
+
+/* Project style section ends */
+
+/******************************/
+
+/* Contact section begins */
+
+a.button-slide {
+    position: relative;
+    display: inline-block;
+    outline: none;
+    color: #f5f5f5;
+    background-color: rgb(3, 42, 233);
+    letter-spacing: .15rem;
+    font-weight: 300;
+    font-size: 1.5em;
+    height: 5rem;
+    line-height: 5rem;
+    min-width: 22rem;
+    overflow: hidden;
+    -webkit-transition: 0.3s;
+    transition: 0.3s
+}
+
+a.button-slide span {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    -webkit-transition: inherit;
+    transition: inherit
+}
+
+a.button-slide:before {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    height: 100%;
+    width: 100%;
+    -webkit-transition: inherit;
+    transition: inherit;
+    content: attr(data-hover);
+    color: rgb(3, 42, 233)
+}
+
+a.button-slide:hover,a.button-slide:focus {
+    background-color: #fafafa;
+}
+
+a.button-slide:hover span,a.button-slide:focus span {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%)
+}
+
+a.button-slide:hover:before,a.button-slide:focus:before {
+    top: 0
+}
+
+footer, .content {
+    padding: 6rem 0 3rem;
+}
+
+footer ul {
+    -webkit-transition: 1s;
+    transition: 1s
+}
+
+footer ul li {
+    display: inline-block;
+    padding: 0 1rem;
+    margin-right: -.375em;
+    position: relative
+}
+
+footer ul li:before {
+    content: "";
+    display: block;
+    background-color: #e0e0e0;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    line-height: 0;
+    width: 1px;
+    height: .75rem;
+    margin-top: -.375rem
+}
+
+footer ul li:first-child:before {
+    display: none
+}
+
+footer ul li a {
+    letter-spacing: .0625rem;
+    cursor: pointer
+}
+
+footer ul li a:after {
+    content: "";
+    display: block;
+    background-color: transparent;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    -webkit-transform-origin: 50% 0;
+    transform-origin: 50% 0;
+    -webkit-transform: scaleX(0.6);
+    transform: scaleX(0.6);
+    -webkit-transition: .3s;
+    transition: .3s
+}
+
+footer ul li a:hover:after {
+    background-color: #1004c5;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1)
+}
+
+/* Contact section ends */
+
+/****************************/
+
+/* PopUp section begins */
+.popUp{
+    color: black;
+    /* height: 70vh; */
+    width: 80vw;
+    position: fixed;
+    top: 10vh;
+    left: 10vw;
+    background-color: #ffffff;
+    box-shadow: 0 0 17px 2px rgba(128, 128, 128, 0.089);
+    display: grid;
+    grid-template-columns: 55% 45%;
+}
+
+.popUp .popUpImg{
+    background: url('https://images.unsplash.com/photo-1526049997133-25caee4c5796?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4a785d2392ba5c7683a2b09ee1b40b20&auto=format&fit=crop&w=1048&q=80');
+    background-position: center;
+    background-size: cover;
+    /* height: 70vh; */
+    background-position: center
+}
+
+.popUp div:nth-child(2){
+    padding: 10vh 2em;
+    position: relative;
+} 
+
+.popUp span{
+    display: block;
+    position: absolute;
+    top: 4%;
+    padding: 5px 20px;
+    border-radius: 200px;
+    font-size: 2em;
+    background-color: black;
+    color: honeydew;
+    text-align: center;
+    right: 5%; 
+    cursor: pointer;
+    user-select: none;
+}
+
+.popUp div:nth-child(2) h1{
+    font-size: 2.3em;
+    margin-bottom: 1em;
+}
+
+.popUp div:nth-child(2) p{
+    font-size: 0.9em;
+}
+
+.popUp div:nth-child(2) div{
+    display: grid;
+    grid-template-columns: repeat(2, 10%);
+}
+
+.popUp div:nth-child(2) div a:nth-child(1){
+    width: 20px;
+    height: 20px;
+    background: url('https://image.flaticon.com/icons/svg/1051/1051377.svg');
+    background-size: cover;
+    display: block;
+}
+
+.popUp div:nth-child(2) div a:nth-child(2){
+    width: 20px;
+    height: 20px;
+    background: url('https://image.flaticon.com/icons/svg/1246/1246334.svg');
+    background-size: cover;
+    display: block;
+}
+
+/****************************/
+
+/* PopUp section ends for DESKTOP VIEW */
+
+/* Tablet styling for popUp */
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    .popUp{
+        width: 95vw;
+        left: 2.5vw;
+        display: block;
+        top: 5vh;
+    }
+
+    .popUp .popUpImg{
+        background-size: cover;
+        background-position: center;
+        /* display: none; */
+        width: 95vw;
+        height: 50vh;
+    }
+}
+
+/* END OF Tablet styling for popUp */
+
+
+/* START OF styling mobile view for popUp */
+@media (min-width: 320px) and (max-width: 480px) {
+ .popUp{
+        width: 95vw;
+        left: 2.5vw;
+        display: block;
+         top: 1vh;
+         height: 140vh;
+         position: static;
+    }
+
+    .popUp .popUpImg{
+        background-size: cover;
+        background-position: center;
+        /* display: none; */
+        width: 95vw;
+        height: 50vh;
+    }
+}
+/* END OF styling mobile view for popUp */
+
+/* ************************************ */
+
+/* Styling for form on DESKTOP/PC VIEW  */
+#form { 
+  width: 60%;
+  margin: 0 auto;
+  text-align: left;
+}
+#form h1 { 
+  font-size: 2em;
+  text-transform: uppercase;
+}
+#form p{ 
+  margin-bottom: 3.2em;
+  font-size: 1em;
+  color: white;
+  background-color: #1004c5;
+  width: max-content;
+  padding: 0.4em;
+  border-radius: 100px;
+}
+#form form { 
+  display: block;
+  padding: 1em auto;
+}
+#form form input { 
+  display: block;
+  width: 80%;
+  padding: 1em;
+  color: #616161;
+  margin: 1em 0;
+  font-size: 1.2em;
+  font-family:  "Work Sans", Helvetica, sans-serif;
+  font-weight: lighter;
+  border-radius: 4px;
+  border: 1px solid #000000a6;
+  transition: 0.8s;
+}
+#form form input:focus { 
+  border: 1.2px solid #1004c5;
+}
+#form form textarea { 
+  width: 90%;
+  display: block;
+  padding: 1em;
+  font-size: 1.2em;
+  height: 30vh;
+  border: 1px solid #000000a6;
+  transition: 0.8s;
+  border-radius: 4px;
+  font-family:  "Work Sans", Helvetica, sans-serif;
+  font-weight: lighter;
+}
+#form form button{ 
+  background-color: #1004c5;
+  color: white;
+  border: 0px transparent;
+  font-size: 1.4em;
+  font-family:  "Work Sans", Helvetica, sans-serif;
+  font-weight: bolder;
+  width: 13vw;
+  padding: 1.2em 2.2em;
+  margin: 1em 0;
+  cursor: pointer;
+  transition: all 0.6s;
+  position: relative;
+  border-radius: 100px;
+} 
+
+#form form button::before { 
+  width: 30px;
+  height: 30px;
+  background: url('./Assets/right-arrow.svg');
+  content: '';
+  display: block;
+  position: absolute;
+  left: 10%;
+  background-position: center;
+  background-size: contain;
+  transition:  0.7s;
+  top: 30%;
+}
+
+#form form #buttonDiv { 
+  cursor: pointer;
+  width: 13vw;
+}
+
+#form form #buttonDiv:hover ::before{
+  left: 80%;
+  z-index: 0.61;
+  animation: sending 1 0.3s ;
+}
+
+
+@keyframes sending {
+  from { 
+     opacity: 0.4;
+     /* z-index: -1; */
+  }
+
+  to {
+    opacity: 0.8; 
+    z-index: -1;
+  }
+}
+
+/********************/
+
+/*END OF Styling for form on DESKTOP/PC VIEW  */
+
+/********************/
+
+/* Styling for form on TABLET VIEW  */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+  #form { 
+    text-align: left;
+    padding: 2em;
+  }
+  #form form #buttonDiv { 
+    width: 100vw;
+  }
+  #form form button { 
+    width: 30vw;
+  }
+}
+/********************/
+
+/* END Styling for form on TABLET VIEW  */
+
+/********************/
+
+/* Styling for form on MOBILE VIEW  */
+@media (min-width: 320px) and (max-width: 480px) {
+  #form { 
+    text-align: left;
+    padding: 0.7em;
+    width: 100%;
+  }
+  #form form #buttonDiv { 
+    width: 100vw;
+  }
+  #form form button { 
+    width: 60vw;
+    padding: 0.8em 1.2em;
+  }
+  #form form button::before { 
+    width: 20px;
+    height: 20px;
+    left: 15%;
+    top: 33%;
+  } 
+  #form form input, #form form textarea { 
+    width: 100%;
+  }
+
+  #form form #buttonDiv { 
+    width: 60vw;
+  }
+}
+/********************/
+
+/* END Styling for form on MOBILE VIEW  */

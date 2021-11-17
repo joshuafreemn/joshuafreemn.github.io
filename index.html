@@ -1,31 +1,206 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Joshua Freeman</title>
-		<link rel="stylesheet" type="text/css" href="/css/style.css">
-	</head>
-	<body>
-		<nav>
-    		<ul>
-        		<li><a href="/">Home</a></li>
-	        	<li><a href="/about">About</a></li>
-        		<li><a href="/cv">CV</a></li>
-        		<li><a href="/blog">Portfolio</a></li>
-    		</ul>
-		</nav>
-		<div class="container">
-    		<div class="blurb">
-        		<h1>Hi there, I'm Joshua Freeman</h1>
-				<p>I'm an <em>hybrid creative / art director</em> looking for creative opportuinies or a creative partner. <a href="/about">Read more about my life...</a></p>
-    		</div><!-- /.blurb -->
-		</div><!-- /.container -->
-		<footer>
-    			<ul>
-				<li><a href="mailto:joshuafreemn@protonmail.com">email</a></li>
-				<li><a href="https://github.com/joshuafreemn">github</a></li>
-				<li><a href="https://www.linkedin.com/in/joshuafreemn">linkedin</a></li>
-				<li><a href="https://twitter.com/joshuafreemn">twitter</a></li>
-			</ul>
-		</footer>
-	</body>
+<head>
+
+	<!-- The boring part! -->
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Joshua Freeman</title>
+	<meta content="Development portfolio of .... " name="description" property="og:description">
+	
+	<!-- Link to the relevant stylesheet -->
+	<link href="style.css" rel="stylesheet">
+	
+  <!--[if lte IE 8]>
+      <link href="dist/css/blockIE.css" rel="stylesheet">
+    <![endif]-->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> <!-- Load JQuery, as our little script depends on it -->
+  <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,600,400" rel="stylesheet" type="text/css"> <!-- Load our font from Google -->
+  <!-- The JS code block has been moved into the index.js file.  -->
+  <script src="./index.js"></script>
+</head>
+
+<body>
+	<!-- This calls the little script written above. -->
+  <div class="preloader"></div>
+  <main>
+
+	<!-- The Intro section begins -->
+  <section class="intro">
+
+		<div class="intro-text"> <!-- Seperates the text section from the arrow. -->
+      <div class="Hi">
+				<h1>Hi! 🖖 &mdash; My name is <span>Joshua</span>, I'm a <span>hybrid creative / art director</span> 🖍 Looking for work in London, UK.</h1>
+      </div>
+    </div>
+    
+	</section>
+	<!-- Intro section ends -->
+	
+	<!-- The portfolio section begins -->
+  <section class="projects">
+    <div class="projects-collage">
+s
+			<!-- Project One -->
+      <a class="project-item"  target="_blank">
+        <figure class="project-figure">
+          <div class="project-overlay"></div>
+          <img src="assets/header-ben-jerry.jpg">
+          <figcaption class="project-text">
+            <h2>Ben and Jerry's</h2>
+            <p>Stop Sugar Coating Names</p>
+           <!-- *********************** -->
+            <!-- START OF HIDDEN ELEMENTS -->
+
+            <!--  the next 3 element wouldnt display at first sight. they are for the project's popUp as you'll see 
+            HINTS: The P tag next
+            First Anchor tag is for the project's github REPO
+            Second Anchor is for the project's live preview  -->
+
+           <p class='hidden popUpdesc'> PROJECT ONE Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus non ipsum itaque ratione dolorem. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus non ipsum itaque ratione dolorem. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </p>
+      <!-- Please don't mind that we have a span with a weird attr. it not displaying so no worries.  -->
+        <span id="githubRepo" href="https://github.com/jabedford"></span>
+        <span id="livePreview" href="https://codiejay.github.io/dict/"></span>
+
+      <!-- *********************** -->
+      <!-- END OF HIDDEN ELEMENTS -->
+          </figcaption>
+          <img src="assets/header-ben-jerry.jpg">
+        </figure>
+			</a>
+			<!-- Project One Ends -->
+			
+			<!-- Project Two -->
+      <a class="project-item" target="_blank">
+        <figure class="project-figure">
+          <div class="project-overlay"></div>
+          <img src="assets/header-penguin.jpg">
+          <figcaption class="project-text">
+            <h2>Penguin Books</h2>
+            <p>Iceberg</p>
+            <!-- *********************** -->
+            <!-- START OF HIDDEN ELEMENTS -->
+
+            <!--  the next 3 element wouldnt display at first sight. they are for the project's popUp as you'll see 
+            HINTS: The P tag next
+            First Anchor tag is for the project's github REPO
+            Second Anchor is for the project's live preview  -->
+
+           <p class='hidden popUpdesc'> PROJECT TWO Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus non ipsum itaque ratione dolorem. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus non ipsum itaque ratione dolorem. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </p>
+      <!-- Please don't mind that we have a span with a weird attr. it not displaying so no worries.  -->
+        <span id="githubRepo" href="https://github.com/jabedford"></span>
+        <span id="livePreview" href="https://codiejay.github.io/dict/"></span>
+
+      <!-- *********************** -->
+      <!-- END OF HIDDEN ELEMENTS -->
+      </figcaption>
+      </figure>
+			</a>
+			<!-- Project Two Ends -->
+			
+			<!-- Project Three -->
+      <a class="project-item" target="_blank">
+        <figure class="project-figure">
+          <div class="project-overlay"></div>
+          <img src="assets/header-hooked.jpg">
+          <figcaption class="project-text">
+            <h2>Hooked Events</h2>
+            <p>Social Content</p>
+           <!-- *********************** -->
+            <!-- START OF HIDDEN ELEMENTS -->
+
+            <!--  the next 3 element wouldnt display at first sight. they are for the project's popUp as you'll see 
+            HINTS: The P tag next
+            First Anchor tag is for the project's github REPO
+            Second Anchor is for the project's live preview  -->
+
+           <p class='hidden popUpdesc'> PROJECT THREE Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus non ipsum itaque ratione dolorem. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus non ipsum itaque ratione dolorem. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </p>
+      <!-- Please don't mind that we have a span with a weird attr. it not displaying so no worries.  -->
+        <span id="githubRepo" href="https://github.com/jabedford"></span>
+        <span id="livePreview" href="https://codiejay.github.io/dict/"></span>
+
+      <!-- *********************** -->
+      <!-- END OF HIDDEN ELEMENTS -->
+          </figcaption>
+        </figure>
+			</a>
+			<!-- Project Three Ends -->
+			
+			<!-- Project Four -->
+      <a class="project-item" target="_blank">
+        <figure class="project-figure">
+          <div class="project-overlay"></div>
+          <img src="assets/header-effy.jpg">
+          <figcaption class="project-text">
+            <h2>Effy</h2>
+            <p>Brand & Asset Development</p>
+           <!-- *********************** -->
+            <!-- START OF HIDDEN ELEMENTS -->
+
+            <!--  the next 3 element wouldnt display at first sight. they are for the project's popUp as you'll see 
+            HINTS: The P tag next
+            First Anchor tag is for the project's github REPO
+            Second Anchor is for the project's live preview  -->
+
+           <p class='hidden popUpdesc'> PROJECT FOUR Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus non ipsum itaque ratione dolorem. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus non ipsum itaque ratione dolorem. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </p>
+      <!-- Please don't mind that we have a span with a weird attr. it not displaying so no worries.  -->
+        <span id="githubRepo" href="https://github.com/jabedford"></span>
+        <span id="livePreview" href="https://codiejay.github.io/dict/"></span>
+
+      <!-- *********************** -->
+      <!-- END OF HIDDEN ELEMENTS -->
+          </figcaption>
+        </figure>
+			</a>
+			<!-- Project Four Ends -->
+			
+    </div>
+	</section>
+	<!-- Portfolio section ends -->
+	
+	<!-- Footer section begins - If you do not want links here, you can change the <li> items to just be <p> tags or whatever you require -->
+  <footer>
+    <div class="wrapper">
+      <ul>
+        <li>
+          <a href="https://instagram.com/joshuafreemn" target="_blank">Instagram</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/joshuafreemn" target="_blank">Linkedin</a>
+				</li>
+				<li>
+						<a href="https://github.com/joshuafreemn" target="_blank">GitHub</a>
+					</li>
+      </ul>
+    </div>
+	</footer>
+	<!-- Footer section ends -->
+  </main>
+  <!--This section would ONLY appear when an individual project 'box' is clicked, It gives more detail about the project. it contains-- IMAGE OF THE PROJECT, THE PROJECT'S NAME, THE PROJECT FULL DESCRIPTION, GITHUB LINK && PREVIEW LINK -->
+  <div class="popUp">
+    <div class="popUpImg"></div>
+    <div id="popUpText">
+      <h1>Project's Name</h1>
+      <p class="projectDesc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus non ipsum itaque ratione dolorem. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus non ipsum itaque ratione dolorem. Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      <div>
+        <a href="" id="githubLink"></a>
+        <a href="" id="previewLink"></a>
+      </div>
+
+    </div>
+    <span id="cancelBtn">X</span>
+  </div>
+</body>
+
+
 </html>

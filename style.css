@@ -30,9 +30,10 @@ html, body, .landing-page {
 }
 
 /*Buttons Styling*/
-.landing-buttons {
+.button-container{
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  grid-area: button;
 }
 
 .landing-buttons a {
@@ -50,7 +51,6 @@ html, body, .landing-page {
 }
 
 .landing-buttons a:hover:not(:active),
-#work .button a:hover:not(:active),
 .button a:hover:not(:active) {
   border: 2px solid var(--pink);
   transform: translate(-0.25rem,-0.25rem);
@@ -63,10 +63,6 @@ html, body, .landing-page {
   transform: translate(-0.25rem,-0.25rem);
   box-shadow: 0.25rem 0.25rem 0 var(--pink);
   transition: all 0.2s ease-in-out;
-}
-
-.button {
-  grid-area: social;
 }
 
 .button a{
@@ -84,9 +80,11 @@ html, body, .landing-page {
   margin-top: 25px;
 }
 
-#linkedin button {
+#linkedin button,
+#cv button{
   background-color: var(--pale-pink);
 }
+
 /* Langing Page Conent*/ 
 
 /* Center the landing page content */
@@ -145,7 +143,7 @@ html, body, .landing-page {
     "title title"
     "project1 project2"
     "project3 project4"
-    "social social";
+    "button button";
   align-items: center;
   
 }
@@ -253,7 +251,7 @@ html, body, .landing-page {
     "title title"
     "picture summary"
     "picture experience"
-    "picture social";
+    "picture button";
   align-items: center;
 }
 
@@ -386,7 +384,7 @@ html, body, .landing-page {
     "project2"
     "project3"
     "project4"
-    "social";
+    "button";
   }
 
   #about {
@@ -396,13 +394,9 @@ html, body, .landing-page {
       "title"
       "summary"
       "experience"
-      "social"
+      "button"
       "picture";
       grid-gap: 50px;
-  }
-
-  .profile-picture {
-
   }
 
   .quote-container::before {
@@ -414,6 +408,7 @@ html, body, .landing-page {
   }
   
   .quote-text {
+    text-align: left;
     font-size: 1rem;
   }
 

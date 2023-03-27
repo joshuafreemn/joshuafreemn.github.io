@@ -100,6 +100,7 @@ html, body, .landing-page {
 /* Style the landing page content */
 .landing-page-content {
   text-align: center;
+  width: inherit;
 }
 
 /* Style the landing page image */
@@ -128,7 +129,6 @@ html, body, .landing-page {
 .container {
   height: 100vh;
   min-height: 100vh;
-  max-width: 60%;
   margin: 0 auto;
   display: grid;
   align-items: center;  
@@ -160,6 +160,7 @@ html, body, .landing-page {
 /* Project Styling */
 .project {
   position: relative;
+  justify-self: center;
   width: 300px;
   height: 200px;
   margin: 20px;
@@ -246,7 +247,7 @@ html, body, .landing-page {
   text-align: center;
   height: 100vh;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   grid-gap: 20px;
   grid-template-areas: 
     "title title"
@@ -337,16 +338,67 @@ html, body, .landing-page {
 }
 
 
-/* Media query to adjust grid layout and styles for smaller screens */
-@media screen and (max-width: 768px) {
+@media only screen and (max-width: 768px) {
+  /* Adjust landing page content for mobile */
+  
+  .landing-page-content h1 {
+    font-size: 24px;
+    display: none;
+  }
+  
+  .landing-page-content p {
+    font-size: 16px;
+    display: none;
+  }
+  
+  .landing-page-content img {
+    width: 90vw;
+  }
+  
+  .container {
+    height: auto;
+    justify-content: center;
+    margin: 50px 0;
+  }
+
   #work {
-    /* Change grid layout to single column */
+    padding: 0;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    "title"
+    "project1"
+    "project2"
+    "project3"
+    "project4"
+    "social";
+  }
+
+  #about {
+    height: auto;
     grid-template-columns: 1fr;
     grid-template-areas: 
       "title"
-      "project1"
-      "project2"
-      "project3"
-      "project4";
+      "summary"
+      "experience"
+      "social"
+      "picture";
+      grid-gap: 50px;
   }
+
+  .profile-picture {
+
+  }
+
+  .quote-container::before {
+    font-size: 5rem;
+  }
+  
+  .quote-container::after {
+    font-size: 5rem;
+  }
+  
+  .quote-text {
+    font-size: 1rem;
+  }
+
 }

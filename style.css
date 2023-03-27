@@ -339,8 +339,24 @@ html, body, .landing-page {
 
 
 @media only screen and (max-width: 768px) {
-  /* Adjust landing page content for mobile */
+  /* Adjust website content for mobile */
   
+.landing-buttons a:active,
+#work .button a:active,
+.button a:active {
+  border: 2px solid var(--pink);
+  transform: translate(-0.25rem,-0.25rem);
+  box-shadow: 0.25rem 0.25rem 0 var(--pink);
+  transition: all 0.2s ease-in-out;
+}
+
+#work .button a:active{
+  border: 2px solid var(--pink);
+  transform: translate(-0.25rem,-0.25rem);
+  box-shadow: 0.25rem 0.25rem 0 var(--pink);
+  transition: all 0.2s ease-in-out;
+}
+
   .landing-page-content h1 {
     font-size: 24px;
     display: none;

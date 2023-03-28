@@ -129,6 +129,7 @@ html, body, .landing-page {
   min-height: 100vh;
   margin: 0 auto;
   display: grid;
+  justify-content: center;
   align-items: center;  
 }
 
@@ -137,7 +138,7 @@ html, body, .landing-page {
   padding: 50px;
   text-align: center;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(2, minmax(300px, 400px));
   grid-gap: 20px;
   grid-template-areas: 
     "title title"
@@ -145,16 +146,12 @@ html, body, .landing-page {
     "project3 project4"
     "button button";
   align-items: center;
-  
 }
 
 #work h2 {
   grid-area: title;
   font-size: 36px;
 }
-
-
-
 /* Project Styling */
 .project {
   position: relative;
@@ -335,6 +332,24 @@ html, body, .landing-page {
   color: var(--pink);
 }
 
+@media (min-width: 1200px) {
+  /* This is an empty media query for large desktops */
+  
+  .container {
+    height: auto; 
+    min-height: none;
+  }
+
+  #about {
+    height: auto; 
+    min-height: none;
+  }
+
+  .profile-picture {
+    padding: 100px;
+  }
+
+}
 
 @media only screen and (max-width: 768px) {
   /* Adjust website content for mobile */

@@ -1,1 +1,1 @@
-# joshuafreemn.github.io
+# joshuafreemn.design

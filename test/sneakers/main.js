@@ -1,4 +1,4 @@
-import 'https://joshuafreemn.design/test/style.css'
+import 'https://joshuafreemn.design/test/sneakers/style.css'
 
 import { animate, inView } from 'motion'
 import { 
@@ -19,7 +19,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
-import { NoiseShader } from 'https://joshuafreemn.design/test/noise-shader';
+import { NoiseShader } from 'https://joshuafreemn.design/test/sneakers/noise-shader';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 

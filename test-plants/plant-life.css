@@ -1,0 +1,148 @@
+
+@keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; } 
+}
+
+@font-face {
+    font-family: "IBM Plex Mono";
+    src: url("/assets/ibm-plex-mono.woff2") format('woff2'),
+         url("/assets/ibm-plex-mono.woff") format('woff');
+}
+
+@font-face {
+    font-family: "Young Serif";
+    src: url("/assets/youngserif.woff2") format('woff2'),
+         url("/assets/youngserif.woff") format('woff');
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+
+body {
+    font-family: "IBM Plex Mono";
+    font-size: 16px;   
+    line-height: 1.6;
+    background-color: #ffffff;
+    color: #2a2a2a;
+    overflow-x: hidden;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: -240;
+    width: 240px;
+    height: 100vh;
+
+    font-family: "Young Serif";
+    background-color: #00b98d;
+    color: #ffffff;
+    font-size: 24px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 5px 32px;
+} 
+
+nav.open {
+    left: 0;
+}
+
+main { 
+    position: relative;
+    z-index: 1;
+    background-color: #ffffff;
+    min-height: 100vh;
+
+    transition: transform 0.5s;
+}
+
+main.open {
+    transform: translate(240px, 0);
+} 
+
+a.toggle-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 24px;
+    text-decoration: none;
+    color: #2a2a2a;
+
+}
+
+a.toggle-nav img {
+    margin: 0 5px 0 0;
+    vertical-align: middle;
+}
+
+section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+section div {
+    width: 350px;
+
+}
+
+section div.content {
+     margin: 0 0 0 60px;
+}
+
+h1 {
+    font-family: "Young Serif";
+    font-size: 48px; 
+    line-height: 1.2;
+    }
+
+p {
+        margin: 20px 0;
+    }
+
+a.button {
+    display: inline-block;
+    background-color: #00b98d;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+div.slides {
+    height: 475px;
+    position: relative;
+}
+
+div.slides img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.5s, box-shadow 0.6s;
+}
+
+div.slides img:first-child {
+    z-index: 1;
+}
+
+div.slides:hover img {
+    box-shadow: 0 0 15px rgba(0,0,0,0.15);
+
+
+}

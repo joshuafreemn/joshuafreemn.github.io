@@ -67,7 +67,7 @@ main {
     background-color: #ffffff;
     min-height: 100vh;
 
-    transition: transform 0.5s;
+ 
 }
 
 main.open {
@@ -146,20 +146,3 @@ div.slides:hover img {
 
 }
 
-@media only screen and (max-width: 768px) {
-
-    main.open {
-        transform: translate(140px, 0);
-    } 
-
-    nav {
-        left: -140px;
-        width: 140px;
-    }
-
-    div.slides {
-        height: 235px;
-        position: relative;
-    }
-
-}

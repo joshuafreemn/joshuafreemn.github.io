@@ -146,3 +146,25 @@ div.slides:hover img {
 
 }
 
+@media only screen and (max-width: 768px) {
+    /* Set the images to a specific width */
+    div.slides img {
+        width: 235px; /* Explicit width for mobile devices */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    /* Adjust the main section to move by 140px */
+    main.open {
+        transform: translateX(140px);
+    }
+
+    /* Adjust the nav bar to move by 140px */
+    nav {
+        left: -140px; /* Assume you want to hide the nav off-screen */
+    }
+
+    /* Ensure animations and transitions are smooth for nav and main */
+    nav, main.open {
+        transition: transform 0.5s ease-in-out;
+    }
+}

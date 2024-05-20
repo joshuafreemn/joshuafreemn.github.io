@@ -7,8 +7,8 @@
     navTag.classList.toggle("open")
 
     if (mainTag.classList.contains("open")) {
-        toggleTag.innerHTML = `<img src="assets/close.svg"/> Close` 
+        toggleTag.innerHTML = `<img src="test-plant/close.svg"/> Close` 
     } else (
-        toggleTag.innerHTML = `<img src="assets/menu.svg"/> Menu`
+        toggleTag.innerHTML = `<img src="test-plant/menu.svg"/> Menu`
     )
  })

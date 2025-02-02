@@ -20,6 +20,7 @@ body {
   --grey: #D3D3D3;
   --black: #1B2827;
   --white: #fff;
+  --dark-grey: #151316;
 }
 
 /* Set full height and width for the landing page */
@@ -135,7 +136,7 @@ html, body, .landing-page {
 }
 
 #work {
-  background-color: var(--white);
+;
   padding: 50px;
   text-align: center;
   display: grid;
@@ -207,7 +208,7 @@ html, body, .landing-page {
 }
 
   .project-1 {
-    background-image: url('assets/eversholt.jpg');
+    background-image: url('assets/.jpg');
     background-position: center;
     background-size: cover;
 }

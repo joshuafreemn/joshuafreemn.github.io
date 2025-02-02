@@ -13,11 +13,12 @@
     </head>
     <!-- Pop Up to go here -->
     <body>
+        <container>
         <!-- Landing Page -->
         <section id="landing">
             <div class="landing-page">
                 <div class="landing-page-content">
-                    <img src="/assets/landing-pg.png" alt="Image of the landing page"">
+                    <img src="assets/landing-pg.png" alt="Image of the landing page"">
                     <h1>Joshua Freeman's Portfolio</h1>
                     <p>A graphic and motion design portfolio showcasing my skills in branding,
                         animation, and illustration. The portfolio features a diverse range of projects,
@@ -27,7 +28,7 @@
                     <div class="button-container">
                         <div class="landing-buttons">
                             <a href="#work">Work</a>
-                            <a href="#about">Me</a>
+                            <a href="#about">About</a>
                         </div>
                     </div>
                 </div>
@@ -38,9 +39,43 @@
         <div class="container">
             <section id="work">
                 <h2>Work</h2>
-                
-                    <div class="project project-1">
-                        <a href="https://www.behance.net/gallery/167134259/Motion-Design-Template-Eversholt" target="_blank>
+                    <div class="project project1">
+                        <a href="https://www.behance.net/gallery/218175307/Brand-Identity-Concept-Life-Sciences" target="_blank">
+                        <img src="assets/LS.jpg" alt="Image of the Life Sceinces project">
+                        <div class="project-content">
+                            <h3>Life Sciences</h3>
+                            <p>Branding Indenity Concept</p>
+                            <img src="assets/icons/InDesign.svg" alt="InDesign Icon">
+                            <img src="assets/icons/Illustrator.svg" alt="Illustrator Icon">
+                            <img src="assets/icons/Photoshop.svg" alt="Photoshop Icon">
+                        </div>
+                    </a>
+                    </div>
+                    <div class="project project2">
+                        <a href="https://www.behance.net/gallery/218171387/Editing-VFX-Power-Road-Studio" target="_blank">
+                        <img src="assets/arcwl.jpg" alt="Image of the Arc West London project">
+                        <div class="project-content">
+                            <h3>Power Road Studios</h3>
+                            <p>VFX & Editing</p>
+                            <img src="assets/icons/Premiere.svg" alt="InDesign Icon">
+                            <img src="assets/icons/AfterEffects.svg" alt="Illustrator Icon">
+                            <img src="assets/icons/Photoshop.svg" alt="Photoshop Icon">
+                        </div>
+                        </a>
+                    </div>
+                    <div class="project project3">
+                        <a href="https://www.behance.net/gallery/167134193/Animation-50-Electric-Blvd" target="_blank">
+                        <img src="assets/50eb.jpg" alt="Image of the 50 Electric Blvd project">
+                        <div class="project-content">
+                            <h3>50 Elecrtic Blvd</h3>
+                            <p>Animation for film and web</p>
+                            <img src="assets/icons/AfterEffects.svg" alt="After Effects Icon">
+                            <img src="assets/icons/lottiefiles.svg" alt="Lottie Files Icon">
+                        </div>
+                        </a>
+                    </div>
+                    <div class="project project4">
+                        <a href="https://www.behance.net/gallery/167134259/Motion-Design-Template-Eversholt" target="_blank">
                         <img src="assets/eversholt.jpg" alt="Image of the Eversholt project">
                         <div class="project-content">
                             <h3>Eversholt</h3>
@@ -49,43 +84,6 @@
                         </div>
                     </a>
                     </div>
-               
-                <div class="project project-2">
-                    <a href="https://www.behance.net/gallery/167134193/Animation-50-Electric-Blvd" target="_blank">
-                    <img src="assets/50eb.jpg" alt="Image of the 50 Electric Blvd project">
-                    <div class="project-content">
-                        <h3>50 Elecrtic Blvd</h3>
-                        <p>Animation for film and web</p>
-                        <img src="assets/icons/AfterEffects.svg" alt="After Effects Icon">
-                        <img src="assets/icons/lottiefiles.svg" alt="Lottie Files Icon">
-                    </div>
-                </a>
-                </div>
-                <div class="project project-3">
-                    <a href="https://www.behance.net/gallery/165371239/Creative-55-Pall-Mall" target="_blank">
-                    <img src="assets/55pallmall.jpg" alt="Image of the 55 Pall Mall project">
-                    <div class="project-content">
-                        <h3>55 Pall Mall</h3>
-                        <p>Branding design deck</p>
-                        <img src="assets/icons/InDesign.svg" alt="InDesign Icon">
-                        <img src="assets/icons/Illustrator.svg" alt="InDesign Icon">
-                    </div>
-                </a>
-                </div>
-                
-                
-                <div class="project project-4">
-                    <a href="https://www.behance.net/gallery/165371235/Brochure-Arc-West-London" target="_blank">
-                    <img src="assets/arcwl.jpg" alt="Image of the Arc West London project">
-                    <div class="project-content">
-                        <h3>Arc West London</h3>
-                        <p>Brochure design and layout</p>
-                        <img src="assets/icons/InDesign.svg" alt="InDesign Icon">
-                        <img src="assets/icons/Illustrator.svg" alt="Illustrator Icon">
-                        <img src="assets/icons/Photoshop.svg" alt="Photoshop Icon">
-                    </div>
-                    </a>
-                </div>
             
             <!-- Add more projects here -->
 
@@ -100,7 +98,7 @@
 
     <!-- About Section -->
     <section id="about">
-        <h2>Me</h2>
+        <h2>About</h2>
         <img class="profile-picture" src="assets/profile-pic.svg" alt="Profile picture of Joshua Freeman">
         <div class="about">
             <div class="quote-container">
@@ -108,31 +106,36 @@
                 <p class="quote-name">- ChatGPT</p>
               </div>
         </div>
-        <h3 class="xp">Currently at <a href='https://smartsoho.co.uk/' target="_blank">Smart Soho</a></h3>
         <div class="button-container">
-        <div class="button" id="linkedin">
-            <a href='https://www.linkedin.com/in/joshuafreemn/' title="View LinkedIN Profile" target="_blank">LinkedIn</a>
+            <div class="button" id="linkedin">
+                <a href='https://www.linkedin.com/in/joshuafreemn/' title="View LinkedIN Profile" target="_blank">LinkedIn</a>
+            </div>
+            <div class="button" id="cv">
+                <a href='JF CV 25.pdf' title="Open CV" target="_blank">CV</a>
+            </div>
+            <div class="button" id="instagram">
+                <a href='https://www.instagram.com/frosh.img/' title="View Instagram Profile" target="_blank">Instagram</a>
+            </div>
+
         </div>
-        <div class="button" id="cv">
-            <a href='cv/Joshua Freeman CV 23.pdf' title="Open CV" target="_blank">CV</a>
-        </div>
-        </div>
+        <h3 class="xp">Currently at <a href='https://smartsoho.co.uk/' target="_blank">Smart Soho</a></h3>
     </section>
     <!-- Footer Section -->
     <footer class="footer">
         <div class="footer-container">
           <div class="footer-item"><p>Website is a work in progress
-            <br>&copy; 2023 Joshua Freeman & ChatGPT.</p></div>
+            <br>&copy; 2025 Joshua Freeman & ChatGPT.</p></div>
           <nav class="footer-item">
             <ul class="footer-menu">
               <li><a href="#landing">Home</a></li>
               <li><a href="#work">Work</a></li>
               <li><a href="#about">About</a></li>
+              <li><a href="">Sandbox</a></li>
             </ul>
           </nav>
         </div>
       </footer>
-
+    </container>
     <script src="main.js"></script>
 </body>
 </html>

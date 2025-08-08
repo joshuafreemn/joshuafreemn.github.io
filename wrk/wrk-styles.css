@@ -1,0 +1,1048 @@
+/* Jump to sections
+  (Use Cmd+F and search for these codes):
+  Browser Reset: BR01A2B3
+  Base / Global Styles: BS56V7W8
+  Common Components: CC45D6E7
+  Project Layouts: PL78F9G0
+  BTS Card Layouts: BC12H3I4
+  Portsea Card Layouts: PC34J5K6
+  SP Managed Card Layouts: SM56L7M8
+  RLAMLS Card Layouts: RL78N9O0
+*/
+
+/* —————————————————————————————————————————————————————————————— */
+/*   Flashcard Layouts [FL90P1Q2] */
+/*   #region Flashcard Layouts */
+
+#flashcard-hero-image .img-placeholder {
+  grid-row: 1 / 3;
+  grid-column: 3 / 5;
+}
+#flashcard-hero-image .card-title {
+  grid-row: 4;
+  grid-column: 1 / 3;
+}
+
+#flashcard-top-title .card-title {
+  grid-row: 0;
+  grid-column: 1 / 4;
+  align-self: start;
+  transform: translateY(-50%);
+}
+#flashcard-top-title .img-placeholder {
+  grid-row: 3 / 5;
+  grid-column: 3 / 5;
+}
+
+#flashcard-vertical-title .card-title {
+  grid-row: 1 / 5;
+  grid-column: 3;
+  writing-mode: sideways-lr;
+  justify-self: end;
+}
+#flashcard-vertical-title .img-placeholder {
+  grid-row: 1 / 5;
+  grid-column: 4;
+}
+
+#flashcard-full-image .img-placeholder {
+  grid-row: 1 / 5;
+  grid-column: 1 / 5;
+}
+
+#flashcard-centered-title .card-title {
+  grid-row: 1 / 5;
+  grid-column: 1 / 5;
+  justify-self: center;
+  align-self: center;
+}
+
+#flashcard-dual-image .card-title {
+  grid-row: 0;
+  grid-column: 1 / 4;
+  align-self: start;
+  transform: translateY(-50%);
+}
+#flashcard-dual-image .card-text {
+  grid-row: 2;
+  grid-column: 1 / 3;
+}
+#flashcard-dual-image .placeholder-one {
+  grid-row: 3 / 5;
+  grid-column: 1 / 3;
+}
+#flashcard-dual-image .placeholder-two {
+  grid-row: 3 / 5;
+  grid-column: 3 / 5;
+}
+
+#flashcard-triple-image .placeholder-one {
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  width: 150%;
+  height: 150%;
+  transform: translateX(25%);
+}
+#flashcard-triple-image .placeholder-two {
+  grid-row: 3 / 5;
+  grid-column: 1;
+  width: 150%;
+  transform: translateX(10%);
+}
+#flashcard-triple-image .placeholder-three {
+  grid-row: 1 / 5;
+  grid-column: 3 / 5;
+  justify-self: end;
+  width: 60%;
+}
+#flashcard-triple-image .card-text {
+  grid-row: 3;
+  grid-column: 3;
+  z-index: 2;
+  align-self: top;
+  transform: translateX(calc(-50% + 20px));
+}
+
+#flashcard-tall-image .card-text {
+  grid-row: 1 / 3;
+  grid-column: 3;
+}
+#flashcard-tall-image .img-placeholder {
+  grid-row: 1 / 3;
+  grid-column: 4 / 5;
+  height: 110%;
+}
+
+#flashcard-centered-media .img-placeholder {
+  grid-row: 1 / 5;
+  grid-column: 1 / 5;
+  aspect-ratio: 16 / 9;
+  width: 50%;
+  height: auto;
+  justify-self: center;
+  align-self: center;
+}
+#flashcard-centered-media .card-text {
+  grid-row: 4;
+  grid-column: 2 / 4;
+  transform: translateY(-30px);
+}
+
+#flashcard-bottom-image .card-title {
+  grid-row: 1;
+  grid-column: 1 / 4;
+  align-self: start;
+  transform: translateY(-50%);
+}
+#flashcard-bottom-image .card-text {
+  grid-row: 1;
+  grid-column: 3 / 5;
+  transform: translateY(-20px);
+}
+#flashcard-bottom-image .img-placeholder {
+  grid-row: 3 / 5;
+  grid-column: 1 / 5;
+}
+
+#flashcard-text-right .card-text {
+  grid-row: 1 / 5;
+  grid-column: 4;
+  justify-self: end;
+  width: 80%;
+}
+
+#flashcard-image-text .card-text {
+  grid-row: 3 / 5;
+  grid-column: 1;
+  transform: translateY(-20px);
+}
+#flashcard-image-text .img-placeholder {
+  grid-row: 1 / 5;
+  grid-column: 2 / 5;
+}
+
+#flashcard-title-text-image .card-title {
+  grid-row: 1;
+  grid-column: 1 / 3;
+  align-self: start;
+}
+#flashcard-title-text-image .card-text {
+  grid-row: 3 / 5;
+  grid-column: 1;
+  align-self: start;
+}
+#flashcard-title-text-image .img-placeholder {
+  grid-row: 1 / 3;
+  grid-column: 3 / 5;
+}
+
+#flashcard-image-grid .card-title {
+  grid-row: 1;
+  grid-column: 1 / 3;
+  align-self: start;
+}
+#flashcard-image-grid .card-text {
+  grid-row: 1;
+  grid-column: 3 / 5;
+  align-self: start;
+}
+.flashcard:nth-of-type(14) .img-placeholder:nth-child(n+1) {
+  grid-row: 3;
+}
+.flashcard:nth-of-type(14) .img-placeholder:nth-child(n+5):nth-child(-n+8) {
+  grid-row: 4;
+}
+
+#flashcard-three-column .card-title {
+  grid-row: 1;
+  grid-column: 1 / 3;
+  align-self: start;
+}
+#flashcard-three-column .card-text {
+  grid-row: 1;
+  grid-column: 3 / 5;
+  align-self: start;
+  justify-self: end;
+}
+#flashcard-three-column .placeholder-one {
+  grid-row: 2 / 5;
+  grid-column: 2;
+}
+#flashcard-three-column .placeholder-two {
+  grid-row: 2 / 5;
+  grid-column: 3;
+}
+#flashcard-three-column .placeholder-three {
+  grid-row: 2 / 5;
+  grid-column: 4;
+}
+
+#flashcard-inverse {
+  background: var(--color-primary);
+  color: var(--white);
+}
+#flashcard-inverse .card-text {
+  grid-row: 1;
+  grid-column: 3 / 5;
+  align-self: start;
+  justify-self: end;
+  color: var(--white);
+}
+
+#flashcard-split-background {
+  padding: 0;
+  background: var(--color-primary);
+}
+#flashcard-split-background .bg-fill {
+  grid-row: 1 / 3;
+  grid-column: 1 / 5;
+  background: var(--white);
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 20px;
+  padding: 40px 20px 0px 20px;
+}
+#flashcard-split-background .card-text {
+  grid-row: 1;
+  grid-column: 1 / 2;
+  align-self: start;
+}
+#flashcard-split-background .project-info {
+  grid-row: 3;
+  grid-column: 1 / 5;
+  align-self: start;
+}
+
+#flashcard-tall-right .card-title {
+  grid-row: 1;
+  grid-column: 1 / 4;
+  align-self: start;
+}
+#flashcard-tall-right .card-text {
+  grid-row: 3;
+  grid-column: 1;
+  align-self: start;
+}
+#flashcard-tall-right .img-placeholder {
+  grid-row: 1 / 5;
+  grid-column: 3 / 5;
+}
+
+#flashcard-colored-top {
+  padding: 0;
+  background: var(--color-primary);
+}
+#flashcard-colored-top .bg-fill {
+  grid-row: 1;
+  grid-column: 1 / 5;
+  background: var(--white);
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  gap: 20px;
+  padding: 40px 20px 0px 20px;
+}
+#flashcard-colored-top .card-text {
+  grid-row: 1;
+  grid-column: 2 / 5;
+  align-self: start;
+  justify-self: start;
+}
+#flashcard-colored-top .project-info {
+  grid-row: 2;
+  grid-column: 1 / 5;
+  align-self: start;
+}
+/*   #endregion Flashcard Layouts */
+/* —————————————————————————————————————————————————————————————— */
+
+/* —————————————————————————————————————————————————————————————— */
+/*   Browser Reset [BR01A2B3] */
+/*   #region Browser Reset */
+body {
+  background: var(--baby-pink);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  flex: 1;
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30vh 0;
+}
+/*   #endregion Browser Reset */
+/* —————————————————————————————————————————————————————————————— */
+
+/* —————————————————————————————————————————————————————————————— */
+/*   Base / Global Styles [BS56V7W8] */
+/*   #region Base / Global Styles */
+.flashcard {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 40px 20px 0px 20px;
+  height: 920px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 20px;
+  position: sticky;
+  top: 50%;
+  transform: translateY(-50%) scale(0.9);
+  margin: 0 20px 15vh;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.progress-marker {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 100;
+}
+
+.marker {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+  text-decoration: none;
+}
+
+.marker.active {
+  opacity: 1;
+}
+
+.home-marker {
+  width: auto;
+  height: auto;
+  background: none;
+}
+
+.home-marker i {
+  color: var(--color-primary);
+  font-size: 16px;
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+.home-marker.active i {
+  opacity: 1;
+}
+
+.project-info {
+  grid-column: 1 / -1;
+  grid-row: 5;
+  display: flex;
+  justify-content: space-between;
+}
+
+.img-placeholder {
+  background: #ccc;
+  border-radius: 8px;
+}
+
+.card-title {
+  color: var(--color-primary);
+  margin: 0;
+  padding: 0;
+  align-self: center;
+}
+
+.card-text {
+  color: var(--color-primary);
+  margin: 0;
+  padding: 0;
+  justify-self: start;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 20px 0;
+  padding: 0 100px;
+}
+
+.nav-buttons h4 {
+  color: purple;
+  cursor: pointer;
+}
+
+/*   #endregion Base / Global Styles */
+/* —————————————————————————————————————————————————————————————— */
+
+/* —————————————————————————————————————————————————————————————— */
+/*   Common Components [CC45D6E7] */
+/*   #region Common Components */
+/* Project-specific flashcard styles */
+.bts-flashcard {
+  border: #800080 4px solid;
+  box-shadow: 0 10px 30px rgba(128, 0, 128, 0.1);
+}
+.bts-flashcard:hover {
+  box-shadow: 0 15px 40px rgba(128, 0, 128, 0.2);
+}
+
+.portsea-flashcard {
+  border: #0000FF 4px solid;
+  box-shadow: 0 10px 30px rgba(0, 0, 255, 0.1);
+}
+.portsea-flashcard:hover {
+  box-shadow: 0 15px 40px rgba(0, 0, 255, 0.2);
+}
+
+.spmanaged-flashcard {
+  border: #800080 4px solid;
+  box-shadow: 0 10px 30px rgba(128, 0, 128, 0.1);
+}
+.spmanaged-flashcard:hover {
+  box-shadow: 0 15px 40px rgba(128, 0, 128, 0.2);
+}
+
+.rlamls-flashcard {
+  border: #6CCCD9 4px solid;
+  background-color: #110C47;
+  color: #6CCCD9;
+  box-shadow: 0 10px 30px rgba(108, 204, 217, 0.2);
+} 
+.rlamls-flashcard:hover {
+  box-shadow: 0 15px 50px rgba(183, 233, 239, 0.4);
+}
+
+#rlamls-body .card-title,
+#rlamls-body .card-text {
+  color: #6CCCD9;
+  }
+/*   #endregion Common Components */
+/* —————————————————————————————————————————————————————————————— */
+
+/* —————————————————————————————————————————————————————————————— */
+/*   BTS Card Layouts [BC12H3I4] */
+/*   #region BTS Card Layouts */
+#bts-card1 .img-placeholder {
+  grid-row: 1 / 3;
+  grid-column: 3 / 5;
+}
+
+#bts-card1 .card-title {
+  grid-row: 4;
+  grid-column: 1 / 3;
+}
+
+#bts-card2 .card-title {
+  grid-row: 1 / 5;
+  grid-column: 1 / 5;
+  justify-self: center;
+  align-self: center;
+}
+
+#bts-card3 .card-text {
+  grid-row: 1 / 3;
+  grid-column: 3;
+}
+
+#bts-card3 .img-placeholder {
+  grid-row: 1 / 3;
+  grid-column: 4 / 5;
+  height: 110%;
+}
+
+#bts-card4 .card-title {
+  grid-row: 1;
+  grid-column: 1 / 3;
+  align-self: start;
+}
+
+#bts-card4 .card-text {
+  grid-row: 3 / 5;
+  grid-column: 1;
+  align-self: start;
+}
+
+#bts-card4 .img-placeholder {
+  grid-row: 1 / 3;
+  grid-column: 3 / 5;
+}
+
+#bts-card5 {
+  background: var(--color-primary);
+  color: var(--white);
+}
+
+#bts-card5 .card-text {
+  grid-row: 1;
+  grid-column: 3 / 5;
+  align-self: start;
+  justify-self: end;
+  color: var(--white);
+}
+/*   #endregion BTS Card Layouts */
+/* —————————————————————————————————————————————————————————————— */
+
+/* —————————————————————————————————————————————————————————————— */
+/*   Portsea Card Layouts [PC34J5K6] */
+/*   #region Portsea Card Layouts */
+#portsea-card1 .card-title {
+  grid-row: 0;
+  grid-column: 1 / 4;
+  align-self: start;
+  transform: translateY(-50%);
+}
+
+#portsea-card1 .img-placeholder {
+  grid-row: 3 / 5;
+  grid-column: 3 / 5;
+}
+
+#portsea-card2 .card-title {
+  grid-row: 0;
+  grid-column: 1 / 4;
+  align-self: start;
+  transform: translateY(-50%);
+}
+
+#portsea-card2 .card-text {
+  grid-row: 2;
+  grid-column: 1 / 3;
+}
+
+#portsea-card2 .placeholder-one {
+  grid-row: 3 / 5;
+  grid-column: 1 / 3;
+}
+
+#portsea-card2 .placeholder-two {
+  grid-row: 3 / 5;
+  grid-column: 3 / 5;
+}
+
+#portsea-card3 .card-title {
+  grid-row: 1;
+  grid-column: 1 / 4;
+  align-self: start;
+  transform: translateY(-50%);
+}
+
+#portsea-card3 .card-text {
+  grid-row: 1;
+  grid-column: 3 / 5;
+  transform: translateY(-20px);
+}
+
+#portsea-card3 .img-placeholder {
+  grid-row: 3 / 5;
+  grid-column: 1 / 5;
+}
+
+#portsea-card4 .card-title {
+  grid-row: 1;
+  grid-column: 1 / 3;
+  align-self: start;
+}
+
+#portsea-card4 .card-text {
+  grid-row: 1;
+  grid-column: 3 / 5;
+  align-self: start;
+}
+
+#portsea-card4 .img-placeholder:nth-child(n+1) {
+  grid-row: 3;
+}
+
+#portsea-card4 .img-placeholder:nth-child(n+5):nth-child(-n+8) {
+  grid-row: 4;
+}
+
+#portsea-card5 {
+  padding: 0;
+  background: var(--color-primary);
+}
+
+#portsea-card5 .bg-fill {
+  grid-row: 1 / 3;
+  grid-column: 1 / 5;
+  background: var(--white);
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 20px;
+  padding: 40px 20px 0px 20px;
+}
+
+#portsea-card5 .card-text {
+  grid-row: 1;
+  grid-column: 1 / 2;
+  align-self: start;
+}
+/*   #endregion Portsea Card Layouts */
+/* —————————————————————————————————————————————————————————————— */
+
+/* —————————————————————————————————————————————————————————————— */
+/*   SP Managed Card Layouts [SM56L7M8] */
+/*   #region SP Managed Card Layouts */
+#spmanaged-card1 .img-placeholder {
+  grid-row: 1 / 5;
+  grid-column: 1 / 5;
+}
+
+#spmanaged-card2 .img-placeholder {
+  grid-row: 1 / 5;
+  grid-column: 1 / 5;
+  aspect-ratio: 16 / 9;
+  width: 50%;
+  height: auto;
+  justify-self: center;
+  align-self: center;
+}
+
+#spmanaged-card2 .card-text {
+  grid-row: 4;
+  grid-column: 2 / 4;
+  transform: translateY(-30px);
+}
+
+#spmanaged-card3 .card-text {
+  grid-row: 3 / 5;
+  grid-column: 1;
+  transform: translateY(-20px);
+}
+
+#spmanaged-card3 .img-placeholder {
+  grid-row: 1 / 5;
+  grid-column: 2 / 5;
+}
+
+#spmanaged-card4 .card-title {
+  grid-row: 1;
+  grid-column: 1 / 4;
+  align-self: start;
+}
+
+#spmanaged-card4 .card-text {
+  grid-row: 3;
+  grid-column: 1;
+  align-self: start;
+}
+
+#spmanaged-card4 .img-placeholder {
+  grid-row: 1 / 5;
+  grid-column: 3 / 5;
+}
+
+#spmanaged-card5 {
+  padding: 0;
+  background: var(--color-primary);
+}
+
+#spmanaged-card5 .bg-fill {
+  grid-row: 1;
+  grid-column: 1 / 5;
+  background: var(--white);
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  gap: 20px;
+  padding: 40px 20px 0px 20px;
+}
+
+#spmanaged-card5 .card-text {
+  grid-row: 1;
+  grid-column: 2 / 5;
+  align-self: start;
+  justify-self: start;
+}
+/*   #endregion SP Managed Card Layouts */
+/* —————————————————————————————————————————————————————————————— */
+
+/* —————————————————————————————————————————————————————————————— */
+/*   RLAMLS Card Layouts [RL78N9O0] */
+/*   #region RLAMLS Card Layouts */
+body, #rlamsl-body {
+  background: #0A072C;
+}
+/* body, #rlamsl-body > h1,h2,h3,h4,h5,h6{
+  color: #6CCCD9;
+}
+
+#rlamls-card1 .card-title {
+  grid-row: 1 / 5;
+  grid-column: 3;
+  writing-mode: sideways-lr;
+  justify-self: end;
+}*/
+
+#rlamls-card1 .img-placeholder {
+  grid-row: 1 / 5;
+  grid-column: 1 / 5;
+  background-image: url(../Assets/wrk/RLAMLS/RLAMLS-lowres01.webp);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#rlamls-card2 .img-placeholder {
+  grid-row: 1 / 5;
+  grid-column: 3 / 5;
+  background-image: url(../Assets/wrk/RLAMLS/RLAMLS-lowres03.jpeg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+#rlamls-card2 .card-text {
+  grid-row: 3 / 5;
+  grid-column: 0;
+  align-self: start;
+}
+
+#rlamls-card3 .card-text {
+  grid-row: 1 / 3;
+  grid-column: 1 / 1;
+  width: 80%;
+  justify-self: start;
+}
+
+#rlamls-card3 .img-placeholder {
+  grid-row: 4 / 5;
+  grid-column: 1 / 5;
+  background-image: url(../Assets/wrk/RLAMLS/RLAMLS-lowres04_Letters_CROP.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#rlamls-card4 .card-text {
+  grid-row: 1 / 3;
+  grid-column: 1 / 1;
+  width: 80%;
+  justify-self: start;
+}
+
+#rlamls-card4 .img-placeholder {
+  grid-row: 3 / 5;
+  grid-column: 1 / 5;
+  background-image: url(../Assets/wrk/RLAMLS/RLAMLS-lowres10_invert.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: black;
+}
+
+#rlamls-card5 .img-placeholder {
+  grid-row: 1 / 5;
+  grid-column: 1 / 5;
+  aspect-ratio: 16 / 9;
+  width: 50%;
+  height: auto;
+  justify-self: center;
+  align-self: center;
+    background-image: url(../Assets/wrk/RLAMLS/RLAMLS-lowres05.jpeg);
+  background-size: cover;
+  background-position: center;
+}
+
+#rlamls-card5 .card-text {
+  grid-row: 4;
+  grid-column: 2 / 4;
+  transform: translateY(-30px);
+}
+#rlamls-card6 {
+  display: grid; 
+  grid-template-columns: repeat(6, 1fr); 
+  grid-template-rows: repeat(4, 1fr); 
+  gap: 25px 25px; 
+  grid-template-areas: 
+    "image-1 image-1 . . image-4 image-4"
+    "image-1 image-1 . . . ."
+    ". image-2 . . image-5 image-6"
+    ". image-3 image-3 . text-1 text-1"; 
+}
+
+
+#rlamls-card6 .placeholder-one {
+  grid-area: image-1;
+  background-image: url(../Assets/wrk/RLAMLS/Lock\ up.png);
+  background-size: cover;
+  background-position: center;
+}
+#rlamls-card6 .placeholder-two {
+  grid-area: image-2;
+  background-image: url(../Assets/wrk/RLAMLS/Lock\ up\ small.png);
+  background-size: cover;
+  background-position: center;
+}
+
+#rlamls-card6 .placeholder-three {
+  grid-area: image-3;
+  background-image: url(../Assets/wrk/RLAMLS/Lock\ up\ medium.png);
+  background-size: cover;
+  background-position: center;
+}
+
+#rlamls-card6 .placeholder-four {
+   grid-area: image-4;
+  background-image: url(../Assets/wrk/RLAMLS/Logo\ Full.png);
+  background-size: cover;
+  background-position: center;
+}
+
+#rlamls-card6 .placeholder-five {
+  grid-area: image-5;
+    background-image: url(../Assets/wrk/RLAMLS/Logo\ LS.png);
+  background-size: cover;
+  background-position: center;
+}
+
+#rlamls-card6 .placeholder-six {
+ grid-area: image-6;
+  background-image: url(../Assets/wrk/RLAMLS/Logo\ S.png);
+  background-size: cover;
+  background-position: center;
+}
+
+#rlamls-card6 .card-text {
+  grid-area: text-1;
+  z-index: 2;
+}
+
+#rlamls-card7 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 25px 25px;
+}
+
+#rlamls-card7 .placeholder-one {
+  grid-row-start: 2;
+  background-image: url(../Assets/wrk/RLAMLS/ABI.png);
+  background-size: cover;
+  background-position: center;
+}
+#rlamls-card7 .placeholder-two {
+  grid-row-start: 2;
+  background-image: url(../Assets/wrk/RLAMLS/TRI.png);
+  background-size: cover;
+  background-position: center;
+}
+#rlamls-card7 .placeholder-three {
+  grid-row-start: 2;
+  background-image: url(../Assets/wrk/RLAMLS/CAM.png);
+  background-size: cover;
+  background-position: center;
+}
+#rlamls-card7 .placeholder-four{
+  grid-row-start: 2;
+  background-image: url(../Assets/wrk/RLAMLS/ARC.png);
+  background-size: cover;
+  background-position: center;
+}
+#rlamls-card7 .placeholder-five {
+  grid-row-start: 2;
+  background-image: url(../Assets/wrk/RLAMLS/VIS.png);
+  background-size: cover;
+  background-position: center;
+}
+
+#rlamls-card7 .card-text {
+    grid-column: span 3 / span 3;
+    grid-column-start: 2;
+    grid-row-start: 3;
+}
+
+#rlamls-card8 {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+#rlamls-card8 .card-title {
+  grid-row: 1;
+  grid-column: 1 / 3;
+  align-self: start;
+}
+#rlamls-card8 .card-text {
+  grid-row: 1;
+  grid-column: 3 / 5;
+  align-self: start;
+  justify-self: end;
+}
+#rlamls-card8 .placeholder-one {
+  grid-row: 1 / 5;
+  grid-column: 1;
+      background-color: #ffffff;
+}
+#rlamls-card8 .placeholder-two {
+  grid-row: 1 / 5;
+  grid-column: 2;
+      background-color: #6ECBD9;
+}
+#rlamls-card8 .placeholder-three {
+  grid-row: 1 / 5;
+  grid-column: 3;
+  background-color: #5C5FAC;
+}
+
+#rlamls-card8 .placeholder-four {
+  grid-row: 1 / 5;
+  grid-column: 4;
+  background-color: #28236B;
+}
+
+#rlamls-card8 .placeholder-five {
+  grid-row: 1 / 5;
+  grid-column: 5;
+  background-color: #0b0b0b;
+}
+
+#rlamls-card9 {
+  display: grid; 
+  grid-template-columns: 1fr 1fr 1fr 1fr; 
+  grid-template-rows: 1fr 1fr 1fr 1fr; 
+  gap: 25px 30px; 
+  grid-template-areas: 
+    "Text-1 Text-1 Image-2 Image-2"
+    "Image-1 Image-1 Image-2 Image-2"
+    "Image-1 Image-1 Text-2 Image-3"
+    "Image-1 Image-1 Text-2 Image-3"; 
+}
+#rlamls-card9 .placeholder-one {
+  grid-area: Image-1;
+    background-image: url(../Assets/wrk/RLAMLS/Group\ 78.png);
+  background-size: cover;
+  background-position: center;
+}
+#rlamls-card9 .placeholder-two {
+  grid-area: Image-2;
+  background-image: url(../Assets/wrk/RLAMLS/Group\ 43.png);
+  background-size: cover;
+  background-position: center;
+}
+#rlamls-card9 .placeholder-three {
+  grid-area: Image-3;
+    background-image: url(../Assets/wrk/RLAMLS/Group\ 42.png);
+  background-size: cover;
+  background-position: center;
+}
+#rlamls-card9 .card-text-one {
+  grid-area: Text-1;
+}
+
+#rlamls-card9 .card-text-two {
+  grid-area: Text-2;
+  z-index: 2;
+  align-self: top;
+  transform: translateX(calc(-50% + 20px));
+}
+
+#rlamls-card10 .img-placeholder {
+  grid-row: 1 / 5;
+  grid-column: 1 / 5;
+    background-image: url(../Assets/wrk/RLAMLS/RLAMLS-lowres11.webp);
+  background-size: cover;
+  background-position: center;
+}
+
+#rlamls-card11 {
+  display: grid; 
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr; 
+  grid-template-rows: 1fr 1fr 1fr; 
+  gap: 25px 20px; 
+  grid-template-areas: 
+    "Image-1 Image-1 Image-1 Image-2 Image-2"
+    "Image-1 Image-1 Image-1 Image-3 Image-3"
+    "Text-1 Text-1 Text-1 Image-4 Image-4"; 
+}
+#rlamls-card11 .img-placeholder-one{
+  grid-area: Image-1;
+  height: 125%;
+  background-image: url(../Assets/wrk/RLAMLS/RLAMLS-lowres18.jpg);
+  background-size: cover;
+  background-position: center;
+
+}
+#rlamls-card11 .img-placeholder-two {
+  grid-area: Image-2;
+  background-image: url(../Assets/wrk/RLAMLS/RLAMLS-lowres13.jpg);
+  background-size: cover;
+  background-position: center;
+}
+#rlamls-card11 .img-placeholder-three {
+  grid-area: Image-3;
+  background-image: url(../Assets/wrk/RLAMLS/RLAMLS-lowres15.jpg);
+  background-size: cover;
+  background-position: center;
+}
+#rlamls-card11 .img-placeholder-four {
+  grid-area: Image-4;
+  background-image: url(../Assets/wrk/RLAMLS/RLAMLS-lowres14.jpg);
+  background-size: cover;
+  background-position: center;
+}
+#rlamls-card11 .card-text {
+  grid-area: Text-1;
+  height: 50%;
+  align-self: self-end;
+}
+
+#rlamls-card11 .project-info {
+  grid-row: 4; 
+}
+
+/*   #endregion RLAMLS Card Layouts */
+/* —————————————————————————————————————————————————————————————— */

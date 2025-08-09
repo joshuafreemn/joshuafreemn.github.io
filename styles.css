@@ -7,13 +7,6 @@
   Themes / Color Palettes: TV12P3Q4
   Header / Navigation: HD12Y3Z4
   Footer: FT34A5B6
-
-/* Jump to sections 
-  (Use Cmd+F and search for these codes):
-  Browser Reset: BR01A2B3
-  Themes / Color Palettes: TV12P3Q4
-  Header / Navigation: HD12Y3Z4
-  Footer: FT34A5B6
   Landing Page Styles: LG45C6D7
   Showreel Page Styles: SH89E0F1
   Work Page Styles: WK23G4H5
@@ -497,7 +490,7 @@ p {
 }
 
 .project-image1 {
-  background-image: url('Assets/wrk/RLM.png');
+  background-image: url('Assets/wrk/RLM.jpeg');
   background-size: cover;
   background-position: top;
   transform: rotate(-2deg);

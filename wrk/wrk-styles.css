@@ -537,99 +537,201 @@ body {
 /* —————————————————————————————————————————————————————————————— */
 /*   Portsea Card Layouts [PC34J5K6] */
 /*   #region Portsea Card Layouts */
-#portsea-card1 .card-title {
-  grid-row: 0;
-  grid-column: 1 / 4;
-  align-self: start;
-  transform: translateY(-50%);
-}
-
 #portsea-card1 .img-placeholder {
-  grid-row: 3 / 5;
-  grid-column: 3 / 5;
-}
-
-#portsea-card2 .card-title {
-  grid-row: 0;
-  grid-column: 1 / 4;
-  align-self: start;
-  transform: translateY(-50%);
+  grid-row: 1 / 5;
+  grid-column: 1 / 5;
 }
 
 #portsea-card2 .card-text {
-  grid-row: 2;
-  grid-column: 1 / 3;
-}
-
-#portsea-card2 .placeholder-one {
-  grid-row: 3 / 5;
-  grid-column: 1 / 3;
-}
-
-#portsea-card2 .placeholder-two {
-  grid-row: 3 / 5;
-  grid-column: 3 / 5;
+  grid-row: 1 / 5;
+  grid-column: 4;
+  justify-self: end;
+  width: 80%;
 }
 
 #portsea-card3 .card-title {
   grid-row: 1;
-  grid-column: 1 / 4;
+  grid-column: 1 / 3;
   align-self: start;
-  transform: translateY(-50%);
 }
-
 #portsea-card3 .card-text {
   grid-row: 1;
   grid-column: 3 / 5;
+  align-self: start;
+}
+#portsea-card3 .img-placeholder:nth-child(n+1) {
+  grid-row: 3;
+}
+#portsea-card3 .img-placeholder:nth-child(n+5):nth-child(-n+8) {
+  grid-row: 4;
+}
+
+#portsea-card4 .card-text {
+  grid-row: 3 / 5;
+  grid-column: 1;
   transform: translateY(-20px);
 }
-
-#portsea-card3 .img-placeholder {
-  grid-row: 3 / 5;
-  grid-column: 1 / 5;
+#portsea-card4 .img-placeholder {
+  grid-row: 1 / 5;
+  grid-column: 2 / 5;
 }
 
-#portsea-card4 .card-title {
+#portsea-card5 .card-title {
   grid-row: 1;
   grid-column: 1 / 3;
   align-self: start;
 }
+#portsea-card5 .card-text {
+  grid-row: 3 / 5;
+  grid-column: 1;
+  align-self: start;
+}
+#portsea-card5 .img-placeholder {
+  grid-row: 1 / 3;
+  grid-column: 3 / 5;
+}
 
-#portsea-card4 .card-text {
+#portsea-card6 .img-placeholder {
+  grid-row: 1 / 5;
+  grid-column: 1 / 5;
+}
+
+#portsea-card7 .placeholder-one {
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  width: 150%;
+  height: 150%;
+  transform: translateX(25%);
+}
+#portsea-card7 .placeholder-two {
+  grid-row: 3 / 5;
+  grid-column: 1;
+  width: 150%;
+  transform: translateX(10%);
+}
+#portsea-card7 .placeholder-three {
+  grid-row: 1 / 5;
+  grid-column: 3 / 5;
+  justify-self: end;
+  width: 60%;
+}
+#portsea-card7 .card-text {
+  grid-row: 3;
+  grid-column: 3;
+  z-index: 2;
+  align-self: top;
+  transform: translateX(calc(-50% + 20px));
+}
+
+#portsea-card8 .card-title {
+  grid-row: 0;
+  grid-column: 1 / 4;
+  align-self: start;
+  transform: translateY(-50%);
+}
+#portsea-card8 .card-text {
+  grid-row: 2;
+  grid-column: 1 / 3;
+}
+#portsea-card8 .placeholder-one {
+  grid-row: 3 / 5;
+  grid-column: 1 / 3;
+}
+#portsea-card8 .placeholder-two {
+  grid-row: 3 / 5;
+  grid-column: 3 / 5;
+}
+
+#portsea-card9 .placeholder-one {
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  width: 150%;
+  height: 150%;
+  transform: translateX(25%);
+}
+#portsea-card9 .placeholder-two {
+  grid-row: 3 / 5;
+  grid-column: 1;
+  width: 150%;
+  transform: translateX(10%);
+}
+#portsea-card9 .placeholder-three {
+  grid-row: 1 / 5;
+  grid-column: 3 / 5;
+  justify-self: end;
+  width: 60%;
+}
+#portsea-card9 .card-text {
+  grid-row: 3;
+  grid-column: 3;
+  z-index: 2;
+  align-self: top;
+  transform: translateX(calc(-50% + 20px));
+}
+
+#portsea-card10 .placeholder-one {
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  width: 150%;
+  height: 150%;
+  transform: translateX(25%);
+}
+#portsea-card10 .placeholder-two {
+  grid-row: 3 / 5;
+  grid-column: 1;
+  width: 150%;
+  transform: translateX(10%);
+}
+#portsea-card10 .placeholder-three {
+  grid-row: 1 / 5;
+  grid-column: 3 / 5;
+  justify-self: end;
+  width: 60%;
+}
+#portsea-card10 .card-text {
+  grid-row: 3;
+  grid-column: 3;
+  z-index: 2;
+  align-self: top;
+  transform: translateX(calc(-50% + 20px));
+}
+
+#portsea-card11 .card-title {
+  grid-row: 1;
+  grid-column: 1 / 4;
+  align-self: start;
+  transform: translateY(-50%);
+}
+#portsea-card11 .card-text {
   grid-row: 1;
   grid-column: 3 / 5;
-  align-self: start;
+  transform: translateY(-20px);
 }
-
-#portsea-card4 .img-placeholder:nth-child(n+1) {
-  grid-row: 3;
-}
-
-#portsea-card4 .img-placeholder:nth-child(n+5):nth-child(-n+8) {
-  grid-row: 4;
-}
-
-#portsea-card5 {
-  padding: 0;
-  background: var(--color-primary);
-}
-
-#portsea-card5 .bg-fill {
-  grid-row: 1 / 3;
+#portsea-card11 .img-placeholder {
+  grid-row: 3 / 5;
   grid-column: 1 / 5;
-  background: var(--white);
-  border-radius: 20px;
+}
+
+#portsea-card12 .card-text {
+  grid-row: 3 / 5;
+  grid-column: 1;
+  transform: translateY(-20px);
+}
+#portsea-card12 .img-placeholder {
+  grid-row: 1 / 5;
+  grid-column: 2 / 5;
+}
+
+#portsea-card13 .img-placeholder {
+  grid-row: span 1;
+  grid-column: span 1;
+  width: 100%;
+  height: 100%;
+}
+#portsea-card13 .img-placeholder:nth-child(-n+16) {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 20px;
-  padding: 40px 20px 0px 20px;
-}
-
-#portsea-card5 .card-text {
-  grid-row: 1;
-  grid-column: 1 / 2;
-  align-self: start;
+  gap: 10px;
 }
 /*   #endregion Portsea Card Layouts */
 /* —————————————————————————————————————————————————————————————— */

@@ -2,7 +2,6 @@
   (Use Cmd+F and search for these codes):
   Browser Reset: BR01A2B3
   Base / Global Styles: BS56V7W8
-  Common Components: CC45D6E7
   Project Layouts: PL78F9G0
   BTS Card Layouts: BC12H3I4
   Portsea Card Layouts: PC34J5K6
@@ -341,8 +340,8 @@ body {
   top: 50%;
   transform: translateY(-50%) scale(0.9);
   margin: 0 20px 15vh;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
+
 .progress-marker {
   position: fixed;
   top: 50%;
@@ -397,6 +396,7 @@ body {
   border-radius: 8px;
 }
 
+
 .card-title {
   color: var(--color-primary);
   margin: 0;
@@ -427,53 +427,12 @@ body {
 /* —————————————————————————————————————————————————————————————— */
 
 /* —————————————————————————————————————————————————————————————— */
-/*   Common Components [CC45D6E7] */
-/*   #region Common Components */
-/* Project-specific flashcard styles */
-.bts-flashcard {
-  border: #800080 4px solid;
-  box-shadow: 0 10px 30px rgba(128, 0, 128, 0.1);
-}
-.bts-flashcard:hover {
-  box-shadow: 0 15px 40px rgba(128, 0, 128, 0.2);
-}
-
-.portsea-flashcard {
-  border: #0000FF 4px solid;
-  box-shadow: 0 10px 30px rgba(0, 0, 255, 0.1);
-}
-.portsea-flashcard:hover {
-  box-shadow: 0 15px 40px rgba(0, 0, 255, 0.2);
-}
-
-.spmanaged-flashcard {
-  border: #800080 4px solid;
-  box-shadow: 0 10px 30px rgba(128, 0, 128, 0.1);
-}
-.spmanaged-flashcard:hover {
-  box-shadow: 0 15px 40px rgba(128, 0, 128, 0.2);
-}
-
-.rlamls-flashcard {
-  border: #6CCCD9 4px solid;
-  background-color: #110C47;
-  color: #6CCCD9;
-  box-shadow: 0 10px 30px rgba(108, 204, 217, 0.2);
-} 
-.rlamls-flashcard:hover {
-  box-shadow: 0 15px 50px rgba(183, 233, 239, 0.4);
-}
-
-#rlamls-body .card-title,
-#rlamls-body .card-text {
-  color: #6CCCD9;
-  }
-/*   #endregion Common Components */
-/* —————————————————————————————————————————————————————————————— */
-
-/* —————————————————————————————————————————————————————————————— */
 /*   BTS Card Layouts [BC12H3I4] */
 /*   #region BTS Card Layouts */
+.bts-flashcard {
+  border: #800080 4px solid;
+}
+
 #bts-card1 .img-placeholder {
   grid-row: 1 / 3;
   grid-column: 3 / 5;
@@ -537,9 +496,34 @@ body {
 /* —————————————————————————————————————————————————————————————— */
 /*   Portsea Card Layouts [PC34J5K6] */
 /*   #region Portsea Card Layouts */
+.portsea-flashcard {
+  background-color: #4D6568;
+  border: #DBDBCE 4px solid;
+  color: #DBDBCE;
+}
+
+.portsea-flashcard .card-text, .portsea-flashcard .card-title {
+  color: #DBDBCE;
+}
+
+#portsea-card1 {
+  background-color: #DBDBCE;
+  border: #4D6568 4px solid;
+  color: #4D6568;
+}
+
 #portsea-card1 .img-placeholder {
   grid-row: 1 / 5;
   grid-column: 1 / 5;
+  background-image: url(../Assets/wrk/Portsea/Portsea-lowres01.webp);
+  background-size: cover;
+  background-position: center;
+}
+
+#portsea-card2 {
+  background-color: #DBDBCE;
+  border: #4D6568 4px solid;
+   color: #4D6568;
 }
 
 #portsea-card2 .card-text {
@@ -547,33 +531,79 @@ body {
   grid-column: 4;
   justify-self: end;
   width: 80%;
+   color: #4D6568;
 }
 
-#portsea-card3 .card-title {
-  grid-row: 1;
+#portsea-card3 .card-text {
+  grid-row: 4;
   grid-column: 1 / 3;
   align-self: start;
 }
-#portsea-card3 .card-text {
-  grid-row: 1;
-  grid-column: 3 / 5;
-  align-self: start;
-}
-#portsea-card3 .img-placeholder:nth-child(n+1) {
+#portsea-card3 .placeholder-one{
   grid-row: 3;
+  grid-column: 3;
+  background-image: url(../Assets/wrk/Portsea/Brickwork.png);
+  background-size: cover;
+  background-position: center;
 }
-#portsea-card3 .img-placeholder:nth-child(n+5):nth-child(-n+8) {
+#portsea-card3 .placeholder-two{
+  grid-row: 3;
+  grid-column: 4;
+  background-image: url(../Assets/wrk/Portsea/Mews\ Garage\ Doors.png);
+  background-size: cover;
+  background-position: center;
+}
+#portsea-card3 .placeholder-three{
   grid-row: 4;
+  grid-column: 3;
+  background-image: url(../Assets/wrk/Portsea/Pyrus\ Chanticlear\ Treas.png);
+  background-size: cover;
+  background-position: center;
+}
+#portsea-card3 .placeholder-four{
+  grid-row: 4;
+  grid-column: 4;
+  background-image: url(../Assets/wrk/Portsea/Timber\ Cobbles.png);
+  background-size: cover;
+  background-position: center;
+}
+
+#portsea-card4 {
+  grid-template-columns: 1fr 1fr 1.5fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+#portsea-card4 .project-info {
+  grid-row: 4;      /* or 3, depending on where you want it */
 }
 
 #portsea-card4 .card-text {
-  grid-row: 3 / 5;
-  grid-column: 1;
+  grid-row: 3;
+  grid-column: 3;
+  justify-self: end;
+  align-self: flex-end;
   transform: translateY(-20px);
 }
-#portsea-card4 .img-placeholder {
-  grid-row: 1 / 5;
-  grid-column: 2 / 5;
+#portsea-card4 .placeholder-one {
+  grid-row: 1 / 4;
+  grid-column: 1 / 3;
+  background-size: cover;
+  background-position: center;
+  justify-self: start;
+  background-image: url(../Assets/wrk/Portsea/Portsea-lowres02\ lock\ up.jpg);
+  width: 100%;
+  height: 100%;
+}
+
+#portsea-card4 .placeholder-two {
+  grid-row: 1 / 3;
+  grid-column: 3;
+  justify-self: end;
+  background-size: cover;
+  background-position: center;
+  background-image: url(../Assets/wrk/Portsea/Portsea-lowres02\ wood.jpg);
+      width: 100%;
+  height: 100%;
 }
 
 #portsea-card5 .card-title {
@@ -589,32 +619,52 @@ body {
 #portsea-card5 .img-placeholder {
   grid-row: 1 / 3;
   grid-column: 3 / 5;
+  background-image: url(../Assets/wrk/Portsea/Portsea-lowres04.webp);
+  background-size: cover;
+  background-position: center;
 }
 
 #portsea-card6 .img-placeholder {
   grid-row: 1 / 5;
   grid-column: 1 / 5;
+    background-image: url(../Assets/wrk/Portsea/Portsea-lowres04.webp);
+  background-size: cover;
+  background-position: center;
+}
+
+#portsea-card7 {
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
 }
 
 #portsea-card7 .placeholder-one {
-  grid-row: 1 / 2;
+  grid-row: 1 / 5;
   grid-column: 1 / 2;
-  width: 150%;
-  height: 150%;
-  transform: translateX(25%);
+  background-color: #4D6568;
 }
 #portsea-card7 .placeholder-two {
-  grid-row: 3 / 5;
-  grid-column: 1;
-  width: 150%;
-  transform: translateX(10%);
+  grid-row: 1 / 3;
+  grid-column: 2 / 4;
+  background-color: #DBDBCF;
 }
 #portsea-card7 .placeholder-three {
-  grid-row: 1 / 5;
-  grid-column: 3 / 5;
-  justify-self: end;
-  width: 60%;
+  grid-row: 3 / 5;
+  grid-column: 2;
+  background-color: #2A373F;
 }
+
+#portsea-card7 .placeholder-four {
+  grid-row: 3;
+  grid-column: 3;
+  background-color: #654C0C;
+}
+
+#portsea-card7 .placeholder-five {
+  grid-row: 4;
+  grid-column: 3;
+  background-color: #A8A8A8;
+}
+
 #portsea-card7 .card-text {
   grid-row: 3;
   grid-column: 3;
@@ -623,115 +673,265 @@ body {
   transform: translateX(calc(-50% + 20px));
 }
 
-#portsea-card8 .card-title {
-  grid-row: 0;
-  grid-column: 1 / 4;
-  align-self: start;
-  transform: translateY(-50%);
+
+#portsea-card8 {
+  grid-template-columns: 3fr 3fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+#portsea-card8 .project-info{
+  grid-row: 3;
 }
 #portsea-card8 .card-text {
   grid-row: 2;
-  grid-column: 1 / 3;
+  grid-column: 3;
 }
 #portsea-card8 .placeholder-one {
-  grid-row: 3 / 5;
-  grid-column: 1 / 3;
+  grid-row: 1 / 3;
+  grid-column: 1;
+  background-image: url(../Assets/wrk/Portsea/Portsea-lowres05\ 2.jpg);
+  background-size: cover;
+  background-position: center;
 }
 #portsea-card8 .placeholder-two {
-  grid-row: 3 / 5;
-  grid-column: 3 / 5;
+  grid-row: 1 / 3;
+  grid-column: 2;
+    background-image: url(../Assets/wrk/Portsea/Portsea-lowres05\ 8.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#portsea-card9 {
+  grid-template-columns: 2fr 1fr 0.25fr;
+  grid-template-rows: 1fr 0.25fr 0.25fr 1fr;
 }
 
 #portsea-card9 .placeholder-one {
-  grid-row: 1 / 2;
-  grid-column: 1 / 2;
-  width: 150%;
-  height: 150%;
-  transform: translateX(25%);
+  grid-row: 1 / 3;
+  grid-column: 1;
+  background-image: url(../Assets/wrk/Portsea/Portsea-lowres09.webp);
+  background-size: cover;
+  background-position: center;
 }
 #portsea-card9 .placeholder-two {
   grid-row: 3 / 5;
   grid-column: 1;
-  width: 150%;
-  transform: translateX(10%);
+  background-image: url(../Assets/wrk/Portsea/Portsea-lowres08.webp);
+  background-size: cover;
+  background-position: center;
 }
+
 #portsea-card9 .placeholder-three {
-  grid-row: 1 / 5;
-  grid-column: 3 / 5;
-  justify-self: end;
-  width: 60%;
+  grid-row: 4;
+  grid-column: 2;
+  background-image: url(../Assets/wrk/Portsea/Portsea-lowres07.webp);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #DBDBCF;
 }
 #portsea-card9 .card-text {
-  grid-row: 3;
-  grid-column: 3;
-  z-index: 2;
-  align-self: top;
-  transform: translateX(calc(-50% + 20px));
+  grid-row: 2 / 4;
+  grid-column: 2 / 4;
+  width: 75%;
+  justify-self: end;
+  align-self: flex-end;
+}
+
+#portsea-card10 {
+  grid-template-columns: 0.25fr 1fr 2fr;
+  grid-template-rows: 1fr 0.25fr 0.25fr 1fr;
 }
 
 #portsea-card10 .placeholder-one {
-  grid-row: 1 / 2;
-  grid-column: 1 / 2;
-  width: 150%;
-  height: 150%;
-  transform: translateX(25%);
+  grid-row: 1 / 3;
+  grid-column: 3;
+  background-image: url(../Assets/wrk/Portsea/Portsea-lowres10.webp);
+  background-size: cover;
+  background-position: center;
 }
 #portsea-card10 .placeholder-two {
   grid-row: 3 / 5;
-  grid-column: 1;
-  width: 150%;
-  transform: translateX(10%);
+  grid-column: 3;
+  background-image: url(../Assets/wrk/Portsea/Portsea-lowres11.webp);
+  background-size: cover;
+  background-position: center;
 }
 #portsea-card10 .placeholder-three {
-  grid-row: 1 / 5;
-  grid-column: 3 / 5;
-  justify-self: end;
-  width: 60%;
+  grid-row: 1;
+  grid-column: 2;
+  background-image: url(../Assets/wrk/Portsea/Portsea-lowres12.webp);
+  background-size: cover;
+  background-position: center;
 }
 #portsea-card10 .card-text {
-  grid-row: 3;
-  grid-column: 3;
-  z-index: 2;
-  align-self: top;
-  transform: translateX(calc(-50% + 20px));
-}
-
-#portsea-card11 .card-title {
-  grid-row: 1;
-  grid-column: 1 / 4;
+  grid-row: 2 / 4;
+  grid-column: 1 / 3;
+  width: 75%;
   align-self: start;
-  transform: translateY(-50%);
-}
-#portsea-card11 .card-text {
-  grid-row: 1;
-  grid-column: 3 / 5;
-  transform: translateY(-20px);
-}
-#portsea-card11 .img-placeholder {
-  grid-row: 3 / 5;
-  grid-column: 1 / 5;
+  justify-self: end;
 }
 
-#portsea-card12 .card-text {
-  grid-row: 3 / 5;
-  grid-column: 1;
-  transform: translateY(-20px);
+#portsea-card11{
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 0.25fr 0.25fr 1fr;
 }
+#portsea-card11 .img-placeholder{
+  grid-row: 2 / 5;
+  grid-column: 1;
+  background-image: url(../Assets/wrk/Portsea/Portsea-lowres13.webp);
+  background-size: cover;
+  background-position: bottom;
+}
+
+#portsea-card12 {
+ grid-template-columns: 3fr 1fr;
+ grid-template-rows: 1fr;;
+}
+
+#portsea-card12 .project-info {
+  grid-row: 2
+}
+
 #portsea-card12 .img-placeholder {
-  grid-row: 1 / 5;
-  grid-column: 2 / 5;
+  grid-row: 1 /2;
+  grid-column: 1/2;
+  background-image: url(../Assets/wrk/Portsea/Portsea-lowres14.webp);
+  background-size: cover;
+  background-position: center left;
+}
+
+#portsea-card13{
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr);
 }
 
 #portsea-card13 .img-placeholder {
   grid-row: span 1;
   grid-column: span 1;
-  width: 100%;
-  height: 100%;
+  aspect-ratio: 16 / 9;
+  align-self: center;
 }
-#portsea-card13 .img-placeholder:nth-child(-n+16) {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+
+#portsea-card13 .placeholder-one {
+  background-image: url(../Assets/wrk/Portsea/Portsea-lowres-storyboard01.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+
+#portsea-card13 .placeholder-two {
+  background-image: url(../Assets/wrk/Portsea/Portsea-lowres-storyboard02.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#portsea-card13 .placeholder-three {
+  background-image: url(../Assets/wrk/Portsea/Portsea-lowres-storyboard03.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#portsea-card13 .placeholder-four {
+  background-image: url(../Assets/wrk/Portsea/Portsea-lowres-storyboard04.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#portsea-card13 .placeholder-five {
+  background-image: url(../Assets/wrk/Portsea/Portsea-lowres-storyboard05.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#portsea-card13 .placeholder-six {
+  background-image: url(../Assets/wrk/Portsea/Portsea-lowres-storyboard06.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#portsea-card13 .placeholder-seven {
+  background-image: url(../Assets/wrk/Portsea/Portsea-lowres-storyboard07.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#portsea-card13 .placeholder-eight {
+  background-image: url(../Assets/wrk/Portsea/Portsea-lowres-storyboard08.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#portsea-card13 .placeholder-nine {
+  background-image: url(../Assets/wrk/Portsea/Portsea-lowres-storyboard09.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#portsea-card13 .placeholder-ten {
+  background-image: url(../Assets/wrk/Portsea/Portsea-lowres-storyboard10.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#portsea-card13 .placeholder-eleven {
+  background-image: url(../Assets/wrk/Portsea/Portsea-lowres-storyboard11.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#portsea-card13 .placeholder-twelve {
+  background-image: url(../Assets/wrk/Portsea/Portsea-lowres-storyboard12.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#portsea-card13 .placeholder-thirteen {
+  background-image: url(../Assets/wrk/Portsea/Portsea-lowres-storyboard13.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#portsea-card13 .placeholder-fourteen {
+  background-image: url(../Assets/wrk/Portsea/Portsea-lowres-storyboard14.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#portsea-card13 .placeholder-fifteen {
+  background-image: url(../Assets/wrk/Portsea/Portsea-lowres-storyboard15.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#portsea-card13 .placeholder-sixteen {
+  background-image: url(../Assets/wrk/Portsea/Portsea-lowres-storyboard16.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#portsea-card13 .placeholder-seventeen {
+  background-image: url(../Assets/wrk/Portsea/Portsea-lowres-storyboard17.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#portsea-card13 .placeholder-eighteen {
+  background-image: url(../Assets/wrk/Portsea/Portsea-lowres-storyboard18.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#portsea-card13 .placeholder-nineteen {
+  background-image: url(../Assets/wrk/Portsea/Portsea-lowres-storyboard19.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#portsea-card13 .placeholder-twenty {
+  background-image: url(../Assets/wrk/Portsea/Portsea-lowres-storyboard20.jpg);
+  background-size: cover;
+  background-position: center;
 }
 /*   #endregion Portsea Card Layouts */
 /* —————————————————————————————————————————————————————————————— */
@@ -739,85 +939,289 @@ body {
 /* —————————————————————————————————————————————————————————————— */
 /*   SP Managed Card Layouts [SM56L7M8] */
 /*   #region SP Managed Card Layouts */
-#spmanaged-card1 .img-placeholder {
-  grid-row: 1 / 5;
-  grid-column: 1 / 5;
+.spmanaged-flashcard {
+  border: #ffffff 4px solid;
 }
 
-#spmanaged-card2 .img-placeholder {
-  grid-row: 1 / 5;
+#spmanaged-card1 {
+  border: #EFC716 4px solid;
+  color: #EFC716;
+}
+#spmanaged-card1 .img-placeholder {
+  grid-row: 1 / 3;
+  grid-column: 3 / 5;
+  background-image: url(../Assets/wrk/SPManaged/SPManaged-lowres00.webp);
+}
+
+#spmanaged-card1 .card-title {
+  grid-row: 4;
   grid-column: 1 / 5;
-  aspect-ratio: 16 / 9;
-  width: 50%;
-  height: auto;
-  justify-self: center;
-  align-self: center;
+  color: #EFC716;
+}
+
+#spmanaged-card2 {
+  border: #4E2760 4px solid;
+  color: #4E2760;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 3fr 0.5fr;
+  column-gap: 50px;
+}
+
+#spmanaged-card2 .project-info{
+  grid-row: 3;
 }
 
 #spmanaged-card2 .card-text {
-  grid-row: 4;
+  grid-row: 2;
   grid-column: 2 / 4;
-  transform: translateY(-30px);
+  align-self: center;
+  color: #4E2760;
 }
 
-#spmanaged-card3 .card-text {
-  grid-row: 3 / 5;
+#spmanaged-card2 .placeholder-one {
+  grid-row: 1 / 2;
   grid-column: 1;
-  transform: translateY(-20px);
+  background-image: url(../Assets/wrk/SPManaged/Logo.jpg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #ffffff;
+}
+
+#spmanaged-card2 .placeholder-two {
+  grid-row: 1 / 2;
+  grid-column: 2;
+  background-image: url(../Assets/wrk/SPManaged/Logo\ Line.jpg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #ffffff;
+}
+
+#spmanaged-card2 .placeholder-three {
+  grid-row: 1 / 2;
+  grid-column: 3;
+  background-image: url(../Assets/wrk/SPManaged/Logo\ Small.jpg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #ffffff;
+}
+
+
+#spmanaged-card3 {
+  border: #A3C265 4px solid;
+  color: #A3C265;
 }
 
 #spmanaged-card3 .img-placeholder {
   grid-row: 1 / 5;
-  grid-column: 2 / 5;
+  grid-column: 1 / 5;
+  background-image: url(../Assets/wrk/SPManaged/SPmanaged-lowres03.webp);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #A3C265;
 }
 
-#spmanaged-card4 .card-title {
-  grid-row: 1;
-  grid-column: 1 / 4;
-  align-self: start;
+#spmanaged-card4 {
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: 1fr;
+  border: #F28BCA 4px solid;
+  color: #F28BCA;
 }
 
-#spmanaged-card4 .card-text {
-  grid-row: 3;
-  grid-column: 1;
-  align-self: start;
+#spmanaged-card4 .placeholder-one {
+  grid-column: span 1;
+  grid-row: span 1;
+  background-color: #DDA7B7;
 }
 
-#spmanaged-card4 .img-placeholder {
-  grid-row: 1 / 5;
-  grid-column: 3 / 5;
+#spmanaged-card4 .placeholder-two {
+  grid-column: span 1;
+  grid-row: span 1;
+    background-color: #EB4C72;
+}
+
+#spmanaged-card4 .placeholder-three {
+  grid-column: span 1;
+  grid-row: span 1;
+    background-color: #4E2760;
+}
+
+#spmanaged-card4 .placeholder-four {
+  grid-column: span 1;
+  grid-row: span 1;
+    background-color: #111230;
+}
+
+#spmanaged-card4 .placeholder-five {
+  grid-column: span 1;
+  grid-row: span 1;
+    background-color: #2766AD;
+}
+
+#spmanaged-card4 .placeholder-six {
+  grid-column: span 1;
+  grid-row: span 1;
+    background-color: #A3C265;
+}
+
+#spmanaged-card4 .placeholder-seven {
+  grid-column: span 1;
+  grid-row: span 1;
+    background-color: #EFC717;
+}
+
+#spmanaged-card4 .placeholder-eight {
+  grid-column: span 1;
+  grid-row: span 1;
+    background-color: #DD8E29;
+}
+
+#spmanaged-card4 .project-info {
+  grid-row: 2;
 }
 
 #spmanaged-card5 {
-  padding: 0;
-  background: var(--color-primary);
+  border: #EB4C72 4px solid;
+  color: #EB4C72;
+  background-image: url('../Assets/wrk/SPManaged/SPmanaged-lowres05.jpg');
+  background-size: cover;
+  background-position: top left;
 }
 
-#spmanaged-card5 .bg-fill {
-  grid-row: 1;
-  grid-column: 1 / 5;
-  background: var(--white);
-  border-radius: 20px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(1, 1fr);
-  gap: 20px;
-  padding: 40px 20px 0px 20px;
+#spmanaged-card6 {
+  grid-template-columns: 2fr 2fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  color: #DDA7B7;
+    border: #DDA7B7 4px solid ;
+    ]
 }
 
-#spmanaged-card5 .card-text {
-  grid-row: 1;
-  grid-column: 2 / 5;
-  align-self: start;
-  justify-self: start;
+#spmanaged-card6 .project-info {
+
+  grid-row: 4;
 }
+
+#spmanaged-card6 .card-text {
+  grid-row: 2 / 4;
+  grid-column: 3;
+  color: #DDA7B7;
+  align-self: flex-end;
+}
+#spmanaged-card6 .placeholder-one{
+  grid-row: 2;
+  grid-column: 1;
+  background-image: url(../Assets/wrk/SPmanaged/SPmanaged-lowres07.webp);
+  background-size: cover;
+  background-position: center;
+}
+#spmanaged-card6 .placeholder-two{
+  grid-row: 2;
+  grid-column: 2;
+  background-image: url(../Assets/wrk/SPmanaged/SPmanaged-lowres07.webp);
+  background-size: cover;
+  background-position: center;
+}
+#spmanaged-card6 .placeholder-three{
+  grid-row: 3;
+  grid-column: 1;
+  background-image: url(../Assets/wrk/SPmanaged/SPmanaged-lowres07.webp);
+  background-size: cover;
+  background-position: center;
+}
+#spmanaged-card6 .placeholder-four{
+  grid-row: 3;
+  grid-column: 2;
+  background-image: url(../Assets/wrk/SPmanaged/SPmanaged-lowres07.webp);
+  background-size: cover;
+  background-position: center;
+}
+
+#spmanaged-card7{
+  color: #2766AD;
+  border: #2766AD 4px solid;
+}
+
+#spmanaged-card7 .card-text {
+  grid-row: 3;
+  grid-column: 1 / 3;
+    color: #2766AD;
+
+}
+
+#spmanaged-card7 .placeholder-one {
+  grid-row: 1 / 3;
+  grid-column: 3 / 5;
+  background-image: url(../Assets/wrk/SPManaged/SPmanaged-lowres06.webp);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #2766AD;
+  aspect-ratio: 16 / 9;
+  align-self: center;
+}
+
+#spmanaged-card7 .placeholder-two {
+  grid-row: 3 / 5;
+  grid-column: 3 / 5;
+  background-image: url(../Assets/wrk/SPManaged/SPmanaged-lowres09.webp);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #A3C265;
+  aspect-ratio: 16 / 9;
+  align-self: center;
+}
+
+#spmanaged-card8 {
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  color: #DD8E29;
+  border: #DD8E29 4px solid;
+  color: #DD8E29;
+}
+
+#spmanaged-card8 .project-info {
+  grid-row: 6;
+}
+#spmanaged-card8 .placeholder-one{
+  grid-row: 1 / 5;
+  grid-column: 2 / 6;
+  background-image: url(../Assets/wrk/SPManaged/SPmanaged-lowres10.webp);
+  background-size: cover;
+  background-position: center;
+}
+
+#spmanaged-card8 .placeholder-two {
+  grid-row: 4 / 6;
+  grid-column: 1 / 3;
+  z-index: 5;
+  background-image: url(../Assets/wrk/SPManaged/SPmanaged-lowres08.webp);
+  background-size: cover;
+  background-position: center;
+}
+
+
 /*   #endregion SP Managed Card Layouts */
 /* —————————————————————————————————————————————————————————————— */
 
 /* —————————————————————————————————————————————————————————————— */
 /*   RLAMLS Card Layouts [RL78N9O0] */
 /*   #region RLAMLS Card Layouts */
-body, #rlamsl-body {
+.rlamls-flashcard {
+  border: #6CCCD9 4px solid;
+  background-color: #110C47;
+  color: #6CCCD9;
+} 
+
+#rlamls-body .card-title,
+#rlamls-body .card-text {
+  color: #6CCCD9;
+  }
+
+#rlamsl-body {
   background: #0A072C;
 }
 /* body, #rlamsl-body > h1,h2,h3,h4,h5,h6{

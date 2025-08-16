@@ -270,7 +270,7 @@ p {
   position: fixed;
   top: 30px;
   width: calc(100% - 275px);
-  z-index: -10;
+  z-index: 100;
   background: none;
   border: none;
   cursor: pointer;
@@ -333,8 +333,8 @@ p {
 }
 .landingTitle {
   width: fit-content;
-  align-items: center;
-}
+  align-items: center; 
+} 
 
 .landingTitle img {
     width: 40vw;
@@ -511,7 +511,7 @@ p {
 }
 
 .project-image4 {
-  background-image: url('https://placehold.co/500x500');
+  background-image: url('Assets/wrk/BTS.jpg');
   background-size: cover;
   background-position: top;
   transform: rotate(10deg) translate(-25px, 20px);

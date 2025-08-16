@@ -653,7 +653,7 @@ body {
 #bts-card9 .img-placeholder {
   grid-row: 3 / 5;
   grid-column: 2 / 5;
-  aspect-ratio: 16:9;
+  aspect-ratio: 16 9;
   background-image: url(../Assets/wrk/BTS/BTS10.png);
   background-size: cover;
   background-position: center;
@@ -667,7 +667,7 @@ body {
 #bts-card10 .img-placeholder {
   grid-row: 3 / 5;
   grid-column: 2 / 5;
-  aspect-ratio: 16:9;
+  aspect-ratio: 16 9;
   background-image: url(../Assets/wrk/BTS/BTS11.png);
   background-size: cover;
   background-position: center;
@@ -682,7 +682,7 @@ body {
 #bts-card11 .img-placeholder {
   grid-row: 1 / 3;
   grid-column: 2 / 5;
-  aspect-ratio: 16:9;
+  aspect-ratio: 16 9;
   background-image: url(../Assets/wrk/BTS/BTS12.png);
   background-size: cover;
   background-position: center;
@@ -697,7 +697,7 @@ body {
 #bts-card12 .img-placeholder {
   grid-row: 1 / 3;
   grid-column: 2 / 5;
-  aspect-ratio: 16:9;
+  aspect-ratio: 16 9;
   background-image: url(../Assets/wrk/BTS/BTS13.png);
   background-size: cover;
   background-position: center;
@@ -1161,15 +1161,11 @@ body {
   color: #EFC716;
 }
 #spmanaged-card1 .img-placeholder {
-  grid-row: 1 / 3;
-  grid-column: 3 / 5;
-  background-image: url(../Assets/wrk/SPManaged/SPManaged-lowres00.webp);
-}
-
-#spmanaged-card1 .card-title {
-  grid-row: 4;
+  grid-row: 1 / 5;
   grid-column: 1 / 5;
-  color: #EFC716;
+  background-image: url(../Assets/wrk/SPManaged/SPManaged-lowres00.webp);
+  background-size: cover;
+  background-position: center; 
 }
 
 #spmanaged-card2 {

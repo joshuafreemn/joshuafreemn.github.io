@@ -1,1 +1,1 @@
-joshuafreemn.design v2
+# joshuafreemn.space

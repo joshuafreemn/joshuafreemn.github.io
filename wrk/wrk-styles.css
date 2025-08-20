@@ -7,6 +7,10 @@
   Portsea Card Layouts: PC34J5K6
   SP Managed Card Layouts: SM56L7M8
   RLAMLS Card Layouts: RL78N9O0
+  Frosh Toons Card Layouts: FT01A2B3
+  Ice Cream in Space Card Layouts: ICIS04C5D6
+  Lost the Pot Card Layouts: LTP07E8F9
+  Dream Factory Card Layouts: DF10G1H2
 */
 
 /* —————————————————————————————————————————————————————————————— */
@@ -1758,4 +1762,78 @@ body {
 }
 
 /*   #endregion RLAMLS Card Layouts */
+/* —————————————————————————————————————————————————————————————— */
+
+/* —————————————————————————————————————————————————————————————— */
+/*   Frosh Toons Card Layouts [FT01A2B3] */
+/*   #region Frosh Toons Card Layouts */
+
+
+/*   #endregion Frosh Toons Card Layouts */
+/* —————————————————————————————————————————————————————————————— */
+
+/* —————————————————————————————————————————————————————————————— */
+/*   Ice Cream in Space Card Layouts [ICIS04C5D6] */
+/*   #region Ice Cream in Space Card Layouts */
+.icis-flashcard {
+  border: var(--color-primary) 4px solid;
+  color: var(--color-primary);
+}
+
+.icis-flashcard .img-placeholder {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #ffffff;
+}
+
+#icis-card1 {
+  background-color: #cbcbcb;
+}
+
+#icis-card1 .img-placeholder {
+  grid-row: 1 / 5;
+  grid-column: 1 / 5;
+  background-image: url(../Assets/snap/ICIS/ICIS\ Title.png);
+  background-color: #cbcbcb;
+}
+#icis-card2 .img-placeholder {
+  grid-row: 1 / 5;
+  grid-column: 1 / 5;
+  background-image: url(../Assets/snap/ICIS/ICIS_00\ Concept.jpg);
+  background-size: cover;
+}
+#icis-card3 .img-placeholder {
+  grid-row: 1 / 5;
+  grid-column: 1 / 5;
+  background-image: url(../Assets/snap/ICIS/ICIS_01\ Storyboard.jpg);
+}
+#icis-card4 .videoBackground {
+  grid-row: 1 / 5;
+  grid-column: 1 / 5;
+  aspect-ratio: 16 / 9;
+  align-self: center;  
+}
+#icis-card4 .videoBackground video{
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* crop video to fill container */
+  display: block;
+}
+
+/*   #endregion Ice Cream in Space Card Layouts */
+/* —————————————————————————————————————————————————————————————— */
+
+/* —————————————————————————————————————————————————————————————— */
+/*   Lost the Pot Card Layouts [LTP07E8F9] */
+/*   #region Lost the Pot Card Layouts */
+
+/*   #endregion Lost the Pot Card Layouts */
+/* —————————————————————————————————————————————————————————————— */
+
+/* —————————————————————————————————————————————————————————————— */
+/*   Dream Factory Card Layouts [DF10G1H2] */
+/*   #region Dream Factory Card Layouts */
+
+/*   #endregion Dream Factory Card Layouts */
 /* —————————————————————————————————————————————————————————————— */

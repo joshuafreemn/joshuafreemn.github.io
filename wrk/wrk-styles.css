@@ -1880,6 +1880,28 @@ body {
 /* —————————————————————————————————————————————————————————————— */
 /*   Dream Factory Card Layouts [DF10G1H2] */
 /*   #region Dream Factory Card Layouts */
+.df-flashcard {
+  border: var(--color-primary) 4px solid;
+  color: var(--color-primary);
+}
 
+.df-flashcard .img-placeholder {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #ffffff;
+}
+
+#df-card1 .img-placeholder {
+  grid-row: 1 / 5;
+  grid-column: 1 / 5;
+  background-image: url(../Assets/snap/DF/factory.jpeg);
+}
+
+#df-card2 .img-placeholder {
+  grid-row: 1 / 5;
+  grid-column: 1 / 5;
+  background-image: url(../Assets/snap/DF/DF_01\ Sketch\ Large.jpeg);
+}
 /*   #endregion Dream Factory Card Layouts */
 /* —————————————————————————————————————————————————————————————— */

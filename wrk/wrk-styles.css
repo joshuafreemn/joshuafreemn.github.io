@@ -418,7 +418,6 @@ body {
 .nav-buttons {
   display: flex;
   justify-content: space-between;
-  margin: 20px 20px 0;
   padding: 0 100px;
 }
 
@@ -1767,8 +1766,23 @@ body {
 /* —————————————————————————————————————————————————————————————— */
 /*   Frosh Toons Card Layouts [FT01A2B3] */
 /*   #region Frosh Toons Card Layouts */
+.ft-flashcard {
+  border: var(--color-primary) 4px solid;
+  color: var(--color-primary);
+}
 
+.ft-flashcard .img-placeholder {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #ffffff;
+}
 
+#ft-card1 .img-placeholder {
+  grid-row: 1 / 5;
+  grid-column: 1 / 5;
+  background-image: url(../Assets/snap/FT/Explorations.jpg);
+}
 /*   #endregion Frosh Toons Card Layouts */
 /* —————————————————————————————————————————————————————————————— */
 
@@ -1808,6 +1822,11 @@ body {
   grid-column: 1 / 5;
   background-image: url(../Assets/snap/ICIS/ICIS_01\ Storyboard.jpg);
 }
+
+#icis-card4 {
+  background-color: #ffffff;
+}
+
 #icis-card4 .videoBackground {
   grid-row: 1 / 5;
   grid-column: 1 / 5;
@@ -1817,6 +1836,7 @@ body {
 #icis-card4 .videoBackground video{
   width: 100%;
   height: 100%;
+  border-radius: 10px;
   object-fit: cover; /* crop video to fill container */
   display: block;
 }
@@ -1827,7 +1847,33 @@ body {
 /* —————————————————————————————————————————————————————————————— */
 /*   Lost the Pot Card Layouts [LTP07E8F9] */
 /*   #region Lost the Pot Card Layouts */
+.ltp-flashcard {
+  border: var(--color-primary) 4px solid;
+  color: var(--color-primary);
+}
 
+.ltp-flashcard .img-placeholder {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #ffffff;
+}
+
+#ltp-card1 .img-placeholder {
+  grid-row: 1 / 5;
+  grid-column: 1 / 5;
+  background-image: url(../Assets/snap/LTP/Pot.jpg);
+}
+#ltp-card2 .img-placeholder {
+  grid-row: 1 / 5;
+  grid-column: 1 / 5;
+  background-image: url(../Assets/snap/LTP/Pot.jpg);
+}
+#ltp-card3 .img-placeholder {
+  grid-row: 1 / 5;
+  grid-column: 1 / 5;
+  background-image: url(../Assets/snap/LTP/Pot.jpg);
+}
 /*   #endregion Lost the Pot Card Layouts */
 /* —————————————————————————————————————————————————————————————— */
 

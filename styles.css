@@ -597,8 +597,8 @@ p {
     padding: 15px;
     background-color: var(--color-background);
     border-radius: 10px;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    }
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);  
+  }
 
     a.punchCard {
     display: grid;
@@ -637,31 +637,34 @@ p {
         height: 200%;
         width: 100%;
         border-radius: 10px;
-        background-size: cover;
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
     }
 
-    .snapshotsIMG1 { 
-        background-image: url('https://placehold.co/500x500'); 
+    .LTPhero { 
+        background-image: url('Assets/snap/LTP/Pot.jpg'); 
     }
 
-    .snapshotsIMG2 { 
-        background-image: url('https://placehold.co/500x500'); 
-    }
+    .FThero { 
+        background-image: url('Assets/snap/FT/FT\ Title.png'); 
+        background-size: contain;
+        background-color: #ffffff;
+      }
 
-    .snapshotsIMG3 { 
-        background-image: url('https://placehold.co/500x500'); 
-    }
+    .ICIShero { 
+        background-image: url('Assets/snap/ICIS/ICIS\ Title.png'); 
+        background-color: #cbcbcb;
+        background-size: contain;
+      }
 
-    .snapshotsIMG4 { 
-        background-image: url('https://placehold.co/500x500'); 
+    .DFhero { 
+        background-image: url('Assets/snap/DF/factory.jpeg'); 
         grid-row: 2;
         justify-self: end;
         align-self: end;
         transform: translate(0px, 10px);
-    }
+      }
 
     #Tape1 {
     position: absolute;

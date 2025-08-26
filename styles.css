@@ -869,6 +869,206 @@ table td {
 /* —————————————————————————————————————————————————————————————— */
 
 /* —————————————————————————————————————————————————————————————— */
+/*   Linktree Page Styles [LT90S1T2] */
+/*   #region Linktree Page Styles [LT90S1T2] */
+
+body.linktree-body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 16px 64px;
+  background: linear-gradient(180deg, #f9a6de 0%, #f484cc 100%);
+  font-family: var(--font-micro);
+  color: #e05bb5;
+}
+
+.linktree-shell {
+  position: relative;
+  width: min(100%, 380px);
+  background: #f484cc;
+  border-radius: 48px;
+  padding: 96px 24px 32px;
+  box-shadow: 0 30px 60px rgba(200, 60, 150, 0.25);
+}
+
+.linktree-close {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 20px;
+  font-size: 18px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border: 2px solid #ffe2f6;
+  border-radius: 12px;
+  color: #ffe2f6;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.linktree-close:hover,
+.linktree-close:focus-visible {
+  background: #ffe2f6;
+  color: #f162be;
+}
+
+.linktree-panel {
+  position: relative;
+  background: #f2daf7;
+  border-radius: 40px;
+  padding: 132px 24px 32px;
+  overflow: hidden;
+  box-shadow: inset 0 -12px 0 rgba(255, 255, 255, 0.35);
+}
+
+.linktree-panel::before {
+  content: '';
+  position: absolute;
+  top: -88px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  height: 140px;
+  background: #f2daf7;
+  clip-path: polygon(0 100%, 100% 100%, 88% 0, 12% 0);
+}
+
+.linktree-label {
+  position: absolute;
+  top: 34px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-transform: uppercase;
+  font-size: 20px;
+  letter-spacing: 0.32em;
+  color: #db5fb4;
+  z-index: 1;
+}
+
+.linktree-name {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 0 auto;
+  padding: 16px 24px 12px;
+  background: #ffffff;
+  border-radius: 28px;
+  border: 4px solid #f484cc;
+  color: #f162be;
+  font-size: 46px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.linktree-name span {
+  display: block;
+}
+
+.linktree-tagline {
+  margin: 24px 0 20px;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  font-size: 20px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #d14aa5;
+}
+
+.linktree-tagline .divider {
+  color: #d173bc;
+}
+
+.linktree-badges {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.linktree-badges span {
+  width: 52px;
+  height: 52px;
+  border-radius: 18px;
+  background: #f484cc;
+  box-shadow: inset 0 -6px 0 rgba(214, 79, 162, 0.45);
+}
+
+.linktree-links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.linktree-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 86px;
+  border-radius: 32px;
+  background: #ffffff;
+  border: 4px solid #f484cc;
+  color: #f162be;
+  text-decoration: none;
+  font-size: 34px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.linktree-card:hover,
+.linktree-card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(200, 60, 150, 0.25);
+}
+
+.linktree-empty {
+  margin-top: 24px;
+  height: 200px;
+  border-radius: 32px;
+  background: #ffffff;
+  border: 4px solid #f484cc;
+  opacity: 0.75;
+}
+
+@media (max-width: 480px) {
+  .linktree-shell {
+    padding: 80px 18px 24px;
+    border-radius: 36px;
+  }
+
+  .linktree-panel {
+    border-radius: 32px;
+    padding: 120px 18px 28px;
+  }
+
+  .linktree-name {
+    font-size: 38px;
+    padding: 14px 16px 10px;
+  }
+
+  .linktree-card {
+    height: 74px;
+    font-size: 28px;
+  }
+
+  .linktree-empty {
+    height: 160px;
+  }
+}
+
+/*   #endregion Linktree Page Styles [LT90S1T2] */
+/* —————————————————————————————————————————————————————————————— */
+
+/* —————————————————————————————————————————————————————————————— */
 /*   Mobile Styles [MB23Q4R5] */
 /*   #region Mobile Styles */
 
@@ -902,36 +1102,6 @@ table td {
     /* green area + blue rail */
     grid-template-rows: 1fr;
     gap: 0;
-  }
-
-  /* Type scale (smaller, consistent rhythm) */
-  h1 {
-    font-size: 64px;
-    line-height: 1.0;
-    letter-spacing: -1px;
-  }
-
-  h2 {
-    font-size: 42px;
-    line-height: 1.0;
-    letter-spacing: -0.5px;
-  }
-
-  h3 {
-    font-size: 32px;
-    line-height: 1.05;
-  }
-
-  h4 {
-    font-size: 24px;
-    line-height: 1.1;
-  }
-
-  h5,
-  p,
-  table td {
-    font-size: 18px;
-    line-height: 1.35;
   }
 
   /* Navigation */
@@ -1070,6 +1240,11 @@ table td {
     /* enable scrolling inside work area */
     -webkit-overflow-scrolling: touch;
     /* smooth momentum scroll on iOS */
+    direction: rtl;
+  }
+
+  .workContentBlock > * {
+    direction: ltr;
   }
 
   .project-details {
@@ -1077,14 +1252,14 @@ table td {
   }
 
   .project-stack {
-    --overlap: clamp(180px, 28vh, 340px);
-    /* mobile stack reveal amount */
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
   }
 
   .project-card {
-    margin: 0 0 calc(var(--overlap) * -1) 0;
-    /* overlap only on mobile */
+    margin: 0;
     padding: 16px;
   }
 
@@ -1094,15 +1269,6 @@ table td {
 
   .project-card:hover~.project-card {
     transform: none;
-  }
-
-  /* Scroll-activated stacking on mobile */
-  .project-card.is-active~.project-card {
-    transform: translateY(var(--overlap)) !important;
-  }
-
-  .project-card.is-active {
-    transform: translateY(0);
   }
 
   .project-content {
@@ -1202,16 +1368,31 @@ table td {
   }
   /* Snapshots */
   .snapshotsContentBlock {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
     padding: 16px;
-    grid-row-gap: 16px;
-    grid-column-gap: 0;
+    height: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    direction: rtl;
+  }
+
+  .snapshotsContentBlock > * {
+    direction: ltr;
   }
 
   .punchCard,
   a.punchCard {
     grid-template-rows: auto;
+  }
+
+  /* Stack the snapshots cards using the same pattern as work */
+  .punchCard {
+    margin: 0;
+    transform: none;
   }
 
   .punchCard1,
@@ -1235,7 +1416,10 @@ table td {
     display: none;
   }
 
-  .snapshotsTextBox,
+.snapshotsTextBox {
+  display: none;
+}
+  /* .snapshotsTextBox,
   .snapshotsTextBox1,
   .snapshotsTextBox2,
   .snapshotsTextBox3,
@@ -1245,6 +1429,8 @@ table td {
     text-align: left;
     transform: none;
   }
+  */
+
 
   /* Tables */
   table {

@@ -1166,7 +1166,7 @@ table td {
   .aboutContentBlock .aboutBlurb {
     z-index: 2;            /* underneath */
     transform: translateX(-6%);
-    margin-top: 20%;
+    margin-top: 15%;
   }
 
   .aboutContentBlock .CV {
@@ -1186,9 +1186,20 @@ table td {
 
   #aboutPaperClipLeft,
   #aboutPaperClipRight {
-    display: none;
+    grid-area: 1 / 1;
+    z-index: 5;
   }
 
+  #aboutPaperClipRight {
+    align-self: flex-start;
+    transform: scale(-0.5) translate(-77%, -350%) rotate(10deg);
+  }
+
+  #aboutPaperClipLeft {
+    align-self: end;
+    justify-self: right;
+    transform: scale(0.5) rotate(145.5deg) translate(-122%, 60%);
+  }
   /* Snapshots */
   .snapshotsContentBlock {
     grid-template-columns: 1fr;

@@ -1000,8 +1000,10 @@ table td {
 
   /* Hide non-active menu items on interior pages (mobile only, but keep their space) */
   .container .menu .menuBtn.unselcted {
-    visibility: hidden;     /* keep space, hide visually */
-    pointer-events: none;   /* non-interactive */
+    visibility: hidden;
+    /* keep space, hide visually */
+    pointer-events: none;
+    /* non-interactive */
   }
 
   .menu {
@@ -1019,15 +1021,18 @@ table td {
   }
 
   .landingMenu {
-    position: static;            /* participate in grid */
-    grid-column: 1 / 2;          /* BLUE rail first */
+    position: static;
+    /* participate in grid */
+    grid-column: 1 / 2;
+    /* BLUE rail first */
     grid-row: 1 / 2;
     width: 56px;
     height: 100%;
   }
 
   .landingContainer {
-    grid-template-columns: 56px 1fr; /* BLUE (menu) | GREEN (content) */
+    grid-template-columns: 56px 1fr;
+    /* BLUE (menu) | GREEN (content) */
   }
 
   /* Showreel */
@@ -1049,10 +1054,10 @@ table td {
   }
 
   #showreelPaperClip {
-  height: 32px;
-  justify-self: right;
-  rotate: 155deg;
-  transform: translate(-10%, -200%);
+    height: 32px;
+    justify-self: right;
+    rotate: 155deg;
+    transform: translate(-10%, -200%);
   }
 
   /* Work */
@@ -1061,21 +1066,25 @@ table td {
     grid-row: 1 / 2;
     padding: 16px;
     height: 100%;
-    overflow-y: auto;                 /* enable scrolling inside work area */
-    -webkit-overflow-scrolling: touch;/* smooth momentum scroll on iOS */
+    overflow-y: auto;
+    /* enable scrolling inside work area */
+    -webkit-overflow-scrolling: touch;
+    /* smooth momentum scroll on iOS */
   }
 
   .project-details {
     display: none;
- }
+  }
 
   .project-stack {
-    --overlap: clamp(180px, 28vh, 340px); /* mobile stack reveal amount */
+    --overlap: clamp(180px, 28vh, 340px);
+    /* mobile stack reveal amount */
     width: 100%;
   }
 
   .project-card {
-    margin: 0 0 calc(var(--overlap) * -1) 0; /* overlap only on mobile */
+    margin: 0 0 calc(var(--overlap) * -1) 0;
+    /* overlap only on mobile */
     padding: 16px;
   }
 
@@ -1088,9 +1097,10 @@ table td {
   }
 
   /* Scroll-activated stacking on mobile */
-  .project-card.is-active ~ .project-card {
+  .project-card.is-active~.project-card {
     transform: translateY(var(--overlap)) !important;
   }
+
   .project-card.is-active {
     transform: translateY(0);
   }
@@ -1099,8 +1109,14 @@ table td {
     grid-template-columns: 1fr;
     gap: 12px;
   }
-  .project-right { grid-row: 1; }
-  .project-left  { grid-row: 2; }
+
+  .project-right {
+    grid-row: 1;
+  }
+
+  .project-left {
+    grid-row: 2;
+  }
 
   .project-left {
     padding-right: 0;
@@ -1112,10 +1128,10 @@ table td {
     line-height: 60px;
   }
 
-.project-left h4 {
-  margin-bottom: 0;
-  line-height: 20px;
-}
+  .project-left h4 {
+    margin-bottom: 0;
+    line-height: 20px;
+  }
 
   .project-image {
     height: 200px;
@@ -1129,22 +1145,44 @@ table td {
   }
 
   .project-card.empty {
-  min-height: 350px;
-}
+    min-height: 350px;
+  }
 
   /* About */
   .aboutContentBlock {
     grid-template-columns: 1fr;
     padding: 16px;
     align-items: start;
+    height: 100%;
+    min-height: 100%;
   }
 
   .aboutContentBlock .aboutBlurb,
   .aboutContentBlock .CV {
-    grid-area: auto;
-    transform: none;
+    grid-area: 1 / 1; /* stack both in the same grid cell */
     width: 100%;
   }
+
+  .aboutContentBlock .aboutBlurb {
+    z-index: 2;            /* underneath */
+    transform: translateX(-6%);
+    margin-top: 20%;
+  }
+
+  .aboutContentBlock .CV {
+    z-index: 1;        
+    width: 115%;  
+    transform: rotate(-4deg) translate(-20%, 95%);
+  }
+
+  /* Ensure images inside <picture> scale within the stacked cell */
+  .aboutContentBlock .aboutBlurb img,
+  .aboutContentBlock .CV img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
 
   #aboutPaperClipLeft,
   #aboutPaperClipRight {

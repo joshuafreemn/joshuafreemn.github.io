@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About</title>
   <link href="styles.css" rel="stylesheet">
 </head>
+
 <body class="noScroll">
   <div class="container">
     <nav class="closeBtn">
@@ -29,12 +31,19 @@
     </nav>
 
     <div class="aboutContentBlock">
-      <img src="Assets/postcard.svg" alt="Postcard" class="aboutBlurb"/>
-      <img src="Assets/CV25.svg" alt="CV25" class="CV"/>
-      <img src="Assets/paperClipPurple.svg" alt="paperClip" id="aboutPaperClipLeft"/>
-      <img src="Assets/paperClipPurple.svg" alt="paperClip" id="aboutPaperClipRight"/>
+      <picture class="aboutBlurb">
+        <source media="(max-width: 600px)" srcset="Assets/aboutPostcardMob.svg">
+        <img src="Assets/postcard.svg" alt="Postcard">
+      </picture>
+      <picture class="CV">
+        <source media="(max-width: 600px)" srcset="Assets/CV25mob.svg">
+        <img src="Assets/CV25mob.svg" alt="Postcard">
+      </picture>
+      <img src="Assets/paperClipPurple.svg" alt="paperClip" id="aboutPaperClipLeft" />
+      <img src="Assets/paperClipPurple.svg" alt="paperClip" id="aboutPaperClipRight" />
     </div>
   </div>
 </body>
 <script src="script.js"></script>
+
 </html>

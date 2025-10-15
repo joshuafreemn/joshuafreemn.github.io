@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500">
+  <defs>
+    <style>
+      .cls-1 {
+        mask: url(#mask);
+      }
+
+      .cls-2 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2, .cls-3 {
+        fill: #fff;
+      }
+
+      .cls-4 {
+        mask: url(#mask-1);
+      }
+
+      .cls-5 {
+        fill: #e88dbb;
+      }
+    </style>
+    <mask id="mask" x="308.15" y="166.67" width="166.85" height="168.38" maskUnits="userSpaceOnUse">
+      <g id="mask-2">
+        <rect id="path-1" class="cls-3" x="320.42" y="166.67" width="154.58" height="168.38"/>
+      </g>
+    </mask>
+    <mask id="mask-1" x="25" y="166.67" width="166.85" height="168.38" maskUnits="userSpaceOnUse">
+      <g id="mask-4">
+        <rect id="path-3" class="cls-3" x="25" y="166.67" width="154.58" height="168.38"/>
+      </g>
+    </mask>
+  </defs>
+  <g id="letterboxd-decal-dots-neg-mono">
+    <g id="Dots">
+      <ellipse id="Green" class="cls-5" cx="250" cy="250" rx="83.43" ry="83.33"/>
+      <g id="Blue">
+        <g class="cls-1">
+          <ellipse class="cls-5" cx="391.57" cy="250" rx="83.43" ry="83.33"/>
+        </g>
+      </g>
+      <g id="Orange">
+        <g class="cls-4">
+          <ellipse class="cls-5" cx="108.43" cy="250" rx="83.43" ry="83.33"/>
+        </g>
+      </g>
+      <path id="Overlap" class="cls-2" d="M179.21,294.12c-8.01-12.8-12.64-27.92-12.64-44.12s4.63-31.33,12.64-44.12c8.01,12.8,12.64,27.92,12.64,44.12s-4.63,31.33-12.64,44.12h0Z"/>
+      <path id="Overlap-2" data-name="Overlap" class="cls-2" d="M320.79,205.88c8.01,12.8,12.64,27.92,12.64,44.12s-4.63,31.33-12.64,44.12c-8.01-12.8-12.64-27.92-12.64-44.12s4.63-31.33,12.64-44.12h0Z"/>
+    </g>
+  </g>
+</svg>

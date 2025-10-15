@@ -499,7 +499,6 @@ p {
   text-decoration: none;
   background-color: var(--white);
   border: 3px solid var(--color-primary);
-  border-radius: 15px;
   padding: 0 25px 45px 25px;
   margin-bottom: -455px;
   position: relative;
@@ -877,19 +876,15 @@ body.linktree-body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 48px 16px 64px;
-  background: linear-gradient(180deg, #f9a6de 0%, #f484cc 100%);
-  font-family: var(--font-micro);
-  color: #e05bb5;
+  font-family: var(--font-cute);
+  background-color: var(--color-background);
+  overflow: hidden;
 }
 
 .linktree-shell {
   position: relative;
   width: min(100%, 380px);
-  background: #f484cc;
   border-radius: 48px;
-  padding: 96px 24px 32px;
-  box-shadow: 0 30px 60px rgba(200, 60, 150, 0.25);
 }
 
 .linktree-close {
@@ -899,30 +894,26 @@ body.linktree-body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 6px 20px;
-  font-size: 18px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  border: 2px solid #ffe2f6;
-  border-radius: 12px;
-  color: #ffe2f6;
-  text-decoration: none;
-  transition: background 0.2s ease, color 0.2s ease;
+  width: auto;
+  height: auto;
+  padding: 0;
+  border: none;
+  background: none;
 }
 
-.linktree-close:hover,
-.linktree-close:focus-visible {
-  background: #ffe2f6;
-  color: #f162be;
+.linktree-close img {
+  display: block;
+  width: auto;
+  height: 100%;
 }
 
 .linktree-panel {
   position: relative;
-  background: #f2daf7;
+  background: var(--color-background-secondary);
   border-radius: 40px;
   padding: 132px 24px 32px;
   overflow: hidden;
-  box-shadow: inset 0 -12px 0 rgba(255, 255, 255, 0.35);
+  box-shadow: none;
 }
 
 .linktree-panel::before {
@@ -933,7 +924,7 @@ body.linktree-body {
   transform: translateX(-50%);
   width: 85%;
   height: 140px;
-  background: #f2daf7;
+  background: var(--color-background-secondary);
   clip-path: polygon(0 100%, 100% 100%, 88% 0, 12% 0);
 }
 
@@ -942,10 +933,11 @@ body.linktree-body {
   top: 34px;
   left: 50%;
   transform: translateX(-50%);
+  font-family: var(--font-cute);
   text-transform: uppercase;
   font-size: 20px;
   letter-spacing: 0.32em;
-  color: #db5fb4;
+  color: var(--color-primary);
   z-index: 1;
 }
 
@@ -957,11 +949,12 @@ body.linktree-body {
   align-items: center;
   gap: 8px;
   margin: 0 auto;
-  padding: 16px 24px 12px;
-  background: #ffffff;
-  border-radius: 28px;
-  border: 4px solid #f484cc;
-  color: #f162be;
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  border: none;
+  color: var(--color-primary);
+  font-family: var(--font-cute);
   font-size: 46px;
   line-height: 1;
   text-transform: uppercase;
@@ -972,19 +965,26 @@ body.linktree-body {
   display: block;
 }
 
+.linktree-name img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .linktree-tagline {
   margin: 24px 0 20px;
   display: flex;
   justify-content: center;
   gap: 18px;
+  font-family: var(--font-cute);
   font-size: 20px;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: #d14aa5;
+  color: var(--color-primary);
 }
 
 .linktree-tagline .divider {
-  color: #d173bc;
+  color: var(--color-primary);
 }
 
 .linktree-badges {
@@ -994,49 +994,100 @@ body.linktree-body {
   margin-bottom: 32px;
 }
 
-.linktree-badges span {
-  width: 52px;
-  height: 52px;
+.linktree-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
   border-radius: 18px;
-  background: #f484cc;
-  box-shadow: inset 0 -6px 0 rgba(214, 79, 162, 0.45);
+  background: none;
+  box-shadow: none;
+  text-decoration: none;
+  color: var(--pink);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.linktree-badge svg {
+  width: 32px;
+  height: 32px;
+}
+
+.linktree-badge:focus-visible,
+.linktree-badge:hover {
+  transform: none;
+  box-shadow: none;
 }
 
 .linktree-links {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 0;
 }
 
 .linktree-card {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 86px;
-  border-radius: 32px;
-  background: #ffffff;
-  border: 4px solid #f484cc;
-  color: #f162be;
+  width: 100%;
+  min-height: 120px;
+  border-radius: 0;
+  background: var(--white);
+  border: 4px solid var(--color-primary);
+  border-radius: 15px 15px 0 0;
+  color: inherit;
   text-decoration: none;
-  font-size: 34px;
+  font-family: inherit;
+  padding: 28px clamp(16px, 5vw, 32px);
+  position: relative;
+  z-index: 1;
+}
+
+.linktree-card:not(:first-child) {
+  margin-top: -10px;
+}
+
+.linktree-card:first-child {
+}
+
+.linktree-card:last-child {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: none;
+  z-index: 4;
+}
+
+.linktree-card:not(:first-child)::before {
+  content: '';
+  background: var(--white);
+  pointer-events: none;
+}
+
+.linktree-card h2 {
+  margin: 0;
+  color: var(--color-primary);
+  font-size: clamp(42px, 12vw, 72px);
+  font-weight: 700;
+  font-family: var(--font-cute);
+  letter-spacing: 0.08em;
+  line-height: 1;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: center;
 }
 
 .linktree-card:hover,
 .linktree-card:focus-visible {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(200, 60, 150, 0.25);
+  transform: none;
+  box-shadow: none;
 }
 
 .linktree-empty {
-  margin-top: 24px;
-  height: 200px;
-  border-radius: 32px;
-  background: #ffffff;
-  border: 4px solid #f484cc;
-  opacity: 0.75;
+  margin-top: -10px;
+  height: 205px;
+  background: var(--white);
+  border: 4px solid var(--color-primary);
+  position: relative;
+  z-index: 5;
 }
 
 @media (max-width: 480px) {
@@ -1056,12 +1107,15 @@ body.linktree-body {
   }
 
   .linktree-card {
-    height: 74px;
-    font-size: 28px;
+    min-height: 100px;
+  }
+
+  .linktree-card h2 {
+    font-size: clamp(34px, 13vw, 52px);
   }
 
   .linktree-empty {
-    height: 160px;
+    height: 190px;
   }
 }
 
@@ -1481,4 +1535,19 @@ pre {
   font-family: var(--font-micro);
   color: var(--color-text);
   z-index: 10;
+}
+.linktree-card:nth-child(1) {
+  z-index: 1;
+}
+
+.linktree-card:nth-child(2) {
+  z-index: 2;
+}
+
+.linktree-card:nth-child(3) {
+  z-index: 3;
+}
+
+.linktree-card:nth-child(4) {
+  z-index: 4;
 }

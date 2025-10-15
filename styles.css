@@ -884,7 +884,6 @@ body.linktree-body {
 .linktree-shell {
   position: relative;
   width: min(100%, 380px);
-  border-radius: 48px;
 }
 
 .linktree-close {
@@ -910,27 +909,28 @@ body.linktree-body {
 .linktree-panel {
   position: relative;
   background: var(--color-background-secondary);
-  border-radius: 40px;
-  padding: 132px 24px 32px;
+  padding: 60px 24px 32px;
   overflow: hidden;
   box-shadow: none;
 }
 
-.linktree-panel::before {
-  content: '';
-  position: absolute;
-  top: -88px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 85%;
-  height: 140px;
-  background: var(--color-background-secondary);
-  clip-path: polygon(0 100%, 100% 100%, 88% 0, 12% 0);
+.linktree-label {
+    background-color: var(--color-background-secondary);
+    width: 100%;
+    height: auto;
+    flex: 1 1 0;
+    clip-path: polygon(0% 0%, 100% 10%, 100% 90%, 0% 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: var(--color-primary);
+  border-bottom: 7px solid var(--color-primary);
 }
 
-.linktree-label {
+.linktree-label h4{
   position: absolute;
-  top: 34px;
   left: 50%;
   transform: translateX(-50%);
   font-family: var(--font-cute);
@@ -949,20 +949,6 @@ body.linktree-body {
   align-items: center;
   gap: 8px;
   margin: 0 auto;
-  padding: 0;
-  background: none;
-  border-radius: 0;
-  border: none;
-  color: var(--color-primary);
-  font-family: var(--font-cute);
-  font-size: 46px;
-  line-height: 1;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-}
-
-.linktree-name span {
-  display: block;
 }
 
 .linktree-name img {
@@ -972,26 +958,41 @@ body.linktree-body {
 }
 
 .linktree-tagline {
-  margin: 24px 0 20px;
+  margin: 18px 0 20px;
   display: flex;
   justify-content: center;
-  gap: 18px;
+  gap: 8px;
   font-family: var(--font-cute);
-  font-size: 20px;
-  letter-spacing: 0.24em;
+  font-size: 35px;
   text-transform: uppercase;
   color: var(--color-primary);
 }
 
 .linktree-tagline .divider {
   color: var(--color-primary);
+  display: inline-flex;
+  align-items: center;
+  height: 35px;
 }
 
 .linktree-badges {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin: 0 auto 28px;
+  width: 80%;
+}
+
+.linktree-badges span {
   display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 16px;
-  margin-bottom: 32px;
+}
+
+.linktree-badges span img {
+  max-height: 28px;
+  width: auto;
+  height: 100%;
 }
 
 .linktree-badge {
@@ -1011,12 +1012,6 @@ body.linktree-body {
 .linktree-badge svg {
   width: 32px;
   height: 32px;
-}
-
-.linktree-badge:focus-visible,
-.linktree-badge:hover {
-  transform: none;
-  box-shadow: none;
 }
 
 .linktree-links {
@@ -1093,17 +1088,14 @@ body.linktree-body {
 @media (max-width: 480px) {
   .linktree-shell {
     padding: 80px 18px 24px;
-    border-radius: 36px;
   }
 
   .linktree-panel {
-    border-radius: 32px;
-    padding: 120px 18px 28px;
+    padding: 60px 18px 28px;
   }
 
   .linktree-name {
     font-size: 38px;
-    padding: 14px 16px 10px;
   }
 
   .linktree-card {

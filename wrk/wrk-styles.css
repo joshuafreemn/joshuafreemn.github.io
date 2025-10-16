@@ -1760,6 +1760,35 @@ body {
   grid-row: 4; 
 }
 
+@media (max-width: 768px) {
+  #rlamls-body .flashcard {
+    height: auto;
+    width: 100%;
+    aspect-ratio: 30 / 23;
+    padding: 20px 16px;
+    gap: 12px;
+    grid-template-rows: repeat(4, minmax(0, auto));
+  }
+
+  #rlamls-body .flashcard p,
+  #rlamls-body .flashcard h4 {
+    font-size: clamp(0.7rem, 2.4vw, 0.85rem);
+    line-height: 1.35;
+  }
+
+  #rlamls-body .project-info {
+    gap: 6px;
+  }
+
+  #rlamls-card6,
+  #rlamls-card7,
+  #rlamls-card8,
+  #rlamls-card9,
+  #rlamls-card11 {
+    gap: 12px;
+  }
+}
+
 /*   #endregion RLAMLS Card Layouts */
 /* —————————————————————————————————————————————————————————————— */
 

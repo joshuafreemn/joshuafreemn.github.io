@@ -1463,7 +1463,7 @@ body {
   background-repeat: no-repeat;
 }
 #rlamls-card2 .card-text {
-  grid-row: 3 / 5;
+  grid-row: 1 / 5;
   grid-column: 0;
   align-self: start;
 }

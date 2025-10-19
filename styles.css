@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cute+Font&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Micro+5&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300&display=swap');
 
 /* Jump to sections 
   (Use Cmd+F and search for these codes):
@@ -178,6 +179,7 @@ table {
   /* Font Families */
   --font-cute: 'Cute Font', sans-serif;
   --font-micro: 'Micro 5', sans-serif;
+  --font-dm-sans: 'DM Sans', sans-serif;
 
   /* Font Sizes */
   --font-menu: 40px;
@@ -207,16 +209,16 @@ table {
   --h4-line-height: 40px;
   --h4-letter-spacing: -4%;
 
-  --h5-font-family: 'Micro 5', sans-serif;
-  --h5-font-weight: 400;
-  --h5-font-size: 30px;
-  --h5-line-height: 40px;
+  --h5-font-family: 'DM Sans', sans-serif;
+  --h5-font-weight: 200;
+  --h5-font-size: 26px;
+  --h5-line-height: 28px;
   --h5-letter-spacing: -4%;
 
-  --p-font-family: 'Micro 5', sans-serif;
+  --p-font-family: 'DM Sans', sans-serif;
   --p-font-weight: 400;
-  --p-font-size: 30px;
-  --p-line-height: 30px;
+  --p-font-size: 16px;
+  --p-line-height: 18px;
   --p-letter-spacing: -4%;
 
   /* Color */
@@ -500,6 +502,7 @@ p {
   background-color: var(--white);
   border: 3px solid var(--color-primary);
   padding: 0 25px 45px 25px;
+  border-radius: 15px;
   margin-bottom: -455px;
   position: relative;
   z-index: 1;
@@ -518,10 +521,11 @@ p {
   padding-right: 20px;
 }
 
-.project-left h4 {
+.project-left h5 {
   margin-bottom: 20px;
-  line-height: 35px;
+  line-height: var(--h5-font-size);
   color: var(--color-text);
+  font-weight: var(--h5-font-weight);
 }
 
 .project-left table {
@@ -531,10 +535,10 @@ p {
 
 .project-left table td {
   padding: 4px 0;
-  font-family: var(--font-micro);
-  font-size: 26px;
+  font-family: var(--p-font-family);
+  font-size: var(--p-font-size);
   color: var(--color-text);
-  line-height: 1;
+  line-height: 1.5;
 }
 
 .project-left table tr+tr {
@@ -642,10 +646,15 @@ p {
 }
 
 .aboutContentBlock .CV {
-  grid-area: 1 / 2 / 2 / 4;
-  width: 90%;
+  grid-column: 2 / 4; /* occupy columns 2 and 3 so the CV is roughly twice as wide */
+  grid-row: 1;
+  width: 100%;
   height: auto;
-  transform: rotate(2.5deg) translate(5%, 20%);
+  transform: rotate(2.5deg) translate(25%, 20%);
+}
+
+.aboutContentBlock .CV img {
+  width: 70%;
 }
 
 #aboutPaperClipLeft {
@@ -692,6 +701,7 @@ p {
   justify-items: right;
   align-items: start;
   padding: 15px;
+
   background-color: var(--color-background);
   border-radius: 10px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
@@ -857,7 +867,7 @@ a.punchCard {
 /*   Table Styles [TB89O0P1] */
 /*   #region Table Styles */
 table td {
-  font-family: var(--font-micro);
+  font-family: var(--p-font-family);
   font-weight: var(--p-font-weight);
   font-size: var(--p-font-size);
   line-height: var(--p-line-height);
@@ -1276,17 +1286,19 @@ body.linktree-body {
   }
 
   .project-card h2 {
-    font-size: 58px;
+    font-size: 45px;
     margin-top: 0;
-    line-height: 60px;
+    line-height: 28px;
   }
 
-  .project-left h4 {
+  .project-left h5 {
+    font-size: 18px;
     margin-bottom: 0;
-    line-height: 20px;
+    line-height: 19px;
   }
 
   .project-image {
+    margin-top: 10px;
     height: 200px;
   }
 
@@ -1298,7 +1310,7 @@ body.linktree-body {
   }
 
   .project-card.empty {
-    min-height: 350px;
+    display: none;
   }
 
   /* About */

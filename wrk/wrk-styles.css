@@ -1761,9 +1761,15 @@ body {
 }
 
 @media (max-width: 768px) {
+  #rlamls-body .container {
+    align-items: center;
+    padding: 20vh 0;
+  }
+
   #rlamls-body .flashcard {
     height: auto;
-    width: 100%;
+    width: min(90vw, 420px);
+    margin: 0 auto 15vh;
     aspect-ratio: 30 / 23;
     padding: 20px 16px;
     gap: 12px;

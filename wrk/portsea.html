@@ -1,204 +1,1585 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Port Seames Flashcards</title>
-  <link rel="stylesheet" href="../styles.css" />
-  <link rel="stylesheet" href="wrk-styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-  <link rel="icon" type="image/png" href="../Assets/favicon.png">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <meta charset="utf-8" />
+  <noscript>
+    <style>
+      #container {
+        display: none;
+      }
+    </style>
+  </noscript>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="preload"
+    href="/_runtimes/sites-runtime.b69569d0baef319082b5422507ab08a06908495a02069eb739f5ee4ed1c9c0bb.js" as="script"
+    crossorigin />
+  <link rel="preload" href="/_json/9c0173cd-636d-4fc7-9dac-5424e85f3fc9/portsea.json" as="fetch" />
+  <style id="reset-css">
+    @layer figreset, figoverridable, reset, theme, base, figutils, components, utilities;
+
+    @layer figoverridable {
+      :root {
+        font-synthesis: none
+      }
+    }
+
+    @layer figutils {
+      :root {
+        --banner-height: 48px;
+        --banner-height-v2: 40px;
+        --full-height-with-banner: calc(100dvh - var(--banner-height))
+      }
+
+      @media (max-width:600px) {
+        .banner-v2-container {
+          left: 0 !important;
+          right: 0 !important;
+          margin: 0 auto !important
+        }
+      }
+
+      .wrapper-with-banner .min-h-screen {
+        min-height: var(--full-height-with-banner)
+      }
+
+      .wrapper-with-banner .h-screen {
+        height: var(--full-height-with-banner)
+      }
+    }
+
+    @layer figreset {
+      :root {
+        font-family: var(--default-font-family, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji')
+      }
+
+      html {
+        -webkit-text-size-adjust: 100%;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-font-smoothing: antialiased;
+        width: 100%
+      }
+
+      body {
+        margin: 0;
+        width: 100%
+      }
+
+      body:has([data-page-overflowx='hidden']) {
+        overflow-x: hidden
+      }
+
+      body:has([data-page-overflowx='auto']) {
+        overflow-x: auto
+      }
+    }
+
+    @layer figutils {
+      #container {
+        width: 100%
+      }
+    }
+
+    @layer figreset {
+
+      *,
+      *:before,
+      *:after {
+        box-sizing: border-box
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none
+      }
+
+      button {
+        border: none;
+        background: none;
+        padding: 0
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p {
+        font-size: inherit;
+        font-weight: inherit
+      }
+
+      blockquote,
+      dl,
+      dd,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      hr,
+      figure,
+      p,
+      pre {
+        margin: 0
+      }
+
+      ol,
+      ul,
+      menu {
+        list-style: none;
+        margin: 0;
+        padding-inline-start: 0
+      }
+    }
+
+    @layer figreset {
+      #container .textContents {
+        color: #ffffff00
+      }
+    }
+
+    @layer figutils {
+      :is(.textContents ul, ul.textContents)>li:before {
+        content: '\2022';
+        margin-left: -1.5em;
+        display: inline-block;
+        text-align: center;
+        width: 1.5em;
+        -webkit-background-clip: var(--list-marker-background-clip);
+        -webkit-text-fill-color: var(--list-marker-text-fill-color);
+        background-clip: var(--list-marker-background-clip);
+        background-image: var(--list-marker-background-image);
+        color: var(--list-marker-color);
+        font-size: var(--list-marker-font-size);
+        line-height: var(--list-marker-line-height);
+        mix-blend-mode: var(--list-marker-mix-blend-mode);
+        vertical-align: var(--list-marker-vertical-align)
+      }
+
+      :is(.textContents ol, ol.textContents)>li::marker {
+        color: var(--list-marker-color);
+        font-size: var(--list-marker-font-size);
+        line-height: var(--list-marker-line-height);
+        vertical-align: var(--list-marker-vertical-align)
+      }
+
+      :is(.textContents, .textContents *).adjustLetterSpacing:after {
+        content: '';
+        margin-left: calc(var(--letter-spacing) * -1)
+      }
+    }
+
+    @layer figutils {
+      #container .textClip {
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent !important
+      }
+
+      #container .textClip>* {
+        -webkit-text-fill-color: initial
+      }
+    }
+
+    @layer figutils {
+      #container .embed {
+        border: none
+      }
+    }
+
+    @layer figutils {
+      #container .marquee-container {
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        width: var(--width);
+        transform: var(--transform);
+
+        &:hover div {
+          animation-play-state: var(--pause-on-hover)
+        }
+
+        &:active div {
+          animation-play-state: var(--pause-on-click)
+        }
+      }
+
+      #container .marquee {
+        flex: 0 0 auto;
+        min-width: var(--min-width);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        animation: scroll var(--duration) linear var(--delay) var(--iteration-count);
+        animation-delay: var(--delay);
+        animation-direction: var(--direction);
+        animation-timing-function: var(--timing-function)
+      }
+
+      #container .marquee.reduced-motion {
+        @media (prefers-reduced-motion:reduce) {
+          animation: none
+        }
+      }
+
+      @keyframes scroll {
+        0% {
+          transform: translateX(0%)
+        }
+
+        100% {
+          transform: translateX(-100%)
+        }
+      }
+
+      #container .marquee-initial-child-container {
+        flex: 0 0 auto;
+        display: flex;
+        min-width: auto;
+        flex-direction: row;
+        align-items: center
+      }
+
+      #container .marquee-child {
+        transform: var(--transform)
+      }
+    }
+
+    @layer figutils {
+      .code-behavior-wrapper>* {
+        width: 100%;
+        height: 100%
+      }
+    }
+
+    @layer figreset {
+      :root {
+        --100dvw: 100vw;
+        --100dvh: 100vh
+      }
+
+      @supports (width:100dvw) {
+        :root {
+          --100dvw: 100dvw;
+          --100dvh: 100dvh
+        }
+      }
+    }
+
+    @layer figutils {
+      .bypass-link {
+        position: fixed;
+        top: 16px;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        pointer-events: none
+      }
+
+      .bypass-link:focus-within {
+        opacity: 1;
+        z-index: 10000
+      }
+
+      .bypass-link>a {
+        background-color: #000;
+        color: #fff;
+        border: 1px solid #fff;
+        padding: 12px 16px;
+        font-size: 16px;
+        border-radius: 12px;
+        pointer-events: auto
+      }
+    }
+
+    @layer figreset {
+      :root {
+        text-align: left;
+
+        button {
+          text-align: left
+        }
+      }
+    }
+  </style>
+  <style id="font-faces-nt7j2c">
+    @font-face {
+      font-family: "Cute Font:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/CuteFont-Regular_1/CuteFont-Regular_1-english.woff2");
+      font-display: block;
+      unicode-range: U+0000-00A0, U+00A2-00A9, U+00AC-00AE, U+00B0-00B7, U+00B9-00BA, U+00BC-00BE, U+00D7, U+00F7, U+2000-206F, U+2074, U+20AC, U+2122, U+2190-21BB, U+2212, U+2215, U+F8FF, U+FEFF, U+FFFD
+    }
+
+    @font-face {
+      font-family: "Cute Font:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/CuteFont-Regular_1/CuteFont-Regular_1-rest-latin.woff2");
+      font-display: block;
+      unicode-range: U+00A1, U+00AA-00AB, U+00AF, U+00B8, U+00BB, U+00BF-00D6, U+00D8-00F6, U+00F8-00FF, U+0131, U+0152-0153, U+02B0-02FF
+    }
+
+    @font-face {
+      font-family: "Cute Font:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/CuteFont-Regular_1/CuteFont-Regular_1-latin-extended-a.woff2");
+      font-display: block;
+      unicode-range: U+0100-0130, U+0132-0151, U+0154-017F
+    }
+
+    @font-face {
+      font-family: "Cute Font:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/CuteFont-Regular_1/CuteFont-Regular_1-latin-extended-b.woff2");
+      font-display: block;
+      unicode-range: U+0180-024F
+    }
+
+    @font-face {
+      font-family: "Cute Font:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/CuteFont-Regular_1/CuteFont-Regular_1-latin-extended-additional.woff2");
+      font-display: block;
+      unicode-range: U+1E00-1EFF
+    }
+
+    @font-face {
+      font-family: "Cute Font:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/CuteFont-Regular_1/CuteFont-Regular_1-rest.woff2");
+      font-display: block;
+      unicode-range: U+0250-02AF, U+0300-1DFF, U+1F00-1FFF, U+2070-2073, U+2075-20AB, U+20AD-2121, U+2123-218F, U+21BC-2211, U+2213-2214, U+2216-F8FE, U+F900-FEFE, U+FF00-FFFC, U+FFFE-FFFF
+    }
+
+    @font-face {
+      font-family: "DM Sans:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/DMSans_opsz_wght__1/DMSans_opsz_wght__1-english.woff2");
+      font-display: block;
+      unicode-range: U+0000-00A0, U+00A2-00A9, U+00AC-00AE, U+00B0-00B7, U+00B9-00BA, U+00BC-00BE, U+00D7, U+00F7, U+2000-206F, U+2074, U+20AC, U+2122, U+2190-21BB, U+2212, U+2215, U+F8FF, U+FEFF, U+FFFD
+    }
+
+    @font-face {
+      font-family: "DM Sans:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/DMSans_opsz_wght__1/DMSans_opsz_wght__1-rest-latin.woff2");
+      font-display: block;
+      unicode-range: U+00A1, U+00AA-00AB, U+00AF, U+00B8, U+00BB, U+00BF-00D6, U+00D8-00F6, U+00F8-00FF, U+0131, U+0152-0153, U+02B0-02FF
+    }
+
+    @font-face {
+      font-family: "DM Sans:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/DMSans_opsz_wght__1/DMSans_opsz_wght__1-latin-extended-a.woff2");
+      font-display: block;
+      unicode-range: U+0100-0130, U+0132-0151, U+0154-017F
+    }
+
+    @font-face {
+      font-family: "DM Sans:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/DMSans_opsz_wght__1/DMSans_opsz_wght__1-latin-extended-b.woff2");
+      font-display: block;
+      unicode-range: U+0180-024F
+    }
+
+    @font-face {
+      font-family: "DM Sans:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/DMSans_opsz_wght__1/DMSans_opsz_wght__1-latin-extended-additional.woff2");
+      font-display: block;
+      unicode-range: U+1E00-1EFF
+    }
+
+    @font-face {
+      font-family: "DM Sans:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/DMSans_opsz_wght__1/DMSans_opsz_wght__1-rest.woff2");
+      font-display: block;
+      unicode-range: U+0250-02AF, U+0300-1DFF, U+1F00-1FFF, U+2070-2073, U+2075-20AB, U+20AD-2121, U+2123-218F, U+21BC-2211, U+2213-2214, U+2216-F8FE, U+F900-FEFE, U+FF00-FFFC, U+FFFE-FFFF
+    }
+  </style>
+  <style id="breakpoint-css">
+    @media (width < 1440px) {
+      [data-breakpoint-id="node-15_11985"] {
+        display: none !important
+      }
+    }
+
+    @media (width >=1440px) {
+      [data-breakpoint-id="node-15_11986"] {
+        display: none !important
+      }
+    }
+  </style>
+  <style id="body-background-color">
+    @media (max-width: 1439px) {
+      body:has([data-breakpoint-id="node-15_11986"]) {
+        background-color: #FFF
+      }
+    }
+
+    @media (min-width: 1440px) {
+      body:has([data-breakpoint-id="node-15_11985"]) {
+        background-color: #FFF
+      }
+    }
+  </style>
+  <style id="ssr-css">
+    #container .css-ll733z {
+      position: relative;
+    }
+
+    #container .css-j6ldtg {
+      min-width: var(--content-min-width);
+      width: 100%;
+      height: var(--content-min-height);
+    }
+
+    #container .css-kib6st {
+      --content-min-width: max(100%, 375px);
+      --content-min-height: max(var(--100dvh), 3759px);
+    }
+
+    #container .css-vf8mzy {
+      position: relative;
+      display: block;
+    }
+
+    #container .css-xpv4ib {
+      --content-min-width: max(100%, 375px);
+      --content-min-height: max(var(--100dvh), 3759px);
+      overflow: clip;
+      background-color: #FFF;
+    }
+
+    #container .css-j9f0op {
+      width: 100%;
+      height: 100%;
+    }
+
+    #container .css-8zr56v {
+      display: block;
+    }
+
+    #container .css-tzn6qh {
+      display: block;
+      position: absolute;
+    }
+
+    #container .css-j5sf3g {
+      left: 11.35px;
+      top: 3711px;
+    }
+
+    #container .css-ugqh3r {
+      white-space: pre;
+      font-family: "Cute Font:Regular", sans-serif;
+      word-break: break-word;
+      font-style: normal;
+      font-size: 28px;
+      letter-spacing: -1.12px;
+      line-height: 17px;
+    }
+
+    #container .css-6yt3el {
+      color: #000;
+      --letter-spacing: -1.12px;
+    }
+
+    #container .css-y4obe0 {
+      transform: translateX(100%);
+      color: #000;
+      --letter-spacing: -1.12px;
+    }
+
+    #container .css-arg5rt {
+      right: 83.65px;
+      top: 3711px;
+    }
+
+    #container .css-yf3sk8 {
+      width: 420.276px;
+      height: 331.502px;
+      left: 53.35px;
+      top: 369px;
+    }
+
+    #container .css-trglf0 {
+      position: absolute;
+    }
+
+    #container .css-roiesn {
+      position: absolute;
+      display: block;
+    }
+
+    #container .css-9j6u1t {
+      width: 100%;
+      height: 100%;
+      max-width: none;
+    }
+
+    #container .css-wixxpz {
+      inset: 0;
+    }
+
+    #container .css-eztvnj {
+      width: 187.804px;
+      height: 246.59px;
+      left: 12.35px;
+      top: 302px;
+    }
+
+    #container .css-bz2tic {
+      position: absolute;
+      display: contents;
+    }
+
+    #container .css-yknkzq {
+      width: 187.735px;
+      height: 242.638px;
+      left: 12.42px;
+      top: 305.95px;
+    }
+
+    #container .css-grtgjx {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #container .css-ayg824 {
+      flex: 0 0 auto;
+    }
+
+    #container .css-wj2ivb {
+      transform: matrix(0.9998506307601929, -0.017284151166677475, 0.017284151166677475, 0.9998506307601929, 0, 0);
+    }
+
+    #container .css-edc7e7 {
+      width: auto;
+      height: auto;
+    }
+
+    #container .css-lvctdb {
+      width: 183.623px;
+      height: 239.5px;
+    }
+
+    #container .css-i0sq2k {
+      position: relative;
+      display: block;
+      border-radius: 7.5px;
+    }
+
+    #container .css-sr4pu5 {
+      box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.25);
+      background-color: #FFF;
+    }
+
+    #container .css-8nyhf {
+      width: 63.273px;
+      height: 9.041px;
+      left: 72.71px;
+      top: 303.04px;
+    }
+
+    #container .css-213ix8 {
+      width: 63.145px;
+      height: 7.951px;
+    }
+
+    #container .css-90p88t {
+      width: 168.464px;
+      height: 217.783px;
+      left: 20.67px;
+      top: 317.14px;
+    }
+
+    #container .css-xfkjq1 {
+      transform: matrix(0.9998609654365911, -0.01667251850975962, 0.01654909568791762, 0.9998630394004413, 0, 0);
+    }
+
+    #container .css-ld0hsi {
+      display: block;
+      position: relative;
+    }
+
+    #container .css-acqqyv {
+      width: 164.928px;
+      height: 215.062px;
+    }
+
+    #container .css-oom5nr {
+      white-space: pre-wrap;
+      font-family: "DM Sans:Regular", sans-serif;
+      word-break: break-word;
+      font-weight: 400;
+      font-size: 12px;
+      letter-spacing: -0.48px;
+      line-height: 17px;
+    }
+
+    #container .css-y7f465 {
+      font-variation-settings: "opsz" 14;
+      color: #110C47;
+      --letter-spacing: -0.48px;
+    }
+
+    #container .css-r269tl {
+      width: 380.593px;
+      height: 321.839px;
+      left: -1.65px;
+      top: 609px;
+    }
+
+    #container .css-r6sanb {
+      width: 340.755px;
+      height: 363px;
+      left: 29px;
+      top: 931px;
+    }
+
+    #container .css-xvifx2 {
+      width: 191.557px;
+      height: 108.629px;
+      left: 167px;
+      top: 1244px;
+    }
+
+    #container .css-s2auz2 {
+      width: 190.933px;
+      height: 102.161px;
+      left: 167.62px;
+      top: 1250.47px;
+    }
+
+    #container .css-uz9sdv {
+      transform: matrix(0.9953728318214417, -0.09608818590641022, 0.09608818590641022, 0.9953728318214417, 0, 0);
+    }
+
+    #container .css-j0q37e {
+      width: 183.623px;
+      height: 84.91px;
+    }
+
+    #container .css-fgnvst {
+      width: 81.48px;
+      height: 20.703px;
+      left: 209.7px;
+      top: 1249.78px;
+    }
+
+    #container .css-kcv27j {
+      transform: matrix(0.9953728318214417, -0.0960881859064102, 0.09608818590641022, 0.9953728318214417, 0, 0);
+    }
+
+    #container .css-m76xdp {
+      width: 80.602px;
+      height: 13.019px;
+    }
+
+    #container .css-ct66q7 {
+      width: 177.213px;
+      height: 82.675px;
+      left: 176.45px;
+      top: 1260.1px;
+    }
+
+    #container .css-yu3wxs {
+      transform: matrix(0.995395307151727, -0.09585474474414615, 0.09417931242327582, 0.9955552483394547, 0, 0);
+    }
+
+    #container .css-wl63xd {
+      width: 171.74px;
+      height: 66.509px;
+    }
+
+    #container .css-djjt17 {
+      width: 163px;
+      height: 165px;
+      left: 187.35px;
+      top: 1391px;
+    }
+
+    #container .css-i8da3n {
+      width: 164px;
+      height: 171px;
+      left: 12.35px;
+      top: 1363px;
+    }
+
+    #container .css-9tr9yu {
+      width: 353px;
+      height: 261px;
+      left: 11px;
+      top: 14px;
+    }
+
+    #container .css-xz4spi {
+      width: 182.953px;
+      height: 416px;
+      left: 172.35px;
+      top: 2141px;
+    }
+
+    #container .css-fxgnke {
+      width: 139.12px;
+      height: 433.152px;
+      left: 22px;
+      top: 2292px;
+    }
+
+    #container .css-q5lk88 {
+      width: 347.851px;
+      height: 399.252px;
+      left: 21.35px;
+      top: 2761px;
+    }
+
+    #container .css-6nsv9o {
+      width: 401.383px;
+      height: 481.663px;
+      left: -13.38px;
+      top: 3194.94px;
+    }
+
+    #container .css-8b9wzg {
+      width: 129.472px;
+      height: 86.719px;
+      left: 203px;
+      top: 2006px;
+    }
+
+    #container .css-imba2b {
+      width: 129.051px;
+      height: 82.414px;
+      left: 203px;
+      top: 2010.3px;
+    }
+
+    #container .css-tjfvf1 {
+      transform: matrix(0.9952568411827087, 0.09728240221738815, -0.09728240221738815, 0.9952568411827087, 0, 0);
+    }
+
+    #container .css-hnrd20 {
+      width: 122.745px;
+      height: 70.809px;
+    }
+
+    #container .css-4bhahy {
+      width: 82.067px;
+      height: 17.168px;
+      left: 233.03px;
+      top: 2008.31px;
+    }
+
+    #container .css-gthw1a {
+      transform: matrix(0.9952568411827087, 0.09728240221738814, -0.09728240221738815, 0.9952568411827087, 0, 0);
+    }
+
+    #container .css-k7prfd {
+      width: 81.551px;
+      height: 9.278px;
+    }
+
+    #container .css-mthz02 {
+      width: 116.893px;
+      height: 60.925px;
+      left: 211.95px;
+      top: 2020.3px;
+    }
+
+    #container .css-jtnomq {
+      transform: matrix(0.9952339668148015, 0.09751580791032365, -0.09919069957290262, 0.9950684561476064, 0, 0);
+    }
+
+    #container .css-6xfx8k {
+      width: 112.449px;
+      height: 50.207px;
+    }
+
+    #container .css-sh17mp {
+      width: 123.733px;
+      height: 77.954px;
+      left: 211.98px;
+      top: 2609.78px;
+    }
+
+    #container .css-ehk0bn {
+      width: 123.661px;
+      height: 72.41px;
+      left: 212.05px;
+      top: 2615.32px;
+    }
+
+    #container .css-ttk641 {
+      transform: matrix(0.9999143481254578, -0.013088952749967575, 0.013088952749967575, 0.9999143481254578, 0, 0);
+    }
+
+    #container .css-4a708k {
+      width: 86.69px;
+      height: 12.851px;
+      left: 233.21px;
+      top: 2609.98px;
+    }
+
+    #container .css-4do7cj {
+      transform: matrix(0.9999143481254578, -0.013088952749967577, 0.013088952749967575, 0.9999143481254578, 0, 0);
+    }
+
+    #container .css-64d1gl {
+      width: 86.544px;
+      height: 11.72px;
+    }
+
+    #container .css-pw3p87 {
+      width: 113px;
+      height: 51.65px;
+      left: 220.15px;
+      top: 2624.64px;
+    }
+
+    #container .css-5nrn7w {
+      transform: matrix(0.9999173581395585, -0.0128544526343134, 0.011171525354833615, 0.9999375994895242, 0, 0);
+    }
+
+    #container .css-fhrvmk {
+      width: 324.001px;
+      height: 543.512px;
+      left: 14px;
+      top: 1694px;
+    }
+
+    #container .css-lhx94v {
+      transform: matrix(0.05113693326711655, 0.9986916780471802, -0.9986916780471802, 0.051136791706085205, 0, 0);
+    }
+
+    #container .css-zcr8e4 {
+      width: 529px;
+      height: 297.339px;
+    }
+
+    #container .css-6492cb {
+      width: 330.075px;
+      height: 146.975px;
+      left: 13.81px;
+      top: calc(50% + -248.5px);
+    }
+
+    #container .css-lem4j5 {
+      transform: translateY(-50%);
+    }
+
+    #container .css-p7574z {
+      --content-min-width: max(100%, 1440px);
+      --content-min-height: max(var(--100dvh), 2495px);
+    }
+
+    #container .css-ifvda5 {
+      --content-min-width: max(100%, 1440px);
+      --content-min-height: max(var(--100dvh), 2495px);
+      overflow: clip;
+      background-color: #FFF;
+    }
+
+    #container .css-2a9gdl {
+      transform: translateY(100%);
+      color: #000;
+      --letter-spacing: -1.12px;
+    }
+
+    #container .css-78qyl9 {
+      left: 583.98px;
+      bottom: 59px;
+    }
+
+    #container .css-1obhi6 {
+      left: 863.98px;
+      bottom: 59px;
+    }
+
+    #container .css-8dhr3s {
+      width: 467.276px;
+      height: 368.574px;
+      left: 519px;
+      top: 458px;
+    }
+
+    #container .css-kt0nee {
+      width: 439.911px;
+      height: 372px;
+      left: 294.32px;
+      top: 608px;
+    }
+
+    #container .css-kb19g9 {
+      width: 425.581px;
+      height: 429px;
+      left: 733.98px;
+      top: 903px;
+    }
+
+    #container .css-5qs8a1 {
+      width: 229.868px;
+      height: 130.355px;
+      left: 990.82px;
+      top: 1246.14px;
+    }
+
+    #container .css-fonlnk {
+      width: 229.119px;
+      height: 122.593px;
+      left: 991.57px;
+      top: 1253.9px;
+    }
+
+    #container .css-knbgbh {
+      transform: matrix(0.9953728318214417, -0.0960881859064102, 0.0960881859064102, 0.9953728318214417, 0, 0);
+    }
+
+    #container .css-vaocf3 {
+      width: 220.348px;
+      height: 101.892px;
+    }
+
+    #container .css-3bmyh0 {
+      position: relative;
+      display: block;
+      border-radius: 9px;
+    }
+
+    #container .css-d96aqn {
+      box-shadow: 1.2px 2.4px 2.4px 1.2px rgba(0, 0, 0, 0.25);
+      background-color: #FFF;
+    }
+
+    #container .css-vcmgpl {
+      width: 97.775px;
+      height: 24.844px;
+      left: 1042.06px;
+      top: 1253.07px;
+    }
+
+    #container .css-ohy7nl {
+      width: 96.722px;
+      height: 15.622px;
+    }
+
+    #container .css-1kxng9 {
+      width: 212.656px;
+      height: 99.21px;
+      left: 1002.17px;
+      top: 1265.46px;
+    }
+
+    #container .css-3e4o7 {
+      width: 206.088px;
+      height: 79.811px;
+    }
+
+    #container .css-i8dgax {
+      white-space: pre-wrap;
+      font-family: "DM Sans:Regular", sans-serif;
+      word-break: break-word;
+      font-weight: 400;
+      font-size: 14.4px;
+      letter-spacing: -0.576px;
+      line-height: 20.4px;
+    }
+
+    #container .css-88oyv5 {
+      font-variation-settings: "opsz" 14;
+      color: #110C47;
+      --letter-spacing: -0.576px;
+    }
+
+    #container .css-i7z821 {
+      width: 189.1px;
+      height: 184.514px;
+      left: 507.36px;
+      top: 1052.52px;
+    }
+
+    #container .css-plkgyb {
+      transform: matrix(0.9999824166297913, 0.005927887745201588, -0.005927887745201588, 0.9999824166297913, 0, 0);
+    }
+
+    #container .css-omq1vj {
+      width: 188.016px;
+      height: 183.402px;
+    }
+
+    #container .css-luk7hc {
+      width: 191px;
+      height: 199.152px;
+      left: 297.98px;
+      top: 1014px;
+    }
+
+    #container .css-48ejuv {
+      width: 524px;
+      height: 384.465px;
+      left: 458px;
+      top: 57px;
+    }
+
+    #container .css-2dtdgn {
+      width: 182.953px;
+      height: 416px;
+      left: 791.98px;
+      top: 1415px;
+    }
+
+    #container .css-xkiv3o {
+      width: 139.12px;
+      height: 433.152px;
+      left: 1002.98px;
+      top: 1420px;
+    }
+
+    #container .css-h9qk2o {
+      width: 360.851px;
+      height: 1106.343px;
+      left: 408.98px;
+      top: 928.91px;
+    }
+
+    #container .css-bo0jms {
+      width: 929.517px;
+      height: 352.203px;
+      left: 298.98px;
+      top: 2045px;
+    }
+
+    #container .css-p41hho {
+      width: 129.472px;
+      height: 86.719px;
+      left: 518.98px;
+      top: 1582px;
+    }
+
+    #container .css-tidsdv {
+      width: 129.051px;
+      height: 82.414px;
+      left: 518.98px;
+      top: 1586.31px;
+    }
+
+    #container .css-akn9ue {
+      width: 82.067px;
+      height: 17.168px;
+      left: 549.01px;
+      top: 1584.31px;
+    }
+
+    #container .css-fq6aqq {
+      width: 116.893px;
+      height: 60.925px;
+      left: 527.92px;
+      top: 1596.3px;
+    }
+
+    #container .css-6l1u5b {
+      width: 130.822px;
+      height: 90.166px;
+      left: 821.98px;
+      top: 1881px;
+    }
+
+    #container .css-sg6f4g {
+      width: 130.174px;
+      height: 84.659px;
+      left: 821.98px;
+      top: 1886.51px;
+    }
+
+    #container .css-vj8tth {
+      transform: matrix(0.9931570291519165, 0.11678654700517654, -0.11678654700517654, 0.9931570291519165, 0, 0);
+    }
+
+    #container .css-4xziiq {
+      width: 87.32px;
+      height: 21.747px;
+      left: 850.61px;
+      top: 1883.48px;
+    }
+
+    #container .css-751yxr {
+      width: 117.635px;
+      height: 63.011px;
+      left: 831.13px;
+      top: 1896.64px;
+    }
+
+    #container .css-d15xn8 {
+      transform: matrix(0.9931295812415828, 0.11701945465710423, -0.11869077680870109, 0.9929312479704608, 0, 0);
+    }
+
+    #container .css-7wq0qk {
+      width: 594.144px;
+      height: 462.65px;
+      left: 195px;
+      top: 1305.54px;
+    }
+
+    #container .css-9znt98 {
+      transform: matrix(0.2922883629798889, 0.9563302397727966, -0.9563302993774414, 0.29228824377059937, 0, 0);
+    }
+
+    #container .css-pxou9o {
+      width: 324.175px;
+      height: 522.196px;
+    }
+
+    #container .css-3psad5 {
+      width: 397.563px;
+      height: 177.025px;
+      left: 300.23px;
+      top: 1237.97px;
+    }
+
+    #container .css-3na2rm {
+      width: 222.362px;
+      height: 271.141px;
+      left: 852px;
+      top: 393px;
+    }
+
+    #container .css-qjvyp3 {
+      width: 221.69px;
+      height: 267.247px;
+      left: 852px;
+      top: 396.89px;
+    }
+
+    #container .css-dfe4zn {
+      transform: matrix(0.9854238033294678, 0.17011763155460358, -0.17011763155460358, 0.9854238033294678, 0, 0);
+    }
+
+    #container .css-ppx66u {
+      width: 63.577px;
+      height: 18.577px;
+      left: 951.55px;
+      top: 403.27px;
+    }
+
+    #container .css-xgyp4q {
+      width: 199.249px;
+      height: 240.057px;
+      left: 862.09px;
+      top: 409.01px;
+    }
+
+    #container .css-j3apcy {
+      transform: matrix(0.9853195040441682, 0.17072039435390324, -0.1708420251548352, 0.9852984459488004, 0, 0);
+    }
+  </style>
+  <script>window.__serverRenderedCSSClassNames = { "css-ll733z": "{\"position\":\"relative\"}", "css-j6ldtg": "{\"minWidth\":\"var(--content-min-width)\",\"width\":\"100%\",\"height\":\"var(--content-min-height)\"}", "css-kib6st": "{\"--content-min-width\":\"max(100%, 375px)\",\"--content-min-height\":\"max(var(--100dvh), 3759px)\"}", "css-vf8mzy": "{\"position\":\"relative\",\"display\":\"block\"}", "css-xpv4ib": "{\"--content-min-width\":\"max(100%, 375px)\",\"--content-min-height\":\"max(var(--100dvh), 3759px)\",\"overflow\":\"clip\",\"backgroundColor\":\"#FFF\"}", "css-j9f0op": "{\"width\":\"100%\",\"height\":\"100%\"}", "css-8zr56v": "{\"display\":\"block\"}", "css-tzn6qh": "{\"display\":\"block\",\"position\":\"absolute\"}", "css-j5sf3g": "{\"left\":11.35,\"top\":3711}", "css-ugqh3r": "{\"whiteSpace\":\"pre\",\"fontFamily\":\"\\\"Cute Font:Regular\\\", sans-serif\",\"wordBreak\":\"break-word\",\"fontStyle\":\"normal\",\"fontSize\":\"28px\",\"letterSpacing\":\"-1.12px\",\"lineHeight\":\"17px\"}", "css-6yt3el": "{\"color\":\"#000\",\"--letter-spacing\":\"-1.12px\"}", "css-y4obe0": "{\"transform\":\"translateX(100%)\",\"color\":\"#000\",\"--letter-spacing\":\"-1.12px\"}", "css-arg5rt": "{\"right\":83.65,\"top\":3711}", "css-yf3sk8": "{\"width\":420.276,\"height\":331.502,\"left\":53.35,\"top\":369}", "css-trglf0": "{\"position\":\"absolute\"}", "css-roiesn": "{\"position\":\"absolute\",\"display\":\"block\"}", "css-9j6u1t": "{\"width\":\"100%\",\"height\":\"100%\",\"maxWidth\":\"none\"}", "css-wixxpz": "{\"top\":\"0\",\"left\":\"0\",\"right\":\"0\",\"bottom\":\"0\"}", "css-eztvnj": "{\"width\":187.804,\"height\":246.59,\"left\":12.35,\"top\":302}", "css-bz2tic": "{\"position\":\"absolute\",\"display\":\"contents\"}", "css-yknkzq": "{\"width\":187.735,\"height\":242.638,\"left\":12.42,\"top\":305.95}", "css-grtgjx": "{\"position\":\"absolute\",\"display\":\"flex\",\"alignItems\":\"center\",\"justifyContent\":\"center\"}", "css-ayg824": "{\"flex\":\"0 0 auto\"}", "css-wj2ivb": "{\"transform\":\"matrix(0.9998506307601929, -0.017284151166677475, 0.017284151166677475, 0.9998506307601929, 0, 0)\"}", "css-edc7e7": "{\"width\":\"auto\",\"height\":\"auto\"}", "css-lvctdb": "{\"width\":183.623,\"height\":239.5}", "css-i0sq2k": "{\"position\":\"relative\",\"borderTopLeftRadius\":7.5,\"borderTopRightRadius\":7.5,\"borderBottomRightRadius\":7.5,\"borderBottomLeftRadius\":7.5,\"display\":\"block\"}", "css-sr4pu5": "{\"boxShadow\":\"1px 2px 2px 1px rgba(0, 0, 0, 0.25)\",\"backgroundColor\":\"#FFF\"}", "css-8nyhf": "{\"width\":63.273,\"height\":9.041,\"left\":72.71,\"top\":303.04}", "css-213ix8": "{\"width\":63.145,\"height\":7.951}", "css-90p88t": "{\"width\":168.464,\"height\":217.783,\"left\":20.67,\"top\":317.14}", "css-xfkjq1": "{\"transform\":\"matrix(0.9998609654365911, -0.01667251850975962, 0.01654909568791762, 0.9998630394004413, 0, 0)\"}", "css-ld0hsi": "{\"display\":\"block\",\"position\":\"relative\"}", "css-acqqyv": "{\"width\":164.928,\"height\":215.062}", "css-oom5nr": "{\"whiteSpace\":\"pre-wrap\",\"fontFamily\":\"\\\"DM Sans:Regular\\\", sans-serif\",\"wordBreak\":\"break-word\",\"fontWeight\":400,\"fontSize\":\"12px\",\"letterSpacing\":\"-0.48px\",\"lineHeight\":\"17px\"}", "css-y7f465": "{\"fontVariationSettings\":\"\\\"opsz\\\" 14\",\"color\":\"#110C47\",\"--letter-spacing\":\"-0.48px\"}", "css-r269tl": "{\"width\":380.593,\"height\":321.839,\"left\":-1.65,\"top\":609}", "css-r6sanb": "{\"width\":340.755,\"height\":363,\"left\":29,\"top\":931}", "css-xvifx2": "{\"width\":191.557,\"height\":108.629,\"left\":167,\"top\":1244}", "css-s2auz2": "{\"width\":190.933,\"height\":102.161,\"left\":167.62,\"top\":1250.47}", "css-uz9sdv": "{\"transform\":\"matrix(0.9953728318214417, -0.09608818590641022, 0.09608818590641022, 0.9953728318214417, 0, 0)\"}", "css-j0q37e": "{\"width\":183.623,\"height\":84.91}", "css-fgnvst": "{\"width\":81.48,\"height\":20.703,\"left\":209.7,\"top\":1249.78}", "css-kcv27j": "{\"transform\":\"matrix(0.9953728318214417, -0.0960881859064102, 0.09608818590641022, 0.9953728318214417, 0, 0)\"}", "css-m76xdp": "{\"width\":80.602,\"height\":13.019}", "css-ct66q7": "{\"width\":177.213,\"height\":82.675,\"left\":176.45,\"top\":1260.1}", "css-yu3wxs": "{\"transform\":\"matrix(0.995395307151727, -0.09585474474414615, 0.09417931242327582, 0.9955552483394547, 0, 0)\"}", "css-wl63xd": "{\"width\":171.74,\"height\":66.509}", "css-djjt17": "{\"width\":163,\"height\":165,\"left\":187.35,\"top\":1391}", "css-i8da3n": "{\"width\":164,\"height\":171,\"left\":12.35,\"top\":1363}", "css-9tr9yu": "{\"width\":353,\"height\":261,\"left\":11,\"top\":14}", "css-xz4spi": "{\"width\":182.953,\"height\":416,\"left\":172.35,\"top\":2141}", "css-fxgnke": "{\"width\":139.12,\"height\":433.152,\"left\":22,\"top\":2292}", "css-q5lk88": "{\"width\":347.851,\"height\":399.252,\"left\":21.35,\"top\":2761}", "css-6nsv9o": "{\"width\":401.383,\"height\":481.663,\"left\":-13.38,\"top\":3194.94}", "css-8b9wzg": "{\"width\":129.472,\"height\":86.719,\"left\":203,\"top\":2006}", "css-imba2b": "{\"width\":129.051,\"height\":82.414,\"left\":203,\"top\":2010.3}", "css-tjfvf1": "{\"transform\":\"matrix(0.9952568411827087, 0.09728240221738815, -0.09728240221738815, 0.9952568411827087, 0, 0)\"}", "css-hnrd20": "{\"width\":122.745,\"height\":70.809}", "css-4bhahy": "{\"width\":82.067,\"height\":17.168,\"left\":233.03,\"top\":2008.31}", "css-gthw1a": "{\"transform\":\"matrix(0.9952568411827087, 0.09728240221738814, -0.09728240221738815, 0.9952568411827087, 0, 0)\"}", "css-k7prfd": "{\"width\":81.551,\"height\":9.278}", "css-mthz02": "{\"width\":116.893,\"height\":60.925,\"left\":211.95,\"top\":2020.3}", "css-jtnomq": "{\"transform\":\"matrix(0.9952339668148015, 0.09751580791032365, -0.09919069957290262, 0.9950684561476064, 0, 0)\"}", "css-6xfx8k": "{\"width\":112.449,\"height\":50.207}", "css-sh17mp": "{\"width\":123.733,\"height\":77.954,\"left\":211.98,\"top\":2609.78}", "css-ehk0bn": "{\"width\":123.661,\"height\":72.41,\"left\":212.05,\"top\":2615.32}", "css-ttk641": "{\"transform\":\"matrix(0.9999143481254578, -0.013088952749967575, 0.013088952749967575, 0.9999143481254578, 0, 0)\"}", "css-4a708k": "{\"width\":86.69,\"height\":12.851,\"left\":233.21,\"top\":2609.98}", "css-4do7cj": "{\"transform\":\"matrix(0.9999143481254578, -0.013088952749967577, 0.013088952749967575, 0.9999143481254578, 0, 0)\"}", "css-64d1gl": "{\"width\":86.544,\"height\":11.72}", "css-pw3p87": "{\"width\":113,\"height\":51.65,\"left\":220.15,\"top\":2624.64}", "css-5nrn7w": "{\"transform\":\"matrix(0.9999173581395585, -0.0128544526343134, 0.011171525354833615, 0.9999375994895242, 0, 0)\"}", "css-fhrvmk": "{\"width\":324.001,\"height\":543.512,\"left\":14,\"top\":1694}", "css-lhx94v": "{\"transform\":\"matrix(0.05113693326711655, 0.9986916780471802, -0.9986916780471802, 0.051136791706085205, 0, 0)\"}", "css-zcr8e4": "{\"width\":529,\"height\":297.339}", "css-6492cb": "{\"width\":330.075,\"height\":146.975,\"left\":13.81,\"top\":\"calc(50% + -248.5px)\"}", "css-lem4j5": "{\"transform\":\"translateY(-50%)\"}", "css-p7574z": "{\"--content-min-width\":\"max(100%, 1440px)\",\"--content-min-height\":\"max(var(--100dvh), 2495px)\"}", "css-ifvda5": "{\"--content-min-width\":\"max(100%, 1440px)\",\"--content-min-height\":\"max(var(--100dvh), 2495px)\",\"overflow\":\"clip\",\"backgroundColor\":\"#FFF\"}", "css-2a9gdl": "{\"transform\":\"translateY(100%)\",\"color\":\"#000\",\"--letter-spacing\":\"-1.12px\"}", "css-78qyl9": "{\"left\":583.98,\"bottom\":59}", "css-1obhi6": "{\"left\":863.98,\"bottom\":59}", "css-8dhr3s": "{\"width\":467.276,\"height\":368.574,\"left\":519,\"top\":458}", "css-kt0nee": "{\"width\":439.911,\"height\":372,\"left\":294.32,\"top\":608}", "css-kb19g9": "{\"width\":425.581,\"height\":429,\"left\":733.98,\"top\":903}", "css-5qs8a1": "{\"width\":229.868,\"height\":130.355,\"left\":990.82,\"top\":1246.14}", "css-fonlnk": "{\"width\":229.119,\"height\":122.593,\"left\":991.57,\"top\":1253.9}", "css-knbgbh": "{\"transform\":\"matrix(0.9953728318214417, -0.0960881859064102, 0.0960881859064102, 0.9953728318214417, 0, 0)\"}", "css-vaocf3": "{\"width\":220.348,\"height\":101.892}", "css-3bmyh0": "{\"position\":\"relative\",\"borderTopLeftRadius\":9,\"borderTopRightRadius\":9,\"borderBottomRightRadius\":9,\"borderBottomLeftRadius\":9,\"display\":\"block\"}", "css-d96aqn": "{\"boxShadow\":\"1.2px 2.4px 2.4px 1.2px rgba(0, 0, 0, 0.25)\",\"backgroundColor\":\"#FFF\"}", "css-vcmgpl": "{\"width\":97.775,\"height\":24.844,\"left\":1042.06,\"top\":1253.07}", "css-ohy7nl": "{\"width\":96.722,\"height\":15.622}", "css-1kxng9": "{\"width\":212.656,\"height\":99.21,\"left\":1002.17,\"top\":1265.46}", "css-3e4o7": "{\"width\":206.088,\"height\":79.811}", "css-i8dgax": "{\"whiteSpace\":\"pre-wrap\",\"fontFamily\":\"\\\"DM Sans:Regular\\\", sans-serif\",\"wordBreak\":\"break-word\",\"fontWeight\":400,\"fontSize\":\"14.4px\",\"letterSpacing\":\"-0.576px\",\"lineHeight\":\"20.4px\"}", "css-88oyv5": "{\"fontVariationSettings\":\"\\\"opsz\\\" 14\",\"color\":\"#110C47\",\"--letter-spacing\":\"-0.576px\"}", "css-i7z821": "{\"width\":189.1,\"height\":184.514,\"left\":507.36,\"top\":1052.52}", "css-plkgyb": "{\"transform\":\"matrix(0.9999824166297913, 0.005927887745201588, -0.005927887745201588, 0.9999824166297913, 0, 0)\"}", "css-omq1vj": "{\"width\":188.016,\"height\":183.402}", "css-luk7hc": "{\"width\":191,\"height\":199.152,\"left\":297.98,\"top\":1014}", "css-48ejuv": "{\"width\":524,\"height\":384.465,\"left\":458,\"top\":57}", "css-2dtdgn": "{\"width\":182.953,\"height\":416,\"left\":791.98,\"top\":1415}", "css-xkiv3o": "{\"width\":139.12,\"height\":433.152,\"left\":1002.98,\"top\":1420}", "css-h9qk2o": "{\"width\":360.851,\"height\":1106.343,\"left\":408.98,\"top\":928.91}", "css-bo0jms": "{\"width\":929.517,\"height\":352.203,\"left\":298.98,\"top\":2045}", "css-p41hho": "{\"width\":129.472,\"height\":86.719,\"left\":518.98,\"top\":1582}", "css-tidsdv": "{\"width\":129.051,\"height\":82.414,\"left\":518.98,\"top\":1586.31}", "css-akn9ue": "{\"width\":82.067,\"height\":17.168,\"left\":549.01,\"top\":1584.31}", "css-fq6aqq": "{\"width\":116.893,\"height\":60.925,\"left\":527.92,\"top\":1596.3}", "css-6l1u5b": "{\"width\":130.822,\"height\":90.166,\"left\":821.98,\"top\":1881}", "css-sg6f4g": "{\"width\":130.174,\"height\":84.659,\"left\":821.98,\"top\":1886.51}", "css-vj8tth": "{\"transform\":\"matrix(0.9931570291519165, 0.11678654700517654, -0.11678654700517654, 0.9931570291519165, 0, 0)\"}", "css-4xziiq": "{\"width\":87.32,\"height\":21.747,\"left\":850.61,\"top\":1883.48}", "css-751yxr": "{\"width\":117.635,\"height\":63.011,\"left\":831.13,\"top\":1896.64}", "css-d15xn8": "{\"transform\":\"matrix(0.9931295812415828, 0.11701945465710423, -0.11869077680870109, 0.9929312479704608, 0, 0)\"}", "css-7wq0qk": "{\"width\":594.144,\"height\":462.65,\"left\":195,\"top\":1305.54}", "css-9znt98": "{\"transform\":\"matrix(0.2922883629798889, 0.9563302397727966, -0.9563302993774414, 0.29228824377059937, 0, 0)\"}", "css-pxou9o": "{\"width\":324.175,\"height\":522.196}", "css-3psad5": "{\"width\":397.563,\"height\":177.025,\"left\":300.23,\"top\":1237.97}", "css-3na2rm": "{\"width\":222.362,\"height\":271.141,\"left\":852,\"top\":393}", "css-qjvyp3": "{\"width\":221.69,\"height\":267.247,\"left\":852,\"top\":396.89}", "css-dfe4zn": "{\"transform\":\"matrix(0.9854238033294678, 0.17011763155460358, -0.17011763155460358, 0.9854238033294678, 0, 0)\"}", "css-ppx66u": "{\"width\":63.577,\"height\":18.577,\"left\":951.55,\"top\":403.27}", "css-xgyp4q": "{\"width\":199.249,\"height\":240.057,\"left\":862.09,\"top\":409.01}", "css-j3apcy": "{\"transform\":\"matrix(0.9853195040441682, 0.17072039435390324, -0.1708420251548352, 0.9852984459488004, 0, 0)\"}" }</script>
+  <meta id="meta-bkauwd" name="description" content="Created with Figma">
+  <meta id="meta-vxymho" name="title" content="frosttest1">
+  <meta id="meta-yw3oin" name="robots" content="noindex">
+  <title id="title-kexr3j">frosttest1</title>
 </head>
+
 <body>
-  <div class="progress-marker">
-    <div class="marker" data-index="0"></div>
-    <div class="marker" data-index="1"></div>
-    <div class="marker" data-index="2"></div>
-    <div class="marker" data-index="3"></div>
-    <div class="marker" data-index="4"></div>
-    <div class="marker" data-index="5"></div>
-    <div class="marker" data-index="6"></div>
-    <div class="marker" data-index="7"></div>
-    <div class="marker" data-index="8"></div>
-    <div class="marker" data-index="9"></div>
-    <div class="marker" data-index="10"></div>
-    <div class="marker" data-index="11"></div>
-    <div class="marker" data-index="12"></div>
-    <div class="marker" data-index="13"></div>
-    <a href="../work.html" class="marker home-marker" data-index="14">
-      <i class="fas fa-home"></i>
-    </a>
+
+
+  <script data-template-id="country-code">window.__cf_country = "GB"</script>
+  <script type="module">
+    import { SitesRuntime } from '/_runtimes/sites-runtime.b69569d0baef319082b5422507ab08a06908495a02069eb739f5ee4ed1c9c0bb.js';
+    const sitesRuntime = new SitesRuntime({
+      container: document.getElementById('container'),
+      env: 'published',
+      bundleId: '9c0173cd-636d-4fc7-9dac-5424e85f3fc9',
+
+      loadComponentsOverNetwork: true,
+      assetsVersion: 'v11',
+      fontsVersion: 'v1',
+      videosVersion: 'v1',
+      codeComponentsVersion: 'v2',
+      wasServerRendered: true,
+      withBaseStyles: true,
+      reportingDomain: "https://www.figma.com",
+      bundleCreationDate: '2025-11-27 12:42:57 UTC',
+      isFigmake: false,
+      enableMetaTags: false,
+      siteUrl: "https://tusk-short-01189091.figma.site",
+    });
+  </script>
+
+  <div id="container">
+    <div class="css-vf8mzy css-j6ldtg css-xpv4ib" data-page-overflowx="hidden" data-breakpoint-id="node-15_11986"
+      data-breakpoint="true" data-width="375" data-height="3759">
+      <p class="css-tzn6qh css-j5sf3g css-ugqh3r css-6yt3el adjustLetterSpacing textContents">&lt;- BACK</p>
+      <p class="css-tzn6qh css-y4obe0 css-arg5rt css-ugqh3r adjustLetterSpacing textContents">NEXT -&gt;</p>
+      <div class="css-yf3sk8 css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img src="/_assets/v11/10bff30a2218d4e826a4ef02a9091be300fae5e8.png" alt=""
+            width="420.276" height="331.502" class="css-9j6u1t css-8zr56v"
+            srcSet="/_assets/v11/10bff30a2218d4e826a4ef02a9091be300fae5e8.png 421w" sizes="420.2758483886719px" /></div>
+      </div>
+      <div class="css-eztvnj css-bz2tic">
+        <div class="css-yknkzq css-grtgjx">
+          <div class="css-ayg824 css-wj2ivb css-edc7e7">
+            <div class="css-i0sq2k css-lvctdb css-sr4pu5"></div>
+          </div>
+        </div>
+        <div class="css-8nyhf css-grtgjx">
+          <div class="css-ayg824 css-wj2ivb css-edc7e7">
+            <div class="css-vf8mzy css-213ix8" data-isimage="true">
+              <div class="css-trglf0 css-wixxpz"><img src="/_assets/v11/474d48ac3a6c4e384bf4bae273398cb87ad6a5ae.svg"
+                  alt="" class="css-9j6u1t css-8zr56v" /></div>
+            </div>
+          </div>
+        </div>
+        <div class="css-90p88t css-grtgjx">
+          <div class="css-ayg824 css-xfkjq1 css-edc7e7">
+            <p class="css-ld0hsi css-acqqyv css-oom5nr css-y7f465 adjustLetterSpacing textContents">The concept is
+              inspired by the process of cell division, a core mechanism through which living organisms grow. This
+              serves as an analogy for how a tenant within RLAM can begin at a small scale and progressively expand over
+              time. The design reflects structured, organic growth, aligning with RLAM’s commitment to supporting
+              long-term development and scalable potential.</p>
+          </div>
+        </div>
+      </div>
+      <div class="css-r269tl css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/0ede38c16e4e683adfadda33637d7d301b2fab85.png" alt="" width="380.593" height="321.839"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/0ede38c16e4e683adfadda33637d7d301b2fab85.png 381w"
+            sizes="auto,380.5934143066406px" /></div>
+      </div>
+      <div class="css-r6sanb css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/34a24eb2cdb57327875e6f39fdc3ad03737aedce.png" alt="" width="340.755" height="363"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/34a24eb2cdb57327875e6f39fdc3ad03737aedce.png 341w"
+            sizes="auto,340.7553405761719px" /></div>
+      </div>
+      <div class="css-xvifx2 css-bz2tic">
+        <div class="css-s2auz2 css-grtgjx">
+          <div class="css-ayg824 css-uz9sdv css-edc7e7">
+            <div class="css-i0sq2k css-j0q37e css-sr4pu5"></div>
+          </div>
+        </div>
+        <div class="css-fgnvst css-grtgjx">
+          <div class="css-ayg824 css-kcv27j css-edc7e7">
+            <div class="css-vf8mzy css-m76xdp" data-isimage="true">
+              <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+                  src="/_assets/v11/c13345705e3f34f667b136d8ce34932d5f12a51b.svg" alt=""
+                  class="css-9j6u1t css-8zr56v" /></div>
+            </div>
+          </div>
+        </div>
+        <div class="css-ct66q7 css-grtgjx">
+          <div class="css-ayg824 css-yu3wxs css-edc7e7">
+            <p class="css-ld0hsi css-wl63xd css-oom5nr css-y7f465 adjustLetterSpacing textContents">Font parings usd BAI
+              Jamaree paired with a custom font based on the graphical abstraction of cell division created above</p>
+          </div>
+        </div>
+      </div>
+      <div class="css-djjt17 css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/849724f82bf3856dd80bdaae4b950d9ac769b7c4.png" alt="" width="163" height="165"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/849724f82bf3856dd80bdaae4b950d9ac769b7c4.png 163w"
+            sizes="auto,163px" /></div>
+      </div>
+      <div class="css-i8da3n css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/acc7f6e65d5866559bf1dc8174adcde525a63e7c.png" alt="" width="164" height="171"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/acc7f6e65d5866559bf1dc8174adcde525a63e7c.png 164w"
+            sizes="auto,164px" /></div>
+      </div>
+      <div class="css-9tr9yu css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img src="/_assets/v11/6b7ad6ecde6e70814f4e541d429935c13cc62420.png" alt=""
+            width="353" height="261" class="css-9j6u1t css-8zr56v"
+            srcSet="/_assets/v11/6b7ad6ecde6e70814f4e541d429935c13cc62420.png 353w" sizes="353px" /></div>
+      </div>
+      <div class="css-xz4spi css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/c2ff1cc1ea65a1758729e3168598f701e66417af.png" alt="" width="182.953" height="416"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/c2ff1cc1ea65a1758729e3168598f701e66417af.png 183w"
+            sizes="auto,182.952880859375px" /></div>
+      </div>
+      <div class="css-fxgnke css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/13be8de59adce7da113f6199ead74f7f219216b3.png" alt="" width="139.12" height="433.152"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/13be8de59adce7da113f6199ead74f7f219216b3.png 140w"
+            sizes="auto,139.1204833984375px" /></div>
+      </div>
+      <div class="css-q5lk88 css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/ac47df01a80088a64032eeb6284b55821640912b.png" alt="" width="347.851" height="399.252"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/ac47df01a80088a64032eeb6284b55821640912b.png 348w"
+            sizes="auto,347.8506774902344px" /></div>
+      </div>
+      <div class="css-6nsv9o css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/6fbb546fc4961b552828bfd9c0b7ee0f76e700aa.svg" alt="" class="css-9j6u1t css-8zr56v" />
+        </div>
+      </div>
+      <div class="css-8b9wzg css-bz2tic">
+        <div class="css-imba2b css-grtgjx">
+          <div class="css-ayg824 css-tjfvf1 css-edc7e7">
+            <div class="css-i0sq2k css-hnrd20 css-sr4pu5"></div>
+          </div>
+        </div>
+        <div class="css-4bhahy css-grtgjx">
+          <div class="css-ayg824 css-gthw1a css-edc7e7">
+            <div class="css-vf8mzy css-k7prfd" data-isimage="true">
+              <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+                  src="/_assets/v11/c1e8795f2b9677b4049fdeb2f10d63281d0236bf.svg" alt=""
+                  class="css-9j6u1t css-8zr56v" /></div>
+            </div>
+          </div>
+        </div>
+        <div class="css-mthz02 css-grtgjx">
+          <div class="css-ayg824 css-jtnomq css-edc7e7">
+            <p class="css-ld0hsi css-6xfx8k css-oom5nr css-y7f465 adjustLetterSpacing textContents">Font parings usd BAI
+              Jamaree paired with a custom font based</p>
+          </div>
+        </div>
+      </div>
+      <div class="css-sh17mp css-bz2tic">
+        <div class="css-ehk0bn css-grtgjx">
+          <div class="css-ayg824 css-ttk641 css-edc7e7">
+            <div class="css-i0sq2k css-hnrd20 css-sr4pu5"></div>
+          </div>
+        </div>
+        <div class="css-4a708k css-grtgjx">
+          <div class="css-ayg824 css-4do7cj css-edc7e7">
+            <div class="css-vf8mzy css-64d1gl" data-isimage="true">
+              <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+                  src="/_assets/v11/3881363aac9a27097ad54d224c76df5892cd2176.svg" alt=""
+                  class="css-9j6u1t css-8zr56v" /></div>
+            </div>
+          </div>
+        </div>
+        <div class="css-pw3p87 css-grtgjx">
+          <div class="css-ayg824 css-5nrn7w css-edc7e7">
+            <p class="css-ld0hsi css-6xfx8k css-oom5nr css-y7f465 adjustLetterSpacing textContents">Font parings usd BAI
+              Jamaree paired with a custom font based</p>
+          </div>
+        </div>
+      </div>
+      <div class="css-fhrvmk css-grtgjx">
+        <div class="css-ayg824 css-lhx94v css-edc7e7">
+          <div class="css-vf8mzy css-zcr8e4" data-isimage="true">
+            <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+                src="/_assets/v11/327aedeb72462fa4e92cfbbf4d3808723614e37c.png" alt="" width="529" height="297.339"
+                class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/327aedeb72462fa4e92cfbbf4d3808723614e37c.png 529w"
+                sizes="auto,528.99951171875px" /></div>
+          </div>
+        </div>
+      </div>
+      <div class="css-6492cb css-lem4j5 css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/96d53547fafdc9d98359d4e946a979a05ccf22a7.png" alt="" width="330.075" height="146.975"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/96d53547fafdc9d98359d4e946a979a05ccf22a7.png 331w"
+            sizes="auto,330.0752258300781px" /></div>
+      </div>
+    </div>
+    <div class="css-vf8mzy css-j6ldtg css-ifvda5" data-page-overflowx="hidden" data-breakpoint-id="node-15_11985"
+      data-breakpoint="true" data-width="1440" data-height="2495">
+      <p class="css-tzn6qh css-2a9gdl css-78qyl9 css-ugqh3r adjustLetterSpacing textContents">&lt;- BACK</p>
+      <p class="css-tzn6qh css-2a9gdl css-1obhi6 css-ugqh3r adjustLetterSpacing textContents">NEXT -&gt;</p>
+      <div class="css-8dhr3s css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img src="/_assets/v11/79544ad01fd4f3792bc849a1b0413ca126563f11.png" alt=""
+            width="467.276" height="368.574" class="css-9j6u1t css-8zr56v"
+            srcSet="/_assets/v11/79544ad01fd4f3792bc849a1b0413ca126563f11.png 468w" sizes="467.27581787109375px" />
+        </div>
+      </div>
+      <div class="css-kt0nee css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/475b825d6f7380e315f4915bfdfa1852006ffa4f.png" alt="" width="439.911" height="372"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/475b825d6f7380e315f4915bfdfa1852006ffa4f.png 440w"
+            sizes="auto,439.9110107421875px" /></div>
+      </div>
+      <div class="css-kb19g9 css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/8c46f5b35ea977b0f85cd0cd3516f42257c01452.png" alt="" width="425.581" height="429"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/8c46f5b35ea977b0f85cd0cd3516f42257c01452.png 426w"
+            sizes="auto,425.5810241699219px" /></div>
+      </div>
+      <div class="css-5qs8a1 css-bz2tic">
+        <div class="css-fonlnk css-grtgjx">
+          <div class="css-ayg824 css-knbgbh css-edc7e7">
+            <div class="css-3bmyh0 css-vaocf3 css-d96aqn"></div>
+          </div>
+        </div>
+        <div class="css-vcmgpl css-grtgjx">
+          <div class="css-ayg824 css-knbgbh css-edc7e7">
+            <div class="css-vf8mzy css-ohy7nl" data-isimage="true">
+              <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+                  src="/_assets/v11/3b400e6a594f214077ef360074c889e67f475121.svg" alt=""
+                  class="css-9j6u1t css-8zr56v" /></div>
+            </div>
+          </div>
+        </div>
+        <div class="css-1kxng9 css-grtgjx">
+          <div class="css-ayg824 css-yu3wxs css-edc7e7">
+            <p class="css-ld0hsi css-3e4o7 css-i8dgax css-88oyv5 adjustLetterSpacing textContents">Font parings usd BAI
+              Jamaree paired with a custom font based on the graphical abstraction of cell division created above</p>
+          </div>
+        </div>
+      </div>
+      <div class="css-i7z821 css-grtgjx">
+        <div class="css-ayg824 css-plkgyb css-edc7e7">
+          <div class="css-vf8mzy css-omq1vj" data-isimage="true">
+            <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+                src="/_assets/v11/1bfa4ca2f46fc2ae258c073f2c00c2eb83b4bd7b.png" alt="" width="188.016" height="183.402"
+                class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/1bfa4ca2f46fc2ae258c073f2c00c2eb83b4bd7b.png 189w"
+                sizes="auto,188.01629638671875px" /></div>
+          </div>
+        </div>
+      </div>
+      <div class="css-luk7hc css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/a880481e4f03d119efb02e613cc839f702c4c69d.png" alt="" width="191" height="199.152"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/a880481e4f03d119efb02e613cc839f702c4c69d.png 191w"
+            sizes="auto,191px" /></div>
+      </div>
+      <div class="css-48ejuv css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img src="/_assets/v11/03ab945ee56f4cb44c31d137f6320f948aa196c4.png" alt=""
+            width="524" height="384.465" class="css-9j6u1t css-8zr56v"
+            srcSet="/_assets/v11/03ab945ee56f4cb44c31d137f6320f948aa196c4.png 524w" sizes="524px" /></div>
+      </div>
+      <div class="css-2dtdgn css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/c2ff1cc1ea65a1758729e3168598f701e66417af.png" alt="" width="182.953" height="416"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/c2ff1cc1ea65a1758729e3168598f701e66417af.png 183w"
+            sizes="auto,182.952880859375px" /></div>
+      </div>
+      <div class="css-xkiv3o css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/13be8de59adce7da113f6199ead74f7f219216b3.png" alt="" width="139.12" height="433.152"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/13be8de59adce7da113f6199ead74f7f219216b3.png 140w"
+            sizes="auto,139.1204833984375px" /></div>
+      </div>
+      <div class="css-h9qk2o css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/2b18fa0fe884c3e2ed29585104389ab646045df2.png" alt="" width="360.851" height="1106.343"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/2b18fa0fe884c3e2ed29585104389ab646045df2.png 361w"
+            sizes="auto,360.8506774902344px" /></div>
+      </div>
+      <div class="css-bo0jms css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/d94c04f5694eec4e24d1bee0b21e147f85194f24.svg" alt="" class="css-9j6u1t css-8zr56v" />
+        </div>
+      </div>
+      <div class="css-p41hho css-bz2tic">
+        <div class="css-tidsdv css-grtgjx">
+          <div class="css-ayg824 css-tjfvf1 css-edc7e7">
+            <div class="css-i0sq2k css-hnrd20 css-sr4pu5"></div>
+          </div>
+        </div>
+        <div class="css-akn9ue css-grtgjx">
+          <div class="css-ayg824 css-gthw1a css-edc7e7">
+            <div class="css-vf8mzy css-k7prfd" data-isimage="true">
+              <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+                  src="/_assets/v11/49073c14e8d572b22ebbb1701a1c8f82cb88e611.svg" alt=""
+                  class="css-9j6u1t css-8zr56v" /></div>
+            </div>
+          </div>
+        </div>
+        <div class="css-fq6aqq css-grtgjx">
+          <div class="css-ayg824 css-jtnomq css-edc7e7">
+            <p class="css-ld0hsi css-6xfx8k css-oom5nr css-y7f465 adjustLetterSpacing textContents">Font parings usd BAI
+              Jamaree paired with a custom font based</p>
+          </div>
+        </div>
+      </div>
+      <div class="css-6l1u5b css-bz2tic">
+        <div class="css-sg6f4g css-grtgjx">
+          <div class="css-ayg824 css-vj8tth css-edc7e7">
+            <div class="css-i0sq2k css-hnrd20 css-sr4pu5"></div>
+          </div>
+        </div>
+        <div class="css-4xziiq css-grtgjx">
+          <div class="css-ayg824 css-vj8tth css-edc7e7">
+            <div class="css-vf8mzy css-64d1gl" data-isimage="true">
+              <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+                  src="/_assets/v11/3881363aac9a27097ad54d224c76df5892cd2176.svg" alt=""
+                  class="css-9j6u1t css-8zr56v" /></div>
+            </div>
+          </div>
+        </div>
+        <div class="css-751yxr css-grtgjx">
+          <div class="css-ayg824 css-d15xn8 css-edc7e7">
+            <p class="css-ld0hsi css-6xfx8k css-oom5nr css-y7f465 adjustLetterSpacing textContents">Font parings usd BAI
+              Jamaree paired with a custom font based</p>
+          </div>
+        </div>
+      </div>
+      <div class="css-7wq0qk css-grtgjx">
+        <div class="css-ayg824 css-9znt98 css-edc7e7">
+          <div class="css-vf8mzy css-pxou9o" data-isimage="true">
+            <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+                src="/_assets/v11/39ce6adff5a6ce6bd6aaa5365e7734c807ec9cd1.png" alt="" width="324.175" height="522.196"
+                class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/39ce6adff5a6ce6bd6aaa5365e7734c807ec9cd1.png 325w"
+                sizes="auto,324.1746520996094px" /></div>
+          </div>
+        </div>
+      </div>
+      <div class="css-3psad5 css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/9078f28f084d7d22b8d39f2b17225ffbac8d1c99.png" alt="" width="397.563" height="177.025"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/9078f28f084d7d22b8d39f2b17225ffbac8d1c99.png 398w"
+            sizes="auto,397.5625915527344px" /></div>
+      </div>
+      <div class="css-3na2rm css-bz2tic">
+        <div class="css-qjvyp3 css-grtgjx">
+          <div class="css-ayg824 css-dfe4zn css-edc7e7">
+            <div class="css-i0sq2k css-lvctdb css-sr4pu5"></div>
+          </div>
+        </div>
+        <div class="css-ppx66u css-grtgjx">
+          <div class="css-ayg824 css-dfe4zn css-edc7e7">
+            <div class="css-vf8mzy css-213ix8" data-isimage="true">
+              <div class="css-trglf0 css-wixxpz"><img src="/_assets/v11/96923d5d4d5b261296e911500fc4ec9055b9dd25.svg"
+                  alt="" class="css-9j6u1t css-8zr56v" /></div>
+            </div>
+          </div>
+        </div>
+        <div class="css-xgyp4q css-grtgjx">
+          <div class="css-ayg824 css-j3apcy css-edc7e7">
+            <p class="css-ld0hsi css-acqqyv css-oom5nr css-y7f465 adjustLetterSpacing textContents">The concept is
+              inspired by the process of cell division, a core mechanism through which living organisms grow. This
+              serves as an analogy for how a tenant within RLAM can begin at a small scale and progressively expand over
+              time. The design reflects structured, organic growth, aligning with RLAM’s commitment to supporting
+              long-term development and scalable potential.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="container">
-    <div class="flashcard portsea-flashcard" id="portsea-card1">
-      <div class="img-placeholder"></div>
-      <div class="project-info">
-        <h4>Portsea Mews</h4>
-        <h4>Branding</h4>
-        <h4>Designer for Smart Soho</h4>
-        <h4>1 of 13</h4>
-      </div>
-    </div>
-    <div class="flashcard portsea-flashcard" id="portsea-card2">
-      <p class="card-text">Throughout its history, Portsea Mews has been a home to craftsmanship in many forms. Originally built to stable horses and carriages, it later housed a Corn Store, reflecting its utilitarian beginnings. From 1954 to 2018, it became home to Handman & Collis, central London's oldest car repair garage. Today, Portsea Mews stands as a tribute to its crafted past, reimagined for modern living.</p>
-      <div class="project-info">
-        <h4>Portsea Mews</h4>
-        <h4>Branding</h4>
-        <h4>Designer for Smart Soho</h4>
-        <h4>2 of 13</h4>
-      </div>
-    </div>
-    <div class="flashcard portsea-flashcard" id="portsea-card3">
-      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      <div class="img-placeholder placeholder-one"></div>
-      <div class="img-placeholder placeholder-two"></div>
-      <div class="img-placeholder placeholder-three"></div>
-      <div class="img-placeholder placeholder-four"></div>
-      <div class="project-info">
-        <h4>Portsea Mews</h4>
-        <h4>Branding</h4>
-        <h4>Designer for Smart Soho</h4>
-        <h4>3 of 13</h4>
-      </div>
-    </div>
-    <div class="flashcard portsea-flashcard" id="portsea-card4">
-      <div class="img-placeholder placeholder-one"></div>
-      <div class="img-placeholder placeholder-two"></div>
-      <p class="card-text">
-      Lorem ipsum dolor sit amet, consectetur adipiscing
-      elit, sed do eiusmod tempor incididunt ut labore et
-      dolore magna aliqua. Ut enim ad minim. Lorem ipsum dolor sit amet, consectetur adipiscing
-      elit, sed do eiusmod tempor incididunt.
-      </p>
-      <div class="project-info">
-        <h4>Portsea Mews</h4>
-        <h4>Branding</h4>
-        <h4>Designer for Smart Soho</h4>
-        <h4>4 of 13</h4>
-      </div>
-    </div>
-    <div class="flashcard portsea-flashcard" id="portsea-card5">
-      <h4 class="card-title">PROJECT NAME</h4>
-      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam.</p>
-      <div class="img-placeholder"></div>
-      <div class="project-info">
-        <h4>Portsea Mews</h4>
-        <h4>Branding</h4>
-        <h4>Designer for Smart Soho</h4>
-        <h4>5 of 13</h4>
-      </div>
-    </div>
-        <div class="flashcard portsea-flashcard" id="portsea-card6">
-      <div class="img-placeholder"></div>
-      <div class="project-info">
-        <h4>Portsea Mews</h4>
-        <h4>Branding</h4>
-        <h4>Designer for Smart Soho</h4>
-        <h4>6 of 13</h4>
-      </div>
-    </div>
-        <div class="flashcard portsea-flashcard" id="portsea-card7">
-      <div class="img-placeholder placeholder-one"></div>
-      <div class="img-placeholder placeholder-two"></div>
-      <div class="img-placeholder placeholder-three"></div>
-      <div class="img-placeholder placeholder-four"></div>
-      <div class="img-placeholder placeholder-five"></div>
-      <div class="project-info">
-        <h4>Portsea Mews</h4>
-        <h4>Branding</h4>
-        <h4>Designer for Smart Soho</h4>
-        <h4>7 of 13</h4>
-      </div>
-    </div>
-      <div class="flashcard portsea-flashcard" id="portsea-card8">
-      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</p>
-      <div class="img-placeholder placeholder-one"></div>
-      <div class="img-placeholder placeholder-two"></div>
-      <div class="project-info">
-        <h4>Portsea Mews</h4>
-        <h4>Branding</h4>
-        <h4>Designer for Smart Soho</h4>
-        <h4>8 of 13</h4>
-      </div>
-    </div>
-        <div class="flashcard portsea-flashcard" id="portsea-card9">
-      <div class="img-placeholder placeholder-one"></div>
-      <div class="img-placeholder placeholder-two"></div>
-      <div class="img-placeholder placeholder-three"></div>
-      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      <div class="project-info">
-        <h4>Portsea Mews</h4>
-        <h4>Branding</h4>
-        <h4>Designer for Smart Soho</h4>
-        <h4>9 of 13</h4>
-      </div>
-    </div>
-        <div class="flashcard portsea-flashcard" id="portsea-card10">
-      <div class="img-placeholder placeholder-one"></div>
-      <div class="img-placeholder placeholder-two"></div>
-      <div class="img-placeholder placeholder-three"></div>
-      <p class="card-text"><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      <div class="project-info">
-        <h4>Portsea Mews</h4>
-        <h4>Branding</h4>
-        <h4>Designer for Smart Soho</h4>
-        <h4>10 of 13</h4>
-      </div>
-    </div>
-        <div class="flashcard portsea-flashcard" id="portsea-card11">
-      <div class="img-placeholder"></div>
-      <div class="project-info">
-        <h4>Portsea Mews</h4>
-        <h4>Branding</h4>
-        <h4>Designer for Smart Soho</h4>
-        <h4>11 of 13</h4>
-      </div>
-    </div>
-        <div class="flashcard portsea-flashcard" id="portsea-card12">
-      <div class="img-placeholder"></div>
-      <div class="project-info">
-        <h4>Portsea Mews</h4>
-        <h4>Branding</h4>
-        <h4>Designer for Smart Soho</h4>
-        <h4>12 of 13</h4>
-      </div>
-    </div>
-        <div class="flashcard portsea-flashcard" id="portsea-card13">
-      <div class="img-placeholder placeholder-one"></div>
-      <div class="img-placeholder placeholder-two"></div>
-      <div class="img-placeholder placeholder-three"></div>
-      <div class="img-placeholder placeholder-four"></div>
-      <div class="img-placeholder placeholder-five"></div>
-      <div class="img-placeholder placeholder-six"></div>
-      <div class="img-placeholder placeholder-seven"></div>
-      <div class="img-placeholder placeholder-eight"></div>
-      <div class="img-placeholder placeholder-nine"></div>
-      <div class="img-placeholder placeholder-ten"></div>
-      <div class="img-placeholder placeholder-eleven"></div>
-      <div class="img-placeholder placeholder-twelve"></div>
-      <div class="img-placeholder placeholder-thirteen"></div>
-      <div class="img-placeholder placeholder-fourteen"></div>
-      <div class="img-placeholder placeholder-fifteen"></div>
-      <div class="img-placeholder placeholder-sixteen"></div>
-      <div class="img-placeholder placeholder-seventeen"></div>
-      <div class="img-placeholder placeholder-eighteen"></div>
-      <div class="img-placeholder placeholder-nineteen"></div>
-      <div class="img-placeholder placeholder-twenty"></div>
-      <div class="project-info">
-        <h4>Portsea Mews</h4>
-        <h4>Branding</h4>
-        <h4>Designer for Smart Soho</h4>
-        <h4>13 of 13</h4>
-      </div>
-    </div>
-      <div class="nav-buttons">
-    <h4 onclick="window.location.href='../work.html'">&lt;- Back</h4>
-    <h4 onclick="window.location.href='rlamls.html'">More -&gt;</h4>
-  </div>
-  </div>
-  </div>
-  <script src="flash.js"></script>
+
+
+  <noscript data-nosnippet>
+    <main
+      style="height: 100vh; width: 100vw; background-color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+      <h1 style="font-size: 24px; padding: 8px; color: black">
+        This site requires JavaScript
+      </h1>
+      <p style="font-size: 16px; padding: 8px; color: #00000080">To view this website, enable JavaScript in your browser
+        settings and reload the page.</p>
+      <form style="margin-top: 12px;" action="">
+        <button type="submit"
+          style="font-size: 14px; color: black; border: 1px solid #0000001a; border-radius: 5px; width: 256px; height: 32px;">
+          Reload page
+        </button>
+      </form>
+    </main>
+  </noscript>
 </body>
+
 </html>

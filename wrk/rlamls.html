@@ -1,171 +1,2215 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>RLAMLS Flashcards</title>
-  <link rel="stylesheet" href="../styles.css" />
-  <link rel="stylesheet" href="wrk-styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-  <link rel="icon" type="image/png" href="../Assets/favicon.png">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <meta charset="utf-8" />
+  <noscript>
+    <style>
+      #container {
+        display: none;
+      }
+    </style>
+  </noscript>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="preload"
+    href="/_runtimes/sites-runtime.b69569d0baef319082b5422507ab08a06908495a02069eb739f5ee4ed1c9c0bb.js" as="script"
+    crossorigin />
+  <link rel="preload" href="/_json/9c0173cd-636d-4fc7-9dac-5424e85f3fc9/rlam.json" as="fetch" />
+  <style id="reset-css">
+    @layer figreset, figoverridable, reset, theme, base, figutils, components, utilities;
+
+    @layer figoverridable {
+      :root {
+        font-synthesis: none
+      }
+    }
+
+    @layer figutils {
+      :root {
+        --banner-height: 48px;
+        --banner-height-v2: 40px;
+        --full-height-with-banner: calc(100dvh - var(--banner-height))
+      }
+
+      @media (max-width:600px) {
+        .banner-v2-container {
+          left: 0 !important;
+          right: 0 !important;
+          margin: 0 auto !important
+        }
+      }
+
+      .wrapper-with-banner .min-h-screen {
+        min-height: var(--full-height-with-banner)
+      }
+
+      .wrapper-with-banner .h-screen {
+        height: var(--full-height-with-banner)
+      }
+    }
+
+    @layer figreset {
+      :root {
+        font-family: var(--default-font-family, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji')
+      }
+
+      html {
+        -webkit-text-size-adjust: 100%;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-font-smoothing: antialiased;
+        width: 100%
+      }
+
+      body {
+        margin: 0;
+        width: 100%
+      }
+
+      body:has([data-page-overflowx='hidden']) {
+        overflow-x: hidden
+      }
+
+      body:has([data-page-overflowx='auto']) {
+        overflow-x: auto
+      }
+    }
+
+    @layer figutils {
+      #container {
+        width: 100%
+      }
+    }
+
+    @layer figreset {
+
+      *,
+      *:before,
+      *:after {
+        box-sizing: border-box
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none
+      }
+
+      button {
+        border: none;
+        background: none;
+        padding: 0
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p {
+        font-size: inherit;
+        font-weight: inherit
+      }
+
+      blockquote,
+      dl,
+      dd,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      hr,
+      figure,
+      p,
+      pre {
+        margin: 0
+      }
+
+      ol,
+      ul,
+      menu {
+        list-style: none;
+        margin: 0;
+        padding-inline-start: 0
+      }
+    }
+
+    @layer figreset {
+      #container .textContents {
+        color: #ffffff00
+      }
+    }
+
+    @layer figutils {
+      :is(.textContents ul, ul.textContents)>li:before {
+        content: '\2022';
+        margin-left: -1.5em;
+        display: inline-block;
+        text-align: center;
+        width: 1.5em;
+        -webkit-background-clip: var(--list-marker-background-clip);
+        -webkit-text-fill-color: var(--list-marker-text-fill-color);
+        background-clip: var(--list-marker-background-clip);
+        background-image: var(--list-marker-background-image);
+        color: var(--list-marker-color);
+        font-size: var(--list-marker-font-size);
+        line-height: var(--list-marker-line-height);
+        mix-blend-mode: var(--list-marker-mix-blend-mode);
+        vertical-align: var(--list-marker-vertical-align)
+      }
+
+      :is(.textContents ol, ol.textContents)>li::marker {
+        color: var(--list-marker-color);
+        font-size: var(--list-marker-font-size);
+        line-height: var(--list-marker-line-height);
+        vertical-align: var(--list-marker-vertical-align)
+      }
+
+      :is(.textContents, .textContents *).adjustLetterSpacing:after {
+        content: '';
+        margin-left: calc(var(--letter-spacing) * -1)
+      }
+    }
+
+    @layer figutils {
+      #container .textClip {
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent !important
+      }
+
+      #container .textClip>* {
+        -webkit-text-fill-color: initial
+      }
+    }
+
+    @layer figutils {
+      #container .embed {
+        border: none
+      }
+    }
+
+    @layer figutils {
+      #container .marquee-container {
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        width: var(--width);
+        transform: var(--transform);
+
+        &:hover div {
+          animation-play-state: var(--pause-on-hover)
+        }
+
+        &:active div {
+          animation-play-state: var(--pause-on-click)
+        }
+      }
+
+      #container .marquee {
+        flex: 0 0 auto;
+        min-width: var(--min-width);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        animation: scroll var(--duration) linear var(--delay) var(--iteration-count);
+        animation-delay: var(--delay);
+        animation-direction: var(--direction);
+        animation-timing-function: var(--timing-function)
+      }
+
+      #container .marquee.reduced-motion {
+        @media (prefers-reduced-motion:reduce) {
+          animation: none
+        }
+      }
+
+      @keyframes scroll {
+        0% {
+          transform: translateX(0%)
+        }
+
+        100% {
+          transform: translateX(-100%)
+        }
+      }
+
+      #container .marquee-initial-child-container {
+        flex: 0 0 auto;
+        display: flex;
+        min-width: auto;
+        flex-direction: row;
+        align-items: center
+      }
+
+      #container .marquee-child {
+        transform: var(--transform)
+      }
+    }
+
+    @layer figutils {
+      .code-behavior-wrapper>* {
+        width: 100%;
+        height: 100%
+      }
+    }
+
+    @layer figreset {
+      :root {
+        --100dvw: 100vw;
+        --100dvh: 100vh
+      }
+
+      @supports (width:100dvw) {
+        :root {
+          --100dvw: 100dvw;
+          --100dvh: 100dvh
+        }
+      }
+    }
+
+    @layer figutils {
+      .bypass-link {
+        position: fixed;
+        top: 16px;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        pointer-events: none
+      }
+
+      .bypass-link:focus-within {
+        opacity: 1;
+        z-index: 10000
+      }
+
+      .bypass-link>a {
+        background-color: #000;
+        color: #fff;
+        border: 1px solid #fff;
+        padding: 12px 16px;
+        font-size: 16px;
+        border-radius: 12px;
+        pointer-events: auto
+      }
+    }
+
+    @layer figreset {
+      :root {
+        text-align: left;
+
+        button {
+          text-align: left
+        }
+      }
+    }
+  </style>
+  <style id="font-faces-nt7j2c">
+    @font-face {
+      font-family: "Cute Font:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/CuteFont-Regular_1/CuteFont-Regular_1-english.woff2");
+      font-display: block;
+      unicode-range: U+0000-00A0, U+00A2-00A9, U+00AC-00AE, U+00B0-00B7, U+00B9-00BA, U+00BC-00BE, U+00D7, U+00F7, U+2000-206F, U+2074, U+20AC, U+2122, U+2190-21BB, U+2212, U+2215, U+F8FF, U+FEFF, U+FFFD
+    }
+
+    @font-face {
+      font-family: "Cute Font:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/CuteFont-Regular_1/CuteFont-Regular_1-rest-latin.woff2");
+      font-display: block;
+      unicode-range: U+00A1, U+00AA-00AB, U+00AF, U+00B8, U+00BB, U+00BF-00D6, U+00D8-00F6, U+00F8-00FF, U+0131, U+0152-0153, U+02B0-02FF
+    }
+
+    @font-face {
+      font-family: "Cute Font:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/CuteFont-Regular_1/CuteFont-Regular_1-latin-extended-a.woff2");
+      font-display: block;
+      unicode-range: U+0100-0130, U+0132-0151, U+0154-017F
+    }
+
+    @font-face {
+      font-family: "Cute Font:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/CuteFont-Regular_1/CuteFont-Regular_1-latin-extended-b.woff2");
+      font-display: block;
+      unicode-range: U+0180-024F
+    }
+
+    @font-face {
+      font-family: "Cute Font:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/CuteFont-Regular_1/CuteFont-Regular_1-latin-extended-additional.woff2");
+      font-display: block;
+      unicode-range: U+1E00-1EFF
+    }
+
+    @font-face {
+      font-family: "Cute Font:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/CuteFont-Regular_1/CuteFont-Regular_1-rest.woff2");
+      font-display: block;
+      unicode-range: U+0250-02AF, U+0300-1DFF, U+1F00-1FFF, U+2070-2073, U+2075-20AB, U+20AD-2121, U+2123-218F, U+21BC-2211, U+2213-2214, U+2216-F8FE, U+F900-FEFE, U+FF00-FFFC, U+FFFE-FFFF
+    }
+
+    @font-face {
+      font-family: "DM Sans:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/DMSans_opsz_wght__1/DMSans_opsz_wght__1-english.woff2");
+      font-display: block;
+      unicode-range: U+0000-00A0, U+00A2-00A9, U+00AC-00AE, U+00B0-00B7, U+00B9-00BA, U+00BC-00BE, U+00D7, U+00F7, U+2000-206F, U+2074, U+20AC, U+2122, U+2190-21BB, U+2212, U+2215, U+F8FF, U+FEFF, U+FFFD
+    }
+
+    @font-face {
+      font-family: "DM Sans:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/DMSans_opsz_wght__1/DMSans_opsz_wght__1-rest-latin.woff2");
+      font-display: block;
+      unicode-range: U+00A1, U+00AA-00AB, U+00AF, U+00B8, U+00BB, U+00BF-00D6, U+00D8-00F6, U+00F8-00FF, U+0131, U+0152-0153, U+02B0-02FF
+    }
+
+    @font-face {
+      font-family: "DM Sans:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/DMSans_opsz_wght__1/DMSans_opsz_wght__1-latin-extended-a.woff2");
+      font-display: block;
+      unicode-range: U+0100-0130, U+0132-0151, U+0154-017F
+    }
+
+    @font-face {
+      font-family: "DM Sans:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/DMSans_opsz_wght__1/DMSans_opsz_wght__1-latin-extended-b.woff2");
+      font-display: block;
+      unicode-range: U+0180-024F
+    }
+
+    @font-face {
+      font-family: "DM Sans:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/DMSans_opsz_wght__1/DMSans_opsz_wght__1-latin-extended-additional.woff2");
+      font-display: block;
+      unicode-range: U+1E00-1EFF
+    }
+
+    @font-face {
+      font-family: "DM Sans:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/DMSans_opsz_wght__1/DMSans_opsz_wght__1-rest.woff2");
+      font-display: block;
+      unicode-range: U+0250-02AF, U+0300-1DFF, U+1F00-1FFF, U+2070-2073, U+2075-20AB, U+20AD-2121, U+2123-218F, U+21BC-2211, U+2213-2214, U+2216-F8FE, U+F900-FEFE, U+FF00-FFFC, U+FFFE-FFFF
+    }
+  </style>
+  <style id="breakpoint-css">
+    @media (width < 1440px) {
+      [data-breakpoint-id="node-15_6659"] {
+        display: none !important
+      }
+    }
+
+    @media (width >=1440px) {
+      [data-breakpoint-id="node-15_7211"] {
+        display: none !important
+      }
+    }
+  </style>
+  <style id="body-background-color">
+    @media (max-width: 1439px) {
+      body:has([data-breakpoint-id="node-15_7211"]) {
+        background-color: #FFF
+      }
+    }
+
+    @media (min-width: 1440px) {
+      body:has([data-breakpoint-id="node-15_6659"]) {
+        background-color: #FFF
+      }
+    }
+  </style>
+  <style id="ssr-css">
+    #container .css-ll733z {
+      position: relative;
+    }
+
+    #container .css-j6ldtg {
+      min-width: var(--content-min-width);
+      width: 100%;
+      height: var(--content-min-height);
+    }
+
+    #container .css-a0mwfh {
+      --content-min-width: max(100%, 375px);
+      --content-min-height: max(var(--100dvh), 4529px);
+    }
+
+    #container .css-vf8mzy {
+      position: relative;
+      display: block;
+    }
+
+    #container .css-kw3itv {
+      --content-min-width: max(100%, 375px);
+      --content-min-height: max(var(--100dvh), 4529px);
+      overflow: clip;
+      background-color: #FFF;
+    }
+
+    #container .css-j9f0op {
+      width: 100%;
+      height: 100%;
+    }
+
+    #container .css-8zr56v {
+      display: block;
+    }
+
+    #container .css-befhmj {
+      width: 295.263px;
+      height: 161.579px;
+      left: 8px;
+      top: 1304px;
+    }
+
+    #container .css-trglf0 {
+      position: absolute;
+    }
+
+    #container .css-roiesn {
+      position: absolute;
+      display: block;
+    }
+
+    #container .css-9j6u1t {
+      width: 100%;
+      height: 100%;
+      max-width: none;
+    }
+
+    #container .css-wixxpz {
+      inset: 0;
+    }
+
+    #container .css-mlxwnx {
+      width: 234.184px;
+      height: 918.299px;
+      right: 14.82px;
+      top: 424px;
+    }
+
+    #container .css-grtgjx {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #container .css-ayg824 {
+      flex: 0 0 auto;
+    }
+
+    #container .css-y9r2sv {
+      transform: matrix(-0.04991115629673004, -0.9987536668777466, 0.9987536668777466, -0.04991115629673004, 0, 0);
+    }
+
+    #container .css-edc7e7 {
+      width: auto;
+      height: auto;
+    }
+
+    #container .css-bj6mv3 {
+      width: 910px;
+      height: 189px;
+    }
+
+    #container .css-h28ngu {
+      position: relative;
+      display: block;
+      border-radius: 20px;
+    }
+
+    #container .css-r0azwh {
+      inset: 0px;
+      pointer-events: none;
+    }
+
+    #container .css-jvd8z0 {
+      border-radius: 20px;
+    }
+
+    #container .css-bbmv0m {
+      background-color: #FFF;
+    }
+
+    #container .css-ez8men {
+      max-width: none;
+      width: 100%;
+      height: 100%;
+    }
+
+    #container .css-s9ceyc {
+      position: absolute;
+      border-radius: 20px;
+    }
+
+    #container .css-75y27k {
+      object-fit: contain;
+      object-position: 50% 50%;
+    }
+
+    #container .css-25y1dh {
+      width: 187.838px;
+      height: 248.551px;
+      left: 25.04px;
+      top: 306.04px;
+    }
+
+    #container .css-bz2tic {
+      position: absolute;
+      display: contents;
+    }
+
+    #container .css-n9lut {
+      width: 187.735px;
+      height: 242.638px;
+      left: 25.15px;
+      top: 311.95px;
+    }
+
+    #container .css-wj2ivb {
+      transform: matrix(0.9998506307601929, -0.017284151166677475, 0.017284151166677475, 0.9998506307601929, 0, 0);
+    }
+
+    #container .css-lvctdb {
+      width: 183.623px;
+      height: 239.5px;
+    }
+
+    #container .css-i0sq2k {
+      position: relative;
+      display: block;
+      border-radius: 7.5px;
+    }
+
+    #container .css-sr4pu5 {
+      box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.25);
+      background-color: #FFF;
+    }
+
+    #container .css-ixl8zx {
+      width: 94.5px;
+      height: 13.504px;
+      left: 69.82px;
+      top: 306.81px;
+    }
+
+    #container .css-gyjj09 {
+      transform: matrix(0.9998506307601929, -0.017284151166677475, 0.01728415116667748, 0.9998506307601929, 0, 0);
+    }
+
+    #container .css-jfj40x {
+      width: 94.309px;
+      height: 11.876px;
+    }
+
+    #container .css-e7p8mt {
+      width: 168.464px;
+      height: 217.783px;
+      left: 33.4px;
+      top: 323.14px;
+    }
+
+    #container .css-xfkjq1 {
+      transform: matrix(0.9998609654365911, -0.01667251850975962, 0.01654909568791762, 0.9998630394004413, 0, 0);
+    }
+
+    #container .css-ld0hsi {
+      display: block;
+      position: relative;
+    }
+
+    #container .css-acqqyv {
+      width: 164.928px;
+      height: 215.062px;
+    }
+
+    #container .css-oom5nr {
+      white-space: pre-wrap;
+      font-family: "DM Sans:Regular", sans-serif;
+      word-break: break-word;
+      font-weight: 400;
+      font-size: 12px;
+      letter-spacing: -0.48px;
+      line-height: 17px;
+    }
+
+    #container .css-y7f465 {
+      font-variation-settings: "opsz" 14;
+      color: #110C47;
+      --letter-spacing: -0.48px;
+    }
+
+    #container .css-36pt13 {
+      width: 191.566px;
+      height: 108.723px;
+      left: 13.81px;
+      top: 1202.05px;
+    }
+
+    #container .css-e7ff36 {
+      width: 190.933px;
+      height: 102.161px;
+      left: 14.44px;
+      top: 1208.61px;
+    }
+
+    #container .css-uz9sdv {
+      transform: matrix(0.9953728318214417, -0.09608818590641022, 0.09608818590641022, 0.9953728318214417, 0, 0);
+    }
+
+    #container .css-j0q37e {
+      width: 183.623px;
+      height: 84.91px;
+    }
+
+    #container .css-g1zks {
+      width: 104.186px;
+      height: 21.142px;
+      left: 50.94px;
+      top: 1206.15px;
+    }
+
+    #container .css-p8qtzk {
+      transform: matrix(0.9953728318214417, -0.09608818590641025, 0.09608818590641022, 0.9953728318214417, 0, 0);
+    }
+
+    #container .css-61cakd {
+      width: 103.585px;
+      height: 11.24px;
+    }
+
+    #container .css-9q18w4 {
+      width: 177.213px;
+      height: 82.675px;
+      left: 23.27px;
+      top: 1218.24px;
+    }
+
+    #container .css-yu3wxs {
+      transform: matrix(0.995395307151727, -0.09585474474414615, 0.09417931242327582, 0.9955552483394547, 0, 0);
+    }
+
+    #container .css-wl63xd {
+      width: 171.74px;
+      height: 66.509px;
+    }
+
+    #container .css-n1bcwo {
+      width: 353px;
+      height: 257px;
+      left: 50%;
+      top: 20px;
+    }
+
+    #container .css-8hhw9a {
+      transform: translateX(-50%);
+    }
+
+    #container .css-boujbd {
+      transform: translateX(-50%);
+      box-shadow: 1px 2px 3px 2px rgba(0, 0, 0, 0.25);
+    }
+
+    #container .css-yozq13 {
+      position: absolute;
+      display: block;
+      border-radius: 20px;
+    }
+
+    #container .css-9unj7x {
+      object-fit: cover;
+      object-position: 50% 50%;
+    }
+
+    #container .css-389oi4 {
+      width: 12.582px;
+      height: 11.063px;
+      left: 179px;
+      top: 14px;
+    }
+
+    #container .css-u5fr0a {
+      width: 206.369px;
+      height: 260.627px;
+      left: 169px;
+      top: 446px;
+    }
+
+    #container .css-qr9913 {
+      transform: matrix(0.9910229444503784, 0.13369162380695343, -0.13369162380695343, 0.9910229444503784, 0, 0);
+    }
+
+    #container .css-a82zcf {
+      width: 175.963px;
+      height: 239.25px;
+    }
+
+    #container .css-pz70cw {
+      top: 0;
+      left: -1.25%;
+      right: -4.66%;
+      bottom: -3.84%;
+    }
+
+    #container .css-3p4upp {
+      width: 355px;
+      height: 145px;
+      left: 7px;
+      top: 1506px;
+    }
+
+    #container .css-qdnttd {
+      width: 132.531px;
+      height: 94.119px;
+      left: 232px;
+      top: 1639.76px;
+    }
+
+    #container .css-32v1c6 {
+      width: 131.591px;
+      height: 87.596px;
+      left: 232px;
+      top: 1646.28px;
+    }
+
+    #container .css-wdgvo7 {
+      transform: matrix(0.9897711277008057, 0.14266446232795715, -0.14266446232795715, 0.9897711277008057, 0, 0);
+    }
+
+    #container .css-hnrd20 {
+      width: 122.745px;
+      height: 70.809px;
+    }
+
+    #container .css-739y4 {
+      width: 64.15px;
+      height: 20.436px;
+      left: 273.99px;
+      top: 1644.45px;
+    }
+
+    #container .css-vzzsih {
+      transform: matrix(0.9897711277008057, 0.14266446232795715, -0.14266446232795713, 0.9897711277008057, 0, 0);
+    }
+
+    #container .css-2b1dcr {
+      width: 63.148px;
+      height: 11.545px;
+    }
+
+    #container .css-7nllao {
+      width: 118.553px;
+      height: 65.749px;
+      left: 241.41px;
+      top: 1656.58px;
+    }
+
+    #container .css-nfyi42 {
+      transform: matrix(0.9897376110292602, 0.1428965749971197, -0.14456215150607182, 0.9894957301440539, 0, 0);
+    }
+
+    #container .css-6xfx8k {
+      width: 112.449px;
+      height: 50.207px;
+    }
+
+    #container .css-nliils {
+      width: 161.443px;
+      height: 295.579px;
+      left: 20px;
+      top: 2352.92px;
+    }
+
+    #container .css-w7ado4 {
+      width: 161.048px;
+      height: 287.177px;
+      left: 20px;
+      top: 2361.32px;
+    }
+
+    #container .css-7txo7d {
+      transform: matrix(0.9988974332809448, 0.04694565385580062, -0.04694565385580064, 0.9988974332809448, 0, 0);
+    }
+
+    #container .css-yzdb0b {
+      width: 148.041px;
+      height: 280.536px;
+    }
+
+    #container .css-ejfn4x {
+      width: 105.73px;
+      height: 18.291px;
+      left: 58.1px;
+      top: 2354.1px;
+    }
+
+    #container .css-80o7s8 {
+      transform: matrix(0.9988974332809448, 0.04694565385580062, -0.04694565385580065, 0.9988974332809448, 0, 0);
+    }
+
+    #container .css-bk64om {
+      width: 105.219px;
+      height: 13.366px;
+    }
+
+    #container .css-eoeyuy {
+      width: 137.945px;
+      height: 56.54px;
+      left: 39.87px;
+      top: 2371.02px;
+    }
+
+    #container .css-6jkqv0 {
+      transform: matrix(0.998888245349713, 0.04713988261889793, -0.04925573388072793, 0.9987861801908086, 0, 0);
+    }
+
+    #container .css-ok1dsz {
+      width: 135.623px;
+      height: 50.207px;
+    }
+
+    #container .css-ich8nt {
+      width: 324.999px;
+      height: 182.2px;
+      left: 10px;
+      top: 1764px;
+    }
+
+    #container .css-qldc01 {
+      width: 349.789px;
+      height: 172.805px;
+      left: 10.21px;
+      top: 1963px;
+    }
+
+    #container .css-1r6pw9 {
+      width: 280.523px;
+      height: 127.077px;
+      left: 10px;
+      top: 2151px;
+    }
+
+    #container .css-884kh {
+      left: 193px;
+      top: 2518px;
+    }
+
+    #container .css-6ssr6x {
+      width: 162px;
+      height: 147px;
+      left: 193px;
+      top: 2518px;
+    }
+
+    #container .css-188412 {
+      width: 128.598px;
+      height: 114.408px;
+      left: 209.23px;
+      top: 2533.87px;
+    }
+
+    #container .css-phc9f9 {
+      overflow: hidden;
+      inset: 0px;
+    }
+
+    #container .css-97bw9u {
+      width: 538.24%;
+      height: 340.31%;
+      top: -66.67%;
+      left: -102.91%;
+      max-width: none;
+    }
+
+    #container .css-aw0s0t {
+      left: 195.6px;
+      top: 2850.72px;
+    }
+
+    #container .css-894h4n {
+      width: 164.326px;
+      height: 165.276px;
+      left: 195.6px;
+      top: 2850.72px;
+    }
+
+    #container .css-n6mjhb {
+      width: 138.68px;
+      height: 122.532px;
+      left: 208.9px;
+      top: 2880.17px;
+    }
+
+    #container .css-cmljwb {
+      width: 534.55%;
+      height: 340.31%;
+      top: -66.67%;
+      left: -217.28%;
+      max-width: none;
+    }
+
+    #container .css-n40n0r {
+      left: 9.95px;
+      top: 2850.72px;
+    }
+
+    #container .css-ej8yho {
+      width: 165.276px;
+      height: 165.276px;
+      left: 9.95px;
+      top: 2850.72px;
+    }
+
+    #container .css-wugass {
+      width: 131.081px;
+      height: 122.532px;
+      left: 28px;
+      top: 2880.17px;
+    }
+
+    #container .css-hdjnfj {
+      width: 565.54%;
+      height: 340.31%;
+      top: -179.84%;
+      left: -113.2%;
+      max-width: none;
+    }
+
+    #container .css-flo3gr {
+      left: 194.65px;
+      top: 2675px;
+    }
+
+    #container .css-ks64w4 {
+      width: 165.276px;
+      height: 165.276px;
+      left: 194.65px;
+      top: 2675px;
+    }
+
+    #container .css-47d7cu {
+      width: 145.329px;
+      height: 122.532px;
+      left: 204.15px;
+      top: 2704.45px;
+    }
+
+    #container .css-234hu3 {
+      width: 510.09%;
+      height: 340.31%;
+      top: -67.44%;
+      left: -313.22%;
+      max-width: none;
+    }
+
+    #container .css-olrcpo {
+      width: 13px;
+      height: 13px;
+      left: 272px;
+      top: 2518px;
+    }
+
+    #container .css-p3mbah {
+      left: 9px;
+      top: 2675px;
+    }
+
+    #container .css-scv9mu {
+      width: 165.276px;
+      height: 165.276px;
+      left: 9px;
+      top: 2675px;
+    }
+
+    #container .css-efox1r {
+      width: 145.329px;
+      height: 122.532px;
+      left: 25.57px;
+      top: 2704.45px;
+    }
+
+    #container .css-6w5stc {
+      width: 510.09%;
+      height: 340.31%;
+      top: -181.08%;
+      left: -313.22%;
+      max-width: none;
+    }
+
+    #container .css-mm5v05 {
+      width: 109px;
+      height: 494px;
+      left: 23px;
+      top: 705px;
+    }
+
+    #container .css-i0ezie {
+      width: 13px;
+      height: 13px;
+      left: 85px;
+      top: 2675px;
+    }
+
+    #container .css-i0g7wm {
+      width: 13px;
+      height: 13px;
+      left: 85px;
+      top: 2851px;
+    }
+
+    #container .css-olqlck {
+      width: 13px;
+      height: 13px;
+      left: 272px;
+      top: 2675px;
+    }
+
+    #container .css-olpcyc {
+      width: 13px;
+      height: 13px;
+      left: 272px;
+      top: 2851px;
+    }
+
+    #container .css-v5s1t5 {
+      width: 352px;
+      height: 581.132px;
+      left: 13px;
+      top: 3054.99px;
+    }
+
+    #container .css-uhi680 {
+      top: 0;
+      left: -1.14%;
+      right: -1.14%;
+      bottom: -0.69%;
+    }
+
+    #container .css-tzn6qh {
+      display: block;
+      position: absolute;
+    }
+
+    #container .css-2a9gdl {
+      transform: translateY(100%);
+      color: #000;
+      --letter-spacing: -1.12px;
+    }
+
+    #container .css-wgai7u {
+      left: 23px;
+      bottom: 47px;
+    }
+
+    #container .css-ugqh3r {
+      white-space: pre;
+      font-family: "Cute Font:Regular", sans-serif;
+      word-break: break-word;
+      font-style: normal;
+      font-size: 28px;
+      letter-spacing: -1.12px;
+      line-height: 17px;
+    }
+
+    #container .css-gmz808 {
+      transform: translateX(100%) translateY(100%);
+      color: #000;
+      --letter-spacing: -1.12px;
+    }
+
+    #container .css-qkzmed {
+      right: 92px;
+      bottom: 47px;
+    }
+
+    #container .css-zdykm3 {
+      width: 314px;
+      height: 188px;
+      left: 8px;
+      top: 3659px;
+    }
+
+    #container .css-q2q4lj {
+      width: 315px;
+      height: 185px;
+      left: 27px;
+      top: 3861px;
+    }
+
+    #container .css-ocomrn {
+      width: 314px;
+      height: 185px;
+      left: 20px;
+      top: 4060px;
+    }
+
+    #container .css-jv84jq {
+      width: 315px;
+      height: 185px;
+      left: 34px;
+      top: 4252px;
+    }
+
+    #container .css-wc5pd6 {
+      --content-min-width: max(100%, 1440px);
+      --content-min-height: max(var(--100dvh), 2827px);
+    }
+
+    #container .css-d2y1ww {
+      --content-min-width: max(100%, 1440px);
+      --content-min-height: max(var(--100dvh), 2827px);
+      overflow: clip;
+      background-color: #FFF;
+    }
+
+    #container .css-wxxb76 {
+      width: 915.34px;
+      height: 216.661px;
+      left: calc(50% + 41.67px);
+      top: 749px;
+    }
+
+    #container .css-g1gfz7 {
+      transform: matrix(0.9995349645614624, -0.030493807047605515, 0.030493807047605515, 0.9995349645614624, 0, 0);
+    }
+
+    #container .css-vvlg3m {
+      width: 590px;
+      height: 430px;
+      left: 479px;
+      top: 46px;
+    }
+
+    #container .css-6kywl1 {
+      box-shadow: 1px 2px 3px 2px rgba(0, 0, 0, 0.25);
+    }
+
+    #container .css-aqxbiq {
+      width: 21px;
+      height: 18px;
+      left: 765px;
+      top: 36px;
+    }
+
+    #container .css-slnd3e {
+      width: 273.685px;
+      height: 345.641px;
+      left: 601px;
+      top: 396px;
+    }
+
+    #container .css-wrxd48 {
+      width: 233.361px;
+      height: 317.291px;
+    }
+
+    #container .css-597600 {
+      top: 0;
+      left: -0.94%;
+      right: -3.51%;
+      bottom: -2.9%;
+    }
+
+    #container .css-lx3vof {
+      width: 355px;
+      height: 145px;
+      left: 303px;
+      top: 1008px;
+    }
+
+    #container .css-xb0ivz {
+      width: 154.209px;
+      height: 141.664px;
+      left: 393px;
+      top: 1566px;
+    }
+
+    #container .css-6h4pqy {
+      width: 154.025px;
+      height: 137.743px;
+      left: 393px;
+      top: 1569.92px;
+    }
+
+    #container .css-kjvnl4 {
+      transform: matrix(0.9988974332809448, 0.04694565385580063, -0.04694565385580064, 0.9988974332809448, 0, 0);
+    }
+
+    #container .css-3sy0s2 {
+      width: 148.041px;
+      height: 130.937px;
+    }
+
+    #container .css-qwq4tt {
+      width: 105.395px;
+      height: 11.171px;
+      left: 424.2px;
+      top: 1567.18px;
+    }
+
+    #container .css-tb5w43 {
+      transform: matrix(0.9988974332809448, 0.046945653855800636, -0.046945653855800636, 0.9988974332809448, 0, 0);
+    }
+
+    #container .css-enk4al {
+      width: 105.218px;
+      height: 6.238px;
+    }
+
+    #container .css-6ob2q1 {
+      width: 136.689px;
+      height: 29.782px;
+      left: 407.33px;
+      top: 1574.69px;
+    }
+
+    #container .css-jioih4 {
+      transform: matrix(0.9988931131633187, 0.047036306544926076, -0.05189470190443968, 0.9986525484259098, 0, 0);
+    }
+
+    #container .css-3v20t7 {
+      width: 135.623px;
+      height: 23.434px;
+    }
+
+    #container .css-x5k64o {
+      width: 324.999px;
+      height: 182.2px;
+      left: 762px;
+      top: 1172px;
+    }
+
+    #container .css-qf4ct {
+      width: 349.789px;
+      height: 172.805px;
+      left: 375.21px;
+      top: 1187px;
+    }
+
+    #container .css-2zyray {
+      width: 280.523px;
+      height: 127.077px;
+      left: 375px;
+      top: 1375px;
+    }
+
+    #container .css-q81vne {
+      left: 577px;
+      top: 1590px;
+    }
+
+    #container .css-wsmi9u {
+      width: 162px;
+      height: 147px;
+      left: 577px;
+      top: 1590px;
+    }
+
+    #container .css-go1g8l {
+      width: 128.598px;
+      height: 114.408px;
+      left: 593.23px;
+      top: 1605.87px;
+    }
+
+    #container .css-1babiy {
+      left: 579.6px;
+      top: 1922.72px;
+    }
+
+    #container .css-htuxmi {
+      width: 164.326px;
+      height: 165.276px;
+      left: 579.6px;
+      top: 1922.72px;
+    }
+
+    #container .css-vn27yq {
+      width: 138.68px;
+      height: 122.532px;
+      left: 592.9px;
+      top: 1952.17px;
+    }
+
+    #container .css-k2ehc {
+      left: 393.95px;
+      top: 1922.72px;
+    }
+
+    #container .css-3dxurj {
+      width: 165.276px;
+      height: 165.276px;
+      left: 393.95px;
+      top: 1922.72px;
+    }
+
+    #container .css-uiv5l8 {
+      width: 131.081px;
+      height: 122.532px;
+      left: 412px;
+      top: 1952.17px;
+    }
+
+    #container .css-d5js62 {
+      left: 578.65px;
+      top: 1747px;
+    }
+
+    #container .css-n8ag6t {
+      width: 165.276px;
+      height: 165.276px;
+      left: 578.65px;
+      top: 1747px;
+    }
+
+    #container .css-cwtapp {
+      width: 145.329px;
+      height: 122.532px;
+      left: 588.15px;
+      top: 1776.45px;
+    }
+
+    #container .css-1e2ed9 {
+      width: 13px;
+      height: 13px;
+      left: 656px;
+      top: 1590px;
+    }
+
+    #container .css-kya8zg {
+      left: 393px;
+      top: 1747px;
+    }
+
+    #container .css-35ec25 {
+      width: 165.276px;
+      height: 165.276px;
+      left: 393px;
+      top: 1747px;
+    }
+
+    #container .css-jvt4l5 {
+      width: 145.329px;
+      height: 122.532px;
+      left: 409.57px;
+      top: 1776.45px;
+    }
+
+    #container .css-z2tq7d {
+      width: 499.154px;
+      height: 144.245px;
+      left: 737px;
+      top: 628.89px;
+    }
+
+    #container .css-i8lngt {
+      transform: matrix(-0.047077544033527374, 0.9988912343978882, -0.9988912343978882, -0.047077544033527374, 0, 0);
+    }
+
+    #container .css-37wu8w {
+      width: 121.123px;
+      height: 494px;
+    }
+
+    #container .css-cyb81 {
+      width: 13px;
+      height: 13px;
+      left: 469px;
+      top: 1747px;
+    }
+
+    #container .css-cx2tt {
+      width: 13px;
+      height: 13px;
+      left: 469px;
+      top: 1923px;
+    }
+
+    #container .css-1e3ksv {
+      width: 13px;
+      height: 13px;
+      left: 656px;
+      top: 1747px;
+    }
+
+    #container .css-1e4t73 {
+      width: 13px;
+      height: 13px;
+      left: 656px;
+      top: 1923px;
+    }
+
+    #container .css-szb68t {
+      width: 420.972px;
+      height: 695px;
+      left: 810px;
+      top: 1406px;
+    }
+
+    #container .css-qrvkdc {
+      top: 0;
+      left: -0.95%;
+      right: -0.95%;
+      bottom: -0.58%;
+    }
+
+    #container .css-ca35d3 {
+      left: 639px;
+      bottom: 102px;
+    }
+
+    #container .css-pw7dq {
+      left: 919px;
+      bottom: 102px;
+    }
+
+    #container .css-a7ll3z {
+      width: 395.841px;
+      height: 237px;
+      left: 372.96px;
+      top: 2173px;
+    }
+
+    #container .css-2o2g0w {
+      width: 378px;
+      height: 222px;
+      left: 388px;
+      top: 2446px;
+    }
+
+    #container .css-fi6nzo {
+      width: 376.8px;
+      height: 222px;
+      left: 803px;
+      top: 2167px;
+    }
+
+    #container .css-bc2xg5 {
+      width: 378px;
+      height: 222px;
+      left: 823px;
+      top: 2430px;
+    }
+
+    #container .css-7d3utz {
+      width: 218.174px;
+      height: 270.057px;
+      left: 406px;
+      top: 462px;
+    }
+
+    #container .css-fipppf {
+      width: 217.292px;
+      height: 264.209px;
+      left: 406.88px;
+      top: 467.85px;
+    }
+
+    #container .css-pgfkkj {
+      transform: matrix(0.9888140559196472, -0.1491537243127823, 0.1491537243127823, 0.9888140559196472, 0, 0);
+    }
+
+    #container .css-v23yld {
+      width: 95.025px;
+      height: 25.81px;
+      left: 450.28px;
+      top: 468.64px;
+    }
+
+    #container .css-md9xq1 {
+      width: 195.019px;
+      height: 237.18px;
+      left: 416.48px;
+      top: 480.32px;
+    }
+
+    #container .css-kbjgar {
+      transform: matrix(0.9889050604705483, -0.14854881150825638, 0.14842674318370985, 0.9889234131026423, 0, 0);
+    }
+
+    #container .css-junjss {
+      width: 295.263px;
+      height: 161.579px;
+      left: 937px;
+      top: 877px;
+    }
+
+    #container .css-knzv4d {
+      width: 197.814px;
+      height: 125.172px;
+      left: 797px;
+      top: 966px;
+    }
+
+    #container .css-kefg2g {
+      width: 196.544px;
+      height: 118.703px;
+      left: 797px;
+      top: 972.47px;
+    }
+
+    #container .css-e0jbr5 {
+      transform: matrix(0.9812572002410889, 0.19270269572734833, -0.19270269572734833, 0.9812572002410889, 0, 0);
+    }
+
+    #container .css-r9ndf5 {
+      width: 103.81px;
+      height: 30.991px;
+      left: 849.07px;
+      top: 973.19px;
+    }
+
+    #container .css-gonzys {
+      transform: matrix(0.9812572002410889, 0.1927026957273483, -0.19270269572734833, 0.9812572002410889, 0, 0);
+    }
+
+    #container .css-rh9fb {
+      width: 181.455px;
+      height: 98.372px;
+      left: 806.46px;
+      top: 983.09px;
+    }
+
+    #container .css-x2sn8v {
+      transform: matrix(0.9812119490015423, 0.1929328092699296, -0.19458396790344615, 0.9808858664422948, 0, 0);
+    }
+
+    #container .css-2vqd93 {
+      width: 137.997px;
+      height: 105.181px;
+      left: 279px;
+      top: 1139px;
+    }
+
+    #container .css-uvq1zn {
+      width: 136.378px;
+      height: 98.792px;
+      left: 280.62px;
+      top: 1145.39px;
+    }
+
+    #container .css-mjl5nj {
+      transform: matrix(0.9693570733070374, -0.2456561177968979, 0.2456561177968979, 0.9693570733070374, 0, 0);
+    }
+
+    #container .css-tnthvf {
+      width: 64.049px;
+      height: 26.704px;
+      left: 310.92px;
+      top: 1145.55px;
+    }
+
+    #container .css-tj8ugt {
+      transform: matrix(0.9693570733070374, -0.2456561177968979, 0.24565611779689792, 0.9693570733070374, 0, 0);
+    }
+
+    #container .css-irmp3e {
+      width: 121.25px;
+      height: 76.291px;
+      left: 290.62px;
+      top: 1154.96px;
+    }
+
+    #container .css-or8dx8 {
+      transform: matrix(0.9694146268134526, -0.24542876948704656, 0.24379685642568572, 0.9698263443309377, 0, 0);
+    }
+  </style>
+  <script>window.__serverRenderedCSSClassNames = { "css-ll733z": "{\"position\":\"relative\"}", "css-j6ldtg": "{\"minWidth\":\"var(--content-min-width)\",\"width\":\"100%\",\"height\":\"var(--content-min-height)\"}", "css-a0mwfh": "{\"--content-min-width\":\"max(100%, 375px)\",\"--content-min-height\":\"max(var(--100dvh), 4529px)\"}", "css-vf8mzy": "{\"position\":\"relative\",\"display\":\"block\"}", "css-kw3itv": "{\"--content-min-width\":\"max(100%, 375px)\",\"--content-min-height\":\"max(var(--100dvh), 4529px)\",\"overflow\":\"clip\",\"backgroundColor\":\"#FFF\"}", "css-j9f0op": "{\"width\":\"100%\",\"height\":\"100%\"}", "css-8zr56v": "{\"display\":\"block\"}", "css-befhmj": "{\"width\":295.263,\"height\":161.579,\"left\":8,\"top\":1304}", "css-trglf0": "{\"position\":\"absolute\"}", "css-roiesn": "{\"position\":\"absolute\",\"display\":\"block\"}", "css-9j6u1t": "{\"width\":\"100%\",\"height\":\"100%\",\"maxWidth\":\"none\"}", "css-wixxpz": "{\"top\":\"0\",\"left\":\"0\",\"right\":\"0\",\"bottom\":\"0\"}", "css-mlxwnx": "{\"width\":234.184,\"height\":918.299,\"right\":14.82,\"top\":424}", "css-grtgjx": "{\"position\":\"absolute\",\"display\":\"flex\",\"alignItems\":\"center\",\"justifyContent\":\"center\"}", "css-ayg824": "{\"flex\":\"0 0 auto\"}", "css-y9r2sv": "{\"transform\":\"matrix(-0.04991115629673004, -0.9987536668777466, 0.9987536668777466, -0.04991115629673004, 0, 0)\"}", "css-edc7e7": "{\"width\":\"auto\",\"height\":\"auto\"}", "css-bj6mv3": "{\"width\":910,\"height\":189}", "css-h28ngu": "{\"position\":\"relative\",\"borderTopLeftRadius\":20,\"borderTopRightRadius\":20,\"borderBottomRightRadius\":20,\"borderBottomLeftRadius\":20,\"display\":\"block\"}", "css-r0azwh": "{\"inset\":0,\"pointerEvents\":\"none\"}", "css-jvd8z0": "{\"borderTopLeftRadius\":20,\"borderTopRightRadius\":20,\"borderBottomRightRadius\":20,\"borderBottomLeftRadius\":20}", "css-bbmv0m": "{\"backgroundColor\":\"#FFF\"}", "css-ez8men": "{\"maxWidth\":\"none\",\"width\":\"100%\",\"height\":\"100%\"}", "css-s9ceyc": "{\"borderTopLeftRadius\":20,\"borderTopRightRadius\":20,\"borderBottomRightRadius\":20,\"borderBottomLeftRadius\":20,\"position\":\"absolute\"}", "css-75y27k": "{\"objectFit\":\"contain\",\"objectPosition\":\"50% 50%\"}", "css-25y1dh": "{\"width\":187.838,\"height\":248.551,\"left\":25.04,\"top\":306.04}", "css-bz2tic": "{\"position\":\"absolute\",\"display\":\"contents\"}", "css-n9lut": "{\"width\":187.735,\"height\":242.638,\"left\":25.15,\"top\":311.95}", "css-wj2ivb": "{\"transform\":\"matrix(0.9998506307601929, -0.017284151166677475, 0.017284151166677475, 0.9998506307601929, 0, 0)\"}", "css-lvctdb": "{\"width\":183.623,\"height\":239.5}", "css-i0sq2k": "{\"position\":\"relative\",\"borderTopLeftRadius\":7.5,\"borderTopRightRadius\":7.5,\"borderBottomRightRadius\":7.5,\"borderBottomLeftRadius\":7.5,\"display\":\"block\"}", "css-sr4pu5": "{\"boxShadow\":\"1px 2px 2px 1px rgba(0, 0, 0, 0.25)\",\"backgroundColor\":\"#FFF\"}", "css-ixl8zx": "{\"width\":94.5,\"height\":13.504,\"left\":69.82,\"top\":306.81}", "css-gyjj09": "{\"transform\":\"matrix(0.9998506307601929, -0.017284151166677475, 0.01728415116667748, 0.9998506307601929, 0, 0)\"}", "css-jfj40x": "{\"width\":94.309,\"height\":11.876}", "css-e7p8mt": "{\"width\":168.464,\"height\":217.783,\"left\":33.4,\"top\":323.14}", "css-xfkjq1": "{\"transform\":\"matrix(0.9998609654365911, -0.01667251850975962, 0.01654909568791762, 0.9998630394004413, 0, 0)\"}", "css-ld0hsi": "{\"display\":\"block\",\"position\":\"relative\"}", "css-acqqyv": "{\"width\":164.928,\"height\":215.062}", "css-oom5nr": "{\"whiteSpace\":\"pre-wrap\",\"fontFamily\":\"\\\"DM Sans:Regular\\\", sans-serif\",\"wordBreak\":\"break-word\",\"fontWeight\":400,\"fontSize\":\"12px\",\"letterSpacing\":\"-0.48px\",\"lineHeight\":\"17px\"}", "css-y7f465": "{\"fontVariationSettings\":\"\\\"opsz\\\" 14\",\"color\":\"#110C47\",\"--letter-spacing\":\"-0.48px\"}", "css-36pt13": "{\"width\":191.566,\"height\":108.723,\"left\":13.81,\"top\":1202.05}", "css-e7ff36": "{\"width\":190.933,\"height\":102.161,\"left\":14.44,\"top\":1208.61}", "css-uz9sdv": "{\"transform\":\"matrix(0.9953728318214417, -0.09608818590641022, 0.09608818590641022, 0.9953728318214417, 0, 0)\"}", "css-j0q37e": "{\"width\":183.623,\"height\":84.91}", "css-g1zks": "{\"width\":104.186,\"height\":21.142,\"left\":50.94,\"top\":1206.15}", "css-p8qtzk": "{\"transform\":\"matrix(0.9953728318214417, -0.09608818590641025, 0.09608818590641022, 0.9953728318214417, 0, 0)\"}", "css-61cakd": "{\"width\":103.585,\"height\":11.24}", "css-9q18w4": "{\"width\":177.213,\"height\":82.675,\"left\":23.27,\"top\":1218.24}", "css-yu3wxs": "{\"transform\":\"matrix(0.995395307151727, -0.09585474474414615, 0.09417931242327582, 0.9955552483394547, 0, 0)\"}", "css-wl63xd": "{\"width\":171.74,\"height\":66.509}", "css-n1bcwo": "{\"width\":353,\"height\":257,\"left\":\"50%\",\"top\":20}", "css-8hhw9a": "{\"transform\":\"translateX(-50%)\"}", "css-boujbd": "{\"transform\":\"translateX(-50%)\",\"boxShadow\":\"1px 2px 3px 2px rgba(0, 0, 0, 0.25)\"}", "css-yozq13": "{\"position\":\"absolute\",\"borderTopLeftRadius\":20,\"borderTopRightRadius\":20,\"borderBottomRightRadius\":20,\"borderBottomLeftRadius\":20,\"display\":\"block\"}", "css-9unj7x": "{\"objectFit\":\"cover\",\"objectPosition\":\"50% 50%\"}", "css-389oi4": "{\"width\":12.582,\"height\":11.063,\"left\":179,\"top\":14}", "css-u5fr0a": "{\"width\":206.369,\"height\":260.627,\"left\":169,\"top\":446}", "css-qr9913": "{\"transform\":\"matrix(0.9910229444503784, 0.13369162380695343, -0.13369162380695343, 0.9910229444503784, 0, 0)\"}", "css-a82zcf": "{\"width\":175.963,\"height\":239.25}", "css-pz70cw": "{\"top\":\"0\",\"left\":\"-1.25%\",\"right\":\"-4.66%\",\"bottom\":\"-3.84%\"}", "css-3p4upp": "{\"width\":355,\"height\":145,\"left\":7,\"top\":1506}", "css-qdnttd": "{\"width\":132.531,\"height\":94.119,\"left\":232,\"top\":1639.76}", "css-32v1c6": "{\"width\":131.591,\"height\":87.596,\"left\":232,\"top\":1646.28}", "css-wdgvo7": "{\"transform\":\"matrix(0.9897711277008057, 0.14266446232795715, -0.14266446232795715, 0.9897711277008057, 0, 0)\"}", "css-hnrd20": "{\"width\":122.745,\"height\":70.809}", "css-739y4": "{\"width\":64.15,\"height\":20.436,\"left\":273.99,\"top\":1644.45}", "css-vzzsih": "{\"transform\":\"matrix(0.9897711277008057, 0.14266446232795715, -0.14266446232795713, 0.9897711277008057, 0, 0)\"}", "css-2b1dcr": "{\"width\":63.148,\"height\":11.545}", "css-7nllao": "{\"width\":118.553,\"height\":65.749,\"left\":241.41,\"top\":1656.58}", "css-nfyi42": "{\"transform\":\"matrix(0.9897376110292602, 0.1428965749971197, -0.14456215150607182, 0.9894957301440539, 0, 0)\"}", "css-6xfx8k": "{\"width\":112.449,\"height\":50.207}", "css-nliils": "{\"width\":161.443,\"height\":295.579,\"left\":20,\"top\":2352.92}", "css-w7ado4": "{\"width\":161.048,\"height\":287.177,\"left\":20,\"top\":2361.32}", "css-7txo7d": "{\"transform\":\"matrix(0.9988974332809448, 0.04694565385580062, -0.04694565385580064, 0.9988974332809448, 0, 0)\"}", "css-yzdb0b": "{\"width\":148.041,\"height\":280.536}", "css-ejfn4x": "{\"width\":105.73,\"height\":18.291,\"left\":58.1,\"top\":2354.1}", "css-80o7s8": "{\"transform\":\"matrix(0.9988974332809448, 0.04694565385580062, -0.04694565385580065, 0.9988974332809448, 0, 0)\"}", "css-bk64om": "{\"width\":105.219,\"height\":13.366}", "css-eoeyuy": "{\"width\":137.945,\"height\":56.54,\"left\":39.87,\"top\":2371.02}", "css-6jkqv0": "{\"transform\":\"matrix(0.998888245349713, 0.04713988261889793, -0.04925573388072793, 0.9987861801908086, 0, 0)\"}", "css-ok1dsz": "{\"width\":135.623,\"height\":50.207}", "css-ich8nt": "{\"width\":324.999,\"height\":182.2,\"left\":10,\"top\":1764}", "css-qldc01": "{\"width\":349.789,\"height\":172.805,\"left\":10.21,\"top\":1963}", "css-1r6pw9": "{\"width\":280.523,\"height\":127.077,\"left\":10,\"top\":2151}", "css-884kh": "{\"left\":193,\"top\":2518}", "css-6ssr6x": "{\"width\":162,\"height\":147,\"left\":193,\"top\":2518}", "css-188412": "{\"width\":128.598,\"height\":114.408,\"left\":209.23,\"top\":2533.87}", "css-phc9f9": "{\"overflow\":\"hidden\",\"inset\":0}", "css-97bw9u": "{\"width\":\"538.24%\",\"height\":\"340.31%\",\"top\":\"-66.67%\",\"left\":\"-102.91%\",\"maxWidth\":\"none\"}", "css-aw0s0t": "{\"left\":195.6,\"top\":2850.72}", "css-894h4n": "{\"width\":164.326,\"height\":165.276,\"left\":195.6,\"top\":2850.72}", "css-n6mjhb": "{\"width\":138.68,\"height\":122.532,\"left\":208.9,\"top\":2880.17}", "css-cmljwb": "{\"width\":\"534.55%\",\"height\":\"340.31%\",\"top\":\"-66.67%\",\"left\":\"-217.28%\",\"maxWidth\":\"none\"}", "css-n40n0r": "{\"left\":9.95,\"top\":2850.72}", "css-ej8yho": "{\"width\":165.276,\"height\":165.276,\"left\":9.95,\"top\":2850.72}", "css-wugass": "{\"width\":131.081,\"height\":122.532,\"left\":28,\"top\":2880.17}", "css-hdjnfj": "{\"width\":\"565.54%\",\"height\":\"340.31%\",\"top\":\"-179.84%\",\"left\":\"-113.2%\",\"maxWidth\":\"none\"}", "css-flo3gr": "{\"left\":194.65,\"top\":2675}", "css-ks64w4": "{\"width\":165.276,\"height\":165.276,\"left\":194.65,\"top\":2675}", "css-47d7cu": "{\"width\":145.329,\"height\":122.532,\"left\":204.15,\"top\":2704.45}", "css-234hu3": "{\"width\":\"510.09%\",\"height\":\"340.31%\",\"top\":\"-67.44%\",\"left\":\"-313.22%\",\"maxWidth\":\"none\"}", "css-olrcpo": "{\"width\":13,\"height\":13,\"left\":272,\"top\":2518}", "css-p3mbah": "{\"left\":9,\"top\":2675}", "css-scv9mu": "{\"width\":165.276,\"height\":165.276,\"left\":9,\"top\":2675}", "css-efox1r": "{\"width\":145.329,\"height\":122.532,\"left\":25.57,\"top\":2704.45}", "css-6w5stc": "{\"width\":\"510.09%\",\"height\":\"340.31%\",\"top\":\"-181.08%\",\"left\":\"-313.22%\",\"maxWidth\":\"none\"}", "css-mm5v05": "{\"width\":109,\"height\":494,\"left\":23,\"top\":705}", "css-i0ezie": "{\"width\":13,\"height\":13,\"left\":85,\"top\":2675}", "css-i0g7wm": "{\"width\":13,\"height\":13,\"left\":85,\"top\":2851}", "css-olqlck": "{\"width\":13,\"height\":13,\"left\":272,\"top\":2675}", "css-olpcyc": "{\"width\":13,\"height\":13,\"left\":272,\"top\":2851}", "css-v5s1t5": "{\"width\":352,\"height\":581.132,\"left\":13,\"top\":3054.99}", "css-uhi680": "{\"top\":\"0\",\"left\":\"-1.14%\",\"right\":\"-1.14%\",\"bottom\":\"-0.69%\"}", "css-tzn6qh": "{\"display\":\"block\",\"position\":\"absolute\"}", "css-2a9gdl": "{\"transform\":\"translateY(100%)\",\"color\":\"#000\",\"--letter-spacing\":\"-1.12px\"}", "css-wgai7u": "{\"left\":23,\"bottom\":47}", "css-ugqh3r": "{\"whiteSpace\":\"pre\",\"fontFamily\":\"\\\"Cute Font:Regular\\\", sans-serif\",\"wordBreak\":\"break-word\",\"fontStyle\":\"normal\",\"fontSize\":\"28px\",\"letterSpacing\":\"-1.12px\",\"lineHeight\":\"17px\"}", "css-gmz808": "{\"transform\":\"translateX(100%) translateY(100%)\",\"color\":\"#000\",\"--letter-spacing\":\"-1.12px\"}", "css-qkzmed": "{\"right\":92,\"bottom\":47}", "css-zdykm3": "{\"width\":314,\"height\":188,\"left\":8,\"top\":3659}", "css-q2q4lj": "{\"width\":315,\"height\":185,\"left\":27,\"top\":3861}", "css-ocomrn": "{\"width\":314,\"height\":185,\"left\":20,\"top\":4060}", "css-jv84jq": "{\"width\":315,\"height\":185,\"left\":34,\"top\":4252}", "css-wc5pd6": "{\"--content-min-width\":\"max(100%, 1440px)\",\"--content-min-height\":\"max(var(--100dvh), 2827px)\"}", "css-d2y1ww": "{\"--content-min-width\":\"max(100%, 1440px)\",\"--content-min-height\":\"max(var(--100dvh), 2827px)\",\"overflow\":\"clip\",\"backgroundColor\":\"#FFF\"}", "css-wxxb76": "{\"width\":915.34,\"height\":216.661,\"left\":\"calc(50% + 41.67px)\",\"top\":749}", "css-g1gfz7": "{\"transform\":\"matrix(0.9995349645614624, -0.030493807047605515, 0.030493807047605515, 0.9995349645614624, 0, 0)\"}", "css-vvlg3m": "{\"width\":590,\"height\":430,\"left\":479,\"top\":46}", "css-6kywl1": "{\"boxShadow\":\"1px 2px 3px 2px rgba(0, 0, 0, 0.25)\"}", "css-aqxbiq": "{\"width\":21,\"height\":18,\"left\":765,\"top\":36}", "css-slnd3e": "{\"width\":273.685,\"height\":345.641,\"left\":601,\"top\":396}", "css-wrxd48": "{\"width\":233.361,\"height\":317.291}", "css-597600": "{\"top\":\"0\",\"left\":\"-0.94%\",\"right\":\"-3.51%\",\"bottom\":\"-2.9%\"}", "css-lx3vof": "{\"width\":355,\"height\":145,\"left\":303,\"top\":1008}", "css-xb0ivz": "{\"width\":154.209,\"height\":141.664,\"left\":393,\"top\":1566}", "css-6h4pqy": "{\"width\":154.025,\"height\":137.743,\"left\":393,\"top\":1569.92}", "css-kjvnl4": "{\"transform\":\"matrix(0.9988974332809448, 0.04694565385580063, -0.04694565385580064, 0.9988974332809448, 0, 0)\"}", "css-3sy0s2": "{\"width\":148.041,\"height\":130.937}", "css-qwq4tt": "{\"width\":105.395,\"height\":11.171,\"left\":424.2,\"top\":1567.18}", "css-tb5w43": "{\"transform\":\"matrix(0.9988974332809448, 0.046945653855800636, -0.046945653855800636, 0.9988974332809448, 0, 0)\"}", "css-enk4al": "{\"width\":105.218,\"height\":6.238}", "css-6ob2q1": "{\"width\":136.689,\"height\":29.782,\"left\":407.33,\"top\":1574.69}", "css-jioih4": "{\"transform\":\"matrix(0.9988931131633187, 0.047036306544926076, -0.05189470190443968, 0.9986525484259098, 0, 0)\"}", "css-3v20t7": "{\"width\":135.623,\"height\":23.434}", "css-x5k64o": "{\"width\":324.999,\"height\":182.2,\"left\":762,\"top\":1172}", "css-qf4ct": "{\"width\":349.789,\"height\":172.805,\"left\":375.21,\"top\":1187}", "css-2zyray": "{\"width\":280.523,\"height\":127.077,\"left\":375,\"top\":1375}", "css-q81vne": "{\"left\":577,\"top\":1590}", "css-wsmi9u": "{\"width\":162,\"height\":147,\"left\":577,\"top\":1590}", "css-go1g8l": "{\"width\":128.598,\"height\":114.408,\"left\":593.23,\"top\":1605.87}", "css-1babiy": "{\"left\":579.6,\"top\":1922.72}", "css-htuxmi": "{\"width\":164.326,\"height\":165.276,\"left\":579.6,\"top\":1922.72}", "css-vn27yq": "{\"width\":138.68,\"height\":122.532,\"left\":592.9,\"top\":1952.17}", "css-k2ehc": "{\"left\":393.95,\"top\":1922.72}", "css-3dxurj": "{\"width\":165.276,\"height\":165.276,\"left\":393.95,\"top\":1922.72}", "css-uiv5l8": "{\"width\":131.081,\"height\":122.532,\"left\":412,\"top\":1952.17}", "css-d5js62": "{\"left\":578.65,\"top\":1747}", "css-n8ag6t": "{\"width\":165.276,\"height\":165.276,\"left\":578.65,\"top\":1747}", "css-cwtapp": "{\"width\":145.329,\"height\":122.532,\"left\":588.15,\"top\":1776.45}", "css-1e2ed9": "{\"width\":13,\"height\":13,\"left\":656,\"top\":1590}", "css-kya8zg": "{\"left\":393,\"top\":1747}", "css-35ec25": "{\"width\":165.276,\"height\":165.276,\"left\":393,\"top\":1747}", "css-jvt4l5": "{\"width\":145.329,\"height\":122.532,\"left\":409.57,\"top\":1776.45}", "css-z2tq7d": "{\"width\":499.154,\"height\":144.245,\"left\":737,\"top\":628.89}", "css-i8lngt": "{\"transform\":\"matrix(-0.047077544033527374, 0.9988912343978882, -0.9988912343978882, -0.047077544033527374, 0, 0)\"}", "css-37wu8w": "{\"width\":121.123,\"height\":494}", "css-cyb81": "{\"width\":13,\"height\":13,\"left\":469,\"top\":1747}", "css-cx2tt": "{\"width\":13,\"height\":13,\"left\":469,\"top\":1923}", "css-1e3ksv": "{\"width\":13,\"height\":13,\"left\":656,\"top\":1747}", "css-1e4t73": "{\"width\":13,\"height\":13,\"left\":656,\"top\":1923}", "css-szb68t": "{\"width\":420.972,\"height\":695,\"left\":810,\"top\":1406}", "css-qrvkdc": "{\"top\":\"0\",\"left\":\"-0.95%\",\"right\":\"-0.95%\",\"bottom\":\"-0.58%\"}", "css-ca35d3": "{\"left\":639,\"bottom\":102}", "css-pw7dq": "{\"left\":919,\"bottom\":102}", "css-a7ll3z": "{\"width\":395.841,\"height\":237,\"left\":372.96,\"top\":2173}", "css-2o2g0w": "{\"width\":378,\"height\":222,\"left\":388,\"top\":2446}", "css-fi6nzo": "{\"width\":376.8,\"height\":222,\"left\":803,\"top\":2167}", "css-bc2xg5": "{\"width\":378,\"height\":222,\"left\":823,\"top\":2430}", "css-7d3utz": "{\"width\":218.174,\"height\":270.057,\"left\":406,\"top\":462}", "css-fipppf": "{\"width\":217.292,\"height\":264.209,\"left\":406.88,\"top\":467.85}", "css-pgfkkj": "{\"transform\":\"matrix(0.9888140559196472, -0.1491537243127823, 0.1491537243127823, 0.9888140559196472, 0, 0)\"}", "css-v23yld": "{\"width\":95.025,\"height\":25.81,\"left\":450.28,\"top\":468.64}", "css-md9xq1": "{\"width\":195.019,\"height\":237.18,\"left\":416.48,\"top\":480.32}", "css-kbjgar": "{\"transform\":\"matrix(0.9889050604705483, -0.14854881150825638, 0.14842674318370985, 0.9889234131026423, 0, 0)\"}", "css-junjss": "{\"width\":295.263,\"height\":161.579,\"left\":937,\"top\":877}", "css-knzv4d": "{\"width\":197.814,\"height\":125.172,\"left\":797,\"top\":966}", "css-kefg2g": "{\"width\":196.544,\"height\":118.703,\"left\":797,\"top\":972.47}", "css-e0jbr5": "{\"transform\":\"matrix(0.9812572002410889, 0.19270269572734833, -0.19270269572734833, 0.9812572002410889, 0, 0)\"}", "css-r9ndf5": "{\"width\":103.81,\"height\":30.991,\"left\":849.07,\"top\":973.19}", "css-gonzys": "{\"transform\":\"matrix(0.9812572002410889, 0.1927026957273483, -0.19270269572734833, 0.9812572002410889, 0, 0)\"}", "css-rh9fb": "{\"width\":181.455,\"height\":98.372,\"left\":806.46,\"top\":983.09}", "css-x2sn8v": "{\"transform\":\"matrix(0.9812119490015423, 0.1929328092699296, -0.19458396790344615, 0.9808858664422948, 0, 0)\"}", "css-2vqd93": "{\"width\":137.997,\"height\":105.181,\"left\":279,\"top\":1139}", "css-uvq1zn": "{\"width\":136.378,\"height\":98.792,\"left\":280.62,\"top\":1145.39}", "css-mjl5nj": "{\"transform\":\"matrix(0.9693570733070374, -0.2456561177968979, 0.2456561177968979, 0.9693570733070374, 0, 0)\"}", "css-tnthvf": "{\"width\":64.049,\"height\":26.704,\"left\":310.92,\"top\":1145.55}", "css-tj8ugt": "{\"transform\":\"matrix(0.9693570733070374, -0.2456561177968979, 0.24565611779689792, 0.9693570733070374, 0, 0)\"}", "css-irmp3e": "{\"width\":121.25,\"height\":76.291,\"left\":290.62,\"top\":1154.96}", "css-or8dx8": "{\"transform\":\"matrix(0.9694146268134526, -0.24542876948704656, 0.24379685642568572, 0.9698263443309377, 0, 0)\"}" }</script>
+  <meta id="meta-bkauwd" name="description" content="Created with Figma">
+  <meta id="meta-vxymho" name="title" content="frosttest1">
+  <meta id="meta-yw3oin" name="robots" content="noindex">
+  <title id="title-kexr3j">frosttest1</title>
 </head>
-<body id="rlamls-body">
-  <div class="progress-marker">
-    <div class="marker" data-index="0"></div>
-    <div class="marker" data-index="1"></div>
-    <div class="marker" data-index="2"></div>
-    <div class="marker" data-index="3"></div>
-    <div class="marker" data-index="4"></div>
-    <div class="marker" data-index="5"></div>
-    <div class="marker" data-index="6"></div>
-    <div class="marker" data-index="7"></div>
-    <div class="marker" data-index="8"></div>
-    <div class="marker" data-index="9"></div>
-    <div class="marker" data-index="10"></div>
-    <a href="../work.html" class="marker home-marker" data-index="11">
-      <i class="fas fa-home"></i>
-    </a>
-  </div>
-  <div class="container">
-    <div class="flashcard rlamls-flashcard" id="rlamls-card1">
-      <div class="img-placeholder"></div>
-      <div class="project-info">
-        <h4>RLAM Life Sciences</h4>
-        <h4>Branding</h4>
-        <h4>Designer for Smart Soho</h4>
-        <h4>1 of 11</h4>
+
+<body>
+
+
+  <script data-template-id="country-code">window.__cf_country = "GB"</script>
+  <script type="module">
+    import { SitesRuntime } from '/_runtimes/sites-runtime.b69569d0baef319082b5422507ab08a06908495a02069eb739f5ee4ed1c9c0bb.js';
+    const sitesRuntime = new SitesRuntime({
+      container: document.getElementById('container'),
+      env: 'published',
+      bundleId: '9c0173cd-636d-4fc7-9dac-5424e85f3fc9',
+
+      loadComponentsOverNetwork: true,
+      assetsVersion: 'v11',
+      fontsVersion: 'v1',
+      videosVersion: 'v1',
+      codeComponentsVersion: 'v2',
+      wasServerRendered: true,
+      withBaseStyles: true,
+      reportingDomain: "https://www.figma.com",
+      bundleCreationDate: '2025-11-27 12:42:57 UTC',
+      isFigmake: false,
+      enableMetaTags: false,
+      siteUrl: "https://tusk-short-01189091.figma.site",
+    });
+  </script>
+
+  <div id="container">
+    <div class="css-vf8mzy css-j6ldtg css-kw3itv" data-page-overflowx="hidden" data-breakpoint-id="node-15_7211"
+      data-breakpoint="true" data-width="375" data-height="4529">
+      <div class="css-befhmj css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/cb6ed4cf9efb3c7b45f4e480631bd8e5467320b4.png" alt="" width="295.263" height="161.579"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/cb6ed4cf9efb3c7b45f4e480631bd8e5467320b4.png 296w"
+            sizes="auto,295.2627868652344px" /></div>
+      </div>
+      <div class="css-mlxwnx css-grtgjx">
+        <div class="css-ayg824 css-y9r2sv css-edc7e7">
+          <div class="css-h28ngu css-bj6mv3">
+            <div aria-hidden="true" class="css-trglf0 css-r0azwh css-jvd8z0">
+              <div class="css-jvd8z0 css-bbmv0m css-trglf0 css-r0azwh"></div><img alt=""
+                class="css-ez8men css-s9ceyc css-75y27k" src="/_assets/v11/230d731b8e4aea5872676b827a7bae887a5ea25d.png"
+                srcSet="/_assets/v11/230d731b8e4aea5872676b827a7bae887a5ea25d.png 1376w, /_assets/v11/230d731b8e4aea5872676b827a7bae887a5ea25d.png?w=1024 1024w"
+                sizes="910px" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="css-25y1dh css-bz2tic">
+        <div class="css-n9lut css-grtgjx">
+          <div class="css-ayg824 css-wj2ivb css-edc7e7">
+            <div class="css-i0sq2k css-lvctdb css-sr4pu5"></div>
+          </div>
+        </div>
+        <div class="css-ixl8zx css-grtgjx">
+          <div class="css-ayg824 css-gyjj09 css-edc7e7">
+            <div class="css-vf8mzy css-jfj40x" data-isimage="true">
+              <div class="css-trglf0 css-wixxpz"><img src="/_assets/v11/d3770f7be25b42ae9082b6365d678f70ec9a2cda.svg"
+                  alt="" class="css-9j6u1t css-8zr56v" /></div>
+            </div>
+          </div>
+        </div>
+        <div class="css-e7p8mt css-grtgjx">
+          <div class="css-ayg824 css-xfkjq1 css-edc7e7">
+            <p class="css-ld0hsi css-acqqyv css-oom5nr css-y7f465 adjustLetterSpacing textContents">The concept is
+              inspired by the process of cell division, a core mechanism through which living organisms grow. This
+              serves as an analogy for how a tenant within RLAM can begin at a small scale and progressively expand over
+              time. The design reflects structured, organic growth, aligning with RLAM’s commitment to supporting
+              long-term development and scalable potential.</p>
+          </div>
+        </div>
+      </div>
+      <div class="css-36pt13 css-bz2tic">
+        <div class="css-e7ff36 css-grtgjx">
+          <div class="css-ayg824 css-uz9sdv css-edc7e7">
+            <div class="css-i0sq2k css-j0q37e css-sr4pu5"></div>
+          </div>
+        </div>
+        <div class="css-g1zks css-grtgjx">
+          <div class="css-ayg824 css-p8qtzk css-edc7e7">
+            <div class="css-vf8mzy css-61cakd" data-isimage="true">
+              <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+                  src="/_assets/v11/9af03bf5b901ff4397e41a42447cdfcff4e9045d.svg" alt=""
+                  class="css-9j6u1t css-8zr56v" /></div>
+            </div>
+          </div>
+        </div>
+        <div class="css-9q18w4 css-grtgjx">
+          <div class="css-ayg824 css-yu3wxs css-edc7e7">
+            <p class="css-ld0hsi css-wl63xd css-oom5nr css-y7f465 adjustLetterSpacing textContents">Font parings usd BAI
+              Jamaree paired with a custom font based on the graphical abstraction of cell division created above</p>
+          </div>
+        </div>
+      </div>
+      <div class="css-n1bcwo css-boujbd css-yozq13"><img alt=""
+          class="css-ez8men css-9unj7x css-trglf0 css-trglf0 css-r0azwh css-9unj7x css-jvd8z0"
+          src="/_assets/v11/eda5010e7561967096df1b189b0bc7b0d8396e6f.png"
+          srcSet="/_assets/v11/eda5010e7561967096df1b189b0bc7b0d8396e6f.png 1400w, /_assets/v11/eda5010e7561967096df1b189b0bc7b0d8396e6f.png?w=512 512w, /_assets/v11/eda5010e7561967096df1b189b0bc7b0d8396e6f.png?w=1024 1024w"
+          sizes="353px" /></div>
+      <div class="css-389oi4 css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img src="/_assets/v11/868f596873cad937447b03d6a0665dce67b0d305.svg" alt=""
+            class="css-9j6u1t css-8zr56v" /></div>
+      </div>
+      <div class="css-u5fr0a css-grtgjx">
+        <div class="css-ayg824 css-qr9913 css-edc7e7">
+          <div class="css-vf8mzy css-a82zcf" data-isimage="true">
+            <div class="css-trglf0 css-pz70cw"><img src="/_assets/v11/f3853298eda4da12d17b1342f1825ca322133700.png"
+                alt="" width="186.357" height="248.447" class="css-9j6u1t css-8zr56v"
+                srcSet="/_assets/v11/f3853298eda4da12d17b1342f1825ca322133700.png 187w" sizes="175.96339416503906px" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="css-3p4upp css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/2290c02a5b96868658a3fb379ca6d403c538cf74.png" alt="" width="355" height="145"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/2290c02a5b96868658a3fb379ca6d403c538cf74.png 355w"
+            sizes="auto,355px" /></div>
+      </div>
+      <div class="css-qdnttd css-bz2tic">
+        <div class="css-32v1c6 css-grtgjx">
+          <div class="css-ayg824 css-wdgvo7 css-edc7e7">
+            <div class="css-i0sq2k css-hnrd20 css-sr4pu5"></div>
+          </div>
+        </div>
+        <div class="css-739y4 css-grtgjx">
+          <div class="css-ayg824 css-vzzsih css-edc7e7">
+            <div class="css-vf8mzy css-2b1dcr" data-isimage="true">
+              <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+                  src="/_assets/v11/debf1875e659ad65ed4e0594795f8b0dc45c1144.svg" alt=""
+                  class="css-9j6u1t css-8zr56v" /></div>
+            </div>
+          </div>
+        </div>
+        <div class="css-7nllao css-grtgjx">
+          <div class="css-ayg824 css-nfyi42 css-edc7e7">
+            <p class="css-ld0hsi css-6xfx8k css-oom5nr css-y7f465 adjustLetterSpacing textContents">Font parings usd BAI
+              Jamaree paired with a custom font based</p>
+          </div>
+        </div>
+      </div>
+      <div class="css-nliils css-bz2tic">
+        <div class="css-w7ado4 css-grtgjx">
+          <div class="css-ayg824 css-7txo7d css-edc7e7">
+            <div class="css-i0sq2k css-yzdb0b css-sr4pu5"></div>
+          </div>
+        </div>
+        <div class="css-ejfn4x css-grtgjx">
+          <div class="css-ayg824 css-80o7s8 css-edc7e7">
+            <div class="css-vf8mzy css-bk64om" data-isimage="true">
+              <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+                  src="/_assets/v11/350fb7a8ef1b0d5ba94934fbba691d6ebcc2cd07.svg" alt=""
+                  class="css-9j6u1t css-8zr56v" /></div>
+            </div>
+          </div>
+        </div>
+        <div class="css-eoeyuy css-grtgjx">
+          <div class="css-ayg824 css-6jkqv0 css-edc7e7">
+            <p class="css-ld0hsi css-ok1dsz css-oom5nr css-y7f465 adjustLetterSpacing textContents">Font parings usd BAI
+              Jamaree paired with a custom font based</p>
+          </div>
+        </div>
+      </div>
+      <div class="css-ich8nt css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/20816a61e8b81cd644d9eac3db3247c265441eb7.png" alt="" width="324.999" height="182.2"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/20816a61e8b81cd644d9eac3db3247c265441eb7.png 325w"
+            sizes="auto,324.99920654296875px" /></div>
+      </div>
+      <div class="css-qldc01 css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/17b7ef53f2840eda6ce812fab87dce6f4918792d.png" alt="" width="349.789" height="172.805"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/17b7ef53f2840eda6ce812fab87dce6f4918792d.png 350w"
+            sizes="auto,349.7890625px" /></div>
+      </div>
+      <div class="css-1r6pw9 css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/8aa8333c536beb95ed5b9ac1e8c3c0d787c8d416.png" alt="" width="280.523" height="127.077"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/8aa8333c536beb95ed5b9ac1e8c3c0d787c8d416.png 281w"
+            sizes="auto,280.52276611328125px" /></div>
+      </div>
+      <div class="css-bz2tic css-884kh">
+        <div class="css-6ssr6x css-roiesn css-bbmv0m"></div>
+        <div class="css-188412 css-roiesn">
+          <div class="css-phc9f9 css-trglf0 css-trglf0 css-r0azwh"><img alt="" loading="lazy"
+              class="css-trglf0 css-97bw9u" src="/_assets/v11/b7d8fd32a7f455518795854f0202df81b4cbbab0.png"
+              srcSet="/_assets/v11/b7d8fd32a7f455518795854f0202df81b4cbbab0.png 320w"
+              sizes="auto,692.1638727193894px" /></div>
+        </div>
+      </div>
+      <div class="css-bz2tic css-aw0s0t">
+        <div class="css-894h4n css-roiesn css-bbmv0m"></div>
+        <div class="css-n6mjhb css-roiesn">
+          <div class="css-phc9f9 css-trglf0 css-trglf0 css-r0azwh"><img alt="" loading="lazy"
+              class="css-trglf0 css-cmljwb" src="/_assets/v11/b7d8fd32a7f455518795854f0202df81b4cbbab0.png"
+              srcSet="/_assets/v11/b7d8fd32a7f455518795854f0202df81b4cbbab0.png 320w"
+              sizes="auto,741.3135204412848px" /></div>
+        </div>
+      </div>
+      <div class="css-bz2tic css-n40n0r">
+        <div class="css-ej8yho css-roiesn css-bbmv0m"></div>
+        <div class="css-wugass css-roiesn">
+          <div class="css-phc9f9 css-trglf0 css-trglf0 css-r0azwh"><img alt="" loading="lazy"
+              class="css-trglf0 css-hdjnfj" src="/_assets/v11/b7d8fd32a7f455518795854f0202df81b4cbbab0.png"
+              srcSet="/_assets/v11/b7d8fd32a7f455518795854f0202df81b4cbbab0.png 320w"
+              sizes="auto,741.3134793136826px" /></div>
+        </div>
+      </div>
+      <div class="css-bz2tic css-flo3gr">
+        <div class="css-ks64w4 css-roiesn css-bbmv0m"></div>
+        <div class="css-47d7cu css-roiesn">
+          <div class="css-phc9f9 css-trglf0 css-trglf0 css-r0azwh"><img alt="" loading="lazy"
+              class="css-trglf0 css-234hu3" src="/_assets/v11/b7d8fd32a7f455518795854f0202df81b4cbbab0.png"
+              srcSet="/_assets/v11/b7d8fd32a7f455518795854f0202df81b4cbbab0.png 320w"
+              sizes="auto,741.3134847948863px" /></div>
+        </div>
+      </div>
+      <div class="css-olrcpo css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/e77aa41882ee61fe9bf14b97652ac5f832c2a578.svg" alt="" class="css-9j6u1t css-8zr56v" />
+        </div>
+      </div>
+      <div class="css-bz2tic css-p3mbah">
+        <div class="css-scv9mu css-roiesn css-bbmv0m"></div>
+        <div class="css-efox1r css-roiesn">
+          <div class="css-phc9f9 css-trglf0 css-trglf0 css-r0azwh"><img alt="" loading="lazy"
+              class="css-trglf0 css-6w5stc" src="/_assets/v11/b7d8fd32a7f455518795854f0202df81b4cbbab0.png"
+              srcSet="/_assets/v11/b7d8fd32a7f455518795854f0202df81b4cbbab0.png 320w"
+              sizes="auto,741.3134847948863px" /></div>
+        </div>
+      </div>
+      <div class="css-mm5v05 css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/863caa14def38d8bbe51c1449a9e1e0472dbca7f.svg" alt="" class="css-9j6u1t css-8zr56v" />
+        </div>
+      </div>
+      <div class="css-i0ezie css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/e77aa41882ee61fe9bf14b97652ac5f832c2a578.svg" alt="" class="css-9j6u1t css-8zr56v" />
+        </div>
+      </div>
+      <div class="css-i0g7wm css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/e77aa41882ee61fe9bf14b97652ac5f832c2a578.svg" alt="" class="css-9j6u1t css-8zr56v" />
+        </div>
+      </div>
+      <div class="css-olqlck css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/e77aa41882ee61fe9bf14b97652ac5f832c2a578.svg" alt="" class="css-9j6u1t css-8zr56v" />
+        </div>
+      </div>
+      <div class="css-olpcyc css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/e77aa41882ee61fe9bf14b97652ac5f832c2a578.svg" alt="" class="css-9j6u1t css-8zr56v" />
+        </div>
+      </div>
+      <div class="css-v5s1t5 css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-uhi680"><img loading="lazy"
+            src="/_assets/v11/198e62afa0f5b54c82f2b7d3bfda3b606c1326ef.png" alt="" width="360" height="585.132"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/198e62afa0f5b54c82f2b7d3bfda3b606c1326ef.png 360w"
+            sizes="auto,352px" /></div>
+      </div>
+      <p class="css-tzn6qh css-2a9gdl css-wgai7u css-ugqh3r adjustLetterSpacing textContents">&lt;- BACK</p>
+      <p class="css-tzn6qh css-gmz808 css-qkzmed css-ugqh3r adjustLetterSpacing textContents">NEXT -&gt;</p>
+      <div class="css-zdykm3 css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/d00064dbf3e86e123543c66785e4c1e932a34caa.png" alt="" width="314" height="188"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/d00064dbf3e86e123543c66785e4c1e932a34caa.png 314w"
+            sizes="auto,314px" /></div>
+      </div>
+      <div class="css-q2q4lj css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/e7c07092b9591fc38cbf5c695cceb1a87f0b1c81.png" alt="" width="315" height="185"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/e7c07092b9591fc38cbf5c695cceb1a87f0b1c81.png 315w"
+            sizes="auto,315px" /></div>
+      </div>
+      <div class="css-ocomrn css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/d88160b6c4799ab7ec7913bbdbdf7a385cac1053.png" alt="" width="314" height="185"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/d88160b6c4799ab7ec7913bbdbdf7a385cac1053.png 314w"
+            sizes="auto,314px" /></div>
+      </div>
+      <div class="css-jv84jq css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/ce77d90e04f0e7e2abcbb244223b9c53c042bc97.png" alt="" width="315" height="185"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/ce77d90e04f0e7e2abcbb244223b9c53c042bc97.png 315w"
+            sizes="auto,315px" /></div>
       </div>
     </div>
-    <div class="flashcard rlamls-flashcard" id="rlamls-card2">
-      <p class="card-text">The concept is inspired by the process of cell division, a core mechanism through which living organisms grow. This serves as an analogy for how a tenant within RLAM can begin at a small scale and progressively expand over time. The design reflects structured, organic growth, aligning with RLAM’s commitment to supporting long-term development and scalable potential.</p>
-      <div class="img-placeholder"></div>
-      <div class="project-info">
-        <h4>RLAM Life Sciences</h4>
-        <h4>Branding</h4>
-        <h4>Designer for Smart Soho</h4>
-        <h4>2 of 11</h4>
+    <div class="css-vf8mzy css-j6ldtg css-d2y1ww" data-page-overflowx="hidden" data-breakpoint-id="node-15_6659"
+      data-breakpoint="true" data-width="1440" data-height="2827">
+      <div class="css-wxxb76 css-8hhw9a css-grtgjx">
+        <div class="css-ayg824 css-g1gfz7 css-edc7e7">
+          <div class="css-h28ngu css-bj6mv3">
+            <div aria-hidden="true" class="css-trglf0 css-r0azwh css-jvd8z0">
+              <div class="css-jvd8z0 css-bbmv0m css-trglf0 css-r0azwh"></div><img alt="" loading="lazy"
+                class="css-ez8men css-s9ceyc css-75y27k" src="/_assets/v11/230d731b8e4aea5872676b827a7bae887a5ea25d.png"
+                srcSet="/_assets/v11/230d731b8e4aea5872676b827a7bae887a5ea25d.png 1376w, /_assets/v11/230d731b8e4aea5872676b827a7bae887a5ea25d.png?w=1024 1024w"
+                sizes="auto,910px" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="css-vvlg3m css-yozq13 css-6kywl1"><img alt=""
+          class="css-ez8men css-9unj7x css-trglf0 css-trglf0 css-r0azwh css-9unj7x css-jvd8z0"
+          src="/_assets/v11/eda5010e7561967096df1b189b0bc7b0d8396e6f.png"
+          srcSet="/_assets/v11/eda5010e7561967096df1b189b0bc7b0d8396e6f.png 1400w, /_assets/v11/eda5010e7561967096df1b189b0bc7b0d8396e6f.png?w=1024 1024w"
+          sizes="590px" /></div>
+      <div class="css-aqxbiq css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img src="/_assets/v11/10bedd078504cebbd21569f0f5083abb2f5aff83.svg" alt=""
+            class="css-9j6u1t css-8zr56v" /></div>
+      </div>
+      <div class="css-slnd3e css-grtgjx">
+        <div class="css-ayg824 css-qr9913 css-edc7e7">
+          <div class="css-vf8mzy css-wrxd48" data-isimage="true">
+            <div class="css-trglf0 css-597600"><img src="/_assets/v11/e4d1ed25993d1ddeec36b4adb3ad28a364fb68de.png"
+                alt="" width="243.755" height="326.488" class="css-9j6u1t css-8zr56v"
+                srcSet="/_assets/v11/e4d1ed25993d1ddeec36b4adb3ad28a364fb68de.png 244w" sizes="233.36094665527344px" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="css-lx3vof css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/7f8c9efe991643d1577a9536199fcb9916f148cf.png" alt="" width="355" height="145"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/7f8c9efe991643d1577a9536199fcb9916f148cf.png 355w"
+            sizes="auto,355px" /></div>
+      </div>
+      <div class="css-xb0ivz css-bz2tic">
+        <div class="css-6h4pqy css-grtgjx">
+          <div class="css-ayg824 css-kjvnl4 css-edc7e7">
+            <div class="css-i0sq2k css-3sy0s2 css-sr4pu5"></div>
+          </div>
+        </div>
+        <div class="css-qwq4tt css-grtgjx">
+          <div class="css-ayg824 css-tb5w43 css-edc7e7">
+            <div class="css-vf8mzy css-enk4al" data-isimage="true">
+              <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+                  src="/_assets/v11/638c7d904fa414a3e8812e7a9a6fe900ed51ab84.svg" alt=""
+                  class="css-9j6u1t css-8zr56v" /></div>
+            </div>
+          </div>
+        </div>
+        <div class="css-6ob2q1 css-grtgjx">
+          <div class="css-ayg824 css-jioih4 css-edc7e7">
+            <p class="css-ld0hsi css-3v20t7 css-oom5nr css-y7f465 adjustLetterSpacing textContents">Font parings usd BAI
+              Jamaree paired with a custom font based</p>
+          </div>
+        </div>
+      </div>
+      <div class="css-x5k64o css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/7161e6a1ccb4fc787a68203cf2006c70f773c57e.png" alt="" width="324.999" height="182.2"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/7161e6a1ccb4fc787a68203cf2006c70f773c57e.png 325w"
+            sizes="auto,324.99920654296875px" /></div>
+      </div>
+      <div class="css-qf4ct css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/cd2f0dded3390a5da201b63d0b4fe2f850c4c4e6.png" alt="" width="349.789" height="172.805"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/cd2f0dded3390a5da201b63d0b4fe2f850c4c4e6.png 350w"
+            sizes="auto,349.7890625px" /></div>
+      </div>
+      <div class="css-2zyray css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/8aa8333c536beb95ed5b9ac1e8c3c0d787c8d416.png" alt="" width="280.523" height="127.077"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/8aa8333c536beb95ed5b9ac1e8c3c0d787c8d416.png 281w"
+            sizes="auto,280.52276611328125px" /></div>
+      </div>
+      <div class="css-bz2tic css-q81vne">
+        <div class="css-wsmi9u css-roiesn css-bbmv0m"></div>
+        <div class="css-go1g8l css-roiesn">
+          <div class="css-phc9f9 css-trglf0 css-trglf0 css-r0azwh"><img alt="" loading="lazy"
+              class="css-trglf0 css-97bw9u" src="/_assets/v11/b7d8fd32a7f455518795854f0202df81b4cbbab0.png"
+              srcSet="/_assets/v11/b7d8fd32a7f455518795854f0202df81b4cbbab0.png 320w"
+              sizes="auto,692.1638727193894px" /></div>
+        </div>
+      </div>
+      <div class="css-bz2tic css-1babiy">
+        <div class="css-htuxmi css-roiesn css-bbmv0m"></div>
+        <div class="css-vn27yq css-roiesn">
+          <div class="css-phc9f9 css-trglf0 css-trglf0 css-r0azwh"><img alt="" loading="lazy"
+              class="css-trglf0 css-cmljwb" src="/_assets/v11/b7d8fd32a7f455518795854f0202df81b4cbbab0.png"
+              srcSet="/_assets/v11/b7d8fd32a7f455518795854f0202df81b4cbbab0.png 320w"
+              sizes="auto,741.3135204412848px" /></div>
+        </div>
+      </div>
+      <div class="css-bz2tic css-k2ehc">
+        <div class="css-3dxurj css-roiesn css-bbmv0m"></div>
+        <div class="css-uiv5l8 css-roiesn">
+          <div class="css-phc9f9 css-trglf0 css-trglf0 css-r0azwh"><img alt="" loading="lazy"
+              class="css-trglf0 css-hdjnfj" src="/_assets/v11/b7d8fd32a7f455518795854f0202df81b4cbbab0.png"
+              srcSet="/_assets/v11/b7d8fd32a7f455518795854f0202df81b4cbbab0.png 320w"
+              sizes="auto,741.3134793136826px" /></div>
+        </div>
+      </div>
+      <div class="css-bz2tic css-d5js62">
+        <div class="css-n8ag6t css-roiesn css-bbmv0m"></div>
+        <div class="css-cwtapp css-roiesn">
+          <div class="css-phc9f9 css-trglf0 css-trglf0 css-r0azwh"><img alt="" loading="lazy"
+              class="css-trglf0 css-234hu3" src="/_assets/v11/b7d8fd32a7f455518795854f0202df81b4cbbab0.png"
+              srcSet="/_assets/v11/b7d8fd32a7f455518795854f0202df81b4cbbab0.png 320w"
+              sizes="auto,741.3134847948863px" /></div>
+        </div>
+      </div>
+      <div class="css-1e2ed9 css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/e77aa41882ee61fe9bf14b97652ac5f832c2a578.svg" alt="" class="css-9j6u1t css-8zr56v" />
+        </div>
+      </div>
+      <div class="css-bz2tic css-kya8zg">
+        <div class="css-35ec25 css-roiesn css-bbmv0m"></div>
+        <div class="css-jvt4l5 css-roiesn">
+          <div class="css-phc9f9 css-trglf0 css-trglf0 css-r0azwh"><img alt="" loading="lazy"
+              class="css-trglf0 css-6w5stc" src="/_assets/v11/b7d8fd32a7f455518795854f0202df81b4cbbab0.png"
+              srcSet="/_assets/v11/b7d8fd32a7f455518795854f0202df81b4cbbab0.png 320w"
+              sizes="auto,741.3134847948863px" /></div>
+        </div>
+      </div>
+      <div class="css-z2tq7d css-grtgjx">
+        <div class="css-ayg824 css-i8lngt css-edc7e7">
+          <div class="css-vf8mzy css-37wu8w" data-isimage="true">
+            <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+                src="/_assets/v11/3982e67e7a261c56ae620d602c73e28f64a74a64.svg" alt="" class="css-9j6u1t css-8zr56v" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="css-cyb81 css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/e77aa41882ee61fe9bf14b97652ac5f832c2a578.svg" alt="" class="css-9j6u1t css-8zr56v" />
+        </div>
+      </div>
+      <div class="css-cx2tt css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/e77aa41882ee61fe9bf14b97652ac5f832c2a578.svg" alt="" class="css-9j6u1t css-8zr56v" />
+        </div>
+      </div>
+      <div class="css-1e3ksv css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/e77aa41882ee61fe9bf14b97652ac5f832c2a578.svg" alt="" class="css-9j6u1t css-8zr56v" />
+        </div>
+      </div>
+      <div class="css-1e4t73 css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/e77aa41882ee61fe9bf14b97652ac5f832c2a578.svg" alt="" class="css-9j6u1t css-8zr56v" />
+        </div>
+      </div>
+      <div class="css-szb68t css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-qrvkdc"><img loading="lazy"
+            src="/_assets/v11/ebd1d9eb90ca9e6c1573a094f6ba40c2df7aede3.png" alt="" width="428.972" height="699"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/ebd1d9eb90ca9e6c1573a094f6ba40c2df7aede3.png 429w"
+            sizes="auto,420.9716796875px" /></div>
+      </div>
+      <p class="css-tzn6qh css-2a9gdl css-ca35d3 css-ugqh3r adjustLetterSpacing textContents">&lt;- BACK</p>
+      <p class="css-tzn6qh css-2a9gdl css-pw7dq css-ugqh3r adjustLetterSpacing textContents">NEXT -&gt;</p>
+      <div class="css-a7ll3z css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/e355204ddf44ba04f258c70b58f34230f14aa0ee.png" alt="" width="395.841" height="237"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/e355204ddf44ba04f258c70b58f34230f14aa0ee.png 396w"
+            sizes="auto,395.8406677246094px" /></div>
+      </div>
+      <div class="css-2o2g0w css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/f80fa8f8bda672cccac2dcad43436da62ed20010.png" alt="" width="378" height="222"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/f80fa8f8bda672cccac2dcad43436da62ed20010.png 379w"
+            sizes="auto,378px" /></div>
+      </div>
+      <div class="css-fi6nzo css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/7d9c7bc81f8baa7593431b64fb2eb4a1dd05a5da.png" alt="" width="376.8" height="222"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/7d9c7bc81f8baa7593431b64fb2eb4a1dd05a5da.png 377w"
+            sizes="auto,376.79998779296875px" /></div>
+      </div>
+      <div class="css-bc2xg5 css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/fbf9cefceb704f8312de5dce712e523f04035a99.png" alt="" width="378" height="222"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/fbf9cefceb704f8312de5dce712e523f04035a99.png 379w"
+            sizes="auto,378px" /></div>
+      </div>
+      <div class="css-7d3utz css-bz2tic">
+        <div class="css-fipppf css-grtgjx">
+          <div class="css-ayg824 css-pgfkkj css-edc7e7">
+            <div class="css-i0sq2k css-lvctdb css-sr4pu5"></div>
+          </div>
+        </div>
+        <div class="css-v23yld css-grtgjx">
+          <div class="css-ayg824 css-pgfkkj css-edc7e7">
+            <div class="css-vf8mzy css-jfj40x" data-isimage="true">
+              <div class="css-trglf0 css-wixxpz"><img src="/_assets/v11/b796c6ef20f3d6441ecfe391407c790561fd205e.svg"
+                  alt="" class="css-9j6u1t css-8zr56v" /></div>
+            </div>
+          </div>
+        </div>
+        <div class="css-md9xq1 css-grtgjx">
+          <div class="css-ayg824 css-kbjgar css-edc7e7">
+            <p class="css-ld0hsi css-acqqyv css-oom5nr css-y7f465 adjustLetterSpacing textContents">The concept is
+              inspired by the process of cell division, a core mechanism through which living organisms grow. This
+              serves as an analogy for how a tenant within RLAM can begin at a small scale and progressively expand over
+              time. The design reflects structured, organic growth, aligning with RLAM’s commitment to supporting
+              long-term development and scalable potential.</p>
+          </div>
+        </div>
+      </div>
+      <div class="css-junjss css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/cb6ed4cf9efb3c7b45f4e480631bd8e5467320b4.png" alt="" width="295.263" height="161.579"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/cb6ed4cf9efb3c7b45f4e480631bd8e5467320b4.png 296w"
+            sizes="auto,295.2627868652344px" /></div>
+      </div>
+      <div class="css-knzv4d css-bz2tic">
+        <div class="css-kefg2g css-grtgjx">
+          <div class="css-ayg824 css-e0jbr5 css-edc7e7">
+            <div class="css-i0sq2k css-j0q37e css-sr4pu5"></div>
+          </div>
+        </div>
+        <div class="css-r9ndf5 css-grtgjx">
+          <div class="css-ayg824 css-gonzys css-edc7e7">
+            <div class="css-vf8mzy css-61cakd" data-isimage="true">
+              <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+                  src="/_assets/v11/a2fb5c5c7053e2768a0f22a510575370e2de594f.svg" alt=""
+                  class="css-9j6u1t css-8zr56v" /></div>
+            </div>
+          </div>
+        </div>
+        <div class="css-rh9fb css-grtgjx">
+          <div class="css-ayg824 css-x2sn8v css-edc7e7">
+            <p class="css-ld0hsi css-wl63xd css-oom5nr css-y7f465 adjustLetterSpacing textContents">Font parings usd BAI
+              Jamaree paired with a custom font based on the graphical abstraction of cell division created above</p>
+          </div>
+        </div>
+      </div>
+      <div class="css-2vqd93 css-bz2tic">
+        <div class="css-uvq1zn css-grtgjx">
+          <div class="css-ayg824 css-mjl5nj css-edc7e7">
+            <div class="css-i0sq2k css-hnrd20 css-sr4pu5"></div>
+          </div>
+        </div>
+        <div class="css-tnthvf css-grtgjx">
+          <div class="css-ayg824 css-tj8ugt css-edc7e7">
+            <div class="css-vf8mzy css-2b1dcr" data-isimage="true">
+              <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+                  src="/_assets/v11/e4fea188076cc334aa4ca7d57664f9aae8b1d31a.svg" alt=""
+                  class="css-9j6u1t css-8zr56v" /></div>
+            </div>
+          </div>
+        </div>
+        <div class="css-irmp3e css-grtgjx">
+          <div class="css-ayg824 css-or8dx8 css-edc7e7">
+            <p class="css-ld0hsi css-6xfx8k css-oom5nr css-y7f465 adjustLetterSpacing textContents">Font parings usd BAI
+              Jamaree paired with a custom font based</p>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="flashcard rlamls-flashcard" id="rlamls-card3">
-      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-      <div class="img-placeholder"></div>
-      <div class="project-info">
-        <h4>RLAM Life Sciences</h4>
-        <h4>Branding</h4>
-        <h4>Designer for Smart Soho</h4>
-        <h4>3 of 11</h4>
-      </div>
-    </div>
-    <div class="flashcard rlamls-flashcard" id="rlamls-card4">
-      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis</p>
-      <div class="img-placeholder"></div>
-      <div class="project-info">
-        <h4>RLAM Life Sciences</h4>
-        <h4>Branding</h4>
-        <h4>Designer for Smart Soho</h4>
-        <h4>4 of 11</h4>
-      </div>
-    </div>
-    <div class="flashcard rlamls-flashcard" id="rlamls-card5">
-      <div class="img-placeholder"></div>
-      <p class="card-text">
-        Pink Pink. Lorem ipsum dolor sit amet, consectetur adipiscing<br/>
-        elit, sed do eiusmod tempor incididunt ut labore et<br/>
-        dolore magna aliqua. Ut enim ad minim.
-      </p>
-      <div class="project-info">
-        <h4>RLAM Life Sciences</h4>
-        <h4>Branding</h4>
-        <h4>Designer for Smart Soho</h4>
-        <h4>5 of 11</h4>
-      </div>
-    </div>
-    <div class="flashcard rlamls-flashcard" id="rlamls-card6">
-      <div class="img-placeholder placeholder-one"></div>
-      <div class="img-placeholder placeholder-two"></div>
-      <div class="img-placeholder placeholder-three"></div>
-      <div class="img-placeholder placeholder-four"></div>
-      <div class="img-placeholder placeholder-five"></div>
-      <div class="img-placeholder placeholder-six"></div>
-      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      <div class="project-info">
-        <h4>RLAM Life Sciences</h4>
-        <h4>Branding</h4>
-        <h4>Designer for Smart Soho</h4>
-        <h4>6 of 11</h4>
-      </div>
-    </div>
-     <div class="flashcard rlamls-flashcard" id="rlamls-card7">
-      <div class="img-placeholder placeholder-one"></div>
-      <div class="img-placeholder placeholder-two"></div>
-      <div class="img-placeholder placeholder-three"></div>
-      <div class="img-placeholder placeholder-four"></div>
-      <div class="img-placeholder placeholder-five"></div>
-      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      <div class="project-info">
-        <h4>RLAM Life Sciences</h4>
-        <h4>Branding</h4>
-        <h4>Designer for Smart Soho</h4>
-        <h4>7 of 11</h4>
-      </div>
-    </div>
-     <div class="flashcard rlamls-flashcard" id="rlamls-card8">
-      <div class="img-placeholder placeholder-one"></div>
-      <div class="img-placeholder placeholder-two"></div>
-      <div class="img-placeholder placeholder-three"></div>
-      <div class="img-placeholder placeholder-four"></div>
-      <div class="img-placeholder placeholder-five"></div>
-      <div class="project-info">
-        <h4>RLAM Life Sciences</h4>
-        <h4>Branding</h4>
-        <h4>Designer for Smart Soho</h4>
-        <h4>8 of 11</h4>
-      </div>
-    </div>
-     <div class="flashcard rlamls-flashcard" id="rlamls-card9">
-      <div class="img-placeholder placeholder-one"></div>
-      <div class="img-placeholder placeholder-two"></div>
-      <div class="img-placeholder placeholder-three"></div>
-      <p class="card-text-one">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>      
-      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>      
-      <div class="project-info">
-        <h4>RLAM Life Sciences</h4>
-        <h4>Branding</h4>
-        <h4>Designer for Smart Soho</h4>
-        <h4>9 of 11</h4>
-      </div>
-    </div>
-     <div class="flashcard rlamls-flashcard" id="rlamls-card10">
-      <div class="img-placeholder"></div>     
-      <div class="project-info">
-        <h4>RLAM Life Sciences</h4>
-        <h4>Branding</h4>
-        <h4>Designer for Smart Soho</h4>
-        <h4>10 of 11</h4>
-      </div>
-    </div>
-     <div class="flashcard rlamls-flashcard" id="rlamls-card11">
-      <div class="img-placeholder img-placeholder-one"></div> 
-      <div class="img-placeholder img-placeholder-two"></div>  
-      <div class="img-placeholder img-placeholder-three"></div> 
-      <div class="img-placeholder img-placeholder-four"></div> 
-      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam.</p>
-      <div class="project-info">
-        <h4>RLAM Life Sciences</h4>
-        <h4>Branding</h4>
-        <h4>Designer for Smart Soho</h4>
-        <h4>11 of 11</h4>
-      </div>
-    </div>
-      <div class="nav-buttons">
-    <h4 onclick="window.location.href='../work.html'">&lt;- Back</h4>
-    <h4 onclick="window.location.href='spmanaged.html'">More -&gt;</h4>
-  </div>
   </div>
 
-  </div>
-  <script src="flash.js"></script>
+
+  <noscript data-nosnippet>
+    <main
+      style="height: 100vh; width: 100vw; background-color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+      <h1 style="font-size: 24px; padding: 8px; color: black">
+        This site requires JavaScript
+      </h1>
+      <p style="font-size: 16px; padding: 8px; color: #00000080">To view this website, enable JavaScript in your browser
+        settings and reload the page.</p>
+      <form style="margin-top: 12px;" action="">
+        <button type="submit"
+          style="font-size: 14px; color: black; border: 1px solid #0000001a; border-radius: 5px; width: 256px; height: 32px;">
+          Reload page
+        </button>
+      </form>
+    </main>
+  </noscript>
 </body>
+
 </html>

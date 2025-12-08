@@ -1,128 +1,1626 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SP Managed Flashcards</title>
-  <link rel="stylesheet" href="../styles.css" />
-  <link rel="stylesheet" href="wrk-styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-  <link rel="icon" type="image/png" href="../Assets/favicon.png">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <meta charset="utf-8" />
+  <noscript>
+    <style>
+      #container {
+        display: none;
+      }
+    </style>
+  </noscript>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="preload"
+    href="/_runtimes/sites-runtime.b69569d0baef319082b5422507ab08a06908495a02069eb739f5ee4ed1c9c0bb.js" as="script"
+    crossorigin />
+  <link rel="preload" href="/_json/9c0173cd-636d-4fc7-9dac-5424e85f3fc9/spmanaged.json" as="fetch" />
+  <style id="reset-css">
+    @layer figreset, figoverridable, reset, theme, base, figutils, components, utilities;
+
+    @layer figoverridable {
+      :root {
+        font-synthesis: none
+      }
+    }
+
+    @layer figutils {
+      :root {
+        --banner-height: 48px;
+        --banner-height-v2: 40px;
+        --full-height-with-banner: calc(100dvh - var(--banner-height))
+      }
+
+      @media (max-width:600px) {
+        .banner-v2-container {
+          left: 0 !important;
+          right: 0 !important;
+          margin: 0 auto !important
+        }
+      }
+
+      .wrapper-with-banner .min-h-screen {
+        min-height: var(--full-height-with-banner)
+      }
+
+      .wrapper-with-banner .h-screen {
+        height: var(--full-height-with-banner)
+      }
+    }
+
+    @layer figreset {
+      :root {
+        font-family: var(--default-font-family, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji')
+      }
+
+      html {
+        -webkit-text-size-adjust: 100%;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-font-smoothing: antialiased;
+        width: 100%
+      }
+
+      body {
+        margin: 0;
+        width: 100%
+      }
+
+      body:has([data-page-overflowx='hidden']) {
+        overflow-x: hidden
+      }
+
+      body:has([data-page-overflowx='auto']) {
+        overflow-x: auto
+      }
+    }
+
+    @layer figutils {
+      #container {
+        width: 100%
+      }
+    }
+
+    @layer figreset {
+
+      *,
+      *:before,
+      *:after {
+        box-sizing: border-box
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none
+      }
+
+      button {
+        border: none;
+        background: none;
+        padding: 0
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p {
+        font-size: inherit;
+        font-weight: inherit
+      }
+
+      blockquote,
+      dl,
+      dd,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      hr,
+      figure,
+      p,
+      pre {
+        margin: 0
+      }
+
+      ol,
+      ul,
+      menu {
+        list-style: none;
+        margin: 0;
+        padding-inline-start: 0
+      }
+    }
+
+    @layer figreset {
+      #container .textContents {
+        color: #ffffff00
+      }
+    }
+
+    @layer figutils {
+      :is(.textContents ul, ul.textContents)>li:before {
+        content: '\2022';
+        margin-left: -1.5em;
+        display: inline-block;
+        text-align: center;
+        width: 1.5em;
+        -webkit-background-clip: var(--list-marker-background-clip);
+        -webkit-text-fill-color: var(--list-marker-text-fill-color);
+        background-clip: var(--list-marker-background-clip);
+        background-image: var(--list-marker-background-image);
+        color: var(--list-marker-color);
+        font-size: var(--list-marker-font-size);
+        line-height: var(--list-marker-line-height);
+        mix-blend-mode: var(--list-marker-mix-blend-mode);
+        vertical-align: var(--list-marker-vertical-align)
+      }
+
+      :is(.textContents ol, ol.textContents)>li::marker {
+        color: var(--list-marker-color);
+        font-size: var(--list-marker-font-size);
+        line-height: var(--list-marker-line-height);
+        vertical-align: var(--list-marker-vertical-align)
+      }
+
+      :is(.textContents, .textContents *).adjustLetterSpacing:after {
+        content: '';
+        margin-left: calc(var(--letter-spacing) * -1)
+      }
+    }
+
+    @layer figutils {
+      #container .textClip {
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent !important
+      }
+
+      #container .textClip>* {
+        -webkit-text-fill-color: initial
+      }
+    }
+
+    @layer figutils {
+      #container .embed {
+        border: none
+      }
+    }
+
+    @layer figutils {
+      #container .marquee-container {
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        width: var(--width);
+        transform: var(--transform);
+
+        &:hover div {
+          animation-play-state: var(--pause-on-hover)
+        }
+
+        &:active div {
+          animation-play-state: var(--pause-on-click)
+        }
+      }
+
+      #container .marquee {
+        flex: 0 0 auto;
+        min-width: var(--min-width);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        animation: scroll var(--duration) linear var(--delay) var(--iteration-count);
+        animation-delay: var(--delay);
+        animation-direction: var(--direction);
+        animation-timing-function: var(--timing-function)
+      }
+
+      #container .marquee.reduced-motion {
+        @media (prefers-reduced-motion:reduce) {
+          animation: none
+        }
+      }
+
+      @keyframes scroll {
+        0% {
+          transform: translateX(0%)
+        }
+
+        100% {
+          transform: translateX(-100%)
+        }
+      }
+
+      #container .marquee-initial-child-container {
+        flex: 0 0 auto;
+        display: flex;
+        min-width: auto;
+        flex-direction: row;
+        align-items: center
+      }
+
+      #container .marquee-child {
+        transform: var(--transform)
+      }
+    }
+
+    @layer figutils {
+      .code-behavior-wrapper>* {
+        width: 100%;
+        height: 100%
+      }
+    }
+
+    @layer figreset {
+      :root {
+        --100dvw: 100vw;
+        --100dvh: 100vh
+      }
+
+      @supports (width:100dvw) {
+        :root {
+          --100dvw: 100dvw;
+          --100dvh: 100dvh
+        }
+      }
+    }
+
+    @layer figutils {
+      .bypass-link {
+        position: fixed;
+        top: 16px;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        pointer-events: none
+      }
+
+      .bypass-link:focus-within {
+        opacity: 1;
+        z-index: 10000
+      }
+
+      .bypass-link>a {
+        background-color: #000;
+        color: #fff;
+        border: 1px solid #fff;
+        padding: 12px 16px;
+        font-size: 16px;
+        border-radius: 12px;
+        pointer-events: auto
+      }
+    }
+
+    @layer figreset {
+      :root {
+        text-align: left;
+
+        button {
+          text-align: left
+        }
+      }
+    }
+  </style>
+  <style id="font-faces-nt7j2c">
+    @font-face {
+      font-family: "Cute Font:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/CuteFont-Regular_1/CuteFont-Regular_1-english.woff2");
+      font-display: block;
+      unicode-range: U+0000-00A0, U+00A2-00A9, U+00AC-00AE, U+00B0-00B7, U+00B9-00BA, U+00BC-00BE, U+00D7, U+00F7, U+2000-206F, U+2074, U+20AC, U+2122, U+2190-21BB, U+2212, U+2215, U+F8FF, U+FEFF, U+FFFD
+    }
+
+    @font-face {
+      font-family: "Cute Font:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/CuteFont-Regular_1/CuteFont-Regular_1-rest-latin.woff2");
+      font-display: block;
+      unicode-range: U+00A1, U+00AA-00AB, U+00AF, U+00B8, U+00BB, U+00BF-00D6, U+00D8-00F6, U+00F8-00FF, U+0131, U+0152-0153, U+02B0-02FF
+    }
+
+    @font-face {
+      font-family: "Cute Font:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/CuteFont-Regular_1/CuteFont-Regular_1-latin-extended-a.woff2");
+      font-display: block;
+      unicode-range: U+0100-0130, U+0132-0151, U+0154-017F
+    }
+
+    @font-face {
+      font-family: "Cute Font:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/CuteFont-Regular_1/CuteFont-Regular_1-latin-extended-b.woff2");
+      font-display: block;
+      unicode-range: U+0180-024F
+    }
+
+    @font-face {
+      font-family: "Cute Font:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/CuteFont-Regular_1/CuteFont-Regular_1-latin-extended-additional.woff2");
+      font-display: block;
+      unicode-range: U+1E00-1EFF
+    }
+
+    @font-face {
+      font-family: "Cute Font:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/CuteFont-Regular_1/CuteFont-Regular_1-rest.woff2");
+      font-display: block;
+      unicode-range: U+0250-02AF, U+0300-1DFF, U+1F00-1FFF, U+2070-2073, U+2075-20AB, U+20AD-2121, U+2123-218F, U+21BC-2211, U+2213-2214, U+2216-F8FE, U+F900-FEFE, U+FF00-FFFC, U+FFFE-FFFF
+    }
+
+    @font-face {
+      font-family: "DM Sans:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/DMSans_opsz_wght__1/DMSans_opsz_wght__1-english.woff2");
+      font-display: block;
+      unicode-range: U+0000-00A0, U+00A2-00A9, U+00AC-00AE, U+00B0-00B7, U+00B9-00BA, U+00BC-00BE, U+00D7, U+00F7, U+2000-206F, U+2074, U+20AC, U+2122, U+2190-21BB, U+2212, U+2215, U+F8FF, U+FEFF, U+FFFD
+    }
+
+    @font-face {
+      font-family: "DM Sans:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/DMSans_opsz_wght__1/DMSans_opsz_wght__1-rest-latin.woff2");
+      font-display: block;
+      unicode-range: U+00A1, U+00AA-00AB, U+00AF, U+00B8, U+00BB, U+00BF-00D6, U+00D8-00F6, U+00F8-00FF, U+0131, U+0152-0153, U+02B0-02FF
+    }
+
+    @font-face {
+      font-family: "DM Sans:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/DMSans_opsz_wght__1/DMSans_opsz_wght__1-latin-extended-a.woff2");
+      font-display: block;
+      unicode-range: U+0100-0130, U+0132-0151, U+0154-017F
+    }
+
+    @font-face {
+      font-family: "DM Sans:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/DMSans_opsz_wght__1/DMSans_opsz_wght__1-latin-extended-b.woff2");
+      font-display: block;
+      unicode-range: U+0180-024F
+    }
+
+    @font-face {
+      font-family: "DM Sans:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/DMSans_opsz_wght__1/DMSans_opsz_wght__1-latin-extended-additional.woff2");
+      font-display: block;
+      unicode-range: U+1E00-1EFF
+    }
+
+    @font-face {
+      font-family: "DM Sans:Regular";
+      font-style: normal;
+      src: url("/_woff/v2/DMSans_opsz_wght__1/DMSans_opsz_wght__1-rest.woff2");
+      font-display: block;
+      unicode-range: U+0250-02AF, U+0300-1DFF, U+1F00-1FFF, U+2070-2073, U+2075-20AB, U+20AD-2121, U+2123-218F, U+21BC-2211, U+2213-2214, U+2216-F8FE, U+F900-FEFE, U+FF00-FFFC, U+FFFE-FFFF
+    }
+  </style>
+  <style id="breakpoint-css">
+    @media (width < 1440px) {
+      [data-breakpoint-id="node-15_14942"] {
+        display: none !important
+      }
+    }
+
+    @media (width >=1440px) {
+      [data-breakpoint-id="node-15_14943"] {
+        display: none !important
+      }
+    }
+  </style>
+  <style id="body-background-color">
+    @media (max-width: 1439px) {
+      body:has([data-breakpoint-id="node-15_14943"]) {
+        background-color: #FFF
+      }
+    }
+
+    @media (min-width: 1440px) {
+      body:has([data-breakpoint-id="node-15_14942"]) {
+        background-color: #FFF
+      }
+    }
+  </style>
+  <style id="ssr-css">
+    #container .css-ll733z {
+      position: relative;
+    }
+
+    #container .css-j6ldtg {
+      min-width: var(--content-min-width);
+      width: 100%;
+      height: var(--content-min-height);
+    }
+
+    #container .css-74ngtj {
+      --content-min-width: max(100%, 375px);
+      --content-min-height: max(var(--100dvh), 2664px);
+    }
+
+    #container .css-vf8mzy {
+      position: relative;
+      display: block;
+    }
+
+    #container .css-12v4hf {
+      --content-min-width: max(100%, 375px);
+      --content-min-height: max(var(--100dvh), 2664px);
+      overflow: clip;
+      background-color: #FFF;
+    }
+
+    #container .css-j9f0op {
+      width: 100%;
+      height: 100%;
+    }
+
+    #container .css-8zr56v {
+      display: block;
+    }
+
+    #container .css-g9z8ym {
+      width: 273px;
+      height: 173px;
+      left: 52px;
+      top: 1293px;
+    }
+
+    #container .css-trglf0 {
+      position: absolute;
+    }
+
+    #container .css-roiesn {
+      position: absolute;
+      display: block;
+    }
+
+    #container .css-9j6u1t {
+      width: 100%;
+      height: 100%;
+      max-width: none;
+    }
+
+    #container .css-wixxpz {
+      inset: 0;
+    }
+
+    #container .css-6oqxzs {
+      width: 182.66px;
+      height: 130.141px;
+      left: 170px;
+      top: 325px;
+    }
+
+    #container .css-cbjqry {
+      width: 187.804px;
+      height: 246.59px;
+      left: 23px;
+      top: 259px;
+    }
+
+    #container .css-bz2tic {
+      position: absolute;
+      display: contents;
+    }
+
+    #container .css-8lv9np {
+      width: 187.735px;
+      height: 242.638px;
+      left: 23.07px;
+      top: 262.95px;
+    }
+
+    #container .css-grtgjx {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #container .css-ayg824 {
+      flex: 0 0 auto;
+    }
+
+    #container .css-wj2ivb {
+      transform: matrix(0.9998506307601929, -0.017284151166677475, 0.017284151166677475, 0.9998506307601929, 0, 0);
+    }
+
+    #container .css-edc7e7 {
+      width: auto;
+      height: auto;
+    }
+
+    #container .css-lvctdb {
+      width: 183.623px;
+      height: 239.5px;
+    }
+
+    #container .css-i0sq2k {
+      position: relative;
+      display: block;
+      border-radius: 7.5px;
+    }
+
+    #container .css-sr4pu5 {
+      box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.25);
+      background-color: #FFF;
+    }
+
+    #container .css-kdfmpd {
+      width: 63.273px;
+      height: 9.041px;
+      left: 83.35px;
+      top: 260.04px;
+    }
+
+    #container .css-213ix8 {
+      width: 63.145px;
+      height: 7.951px;
+    }
+
+    #container .css-8mkikp {
+      width: 168.464px;
+      height: 217.783px;
+      left: 31.32px;
+      top: 274.14px;
+    }
+
+    #container .css-xfkjq1 {
+      transform: matrix(0.9998609654365911, -0.01667251850975962, 0.01654909568791762, 0.9998630394004413, 0, 0);
+    }
+
+    #container .css-ld0hsi {
+      display: block;
+      position: relative;
+    }
+
+    #container .css-acqqyv {
+      width: 164.928px;
+      height: 215.062px;
+    }
+
+    #container .css-oom5nr {
+      white-space: pre-wrap;
+      font-family: "DM Sans:Regular", sans-serif;
+      word-break: break-word;
+      font-weight: 400;
+      font-size: 12px;
+      letter-spacing: -0.48px;
+      line-height: 17px;
+    }
+
+    #container .css-y7f465 {
+      font-variation-settings: "opsz" 14;
+      color: #110C47;
+      --letter-spacing: -0.48px;
+    }
+
+    #container .css-zbnj9z {
+      width: 191.377px;
+      height: 106.769px;
+      left: 14px;
+      top: 1197px;
+    }
+
+    #container .css-eb9z8p {
+      width: 190.933px;
+      height: 102.161px;
+      left: 14.44px;
+      top: 1201.61px;
+    }
+
+    #container .css-uz9sdv {
+      transform: matrix(0.9953728318214417, -0.09608818590641022, 0.09608818590641022, 0.9953728318214417, 0, 0);
+    }
+
+    #container .css-j0q37e {
+      width: 183.623px;
+      height: 84.91px;
+    }
+
+    #container .css-8yjr3 {
+      width: 63.743px;
+      height: 15.303px;
+      left: 74.08px;
+      top: 1202.78px;
+    }
+
+    #container .css-jenrzp {
+      width: 63.144px;
+      height: 9.278px;
+    }
+
+    #container .css-9m6oql {
+      width: 177.213px;
+      height: 82.675px;
+      left: 23.27px;
+      top: 1211.24px;
+    }
+
+    #container .css-yu3wxs {
+      transform: matrix(0.995395307151727, -0.09585474474414615, 0.09417931242327582, 0.9955552483394547, 0, 0);
+    }
+
+    #container .css-wl63xd {
+      width: 171.74px;
+      height: 66.509px;
+    }
+
+    #container .css-7zce7u {
+      width: 152.444px;
+      height: 104.1px;
+      left: 204px;
+      top: 2443.17px;
+    }
+
+    #container .css-dxmaro {
+      width: 152.151px;
+      height: 97.869px;
+      left: 204px;
+      top: 2449.4px;
+    }
+
+    #container .css-kd5409 {
+      transform: matrix(0.9988974332809448, 0.04694565385580063, -0.04694565385580063, 0.9988974332809448, 0, 0);
+    }
+
+    #container .css-afguv {
+      width: 148.041px;
+      height: 91.019px;
+    }
+
+    #container .css-w6dcpu {
+      width: 107.44px;
+      height: 15.686px;
+      left: 231.57px;
+      top: 2444.27px;
+    }
+
+    #container .css-tb5w43 {
+      transform: matrix(0.9988974332809448, 0.046945653855800636, -0.046945653855800636, 0.9988974332809448, 0, 0);
+    }
+
+    #container .css-4ecnb5 {
+      width: 107.057px;
+      height: 10.672px;
+    }
+
+    #container .css-7lbisi {
+      width: 136.354px;
+      height: 22.642px;
+      left: 216.86px;
+      top: 2452.85px;
+    }
+
+    #container .css-75wpf7 {
+      transform: matrix(0.9988944119292991, 0.047008671739621324, -0.05406471788659989, 0.9985374356657072, 0, 0);
+    }
+
+    #container .css-b5iykn {
+      width: 135.623px;
+      height: 16.29px;
+    }
+
+    #container .css-h33g6d {
+      width: 353px;
+      height: 214px;
+      left: 7px;
+      top: 18px;
+    }
+
+    #container .css-eq5gpx {
+      width: 318.256px;
+      height: 421.187px;
+      left: 94px;
+      top: 793px;
+    }
+
+    #container .css-w3c7jt {
+      transform: matrix(0.9678626656532288, 0.25147929787635803, -0.25147929787635803, 0.9678626656532288, 0, 0);
+    }
+
+    #container .css-zhlx2d {
+      width: 231.374px;
+      height: 375.054px;
+    }
+
+    #container .css-6tpjc8 {
+      width: 298.43px;
+      height: 214.529px;
+      left: 17px;
+      top: 611px;
+    }
+
+    #container .css-htqxq6 {
+      top: 0;
+      left: -0.74%;
+      right: -0.74%;
+      bottom: -2.9%;
+    }
+
+    #container .css-b7flof {
+      width: 240.979px;
+      height: 173.479px;
+      left: 128px;
+      top: 461px;
+    }
+
+    #container .css-hgfct7 {
+      top: 0;
+      left: -0.91%;
+      right: -0.91%;
+      bottom: -3.56%;
+    }
+
+    #container .css-c15ar6 {
+      width: 271px;
+      height: 219px;
+      right: 40.69px;
+      top: 1484px;
+    }
+
+    #container .css-yozq13 {
+      position: absolute;
+      display: block;
+      border-radius: 20px;
+    }
+
+    #container .css-r0azwh {
+      inset: 0px;
+      pointer-events: none;
+    }
+
+    #container .css-9unj7x {
+      object-fit: cover;
+      object-position: 50% 50%;
+    }
+
+    #container .css-jvd8z0 {
+      border-radius: 20px;
+    }
+
+    #container .css-ez8men {
+      max-width: none;
+      width: 100%;
+      height: 100%;
+    }
+
+    #container .css-n9zwxg {
+      width: 13px;
+      height: 13px;
+      left: 192.31px;
+      top: 1497px;
+    }
+
+    #container .css-xujrk2 {
+      width: 131.872px;
+      height: 92.958px;
+      left: 26px;
+      top: 1639.67px;
+    }
+
+    #container .css-spnyth {
+      width: 130.994px;
+      height: 86.343px;
+      left: 26.88px;
+      top: 1646.29px;
+    }
+
+    #container .css-x4bovh {
+      transform: matrix(0.9913064241409302, -0.13157346844673157, 0.13157346844673157, 0.9913064241409302, 0, 0);
+    }
+
+    #container .css-hnrd20 {
+      width: 122.745px;
+      height: 70.809px;
+    }
+
+    #container .css-plv0q4 {
+      width: 89.374px;
+      height: 25.47px;
+      left: 46.17px;
+      top: 1641.53px;
+    }
+
+    #container .css-3x8y81 {
+      width: 88.303px;
+      height: 13.974px;
+    }
+
+    #container .css-id4mnl {
+      width: 117.985px;
+      height: 64.553px;
+      left: 36px;
+      top: 1655.8px;
+    }
+
+    #container .css-tcz8eg {
+      transform: matrix(0.991337221831462, -0.13134097816218518, 0.12967233486000201, 0.9915568926035008, 0, 0);
+    }
+
+    #container .css-6xfx8k {
+      width: 112.449px;
+      height: 50.207px;
+    }
+
+    #container .css-ab9300 {
+      width: 348.578px;
+      height: 251.395px;
+      left: 18px;
+      top: 1764px;
+    }
+
+    #container .css-bm1te1 {
+      width: 325px;
+      height: 198px;
+      left: 23px;
+      top: 2058px;
+    }
+
+    #container .css-mjqf9u {
+      width: 318px;
+      height: 194px;
+      left: 49px;
+      top: 2224px;
+    }
+
+    #container .css-nvhec2 {
+      width: 191.208px;
+      height: 183.498px;
+      left: 4px;
+      top: 2391px;
+    }
+
+    #container .css-3qhwqw {
+      transform: translateY(100%);
+      color: #000;
+      --letter-spacing: -1.44px;
+    }
+
+    #container .css-6uafok {
+      left: 61px;
+      bottom: 54px;
+    }
+
+    #container .css-y6s1il {
+      white-space: pre;
+      font-family: "Cute Font:Regular", sans-serif;
+      word-break: break-word;
+      font-style: normal;
+      font-size: 36px;
+      letter-spacing: -1.44px;
+      line-height: 0;
+    }
+
+    #container .css-wh5hty {
+      letter-spacing: -3.2px;
+      line-height: 17px;
+    }
+
+    #container .css-phiujl {
+      letter-spacing: -1.12px;
+      line-height: 17px;
+    }
+
+    #container .css-4byofj {
+      line-height: 17px;
+    }
+
+    #container .css-i37odj {
+      transform: translateX(100%) translateY(100%);
+      color: #000;
+      --letter-spacing: -1.44px;
+    }
+
+    #container .css-ctwf6s {
+      right: 116px;
+      bottom: 54px;
+    }
+
+    #container .css-8dv5i2 {
+      --content-min-width: max(100%, 1440px);
+      --content-min-height: max(var(--100dvh), 1910px);
+    }
+
+    #container .css-nz8224 {
+      --content-min-width: max(100%, 1440px);
+      --content-min-height: max(var(--100dvh), 1910px);
+      overflow: clip;
+      background-color: #FFF;
+    }
+
+    #container .css-qvq90o {
+      width: 273px;
+      height: 173px;
+      left: 400px;
+      top: 938px;
+    }
+
+    #container .css-blkiud {
+      width: 182.66px;
+      height: 130.141px;
+      left: 522px;
+      top: 547px;
+    }
+
+    #container .css-ngw6hf {
+      width: 223.548px;
+      height: 271.932px;
+      left: 307px;
+      top: 457px;
+    }
+
+    #container .css-1izddg {
+      width: 222.853px;
+      height: 268.041px;
+      left: 307.69px;
+      top: 460.89px;
+    }
+
+    #container .css-nrl4er {
+      transform: matrix(0.9844383001327515, -0.17573052644729614, 0.17573052644729614, 0.9844383001327515, 0, 0);
+    }
+
+    #container .css-j932g2 {
+      width: 63.559px;
+      height: 18.924px;
+      left: 366.42px;
+      top: 467.56px;
+    }
+
+    #container .css-m0wckx {
+      width: 200.017px;
+      height: 240.627px;
+      left: 317.55px;
+      top: 473.6px;
+    }
+
+    #container .css-cg3w80 {
+      transform: matrix(0.9845455632858757, -0.17512828404329508, 0.17500675427894757, 0.984567196825348, 0, 0);
+    }
+
+    #container .css-vig1i0 {
+      width: 191.377px;
+      height: 106.769px;
+      left: 366px;
+      top: 841px;
+    }
+
+    #container .css-jyuhx6 {
+      width: 190.933px;
+      height: 102.161px;
+      left: 366.44px;
+      top: 845.61px;
+    }
+
+    #container .css-el5yov {
+      width: 63.743px;
+      height: 15.303px;
+      left: 426.08px;
+      top: 846.78px;
+    }
+
+    #container .css-izsf4q {
+      width: 177.213px;
+      height: 82.675px;
+      left: 375.27px;
+      top: 855.24px;
+    }
+
+    #container .css-h03sy {
+      width: 647px;
+      height: 392.261px;
+      left: 397px;
+      top: 59.37px;
+    }
+
+    #container .css-ye23xo {
+      width: 318.256px;
+      height: 421.187px;
+      left: 891px;
+      top: 508px;
+    }
+
+    #container .css-99nswf {
+      width: 298.43px;
+      height: 604.135px;
+      left: 556px;
+      top: 313.39px;
+    }
+
+    #container .css-tlwo1 {
+      top: 0;
+      left: -0.74%;
+      right: -0.74%;
+      bottom: -1.03%;
+    }
+
+    #container .css-3d1j3z {
+      width: 240.979px;
+      height: 173.479px;
+      left: 672px;
+      top: 555px;
+    }
+
+    #container .css-9ziter {
+      width: 271px;
+      height: 219px;
+      left: 705px;
+      top: 918px;
+    }
+
+    #container .css-ozhxtj {
+      width: 13px;
+      height: 13px;
+      left: 834px;
+      top: 931px;
+    }
+
+    #container .css-4vbexy {
+      width: 158.246px;
+      height: 111.549px;
+      left: 990px;
+      top: 965px;
+    }
+
+    #container .css-modw3b {
+      width: 157.193px;
+      height: 103.612px;
+      left: 991.05px;
+      top: 972.94px;
+    }
+
+    #container .css-ve5hyp {
+      transform: matrix(0.9913064241409302, -0.13157346844673162, 0.1315734684467316, 0.9913064241409302, 0, 0);
+    }
+
+    #container .css-p4ynas {
+      width: 147.293px;
+      height: 84.971px;
+    }
+
+    #container .css-3bmyh0 {
+      position: relative;
+      display: block;
+      border-radius: 9px;
+    }
+
+    #container .css-d96aqn {
+      box-shadow: 1.2px 2.4px 2.4px 1.2px rgba(0, 0, 0, 0.25);
+      background-color: #FFF;
+    }
+
+    #container .css-p64ap9 {
+      width: 107.249px;
+      height: 30.564px;
+      left: 1014.2px;
+      top: 967.23px;
+    }
+
+    #container .css-lq6b8w {
+      width: 105.964px;
+      height: 16.768px;
+    }
+
+    #container .css-tni2dr {
+      width: 141.582px;
+      height: 77.463px;
+      left: 1002px;
+      top: 984.35px;
+    }
+
+    #container .css-lu9h3a {
+      width: 134.938px;
+      height: 60.249px;
+    }
+
+    #container .css-i8dgax {
+      white-space: pre-wrap;
+      font-family: "DM Sans:Regular", sans-serif;
+      word-break: break-word;
+      font-weight: 400;
+      font-size: 14.4px;
+      letter-spacing: -0.576px;
+      line-height: 20.4px;
+    }
+
+    #container .css-88oyv5 {
+      font-variation-settings: "opsz" 14;
+      color: #110C47;
+      --letter-spacing: -0.576px;
+    }
+
+    #container .css-rmt2r9 {
+      width: 795.229px;
+      height: 143.787px;
+      left: 322px;
+      top: 1174px;
+    }
+
+    #container .css-6pvruf {
+      width: 319.899px;
+      height: 307px;
+      left: 733.31px;
+      top: 1373px;
+    }
+
+    #container .css-cybkq {
+      width: 416.951px;
+      height: 263px;
+      left: 362px;
+      top: 1329px;
+    }
+
+    #container .css-ef1syj {
+      width: 383.567px;
+      height: 234px;
+      left: 411px;
+      top: 1563px;
+    }
+
+    #container .css-dys4kg {
+      width: 177.173px;
+      height: 120.987px;
+      left: 836px;
+      top: 1651px;
+    }
+
+    #container .css-5vgi0b {
+      width: 176.833px;
+      height: 113.745px;
+      left: 836px;
+      top: 1658.24px;
+    }
+
+    #container .css-fw7ob {
+      transform: matrix(0.9988974332809448, 0.046945653855800636, -0.04694565385580063, 0.9988974332809448, 0, 0);
+    }
+
+    #container .css-s7ad6a {
+      width: 172.056px;
+      height: 105.785px;
+    }
+
+    #container .css-k04eiz {
+      width: 124.869px;
+      height: 18.23px;
+      left: 868.04px;
+      top: 1652.28px;
+    }
+
+    #container .css-14wmkl {
+      width: 124.424px;
+      height: 12.402px;
+    }
+
+    #container .css-jjpfgp {
+      width: 158.473px;
+      height: 26.315px;
+      left: 850.94px;
+      top: 1662.26px;
+    }
+
+    #container .css-juudqo {
+      width: 157.624px;
+      height: 18.933px;
+    }
+
+    #container .css-ba4qd {
+      left: 543px;
+      top: 1857px;
+    }
+
+    #container .css-8f1jrw {
+      color: #000;
+      --letter-spacing: -1.44px;
+    }
+
+    #container .css-49uf3q {
+      left: 818px;
+      top: 1857px;
+    }
+  </style>
+  <script>window.__serverRenderedCSSClassNames = { "css-ll733z": "{\"position\":\"relative\"}", "css-j6ldtg": "{\"minWidth\":\"var(--content-min-width)\",\"width\":\"100%\",\"height\":\"var(--content-min-height)\"}", "css-74ngtj": "{\"--content-min-width\":\"max(100%, 375px)\",\"--content-min-height\":\"max(var(--100dvh), 2664px)\"}", "css-vf8mzy": "{\"position\":\"relative\",\"display\":\"block\"}", "css-12v4hf": "{\"--content-min-width\":\"max(100%, 375px)\",\"--content-min-height\":\"max(var(--100dvh), 2664px)\",\"overflow\":\"clip\",\"backgroundColor\":\"#FFF\"}", "css-j9f0op": "{\"width\":\"100%\",\"height\":\"100%\"}", "css-8zr56v": "{\"display\":\"block\"}", "css-g9z8ym": "{\"width\":273,\"height\":173,\"left\":52,\"top\":1293}", "css-trglf0": "{\"position\":\"absolute\"}", "css-roiesn": "{\"position\":\"absolute\",\"display\":\"block\"}", "css-9j6u1t": "{\"width\":\"100%\",\"height\":\"100%\",\"maxWidth\":\"none\"}", "css-wixxpz": "{\"top\":\"0\",\"left\":\"0\",\"right\":\"0\",\"bottom\":\"0\"}", "css-6oqxzs": "{\"width\":182.66,\"height\":130.141,\"left\":170,\"top\":325}", "css-cbjqry": "{\"width\":187.804,\"height\":246.59,\"left\":23,\"top\":259}", "css-bz2tic": "{\"position\":\"absolute\",\"display\":\"contents\"}", "css-8lv9np": "{\"width\":187.735,\"height\":242.638,\"left\":23.07,\"top\":262.95}", "css-grtgjx": "{\"position\":\"absolute\",\"display\":\"flex\",\"alignItems\":\"center\",\"justifyContent\":\"center\"}", "css-ayg824": "{\"flex\":\"0 0 auto\"}", "css-wj2ivb": "{\"transform\":\"matrix(0.9998506307601929, -0.017284151166677475, 0.017284151166677475, 0.9998506307601929, 0, 0)\"}", "css-edc7e7": "{\"width\":\"auto\",\"height\":\"auto\"}", "css-lvctdb": "{\"width\":183.623,\"height\":239.5}", "css-i0sq2k": "{\"position\":\"relative\",\"borderTopLeftRadius\":7.5,\"borderTopRightRadius\":7.5,\"borderBottomRightRadius\":7.5,\"borderBottomLeftRadius\":7.5,\"display\":\"block\"}", "css-sr4pu5": "{\"boxShadow\":\"1px 2px 2px 1px rgba(0, 0, 0, 0.25)\",\"backgroundColor\":\"#FFF\"}", "css-kdfmpd": "{\"width\":63.273,\"height\":9.041,\"left\":83.35,\"top\":260.04}", "css-213ix8": "{\"width\":63.145,\"height\":7.951}", "css-8mkikp": "{\"width\":168.464,\"height\":217.783,\"left\":31.32,\"top\":274.14}", "css-xfkjq1": "{\"transform\":\"matrix(0.9998609654365911, -0.01667251850975962, 0.01654909568791762, 0.9998630394004413, 0, 0)\"}", "css-ld0hsi": "{\"display\":\"block\",\"position\":\"relative\"}", "css-acqqyv": "{\"width\":164.928,\"height\":215.062}", "css-oom5nr": "{\"whiteSpace\":\"pre-wrap\",\"fontFamily\":\"\\\"DM Sans:Regular\\\", sans-serif\",\"wordBreak\":\"break-word\",\"fontWeight\":400,\"fontSize\":\"12px\",\"letterSpacing\":\"-0.48px\",\"lineHeight\":\"17px\"}", "css-y7f465": "{\"fontVariationSettings\":\"\\\"opsz\\\" 14\",\"color\":\"#110C47\",\"--letter-spacing\":\"-0.48px\"}", "css-zbnj9z": "{\"width\":191.377,\"height\":106.769,\"left\":14,\"top\":1197}", "css-eb9z8p": "{\"width\":190.933,\"height\":102.161,\"left\":14.44,\"top\":1201.61}", "css-uz9sdv": "{\"transform\":\"matrix(0.9953728318214417, -0.09608818590641022, 0.09608818590641022, 0.9953728318214417, 0, 0)\"}", "css-j0q37e": "{\"width\":183.623,\"height\":84.91}", "css-8yjr3": "{\"width\":63.743,\"height\":15.303,\"left\":74.08,\"top\":1202.78}", "css-jenrzp": "{\"width\":63.144,\"height\":9.278}", "css-9m6oql": "{\"width\":177.213,\"height\":82.675,\"left\":23.27,\"top\":1211.24}", "css-yu3wxs": "{\"transform\":\"matrix(0.995395307151727, -0.09585474474414615, 0.09417931242327582, 0.9955552483394547, 0, 0)\"}", "css-wl63xd": "{\"width\":171.74,\"height\":66.509}", "css-7zce7u": "{\"width\":152.444,\"height\":104.1,\"left\":204,\"top\":2443.17}", "css-dxmaro": "{\"width\":152.151,\"height\":97.869,\"left\":204,\"top\":2449.4}", "css-kd5409": "{\"transform\":\"matrix(0.9988974332809448, 0.04694565385580063, -0.04694565385580063, 0.9988974332809448, 0, 0)\"}", "css-afguv": "{\"width\":148.041,\"height\":91.019}", "css-w6dcpu": "{\"width\":107.44,\"height\":15.686,\"left\":231.57,\"top\":2444.27}", "css-tb5w43": "{\"transform\":\"matrix(0.9988974332809448, 0.046945653855800636, -0.046945653855800636, 0.9988974332809448, 0, 0)\"}", "css-4ecnb5": "{\"width\":107.057,\"height\":10.672}", "css-7lbisi": "{\"width\":136.354,\"height\":22.642,\"left\":216.86,\"top\":2452.85}", "css-75wpf7": "{\"transform\":\"matrix(0.9988944119292991, 0.047008671739621324, -0.05406471788659989, 0.9985374356657072, 0, 0)\"}", "css-b5iykn": "{\"width\":135.623,\"height\":16.29}", "css-h33g6d": "{\"width\":353,\"height\":214,\"left\":7,\"top\":18}", "css-eq5gpx": "{\"width\":318.256,\"height\":421.187,\"left\":94,\"top\":793}", "css-w3c7jt": "{\"transform\":\"matrix(0.9678626656532288, 0.25147929787635803, -0.25147929787635803, 0.9678626656532288, 0, 0)\"}", "css-zhlx2d": "{\"width\":231.374,\"height\":375.054}", "css-6tpjc8": "{\"width\":298.43,\"height\":214.529,\"left\":17,\"top\":611}", "css-htqxq6": "{\"top\":\"0\",\"left\":\"-0.74%\",\"right\":\"-0.74%\",\"bottom\":\"-2.9%\"}", "css-b7flof": "{\"width\":240.979,\"height\":173.479,\"left\":128,\"top\":461}", "css-hgfct7": "{\"top\":\"0\",\"left\":\"-0.91%\",\"right\":\"-0.91%\",\"bottom\":\"-3.56%\"}", "css-c15ar6": "{\"width\":271,\"height\":219,\"right\":40.69,\"top\":1484}", "css-yozq13": "{\"position\":\"absolute\",\"borderTopLeftRadius\":20,\"borderTopRightRadius\":20,\"borderBottomRightRadius\":20,\"borderBottomLeftRadius\":20,\"display\":\"block\"}", "css-r0azwh": "{\"inset\":0,\"pointerEvents\":\"none\"}", "css-9unj7x": "{\"objectFit\":\"cover\",\"objectPosition\":\"50% 50%\"}", "css-jvd8z0": "{\"borderTopLeftRadius\":20,\"borderTopRightRadius\":20,\"borderBottomRightRadius\":20,\"borderBottomLeftRadius\":20}", "css-ez8men": "{\"maxWidth\":\"none\",\"width\":\"100%\",\"height\":\"100%\"}", "css-n9zwxg": "{\"width\":13,\"height\":13,\"left\":192.31,\"top\":1497}", "css-xujrk2": "{\"width\":131.872,\"height\":92.958,\"left\":26,\"top\":1639.67}", "css-spnyth": "{\"width\":130.994,\"height\":86.343,\"left\":26.88,\"top\":1646.29}", "css-x4bovh": "{\"transform\":\"matrix(0.9913064241409302, -0.13157346844673157, 0.13157346844673157, 0.9913064241409302, 0, 0)\"}", "css-hnrd20": "{\"width\":122.745,\"height\":70.809}", "css-plv0q4": "{\"width\":89.374,\"height\":25.47,\"left\":46.17,\"top\":1641.53}", "css-3x8y81": "{\"width\":88.303,\"height\":13.974}", "css-id4mnl": "{\"width\":117.985,\"height\":64.553,\"left\":36,\"top\":1655.8}", "css-tcz8eg": "{\"transform\":\"matrix(0.991337221831462, -0.13134097816218518, 0.12967233486000201, 0.9915568926035008, 0, 0)\"}", "css-6xfx8k": "{\"width\":112.449,\"height\":50.207}", "css-ab9300": "{\"width\":348.578,\"height\":251.395,\"left\":18,\"top\":1764}", "css-bm1te1": "{\"width\":325,\"height\":198,\"left\":23,\"top\":2058}", "css-mjqf9u": "{\"width\":318,\"height\":194,\"left\":49,\"top\":2224}", "css-nvhec2": "{\"width\":191.208,\"height\":183.498,\"left\":4,\"top\":2391}", "css-3qhwqw": "{\"transform\":\"translateY(100%)\",\"color\":\"#000\",\"--letter-spacing\":\"-1.44px\"}", "css-6uafok": "{\"left\":61,\"bottom\":54}", "css-y6s1il": "{\"whiteSpace\":\"pre\",\"fontFamily\":\"\\\"Cute Font:Regular\\\", sans-serif\",\"wordBreak\":\"break-word\",\"fontStyle\":\"normal\",\"fontSize\":\"36px\",\"letterSpacing\":\"-1.44px\",\"lineHeight\":0}", "css-wh5hty": "{\"letterSpacing\":\"-3.2px\",\"lineHeight\":\"17px\"}", "css-phiujl": "{\"letterSpacing\":\"-1.12px\",\"lineHeight\":\"17px\"}", "css-4byofj": "{\"lineHeight\":\"17px\"}", "css-i37odj": "{\"transform\":\"translateX(100%) translateY(100%)\",\"color\":\"#000\",\"--letter-spacing\":\"-1.44px\"}", "css-ctwf6s": "{\"right\":116,\"bottom\":54}", "css-8dv5i2": "{\"--content-min-width\":\"max(100%, 1440px)\",\"--content-min-height\":\"max(var(--100dvh), 1910px)\"}", "css-nz8224": "{\"--content-min-width\":\"max(100%, 1440px)\",\"--content-min-height\":\"max(var(--100dvh), 1910px)\",\"overflow\":\"clip\",\"backgroundColor\":\"#FFF\"}", "css-qvq90o": "{\"width\":273,\"height\":173,\"left\":400,\"top\":938}", "css-blkiud": "{\"width\":182.66,\"height\":130.141,\"left\":522,\"top\":547}", "css-ngw6hf": "{\"width\":223.548,\"height\":271.932,\"left\":307,\"top\":457}", "css-1izddg": "{\"width\":222.853,\"height\":268.041,\"left\":307.69,\"top\":460.89}", "css-nrl4er": "{\"transform\":\"matrix(0.9844383001327515, -0.17573052644729614, 0.17573052644729614, 0.9844383001327515, 0, 0)\"}", "css-j932g2": "{\"width\":63.559,\"height\":18.924,\"left\":366.42,\"top\":467.56}", "css-m0wckx": "{\"width\":200.017,\"height\":240.627,\"left\":317.55,\"top\":473.6}", "css-cg3w80": "{\"transform\":\"matrix(0.9845455632858757, -0.17512828404329508, 0.17500675427894757, 0.984567196825348, 0, 0)\"}", "css-vig1i0": "{\"width\":191.377,\"height\":106.769,\"left\":366,\"top\":841}", "css-jyuhx6": "{\"width\":190.933,\"height\":102.161,\"left\":366.44,\"top\":845.61}", "css-el5yov": "{\"width\":63.743,\"height\":15.303,\"left\":426.08,\"top\":846.78}", "css-izsf4q": "{\"width\":177.213,\"height\":82.675,\"left\":375.27,\"top\":855.24}", "css-h03sy": "{\"width\":647,\"height\":392.261,\"left\":397,\"top\":59.37}", "css-ye23xo": "{\"width\":318.256,\"height\":421.187,\"left\":891,\"top\":508}", "css-99nswf": "{\"width\":298.43,\"height\":604.135,\"left\":556,\"top\":313.39}", "css-tlwo1": "{\"top\":\"0\",\"left\":\"-0.74%\",\"right\":\"-0.74%\",\"bottom\":\"-1.03%\"}", "css-3d1j3z": "{\"width\":240.979,\"height\":173.479,\"left\":672,\"top\":555}", "css-9ziter": "{\"width\":271,\"height\":219,\"left\":705,\"top\":918}", "css-ozhxtj": "{\"width\":13,\"height\":13,\"left\":834,\"top\":931}", "css-4vbexy": "{\"width\":158.246,\"height\":111.549,\"left\":990,\"top\":965}", "css-modw3b": "{\"width\":157.193,\"height\":103.612,\"left\":991.05,\"top\":972.94}", "css-ve5hyp": "{\"transform\":\"matrix(0.9913064241409302, -0.13157346844673162, 0.1315734684467316, 0.9913064241409302, 0, 0)\"}", "css-p4ynas": "{\"width\":147.293,\"height\":84.971}", "css-3bmyh0": "{\"position\":\"relative\",\"borderTopLeftRadius\":9,\"borderTopRightRadius\":9,\"borderBottomRightRadius\":9,\"borderBottomLeftRadius\":9,\"display\":\"block\"}", "css-d96aqn": "{\"boxShadow\":\"1.2px 2.4px 2.4px 1.2px rgba(0, 0, 0, 0.25)\",\"backgroundColor\":\"#FFF\"}", "css-p64ap9": "{\"width\":107.249,\"height\":30.564,\"left\":1014.2,\"top\":967.23}", "css-lq6b8w": "{\"width\":105.964,\"height\":16.768}", "css-tni2dr": "{\"width\":141.582,\"height\":77.463,\"left\":1002,\"top\":984.35}", "css-lu9h3a": "{\"width\":134.938,\"height\":60.249}", "css-i8dgax": "{\"whiteSpace\":\"pre-wrap\",\"fontFamily\":\"\\\"DM Sans:Regular\\\", sans-serif\",\"wordBreak\":\"break-word\",\"fontWeight\":400,\"fontSize\":\"14.4px\",\"letterSpacing\":\"-0.576px\",\"lineHeight\":\"20.4px\"}", "css-88oyv5": "{\"fontVariationSettings\":\"\\\"opsz\\\" 14\",\"color\":\"#110C47\",\"--letter-spacing\":\"-0.576px\"}", "css-rmt2r9": "{\"width\":795.229,\"height\":143.787,\"left\":322,\"top\":1174}", "css-6pvruf": "{\"width\":319.899,\"height\":307,\"left\":733.31,\"top\":1373}", "css-cybkq": "{\"width\":416.951,\"height\":263,\"left\":362,\"top\":1329}", "css-ef1syj": "{\"width\":383.567,\"height\":234,\"left\":411,\"top\":1563}", "css-dys4kg": "{\"width\":177.173,\"height\":120.987,\"left\":836,\"top\":1651}", "css-5vgi0b": "{\"width\":176.833,\"height\":113.745,\"left\":836,\"top\":1658.24}", "css-fw7ob": "{\"transform\":\"matrix(0.9988974332809448, 0.046945653855800636, -0.04694565385580063, 0.9988974332809448, 0, 0)\"}", "css-s7ad6a": "{\"width\":172.056,\"height\":105.785}", "css-k04eiz": "{\"width\":124.869,\"height\":18.23,\"left\":868.04,\"top\":1652.28}", "css-14wmkl": "{\"width\":124.424,\"height\":12.402}", "css-jjpfgp": "{\"width\":158.473,\"height\":26.315,\"left\":850.94,\"top\":1662.26}", "css-juudqo": "{\"width\":157.624,\"height\":18.933}", "css-ba4qd": "{\"left\":543,\"top\":1857}", "css-8f1jrw": "{\"color\":\"#000\",\"--letter-spacing\":\"-1.44px\"}", "css-49uf3q": "{\"left\":818,\"top\":1857}" }</script>
+  <meta id="meta-bkauwd" name="description" content="Created with Figma">
+  <meta id="meta-vxymho" name="title" content="frosttest1">
+  <meta id="meta-yw3oin" name="robots" content="noindex">
+  <title id="title-kexr3j">frosttest1</title>
 </head>
+
 <body>
-  <div class="progress-marker">
-    <div class="marker" data-index="0"></div>
-    <div class="marker" data-index="1"></div>
-    <div class="marker" data-index="2"></div>
-    <div class="marker" data-index="3"></div>
-    <div class="marker" data-index="4"></div>
-    <div class="marker" data-index="5"></div>
-    <div class="marker" data-index="6"></div>
-    <div class="marker" data-index="7"></div>
-    <div class="marker" data-index="8"></div>
-    <a href="../work.html" class="marker home-marker" data-index="9">
-      <i class="fas fa-home"></i>
-    </a>
-  </div>
-  <div class="container">
-    <div class="flashcard spmanaged-flashcard" id="spmanaged-card1">
-      <div class="img-placeholder"></div>
-      <div class="project-info">
-        <h4>SP Managed</h4>
-        <h4>Branding</h4>
-        <h4>Designer for Smart Soho</h4>
-        <h4>1 of 8</h4>
+
+
+  <script data-template-id="country-code">window.__cf_country = "GB"</script>
+  <script type="module">
+    import { SitesRuntime } from '/_runtimes/sites-runtime.b69569d0baef319082b5422507ab08a06908495a02069eb739f5ee4ed1c9c0bb.js';
+    const sitesRuntime = new SitesRuntime({
+      container: document.getElementById('container'),
+      env: 'published',
+      bundleId: '9c0173cd-636d-4fc7-9dac-5424e85f3fc9',
+
+      loadComponentsOverNetwork: true,
+      assetsVersion: 'v11',
+      fontsVersion: 'v1',
+      videosVersion: 'v1',
+      codeComponentsVersion: 'v2',
+      wasServerRendered: true,
+      withBaseStyles: true,
+      reportingDomain: "https://www.figma.com",
+      bundleCreationDate: '2025-11-27 12:42:57 UTC',
+      isFigmake: false,
+      enableMetaTags: false,
+      siteUrl: "https://tusk-short-01189091.figma.site",
+    });
+  </script>
+
+  <div id="container">
+    <div class="css-vf8mzy css-j6ldtg css-12v4hf" data-page-overflowx="hidden" data-breakpoint-id="node-15_14943"
+      data-breakpoint="true" data-width="375" data-height="2664">
+      <div class="css-g9z8ym css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/7f0df508d7a990a229cd67e84a3cccebca7f341d.png" alt="" width="273" height="173"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/7f0df508d7a990a229cd67e84a3cccebca7f341d.png 273w"
+            sizes="auto,273px" /></div>
       </div>
-    </div>
-    <div class="flashcard spmanaged-flashcard" id="spmanaged-card2">
-      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      <div class="img-placeholder placeholder-one"></div>
-      <div class="img-placeholder placeholder-two"></div>
-      <div class="img-placeholder placeholder-three"></div>
-      <div class="project-info">
-        <h4>SP Managed</h4>
-        <h4>Branding</h4>
-        <h4>Designer for Smart Soho</h4>
-        <h4>2 of 8</h4>
+      <div class="css-6oqxzs css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img src="/_assets/v11/8dc201d6127e1f2dd5129a1568c76d3059ae4fef.png" alt=""
+            width="182.66" height="130.141" class="css-9j6u1t css-8zr56v"
+            srcSet="/_assets/v11/8dc201d6127e1f2dd5129a1568c76d3059ae4fef.png 183w" sizes="182.6603240966797px" /></div>
       </div>
-    </div>
-    <div class="flashcard spmanaged-flashcard" id="spmanaged-card3">
-      <div class="img-placeholder placeholder-one"></div>
-      <div class="project-info">
-        <h4>SP Managed</h4>
-        <h4>Branding</h4>
-        <h4>Designer for Smart Soho</h4>
-        <h4>3 of 8</h4>
+      <div class="css-cbjqry css-bz2tic">
+        <div class="css-8lv9np css-grtgjx">
+          <div class="css-ayg824 css-wj2ivb css-edc7e7">
+            <div class="css-i0sq2k css-lvctdb css-sr4pu5"></div>
+          </div>
+        </div>
+        <div class="css-kdfmpd css-grtgjx">
+          <div class="css-ayg824 css-wj2ivb css-edc7e7">
+            <div class="css-vf8mzy css-213ix8" data-isimage="true">
+              <div class="css-trglf0 css-wixxpz"><img src="/_assets/v11/ce9d3f2783706f2fee5940917ca17173aa1fdba8.svg"
+                  alt="" class="css-9j6u1t css-8zr56v" /></div>
+            </div>
+          </div>
+        </div>
+        <div class="css-8mkikp css-grtgjx">
+          <div class="css-ayg824 css-xfkjq1 css-edc7e7">
+            <p class="css-ld0hsi css-acqqyv css-oom5nr css-y7f465 adjustLetterSpacing textContents">The concept is
+              inspired by the process of cell division, a core mechanism through which living organisms grow. This
+              serves as an analogy for how a tenant within RLAM can begin at a small scale and progressively expand over
+              time. The design reflects structured, organic growth, aligning with RLAM’s commitment to supporting
+              long-term development and scalable potential.</p>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="flashcard spmanaged-flashcard" id="spmanaged-card4">
-      <div class="img-placeholder placeholder-one"></div>
-      <div class="img-placeholder placeholder-two"></div>
-      <div class="img-placeholder placeholder-three"></div>      
-      <div class="img-placeholder placeholder-four"></div>
-      <div class="img-placeholder placeholder-five"></div>
-      <div class="img-placeholder placeholder-six"></div>
-      <div class="img-placeholder placeholder-seven"></div>
-      <div class="img-placeholder placeholder-eight"></div>
-      <div class="project-info">
-        <h4>SP Managed</h4>
-        <h4>Branding</h4>
-        <h4>Designer for Smart Soho</h4>
-        <h4>4 of 8</h4>
+      <div class="css-zbnj9z css-bz2tic">
+        <div class="css-eb9z8p css-grtgjx">
+          <div class="css-ayg824 css-uz9sdv css-edc7e7">
+            <div class="css-i0sq2k css-j0q37e css-sr4pu5"></div>
+          </div>
+        </div>
+        <div class="css-8yjr3 css-grtgjx">
+          <div class="css-ayg824 css-uz9sdv css-edc7e7">
+            <div class="css-vf8mzy css-jenrzp" data-isimage="true">
+              <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+                  src="/_assets/v11/df4d92d4b59603ca2616e15b9b11bd3851a67cd4.svg" alt=""
+                  class="css-9j6u1t css-8zr56v" /></div>
+            </div>
+          </div>
+        </div>
+        <div class="css-9m6oql css-grtgjx">
+          <div class="css-ayg824 css-yu3wxs css-edc7e7">
+            <p class="css-ld0hsi css-wl63xd css-oom5nr css-y7f465 adjustLetterSpacing textContents">Font parings usd BAI
+              Jamaree paired with a custom font based on the graphical abstraction of cell division created above</p>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="flashcard spmanaged-flashcard" id="spmanaged-card5">
-      <div class="project-info">
-        <h4>SP Managed</h4>
-        <h4>Branding</h4>
-        <h4>Designer for Smart Soho</h4>
-        <h4>5 of 8</h4>
+      <div class="css-7zce7u css-bz2tic">
+        <div class="css-dxmaro css-grtgjx">
+          <div class="css-ayg824 css-kd5409 css-edc7e7">
+            <div class="css-i0sq2k css-afguv css-sr4pu5"></div>
+          </div>
+        </div>
+        <div class="css-w6dcpu css-grtgjx">
+          <div class="css-ayg824 css-tb5w43 css-edc7e7">
+            <div class="css-vf8mzy css-4ecnb5" data-isimage="true">
+              <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+                  src="/_assets/v11/7f8426c03e7cb6636419a26342669f0d01e790d0.svg" alt=""
+                  class="css-9j6u1t css-8zr56v" /></div>
+            </div>
+          </div>
+        </div>
+        <div class="css-7lbisi css-grtgjx">
+          <div class="css-ayg824 css-75wpf7 css-edc7e7">
+            <p class="css-ld0hsi css-b5iykn css-oom5nr css-y7f465 adjustLetterSpacing textContents">Font parings usd BAI
+              Jamaree paired with a custom font based</p>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="flashcard spmanaged-flashcard" id="spmanaged-card6">
-      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      <div class="img-placeholder placeholder-one"></div>
-      <div class="img-placeholder placeholder-two"></div>
-      <div class="img-placeholder placeholder-three"></div>
-      <div class="img-placeholder placeholder-four"></div>
-      <div class="project-info">
-        <h4>SP Managed</h4>
-        <h4>Branding</h4>
-        <h4>Designer for Smart Soho</h4>
-        <h4>6 of 8</h4>
+      <div class="css-h33g6d css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img src="/_assets/v11/da86fab2c497dd22ec707ea3a192346ed53d6220.png" alt=""
+            width="353" height="214" class="css-9j6u1t css-8zr56v"
+            srcSet="/_assets/v11/da86fab2c497dd22ec707ea3a192346ed53d6220.png 353w" sizes="353px" /></div>
       </div>
-    </div>
-    <div class="flashcard spmanaged-flashcard" id="spmanaged-card7">
-      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      <div class="img-placeholder placeholder-one"></div>
-      <div class="img-placeholder placeholder-two"></div>
-      <div class="project-info">
-        <h4>SP Managed</h4>
-        <h4>Branding</h4>
-        <h4>Designer for Smart Soho</h4>
-        <h4>7 of 8</h4>
+      <div class="css-eq5gpx css-grtgjx">
+        <div class="css-ayg824 css-w3c7jt css-edc7e7">
+          <div class="css-vf8mzy css-zhlx2d" data-isimage="true">
+            <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+                src="/_assets/v11/6e01e8f371c64c5140cf36338c86e390e0539c25.svg" alt="" class="css-9j6u1t css-8zr56v" />
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="flashcard spmanaged-flashcard" id="spmanaged-card8">
-      <div class="img-placeholder placeholder-one"></div>
-      <div class="img-placeholder placeholder-two"></div>
-      <div class="project-info">
-        <h4>SP Managed</h4>
-        <h4>Branding</h4>
-        <h4>Designer for Smart Soho</h4>
-        <h4>8 of 8</h4>
+      <div class="css-6tpjc8 css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-htqxq6"><img loading="lazy"
+            src="/_assets/v11/dc879109c27a4092df422f0d1aa7498bbf773c65.png" alt="" width="302.869" height="220.748"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/dc879109c27a4092df422f0d1aa7498bbf773c65.png 303w"
+            sizes="auto,298.42974853515625px" /></div>
       </div>
+      <div class="css-b7flof css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-hgfct7"><img src="/_assets/v11/50a7fad03b7e281d42b7a0ad10e913701229dc96.png" alt=""
+            width="245.343" height="179.661" class="css-9j6u1t css-8zr56v"
+            srcSet="/_assets/v11/50a7fad03b7e281d42b7a0ad10e913701229dc96.png 246w" sizes="240.97909545898438px" />
+        </div>
+      </div>
+      <div class="css-c15ar6 css-yozq13"><img alt="" loading="lazy"
+          class="css-ez8men css-9unj7x css-trglf0 css-trglf0 css-r0azwh css-9unj7x css-jvd8z0"
+          src="/_assets/v11/ebf01f9405df8d9274594245d39a453c4e1f6af0.png"
+          srcSet="/_assets/v11/ebf01f9405df8d9274594245d39a453c4e1f6af0.png 1400w, /_assets/v11/ebf01f9405df8d9274594245d39a453c4e1f6af0.png?w=512 512w"
+          sizes="auto,271px" /></div>
+      <div class="css-n9zwxg css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/e77aa41882ee61fe9bf14b97652ac5f832c2a578.svg" alt="" class="css-9j6u1t css-8zr56v" />
+        </div>
+      </div>
+      <div class="css-xujrk2 css-bz2tic">
+        <div class="css-spnyth css-grtgjx">
+          <div class="css-ayg824 css-x4bovh css-edc7e7">
+            <div class="css-i0sq2k css-hnrd20 css-sr4pu5"></div>
+          </div>
+        </div>
+        <div class="css-plv0q4 css-grtgjx">
+          <div class="css-ayg824 css-x4bovh css-edc7e7">
+            <div class="css-vf8mzy css-3x8y81" data-isimage="true">
+              <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+                  src="/_assets/v11/cd5c0d5218a5a6db89a6b84fb890b398999c642b.svg" alt=""
+                  class="css-9j6u1t css-8zr56v" /></div>
+            </div>
+          </div>
+        </div>
+        <div class="css-id4mnl css-grtgjx">
+          <div class="css-ayg824 css-tcz8eg css-edc7e7">
+            <p class="css-ld0hsi css-6xfx8k css-oom5nr css-y7f465 adjustLetterSpacing textContents">Font parings usd BAI
+              Jamaree paired with a custom font based</p>
+          </div>
+        </div>
+      </div>
+      <div class="css-ab9300 css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/43bb30ddc0c5f8c346180bc29ecde8ffc06fc0de.png" alt="" width="348.578" height="251.395"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/43bb30ddc0c5f8c346180bc29ecde8ffc06fc0de.png 349w"
+            sizes="auto,348.5779724121094px" /></div>
+      </div>
+      <div class="css-bm1te1 css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/c7eb1b83062b4e580fe6a2433d4e9bd963545426.png" alt="" width="325" height="198"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/c7eb1b83062b4e580fe6a2433d4e9bd963545426.png 325w"
+            sizes="auto,325px" /></div>
+      </div>
+      <div class="css-mjqf9u css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/5624abe8cd219b0e200cb58a97f6a8fdcf61346a.png" alt="" width="318" height="194"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/5624abe8cd219b0e200cb58a97f6a8fdcf61346a.png 318w"
+            sizes="auto,318px" /></div>
+      </div>
+      <div class="css-nvhec2 css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/13338968b2f3006cc23c7ff7f55df2520016ca94.png" alt="" width="191.208" height="183.498"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/13338968b2f3006cc23c7ff7f55df2520016ca94.png 192w"
+            sizes="auto,191.20787048339844px" /></div>
+      </div>
+      <p class="css-3qhwqw css-roiesn css-6uafok css-y6s1il textContents"><span class="css-wh5hty">&lt;</span><span
+          class="css-phiujl">-</span><span class="css-4byofj adjustLetterSpacing"> Back</span></p>
+      <p class="css-i37odj css-roiesn css-ctwf6s css-y6s1il textContents"><span class="css-4byofj">Next -</span><span
+          class="css-phiujl adjustLetterSpacing">&gt;</span></p>
     </div>
-      <div class="nav-buttons">
-    <h4 onclick="window.location.href='../work.html'">&lt;- Back</h4>
-    <h4 onclick="window.location.href='portsea.html'">More -&gt;</h4>
-  </div>
-  </div>
+    <div class="css-vf8mzy css-j6ldtg css-nz8224" data-page-overflowx="hidden" data-breakpoint-id="node-15_14942"
+      data-breakpoint="true" data-width="1440" data-height="1910">
+      <div class="css-qvq90o css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/7f0df508d7a990a229cd67e84a3cccebca7f341d.png" alt="" width="273" height="173"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/7f0df508d7a990a229cd67e84a3cccebca7f341d.png 273w"
+            sizes="auto,273px" /></div>
+      </div>
+      <div class="css-blkiud css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img src="/_assets/v11/3386d365db6d3d1e7b1a5dad7b8c29492013a448.png" alt=""
+            width="182.66" height="130.141" class="css-9j6u1t css-8zr56v"
+            srcSet="/_assets/v11/3386d365db6d3d1e7b1a5dad7b8c29492013a448.png 183w" sizes="182.6603240966797px" /></div>
+      </div>
+      <div class="css-ngw6hf css-bz2tic">
+        <div class="css-1izddg css-grtgjx">
+          <div class="css-ayg824 css-nrl4er css-edc7e7">
+            <div class="css-i0sq2k css-lvctdb css-sr4pu5"></div>
+          </div>
+        </div>
+        <div class="css-j932g2 css-grtgjx">
+          <div class="css-ayg824 css-nrl4er css-edc7e7">
+            <div class="css-vf8mzy css-213ix8" data-isimage="true">
+              <div class="css-trglf0 css-wixxpz"><img src="/_assets/v11/3c450cdd615bb6019f9dce9ef4e131eea94ac202.svg"
+                  alt="" class="css-9j6u1t css-8zr56v" /></div>
+            </div>
+          </div>
+        </div>
+        <div class="css-m0wckx css-grtgjx">
+          <div class="css-ayg824 css-cg3w80 css-edc7e7">
+            <p class="css-ld0hsi css-acqqyv css-oom5nr css-y7f465 adjustLetterSpacing textContents">The concept is
+              inspired by the process of cell division, a core mechanism through which living organisms grow. This
+              serves as an analogy for how a tenant within RLAM can begin at a small scale and progressively expand over
+              time. The design reflects structured, organic growth, aligning with RLAM’s commitment to supporting
+              long-term development and scalable potential.</p>
+          </div>
+        </div>
+      </div>
+      <div class="css-vig1i0 css-bz2tic">
+        <div class="css-jyuhx6 css-grtgjx">
+          <div class="css-ayg824 css-uz9sdv css-edc7e7">
+            <div class="css-i0sq2k css-j0q37e css-sr4pu5"></div>
+          </div>
+        </div>
+        <div class="css-el5yov css-grtgjx">
+          <div class="css-ayg824 css-uz9sdv css-edc7e7">
+            <div class="css-vf8mzy css-jenrzp" data-isimage="true">
+              <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+                  src="/_assets/v11/8a2ca1dee478db425c3549159aeb771dd35b9c1d.svg" alt=""
+                  class="css-9j6u1t css-8zr56v" /></div>
+            </div>
+          </div>
+        </div>
+        <div class="css-izsf4q css-grtgjx">
+          <div class="css-ayg824 css-yu3wxs css-edc7e7">
+            <p class="css-ld0hsi css-wl63xd css-oom5nr css-y7f465 adjustLetterSpacing textContents">Font parings usd BAI
+              Jamaree paired with a custom font based on the graphical abstraction of cell division created above</p>
+          </div>
+        </div>
+      </div>
+      <div class="css-h03sy css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img src="/_assets/v11/5cc963fe9cd39f6f5aac1d2aeea30ae28ee17fd7.png" alt=""
+            width="647" height="392.261" class="css-9j6u1t css-8zr56v"
+            srcSet="/_assets/v11/5cc963fe9cd39f6f5aac1d2aeea30ae28ee17fd7.png 648w" sizes="647px" /></div>
+      </div>
+      <div class="css-ye23xo css-grtgjx">
+        <div class="css-ayg824 css-w3c7jt css-edc7e7">
+          <div class="css-vf8mzy css-zhlx2d" data-isimage="true">
+            <div class="css-trglf0 css-wixxpz"><img src="/_assets/v11/6e01e8f371c64c5140cf36338c86e390e0539c25.svg"
+                alt="" class="css-9j6u1t css-8zr56v" /></div>
+          </div>
+        </div>
+      </div>
+      <div class="css-99nswf css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-tlwo1"><img src="/_assets/v11/57d56b93e013e002233909a4b4b83c3487286c07.png" alt=""
+            width="302.869" height="610.355" class="css-9j6u1t css-8zr56v"
+            srcSet="/_assets/v11/57d56b93e013e002233909a4b4b83c3487286c07.png 303w" sizes="298.42974853515625px" />
+        </div>
+      </div>
+      <div class="css-3d1j3z css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-hgfct7"><img src="/_assets/v11/ed18f56a45c3c931505a78d2d1e3340af106b94f.png" alt=""
+            width="245.343" height="179.661" class="css-9j6u1t css-8zr56v"
+            srcSet="/_assets/v11/ed18f56a45c3c931505a78d2d1e3340af106b94f.png 246w" sizes="240.97909545898438px" />
+        </div>
+      </div>
+      <div class="css-9ziter css-yozq13"><img alt="" loading="lazy"
+          class="css-ez8men css-9unj7x css-trglf0 css-trglf0 css-r0azwh css-9unj7x css-jvd8z0"
+          src="/_assets/v11/ebf01f9405df8d9274594245d39a453c4e1f6af0.png"
+          srcSet="/_assets/v11/ebf01f9405df8d9274594245d39a453c4e1f6af0.png 1400w, /_assets/v11/ebf01f9405df8d9274594245d39a453c4e1f6af0.png?w=512 512w"
+          sizes="auto,271px" /></div>
+      <div class="css-ozhxtj css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/e77aa41882ee61fe9bf14b97652ac5f832c2a578.svg" alt="" class="css-9j6u1t css-8zr56v" />
+        </div>
+      </div>
+      <div class="css-4vbexy css-bz2tic">
+        <div class="css-modw3b css-grtgjx">
+          <div class="css-ayg824 css-ve5hyp css-edc7e7">
+            <div class="css-3bmyh0 css-p4ynas css-d96aqn"></div>
+          </div>
+        </div>
+        <div class="css-p64ap9 css-grtgjx">
+          <div class="css-ayg824 css-ve5hyp css-edc7e7">
+            <div class="css-vf8mzy css-lq6b8w" data-isimage="true">
+              <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+                  src="/_assets/v11/d2744e61df151de5b37fff5003046a0e89a55b75.svg" alt=""
+                  class="css-9j6u1t css-8zr56v" /></div>
+            </div>
+          </div>
+        </div>
+        <div class="css-tni2dr css-grtgjx">
+          <div class="css-ayg824 css-tcz8eg css-edc7e7">
+            <p class="css-ld0hsi css-lu9h3a css-i8dgax css-88oyv5 adjustLetterSpacing textContents">Font parings usd BAI
+              Jamaree paired with a custom font based</p>
+          </div>
+        </div>
+      </div>
+      <div class="css-rmt2r9 css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/ed8ec97fa377adb301c46d7e082d40821603c2c2.png" alt="" width="795.229" height="143.787"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/ed8ec97fa377adb301c46d7e082d40821603c2c2.png 796w"
+            sizes="auto,795.2290649414062px" /></div>
+      </div>
+      <div class="css-6pvruf css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/91c651bfea48c50f8af35541801128e5485c0ac8.png" alt="" width="319.899" height="307"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/91c651bfea48c50f8af35541801128e5485c0ac8.png 320w"
+            sizes="auto,319.89874267578125px" /></div>
+      </div>
+      <div class="css-cybkq css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/614d9f9da8801b7b697fc3c24c25411f209374b1.png" alt="" width="416.951" height="263"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/614d9f9da8801b7b697fc3c24c25411f209374b1.png 417w"
+            sizes="auto,416.95123291015625px" /></div>
+      </div>
+      <div class="css-ef1syj css-roiesn" data-isimage="true">
+        <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+            src="/_assets/v11/9a7dc26220abf3dbb2872831616acb10b01d39d3.png" alt="" width="383.567" height="234"
+            class="css-9j6u1t css-8zr56v" srcSet="/_assets/v11/9a7dc26220abf3dbb2872831616acb10b01d39d3.png 384w"
+            sizes="auto,383.5670166015625px" /></div>
+      </div>
+      <div class="css-dys4kg css-bz2tic">
+        <div class="css-5vgi0b css-grtgjx">
+          <div class="css-ayg824 css-fw7ob css-edc7e7">
+            <div class="css-i0sq2k css-s7ad6a css-sr4pu5"></div>
+          </div>
+        </div>
+        <div class="css-k04eiz css-grtgjx">
+          <div class="css-ayg824 css-fw7ob css-edc7e7">
+            <div class="css-vf8mzy css-14wmkl" data-isimage="true">
+              <div class="css-trglf0 css-wixxpz"><img loading="lazy"
+                  src="/_assets/v11/054ef0636890a47d6d3b4b98545257ef222dea9b.svg" alt=""
+                  class="css-9j6u1t css-8zr56v" /></div>
+            </div>
+          </div>
+        </div>
+        <div class="css-jjpfgp css-grtgjx">
+          <div class="css-ayg824 css-75wpf7 css-edc7e7">
+            <p class="css-ld0hsi css-juudqo css-oom5nr css-y7f465 adjustLetterSpacing textContents">Font parings usd BAI
+              Jamaree paired with a custom font based</p>
+          </div>
+        </div>
+      </div>
+      <p class="css-roiesn css-ba4qd css-y6s1il css-8f1jrw textContents"><span class="css-wh5hty">&lt;</span><span
+          class="css-phiujl">-</span><span class="css-4byofj adjustLetterSpacing"> Back</span></p>
+      <p class="css-roiesn css-49uf3q css-y6s1il css-8f1jrw textContents"><span class="css-4byofj">Next -</span><span
+          class="css-phiujl adjustLetterSpacing">&gt;</span></p>
+    </div>
   </div>
 
-  <script src="flash.js"></script>
+
+  <noscript data-nosnippet>
+    <main
+      style="height: 100vh; width: 100vw; background-color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+      <h1 style="font-size: 24px; padding: 8px; color: black">
+        This site requires JavaScript
+      </h1>
+      <p style="font-size: 16px; padding: 8px; color: #00000080">To view this website, enable JavaScript in your browser
+        settings and reload the page.</p>
+      <form style="margin-top: 12px;" action="">
+        <button type="submit"
+          style="font-size: 14px; color: black; border: 1px solid #0000001a; border-radius: 5px; width: 256px; height: 32px;">
+          Reload page
+        </button>
+      </form>
+    </main>
+  </noscript>
 </body>
 
 </html>

@@ -1,197 +1,295 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BTS Flashcards</title>
-    <link rel="stylesheet" href="../styles.css" />
-    <link rel="stylesheet" href="wrk-styles.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <link rel="icon" type="image/png" href="../Assets/favicon.png">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <title>Behind the Scenes</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="wrk-styles.css" />
+  <link rel="icon" type="image/png" href="../Assets/favicon.png" />
 </head>
+<body id="bts-body">
+  <main class="bts-page" aria-labelledby="bts-title">
+    <h1 id="bts-title" class="bts-sr-only">Behind the Scenes</h1>
 
-<body class="">
-  <div class="progress-marker">
-    <div class="marker" data-index="0"></div>
-    <div class="marker" data-index="1"></div>
-    <div class="marker" data-index="2"></div>
-    <div class="marker" data-index="3"></div>
-    <div class="marker" data-index="4"></div>
-    <div class="marker" data-index="5"></div>
-    <div class="marker" data-index="6"></div>
-    <div class="marker" data-index="7"></div>
-    <div class="marker" data-index="8"></div>
-    <div class="marker" data-index="9"></div>
-    <div class="marker" data-index="10"></div>
-    <div class="marker" data-index="11"></div>
-    <a href="../work.html" class="marker home-marker" data-index="12">
-      <i class="fas fa-home"></i>
-    </a>
-  </div>
-  <div class="container">
-    <div class="flashcard bts-flashcard" id="bts-card1" aria-label="Flashcard 1 of 12">
-      <div class="img-placeholder"></div>
-      <div class="project-info">
-        <h4>2025 Showreel</h4>
-        <h4>2D Animation</h4>
-        <h4>Animator</h4>
-        <h4>1 of 12</h4>
+    <section class="bts-hero" aria-label="Hero still">
+      <img
+        src="../Assets/wrk/BTS/figma-hero.png"
+        alt="A showreel still featuring a stylized character facing a glowing kiosk."
+        width="3420"
+        height="1896"
+      />
+    </section>
+
+    <section class="bts-intro" aria-label="Intro collage">
+      <div class="bts-intro-collage">
+        <figure class="bts-card-media bts-intro-left">
+          <img
+            src="../Assets/wrk/BTS/figma-intro-left.png"
+            alt="Character sheet pinned like a paper print."
+            width="659"
+            height="800"
+            loading="lazy"
+          />
+        </figure>
+
+        <figure class="bts-card-media bts-intro-center">
+          <img
+            src="../Assets/wrk/BTS/figma-intro-center.png"
+            alt="Painted still showing the lead figure and kiosk."
+            width="659"
+            height="800"
+            loading="lazy"
+          />
+        </figure>
+
+        <article class="bts-note-card bts-note-card-intro">
+          <p>
+            Behind the Scenes pulls apart the 2025 showreel into loose scraps of
+            process: character passes, composited screens, palette tests and
+            layout experiments. The page is arranged like a pinboard so the work
+            still feels in motion rather than filed away as a finished case study.
+          </p>
+        </article>
+
+        <div class="bts-intro-stack">
+          <figure class="bts-card-media bts-intro-top">
+            <img
+              src="../Assets/wrk/BTS/figma-intro-top.png"
+              alt="A cropped BTS still taped into the collage."
+              width="660"
+              height="800"
+              loading="lazy"
+            />
+          </figure>
+
+          <figure class="bts-card-media bts-intro-bottom">
+            <img
+              src="../Assets/wrk/BTS/figma-intro-bottom.png"
+              alt="Another BTS still showing a cropped character study."
+              width="659"
+              height="800"
+              loading="lazy"
+            />
+          </figure>
+        </div>
+
+        <aside class="bts-swatches" aria-label="Showreel palette swatches">
+          <span class="bts-swatch bts-swatch-mint"></span>
+          <span class="bts-swatch bts-swatch-grey"></span>
+          <span class="bts-swatch bts-swatch-lilac"></span>
+          <span class="bts-swatch bts-swatch-pink"></span>
+          <span class="bts-swatch bts-swatch-blue"></span>
+          <span class="bts-swatch bts-swatch-ink"></span>
+        </aside>
       </div>
-    </div>
-    <div class="flashcard bts-flashcard" id="bts-card2" aria-label="Flashcard 2 of 12">
-      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</p>
-      <div class="project-info">
-        <h4>2025 Showreel</h4>
-        <h4>2D Animation</h4>
-        <h4>Animator</h4>
-        <h4>2 of 12</h4>
+    </section>
+
+    <section class="bts-featured" aria-label="Featured collage">
+      <div class="bts-featured-grid">
+        <figure class="bts-card-media bts-feature-top-left">
+          <img
+            src="../Assets/wrk/BTS/figma-feature-top-left.png"
+            alt="A dark frame featuring the kiosk and the glowing portal."
+            width="2264"
+            height="1864"
+            loading="lazy"
+          />
+        </figure>
+
+        <figure class="bts-card-media bts-feature-top-right">
+          <img
+            src="../Assets/wrk/BTS/figma-feature-top-right.png"
+            alt="Special Bulletin title graphic from the showreel."
+            width="3420"
+            height="1908"
+            loading="lazy"
+          />
+        </figure>
+
+        <figure class="bts-card-media bts-feature-bottom-left">
+          <img
+            src="../Assets/wrk/BTS/figma-feature-bottom-left.png"
+            alt="A cropped collage still used in the bulletin sequence."
+            width="2002"
+            height="1860"
+            loading="lazy"
+          />
+        </figure>
+
+        <div class="bts-feature-bottom-right">
+          <figure class="bts-card-media bts-feature-bottom-right-image">
+            <img
+              src="../Assets/wrk/BTS/figma-feature-bottom-right.png"
+              alt="A framed still showing the bulletin monitor and surrounding collage."
+              width="3418"
+              height="1920"
+              loading="lazy"
+            />
+          </figure>
+
+          <article class="bts-note-card bts-note-card-small bts-note-card-feature">
+            <img
+              class="bts-note-card-badge"
+              src="../Assets/wrk/BTS/figma-note-badge.svg"
+              alt=""
+              width="126"
+              height="18"
+              loading="lazy"
+            />
+            <p>
+              Portal passes, broadcast graphics and screen mock-ups were built as
+              separate comps before the final edit stitched them together.
+            </p>
+          </article>
+        </div>
       </div>
-    </div>
-    <div class="flashcard bts-flashcard" id="bts-card3" aria-label="Flashcard 3 of 12">
-      <div class="img-placeholder placeholder-one"></div>
-      <div class="img-placeholder placeholder-two"></div>
-      <div class="img-placeholder placeholder-three"></div>
-      <div class="img-placeholder placeholder-four"></div>
-      <div class="img-placeholder placeholder-five"></div>
-      <div class="img-placeholder placeholder-six"></div>
-      <div class="img-placeholder placeholder-seven"></div>
-      <div class="img-placeholder placeholder-eight"></div>
-      <div class="img-placeholder placeholder-nine"></div>
-      <div class="img-placeholder placeholder-ten"></div>
-      <div class="img-placeholder placeholder-eleven"></div>
-      <div class="img-placeholder placeholder-twelve"></div>
-      <div class="img-placeholder placeholder-thirteen"></div>
-      <div class="img-placeholder placeholder-fourteen"></div>
-      <div class="img-placeholder placeholder-fifteen"></div>
-      <div class="img-placeholder placeholder-sixteen"></div>
-      <div class="project-info">
-        <h4>2025 Showreel</h4>
-        <h4>2D Animation</h4>
-        <h4>Animator</h4>
-        <h4>3 of 12</h4>
+    </section>
+
+    <section class="bts-storyboard" aria-label="Film strip storyboard">
+      <img
+        class="bts-film-edge bts-film-edge-left"
+        src="../Assets/wrk/BTS/figma-film-left.svg"
+        alt=""
+        width="43"
+        height="350"
+        loading="lazy"
+      />
+
+      <div class="bts-film-rows">
+        <div class="bts-film-row bts-film-row-top">
+          <img
+            src="../Assets/wrk/BTS/figma-film-row-1-left.svg"
+            alt=""
+            width="453"
+            height="81"
+            loading="lazy"
+          />
+          <img
+            src="../Assets/wrk/BTS/figma-film-row-1-right.svg"
+            alt=""
+            width="453"
+            height="81"
+            loading="lazy"
+          />
+        </div>
+
+        <div class="bts-film-row bts-film-row-middle">
+          <img
+            src="../Assets/wrk/BTS/figma-film-row-2-left.svg"
+            alt=""
+            width="453"
+            height="81"
+            loading="lazy"
+          />
+          <img
+            src="../Assets/wrk/BTS/figma-film-row-2-right.svg"
+            alt=""
+            width="453"
+            height="81"
+            loading="lazy"
+          />
+        </div>
+
+        <div class="bts-film-row bts-film-row-bottom">
+          <img
+            src="../Assets/wrk/BTS/figma-film-row-3-left.svg"
+            alt=""
+            width="458"
+            height="89"
+            loading="lazy"
+          />
+          <img
+            src="../Assets/wrk/BTS/figma-film-row-3-right.svg"
+            alt=""
+            width="458"
+            height="89"
+            loading="lazy"
+          />
+        </div>
       </div>
-    </div>
-    <div class="flashcard bts-flashcard" id="bts-card4" aria-label="Flashcard 4 of 12"> 
-      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      <div class="img-placeholder placeholder-one"></div>
-      <div class="img-placeholder placeholder-two"></div>
-      <div class="img-placeholder placeholder-three"></div>
-      <div class="img-placeholder placeholder-four"></div>
-      <div class="project-info">
-        <h4>2025 Showreel</h4>
-        <h4>2D Animation</h4>
-        <h4>Animator</h4>
-        <h4>4 of 12</h4>
+
+      <img
+        class="bts-film-edge bts-film-edge-right"
+        src="../Assets/wrk/BTS/figma-film-right.svg"
+        alt=""
+        width="43"
+        height="350"
+        loading="lazy"
+      />
+    </section>
+
+    <section class="bts-closing" aria-label="Closing collage">
+      <div class="bts-closing-grid">
+        <figure class="bts-card-media bts-closing-top-left">
+          <img
+            src="../Assets/wrk/BTS/figma-closing-top-left.png"
+            alt="Building themed still from the collage."
+            width="3420"
+            height="1898"
+            loading="lazy"
+          />
+        </figure>
+
+        <figure class="bts-card-media bts-closing-top-right">
+          <img
+            src="../Assets/wrk/BTS/figma-closing-top-right.png"
+            alt="Typography-led card reading The Art of Building."
+            width="3420"
+            height="1900"
+            loading="lazy"
+          />
+        </figure>
+
+        <figure class="bts-card-media bts-closing-bottom-left">
+          <img
+            src="../Assets/wrk/BTS/figma-closing-bottom-left.png"
+            alt="Grid of stills and letters from the showreel layout."
+            width="3420"
+            height="1894"
+            loading="lazy"
+          />
+        </figure>
+
+        <figure class="bts-card-media bts-closing-bottom-right">
+          <img
+            src="../Assets/wrk/BTS/figma-closing-bottom-right.png"
+            alt="Green-framed composition with a monitor and reference stills."
+            width="3420"
+            height="1912"
+            loading="lazy"
+          />
+        </figure>
+
+        <article class="bts-note-card bts-note-card-small bts-note-card-closing">
+          <img
+            class="bts-note-card-badge"
+            src="../Assets/wrk/BTS/figma-note-badge.svg"
+            alt=""
+            width="126"
+            height="18"
+            loading="lazy"
+          />
+          <p>
+            The final page balances noisy collage energy with a controlled
+            palette, giving the supporting process work the same rhythm as the
+            finished showreel edit.
+          </p>
+        </article>
       </div>
-    </div>
-    <div class="flashcard bts-flashcard" id="bts-card5" aria-label="Flashcard 5 of 12">
-      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</p>
-      <div class="img-placeholder placeholder-one"></div>
-      <div class="img-placeholder placeholder-two"></div>
-      <div class="project-info">
-        <h4>2025 Showreel</h4>
-        <h4>2D Animation</h4>
-        <h4>Animator</h4>
-        <h4>5 of 12</h4>
-      </div>
-    </div>
-    <div class="flashcard bts-flashcard" id="bts-card6" aria-label="Flashcard 6 of 12">
-      <div class="img-placeholder"></div>
-      <p class="card-text">
-        Lorem ipsum dolor sit amet, consectetur adipiscing
-        elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Ut enim ad minim. Lorem ipsum dolor sit amet, consectetur adipiscing
-        elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Ut enim ad minim.
-      </p>
-      <div class="project-info">
-        <h4>2025 Showreel</h4>
-        <h4>2D Animation</h4>
-        <h4>Animator</h4>
-        <h4>6 of 12</h4>
-      </div>
-    </div>
-    <div class="flashcard bts-flashcard" id="bts-card7" aria-label="Flashcard 7 of 12">
-      <div class="img-placeholder"></div>
-      <p class="card-text">
-        Lorem ipsum dolor sit amet, consectetur adipiscing
-        elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Ut enim ad minim. Lorem ipsum dolor sit amet, consectetur adipiscing
-        elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Ut enim ad minim.
-      </p>
-      <div class="project-info">
-        <h4>2025 Showreel</h4>
-        <h4>2D Animation</h4>
-        <h4>Animator</h4>
-        <h4>7 of 12</h4>
-      </div>
-    </div>
-    <div class="flashcard bts-flashcard" id="bts-card8" aria-label="Flashcard 8 of 12">
-      <div class="img-placeholder"></div>
-      <p class="card-text">
-        Lorem ipsum dolor sit amet, consectetur adipiscing
-        elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Ut enim ad minim. Lorem ipsum dolor sit amet, consectetur adipiscing
-        elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Ut enim ad minim.
-      </p>
-      <div class="project-info">
-        <h4>2025 Showreel</h4>
-        <h4>2D Animation</h4>
-        <h4>Animator</h4>
-        <h4>8 of 12</h4>
-      </div>
-    </div>
-    <div class="flashcard bts-flashcard" id="bts-card9" aria-label="Flashcard 9 of 12">
-      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam.</p>
-      <div class="img-placeholder"></div>
-      <div class="project-info">
-        <h4>2025 Showreel</h4>
-        <h4>2D Animation</h4>
-        <h4>Animator</h4>
-        <h4>9 of 12</h4>
-      </div>
-    </div>
-    <div class="flashcard bts-flashcard" id="bts-card10" aria-label="Flashcard 10 of 12">
-      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam.</p>
-      <div class="img-placeholder"></div>
-      <div class="project-info">
-        <h4>2025 Showreel</h4>
-        <h4>2D Animation</h4>
-        <h4>Animator</h4>
-        <h4>10 of 12</h4>
-      </div>
-    </div>
-    <div class="flashcard bts-flashcard" id="bts-card11" aria-label="Flashcard 11 of 12">
-      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam.</p>
-      <div class="img-placeholder"></div>
-      <div class="project-info">
-        <h4>2025 Showreel</h4>
-        <h4>2D Animation</h4>
-        <h4>Animator</h4>
-        <h4>11 of 12</h4>
-      </div>
-    </div>
-    <div class="flashcard bts-flashcard" id="bts-card12" aria-label="Flashcard 12 of 12">
-      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam.</p>
-      <div class="img-placeholder"></div>
-      <div class="project-info">
-        <h4>2025 Showreel</h4>
-        <h4>2D Animation</h4>
-        <h4>Animator</h4>
-        <h4>12 of 12</h4>
-      </div>
-    </div>
-    <div class="nav-buttons">
-      <h4 onclick="window.location.href='../work.html'">&lt;- Back</h4>
-      <h4 onclick="window.location.href='portsea.html'">More -&gt;</h4>
-    </div>
-  </div>
-  <script src="flash.js"></script>
+    </section>
+
+    <nav class="bts-page-nav" aria-label="Project navigation">
+      <a class="bts-page-nav-link" href="../work.html">
+        <span class="bts-page-nav-symbol bts-page-nav-symbol-wide">&lt;</span>
+        <span class="bts-page-nav-symbol bts-page-nav-symbol-tight">-</span>
+        <span> Back</span>
+      </a>
+      <a class="bts-page-nav-link" href="rlamls.html">
+        <span>Next -</span>
+        <span class="bts-page-nav-symbol bts-page-nav-symbol-tight">&gt;</span>
+      </a>
+    </nav>
+  </main>
 </body>
-
 </html>

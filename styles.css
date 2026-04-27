@@ -12,7 +12,7 @@
   Landing Page Styles: LG45C6D7
   Showreel Page Styles: SH89E0F1
   Work Page Styles: WK23G4H5
-  About Page Styles: AB67I8J9
+  CV Page Styles: AB67I8J9
   WIP Page Styles: WP01K2L3
   Animations & Transitions: AT78N9O0
   Table Styles: TB89O0P1
@@ -266,7 +266,7 @@ body {
 .workContentBlock,
 .aboutContentBlock,
 .snapshotsContentBlock,
-.aboutContentBlock {
+.cvContentBlock {
   background-color: var(--color-background-secondary);
   height: calc(100vh - 100px);
 }
@@ -353,6 +353,14 @@ p {
 
 .menuBtn h4:hover {
   color: var(--color-accent);
+}
+
+.menuBtnDesktopOnly {
+  display: flex;
+}
+
+.menuBtnMobileOnly {
+  display: none;
 }
 
 .menuBtn.unselcted {
@@ -632,9 +640,9 @@ p {
 /* —————————————————————————————————————————————————————————————— */
 
 /* —————————————————————————————————————————————————————————————— */
-/*   About Page Styles [AB67I8J9] */
-/*   #region About Page Styles [AB67I8J9] */
-.aboutContentBlock {
+/*   CV Page Styles [AB67I8J9] */
+/*   #region CV Page Styles [AB67I8J9] */
+.cvContentBlock {
     position: relative;
     padding: 78px 20px 40px;
     overflow-y: visable;
@@ -642,7 +650,7 @@ p {
     height: 100%;
 }
 
-.aboutResumeLayout {
+.cvResumeLayout {
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1.12fr) minmax(290px, 0.88fr);
@@ -654,11 +662,11 @@ p {
   perspective: 1800px;
 }
 
-.aboutStackCard {
+.cvStackCard {
   cursor: pointer;
 }
 
-.aboutPaper {
+.cvPaper {
   position: relative;
   background: var(--white);
   border-radius: 20px;
@@ -667,7 +675,7 @@ p {
   padding: 88px 42px 36px 46px;
 }
 
-.aboutPaper::before {
+.cvPaper::before {
   content: '';
   position: absolute;
   top: 59px;
@@ -676,7 +684,7 @@ p {
   border-top: 1px solid rgba(0, 0, 0, 0.55);
 }
 
-.aboutPaper::after {
+.cvPaper::after {
   content: '';
   position: absolute;
   top: 60px;
@@ -685,12 +693,12 @@ p {
   border-left: 1px solid rgba(0, 0, 0, 0.55);
 }
 
-.aboutPaperBody {
+.cvPaperBody {
   position: relative;
   z-index: 1;
 }
 
-.aboutPaperBody::after {
+.cvPaperBody::after {
   content: '';
   position: absolute;
   top: -26px;
@@ -699,8 +707,8 @@ p {
   border-left: 1px solid rgba(0, 0, 0, 0.45);
 }
 
-.aboutPaperTitle,
-.aboutCoverNoteTitle {
+.cvPaperTitle,
+.cvCoverNoteTitle {
   margin: 0;
   font-family: var(--font-cute);
   font-size: 55px;
@@ -710,7 +718,7 @@ p {
   color: var(--black);
 }
 
-.aboutPaperTitle {
+.cvPaperTitle {
   position: absolute;
   top: 14px;
   left: 50%;
@@ -720,11 +728,11 @@ p {
   transform: translateX(-50%) rotate(0.13deg);
 }
 
-.aboutEntry + .aboutEntry {
+.cvEntry + .cvEntry {
   margin-top: 24px;
 }
 
-.aboutEntryHeading {
+.cvEntryHeading {
   margin: 0 0 10px;
   font-family: var(--font-cutive);
   font-size: 16px;
@@ -733,13 +741,13 @@ p {
   color: var(--black);
 }
 
-.aboutEntryList {
+.cvEntryList {
   margin: 0 0 0 18px;
   padding: 0;
   list-style: disc;
 }
 
-.aboutEntryList li {
+.cvEntryList li {
   font-family: var(--font-cutive-mono);
   font-size: 17px;
   line-height: 1.24;
@@ -747,17 +755,17 @@ p {
   color: var(--black);
 }
 
-.aboutEntryList li + li {
+.cvEntryList li + li {
   margin-top: 8px;
 }
 
-.aboutPaperExperience {
+.cvPaperExperience {
   z-index: 1;
   transform: rotate(-3.25deg);
   transform-origin: top center;
 }
 
-.aboutPaperEducation {
+.cvPaperEducation {
   grid-column: 2;
   margin-top: 338px;
   z-index: 1;
@@ -765,7 +773,7 @@ p {
   transform-origin: top center;
 }
 
-.aboutCoverNote {
+.cvCoverNote {
   position: absolute;
   top: 82px;
   left: 51.5%;
@@ -779,24 +787,24 @@ p {
   will-change: transform, opacity, filter;
 }
 
-.aboutCoverNoteShape {
+.cvCoverNoteShape {
   display: block;
   width: 100%;
   height: 100%;
 }
 
-.aboutCoverNoteInner {
+.cvCoverNoteInner {
   position: absolute;
   inset: 5% 11% 2% 7%;
 }
 
-.aboutCoverNoteTitle {
+.cvCoverNoteTitle {
   font-size: 50px;
   margin-bottom: 18px;
   text-align: center;
 }
 
-.aboutCoverNoteText p {
+.cvCoverNoteText p {
   margin: 0;
   font-family: var(--font-cutive);
   font-size: clamp(12px, 0.98vw, 14px);
@@ -805,22 +813,22 @@ p {
   color: var(--black);
 }
 
-.aboutCoverNoteText p + p {
+.cvCoverNoteText p + p {
   margin-top: 14px;
 }
 
-.aboutStackCard:focus-visible {
+.cvStackCard:focus-visible {
   outline: 3px solid var(--purple);
   outline-offset: 10px;
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .aboutCoverNote:hover {
+  .cvCoverNote:hover {
     filter: brightness(1.02);
   }
 }
 
-/*   #endregion About Page Styles [AB67I8J9] */
+/*   #endregion CV Page Styles [AB67I8J9] */
 /* —————————————————————————————————————————————————————————————— */
 
 /* —————————————————————————————————————————————————————————————— */
@@ -1301,6 +1309,14 @@ body.linktree-body {
     color: var(--color-primary);
   }
 
+  .menuBtnDesktopOnly {
+    display: none;
+  }
+
+  .menuBtnMobileOnly {
+    display: flex;
+  }
+
   .menuBtn h4 {
     text-transform: uppercase;
     transform: rotate(90deg);
@@ -1458,11 +1474,69 @@ body.linktree-body {
 
   /* About */
   .aboutContentBlock {
+    grid-template-columns: 1fr;
     padding: 16px;
+    align-items: start;
     height: 100%;
+    min-height: 100%;
   }
 
-  .aboutResumeLayout {
+  .aboutContentBlock .aboutBlurb,
+  .aboutContentBlock .CV {
+    grid-area: 1 / 1; /* stack both in the same grid cell */
+    width: 100%;
+  }
+
+  .aboutContentBlock .aboutBlurb {
+    z-index: 2;            /* underneath */
+    transform: translateX(-6%);
+    margin-top: 15%;
+  }
+
+  .aboutContentBlock .CV {
+    z-index: 1;        
+    width: 115%;  
+    transform: rotate(-4deg) translate(-20%, 95%);
+  }
+
+  /* Ensure images inside <picture> scale within the stacked cell */
+  .aboutContentBlock .aboutBlurb img,
+  .aboutContentBlock .CV img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+
+  #aboutPaperClipLeft,
+  #aboutPaperClipRight {
+    grid-area: 1 / 1;
+    z-index: 5;
+  }
+
+  #aboutPaperClipRight {
+    align-self: flex-start;
+    transform: scale(-0.5) translate(-77%, -350%) rotate(10deg);
+  }
+
+  #aboutPaperClipLeft {
+    align-self: end;
+    justify-self: right;
+    transform: scale(0.5) rotate(145.5deg) translate(-122%, 60%);
+  }
+
+  /* CV */
+  .cvContentBlock {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    padding: 16px;
+    height: 100%;
+    min-height: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .cvResumeLayout {
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -1470,46 +1544,46 @@ body.linktree-body {
     max-width: 100%;
   }
 
-  .aboutPaper,
-  .aboutCoverNote {
+  .cvPaper,
+  .cvCoverNote {
     width: min(100%, 380px);
     align-self: center;
   }
 
-  .aboutPaper {
+  .cvPaper {
     padding: 82px 24px 28px 28px;
   }
 
-  .aboutPaper::after {
+  .cvPaper::after {
     left: 24px;
   }
 
-  .aboutPaperBody::after {
+  .cvPaperBody::after {
     right: -8px;
   }
 
-  .aboutPaperTitle,
-  .aboutCoverNoteTitle {
+  .cvPaperTitle,
+  .cvCoverNoteTitle {
     font-size: 44px;
   }
 
-  .aboutEntryHeading {
+  .cvEntryHeading {
     font-size: 14px;
     line-height: 1.5;
   }
 
-  .aboutEntryList li {
+  .cvEntryList li {
     font-size: 15px;
     line-height: 1.3;
     letter-spacing: -0.055em;
   }
 
-  .aboutPaperExperience {
+  .cvPaperExperience {
     order: 2;
     transform: rotate(-2.5deg);
   }
 
-  .aboutCoverNote {
+  .cvCoverNote {
     position: relative;
     top: auto;
     left: auto;
@@ -1517,21 +1591,21 @@ body.linktree-body {
     transform: rotate(5deg);
   }
 
-  .aboutCoverNoteInner {
+  .cvCoverNoteInner {
     inset: 12% 11% 15% 11%;
   }
 
-  .aboutCoverNoteText p {
+  .cvCoverNoteText p {
     font-size: 11.75px;
     line-height: 1.4;
   }
 
-  .aboutCoverNoteTitle {
+  .cvCoverNoteTitle {
     font-size: 38px;
     margin-bottom: 12px;
   }
 
-  .aboutPaperEducation {
+  .cvPaperEducation {
     order: 3;
     grid-column: auto;
     margin-top: 0;

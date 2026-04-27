@@ -33,10 +33,10 @@ function initProjectStack() {
 }
 
 function initAboutCardStack() {
-  const aboutCards = document.querySelectorAll('.aboutStackCard');
-  if (aboutCards.length === 0) return;
+  const stackCards = document.querySelectorAll('.aboutStackCard, .cvStackCard');
+  if (stackCards.length === 0) return;
 
-  let highestZIndex = Array.from(aboutCards).reduce((maxZIndex, card) => {
+  let highestZIndex = Array.from(stackCards).reduce((maxZIndex, card) => {
     const cardZIndex = Number.parseInt(window.getComputedStyle(card).zIndex, 10);
     return Number.isNaN(cardZIndex) ? maxZIndex : Math.max(maxZIndex, cardZIndex);
   }, 0);
@@ -46,7 +46,7 @@ function initAboutCardStack() {
     card.style.zIndex = String(highestZIndex);
   };
 
-  aboutCards.forEach(card => {
+  stackCards.forEach(card => {
     card.addEventListener('click', () => {
       bringToFront(card);
     });

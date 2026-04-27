@@ -2201,6 +2201,7 @@ body {
 #bts-body .bts-storyboard {
   width: 100%;
   max-width: 332px;
+  display: none;
 }
 
 #bts-body .bts-film-edge {
@@ -2327,6 +2328,7 @@ body {
     max-width: none;
     grid-template-columns: 182px 233px 216px 183.623px 111px;
     gap: 18px;
+    margin-bottom: -200px;
   }
 
   #bts-body .bts-intro-left {
@@ -2344,7 +2346,8 @@ body {
     width: 216px;
     gap: 16px;
     margin-top: 56px;
-  }
+    grid-row: 1;
+  }©
 
   #bts-body .bts-intro-top {
     width: 169px;
@@ -2415,7 +2418,7 @@ body {
   #bts-body .bts-storyboard {
     width: max-content;
     max-width: none;
-    display: grid;
+    display: none;
     grid-template-columns: 43px 905px 43px;
     align-items: center;
     gap: 16px;
@@ -3104,10 +3107,13 @@ body {
 #portsea-body .portsea-hero,
 #portsea-body .portsea-moodboard,
 #portsea-body .portsea-brand,
-#portsea-body .portsea-applications,
-#portsea-body .portsea-storyboard {
+#portsea-body .portsea-applications {
   display: flex;
   justify-content: center;
+}
+
+#portsea-body .portsea-storyboard {
+  display: none;
 }
 
 #portsea-body .portsea-hero-card {

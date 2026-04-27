@@ -1,5 +1,10 @@
-// DESKTOP – keep existing hover/touch behavior for work.html exactly as is.
 document.addEventListener('DOMContentLoaded', function() {
+  initProjectStack();
+  initAboutCardStack();
+});
+
+// DESKTOP – keep existing hover/touch behavior for work.html exactly as is.
+function initProjectStack() {
   const projectStack = document.querySelector('.project-stack');
   if (!projectStack) return;
 
@@ -25,4 +30,34 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
   });
-});
+}
+
+function initAboutCardStack() {
+  const aboutCards = document.querySelectorAll('.aboutStackCard');
+  if (aboutCards.length === 0) return;
+
+  let highestZIndex = Array.from(aboutCards).reduce((maxZIndex, card) => {
+    const cardZIndex = Number.parseInt(window.getComputedStyle(card).zIndex, 10);
+    return Number.isNaN(cardZIndex) ? maxZIndex : Math.max(maxZIndex, cardZIndex);
+  }, 0);
+
+  const bringToFront = card => {
+    highestZIndex += 1;
+    card.style.zIndex = String(highestZIndex);
+  };
+
+  aboutCards.forEach(card => {
+    card.addEventListener('click', () => {
+      bringToFront(card);
+    });
+
+    card.addEventListener('keydown', event => {
+      if (event.key !== 'Enter' && event.key !== ' ') {
+        return;
+      }
+
+      event.preventDefault();
+      bringToFront(card);
+    });
+  });
+}

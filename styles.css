@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Cute+Font&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cutive&family=Cutive+Mono&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Micro+5&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300&display=swap');
 
@@ -178,6 +179,8 @@ table {
 
   /* Font Families */
   --font-cute: 'Cute Font', sans-serif;
+  --font-cutive: 'Cutive', serif;
+  --font-cutive-mono: 'Cutive Mono', monospace;
   --font-micro: 'Micro 5', sans-serif;
   --font-dm-sans: 'DM Sans', sans-serif;
 
@@ -632,49 +635,189 @@ p {
 /*   About Page Styles [AB67I8J9] */
 /*   #region About Page Styles [AB67I8J9] */
 .aboutContentBlock {
+    position: relative;
+    padding: 78px 20px 40px;
+    overflow-y: visable;
+    -webkit-overflow-scrolling: touch;
+    height: 100%;
+}
+
+.aboutResumeLayout {
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 1fr;
+  grid-template-columns: minmax(0, 1.12fr) minmax(290px, 0.88fr);
+  gap: 42px;
+  align-items: start;
+  max-width: 1080px;
+  min-height: 2120px;
+  margin: 0 auto;
+  perspective: 1800px;
+}
+
+.aboutStackCard {
+  cursor: pointer;
+}
+
+.aboutPaper {
   position: relative;
-  align-items: center;
-  padding: 0 25px 0;
+  background: var(--white);
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  color: var(--black);
+  padding: 88px 42px 36px 46px;
 }
 
-.aboutContentBlock .aboutBlurb {
-  grid-area: 1 / 1 / 2 / 3;
-  transform: rotate(-2deg) translate(30px, -83px);
+.aboutPaper::before {
+  content: '';
+  position: absolute;
+  top: 59px;
+  left: 0;
+  right: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.55);
 }
 
-.aboutContentBlock .CV {
-  grid-column: 2 / 4; /* occupy columns 2 and 3 so the CV is roughly twice as wide */
-  grid-row: 1;
+.aboutPaper::after {
+  content: '';
+  position: absolute;
+  top: 60px;
+  bottom: 26px;
+  left: 30px;
+  border-left: 1px solid rgba(0, 0, 0, 0.55);
+}
+
+.aboutPaperBody {
+  position: relative;
+  z-index: 1;
+}
+
+.aboutPaperBody::after {
+  content: '';
+  position: absolute;
+  top: -26px;
+  bottom: 2px;
+  right: -16px;
+  border-left: 1px solid rgba(0, 0, 0, 0.45);
+}
+
+.aboutPaperTitle,
+.aboutCoverNoteTitle {
+  margin: 0;
+  font-family: var(--font-cute);
+  font-size: 55px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+.aboutPaperTitle {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  z-index: 2;
+  width: calc(100% - 72px);
+  text-align: center;
+  transform: translateX(-50%) rotate(0.13deg);
+}
+
+.aboutEntry + .aboutEntry {
+  margin-top: 24px;
+}
+
+.aboutEntryHeading {
+  margin: 0 0 10px;
+  font-family: var(--font-cutive);
+  font-size: 16px;
+  line-height: 1.56;
+  letter-spacing: 0;
+  color: var(--black);
+}
+
+.aboutEntryList {
+  margin: 0 0 0 18px;
+  padding: 0;
+  list-style: disc;
+}
+
+.aboutEntryList li {
+  font-family: var(--font-cutive-mono);
+  font-size: 17px;
+  line-height: 1.24;
+  letter-spacing: -0.065em;
+  color: var(--black);
+}
+
+.aboutEntryList li + li {
+  margin-top: 8px;
+}
+
+.aboutPaperExperience {
+  z-index: 1;
+  transform: rotate(-3.25deg);
+  transform-origin: top center;
+}
+
+.aboutPaperEducation {
+  grid-column: 2;
+  margin-top: 338px;
+  z-index: 1;
+  transform: rotate(6.2deg);
+  transform-origin: top center;
+}
+
+.aboutCoverNote {
+  position: absolute;
+  top: 82px;
+  left: 51.5%;
+  z-index: 3;
+  width: min(65%, 550px);
+  aspect-ratio: 5 / 5.5;
+  transform: translateX(-50%) rotate(10.75deg);
+  transform-origin: 8% 7%;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform, opacity, filter;
+}
+
+.aboutCoverNoteShape {
+  display: block;
   width: 100%;
-  height: auto;
-  transform: rotate(2.5deg) translate(25%, 20%);
+  height: 100%;
 }
 
-.aboutContentBlock .CV img {
-  width: 70%;
+.aboutCoverNoteInner {
+  position: absolute;
+  inset: 5% 11% 2% 7%;
 }
 
-#aboutPaperClipLeft {
-  grid-column: 1;
-  grid-row: 1;
-  position: relative;
-  justify-self: left;
-  align-self: center;
-  z-index: 10;
-  transform: rotate(2.5deg) translate(-20%, 275%);
+.aboutCoverNoteTitle {
+  font-size: 50px;
+  margin-bottom: 18px;
+  text-align: center;
 }
 
-#aboutPaperClipRight {
-  grid-column: 3;
-  grid-row: 1;
-  position: relative;
-  justify-self: right;
-  align-self: center;
-  transform: scaleX(-1) translate(-22%, -175%) rotate(15deg);
-  z-index: 10;
+.aboutCoverNoteText p {
+  margin: 0;
+  font-family: var(--font-cutive);
+  font-size: clamp(12px, 0.98vw, 14px);
+  line-height: 1.42;
+  letter-spacing: 0;
+  color: var(--black);
+}
+
+.aboutCoverNoteText p + p {
+  margin-top: 14px;
+}
+
+.aboutStackCard:focus-visible {
+  outline: 3px solid var(--purple);
+  outline-offset: 10px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .aboutCoverNote:hover {
+    filter: brightness(1.02);
+  }
 }
 
 /*   #endregion About Page Styles [AB67I8J9] */
@@ -1315,55 +1458,84 @@ body.linktree-body {
 
   /* About */
   .aboutContentBlock {
-    grid-template-columns: 1fr;
     padding: 16px;
-    align-items: start;
     height: 100%;
-    min-height: 100%;
   }
 
-  .aboutContentBlock .aboutBlurb,
-  .aboutContentBlock .CV {
-    grid-area: 1 / 1; /* stack both in the same grid cell */
-    width: 100%;
+  .aboutResumeLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-height: auto;
+    max-width: 100%;
   }
 
-  .aboutContentBlock .aboutBlurb {
-    z-index: 2;            /* underneath */
-    transform: translateX(-6%);
-    margin-top: 15%;
+  .aboutPaper,
+  .aboutCoverNote {
+    width: min(100%, 380px);
+    align-self: center;
   }
 
-  .aboutContentBlock .CV {
-    z-index: 1;        
-    width: 115%;  
-    transform: rotate(-4deg) translate(-20%, 95%);
+  .aboutPaper {
+    padding: 82px 24px 28px 28px;
   }
 
-  /* Ensure images inside <picture> scale within the stacked cell */
-  .aboutContentBlock .aboutBlurb img,
-  .aboutContentBlock .CV img {
-    display: block;
-    width: 100%;
-    height: auto;
+  .aboutPaper::after {
+    left: 24px;
   }
 
-
-  #aboutPaperClipLeft,
-  #aboutPaperClipRight {
-    grid-area: 1 / 1;
-    z-index: 5;
+  .aboutPaperBody::after {
+    right: -8px;
   }
 
-  #aboutPaperClipRight {
-    align-self: flex-start;
-    transform: scale(-0.5) translate(-77%, -350%) rotate(10deg);
+  .aboutPaperTitle,
+  .aboutCoverNoteTitle {
+    font-size: 44px;
   }
 
-  #aboutPaperClipLeft {
-    align-self: end;
-    justify-self: right;
-    transform: scale(0.5) rotate(145.5deg) translate(-122%, 60%);
+  .aboutEntryHeading {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .aboutEntryList li {
+    font-size: 15px;
+    line-height: 1.3;
+    letter-spacing: -0.055em;
+  }
+
+  .aboutPaperExperience {
+    order: 2;
+    transform: rotate(-2.5deg);
+  }
+
+  .aboutCoverNote {
+    position: relative;
+    top: auto;
+    left: auto;
+    order: 1;
+    transform: rotate(5deg);
+  }
+
+  .aboutCoverNoteInner {
+    inset: 12% 11% 15% 11%;
+  }
+
+  .aboutCoverNoteText p {
+    font-size: 11.75px;
+    line-height: 1.4;
+  }
+
+  .aboutCoverNoteTitle {
+    font-size: 38px;
+    margin-bottom: 12px;
+  }
+
+  .aboutPaperEducation {
+    order: 3;
+    grid-column: auto;
+    margin-top: 0;
+    transform: rotate(2.5deg);
   }
   /* Snapshots */
   .snapshotsContentBlock {

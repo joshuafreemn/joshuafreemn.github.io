@@ -363,7 +363,8 @@ p {
   display: none;
 }
 
-.menuBtn.unselcted {
+.menuBtn.unselcted,
+.menuBtn.unselected {
   border-bottom: 7px solid var(--color-primary);
 }
 
@@ -447,6 +448,67 @@ p {
   width: 40vw;
 }
 
+.landingTagline {
+  font-family: var(--font-cutive-mono);
+  font-size: 16px;
+  color: var(--color-primary);
+  margin-top: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.9;
+  text-align: right;
+}
+
+.landingBadgeGroup {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.landingHeroBadge,
+.landingSocialBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-family: var(--font-cutive-mono);
+  font-size: 14px;
+  color: var(--color-primary);
+  background: var(--white);
+  border: 2px solid var(--color-primary);
+  padding: 8px 16px;
+  border-radius: 999px;
+  box-shadow: 2px 2px 0 var(--color-primary);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.landingHeroBadge:hover,
+.landingSocialBadge:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 var(--color-primary);
+  background-color: var(--baby-pink);
+}
+
+.landingSocialBadge img {
+  width: 16px;
+  height: 16px;
+}
+
+.landingHeroBadge .badgeDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff0055;
+  animation: pulseDot 1.5s infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+
 /*   #endregion Landing Page Styles */
 /* —————————————————————————————————————————————————————————————— */
 
@@ -504,7 +566,7 @@ p {
   width: 80%;
   margin: 0 auto;
   position: relative;
-  padding-bottom: -100px;
+  padding-bottom: 240px;
 }
 
 .project-card {
@@ -626,6 +688,39 @@ p {
   background-size: cover;
   background-position: top;
   transform: rotate(10deg) translate(-25px, 20px);
+}
+
+.project-image-icis {
+  background-image: url('Assets/snap/ICIS/ICIS_00 Concept.jpg');
+  background-size: cover;
+  background-position: center;
+  transform: rotate(-2deg);
+}
+
+.secret-sticker {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--baby-pink);
+  border: 2px dashed var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  font-size: 18px;
+  text-decoration: none;
+  opacity: 0.5;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 999;
+}
+
+.secret-sticker:hover {
+  opacity: 1;
+  transform: scale(1.15) rotate(15deg);
+  background: var(--pink);
 }
 
 .project-card.empty {
@@ -925,52 +1020,129 @@ a.punchCard {
   transform: translate(0px, 10px);
 }
 
-#Tape1 {
+/* Universal Base Container Positioning for Tape & Pin Classes */
+.tape-top,
+.tape-top-long,
+.tape-sides,
+.tape-corners,
+.pin-top,
+.pin-top-corners,
+.pin-corners {
+  position: relative !important;
+}
+
+/* Universal Tape Styling Classes */
+.tape-top::before, .tape-top-long::before,
+.tape-sides::before, .tape-sides::after,
+.tape-corners::before, .tape-corners::after {
+  content: '';
   position: absolute;
+  z-index: 10;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
+}
+
+.tape-top::before {
   top: -2.5%;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 10;
+  width: 116px;
+  height: 16px;
+  background-image: url('Assets/Tape 1.svg');
 }
 
-#Tape2a {
-  position: absolute;
+.tape-top-long::before {
+  top: -2.5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 207px;
+  height: 15px;
+  background-image: url('Assets/Tape 3.svg');
+}
+
+.tape-sides::before {
   top: 50%;
   left: -1.5%;
   transform: translateY(-50%) scale(0.8);
-  z-index: 10;
+  width: 13px;
+  height: 404px;
+  background-image: url('Assets/Tape 2.svg');
 }
 
-#Tape2b {
-  position: absolute;
+.tape-sides::after {
   top: 50%;
   right: -1.5%;
   transform: translateY(-50%) scale(0.8);
-  z-index: 10;
+  width: 13px;
+  height: 404px;
+  background-image: url('Assets/Tape 2.svg');
 }
 
-#Tape3 {
-  position: absolute;
-  top: -2.5%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-}
-
-#Tape4a {
-  position: absolute;
+.tape-corners::before {
   transform: rotate(-15deg);
   top: 0;
   left: -10%;
-  z-index: 10;
+  width: 91px;
+  height: 15px;
+  background-image: url('Assets/Tape 4.svg');
 }
 
-#Tape4b {
-  position: absolute;
+.tape-corners::after {
   transform: rotate(15deg);
   top: 0;
   right: -10%;
+  width: 91px;
+  height: 15px;
+  background-image: url('Assets/Tape 4.svg');
+}
+
+/* Universal Pin Styling Classes */
+.pin-top::after,
+.pin-top-corners::after,
+.pin-corners::after {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
   z-index: 10;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-size: 35px 33px;
+}
+
+.pin-top::after {
+  bottom: auto;
+  height: 33px;
+  background-image: url('Assets/Pin.svg');
+  background-position: top center;
+}
+
+.pin-top-corners::after {
+  bottom: auto;
+  height: 33px;
+  background-image: 
+    url('Assets/Pin.svg'),
+    url('Assets/Pin.svg');
+  background-position: 
+    top left,
+    top right;
+}
+
+.pin-corners::after {
+  background-image: 
+    url('Assets/Pin.svg'),
+    url('Assets/Pin.svg'),
+    url('Assets/Pin.svg'),
+    url('Assets/Pin.svg');
+  background-position: 
+    top left,
+    top right,
+    bottom left,
+    bottom right;
 }
 
 .snapshotsTextBox {
@@ -1346,6 +1518,25 @@ body.linktree-body {
     width: 65vw;
   }
 
+  .landingTagline {
+    font-size: 13px;
+    text-align: left;
+    margin-top: 10px;
+    line-height: 1.4;
+  }
+
+  .landingBadgeGroup {
+    justify-content: flex-start;
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  .landingHeroBadge,
+  .landingSocialBadge {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
   .landingMenu {
     position: static;
     /* participate in grid */
@@ -1464,7 +1655,8 @@ body.linktree-body {
   .project-image1,
   .project-image2,
   .project-image3,
-  .project-image4 {
+  .project-image4,
+  .project-image-icis {
     transform: none;
   }
 
@@ -1652,12 +1844,15 @@ body.linktree-body {
     height: 200px;
   }
 
-  #Tape1,
-  #Tape2a,
-  #Tape2b,
-  #Tape3,
-  #Tape4a,
-  #Tape4b {
+  .tape-top::before,
+  .tape-top-long::before,
+  .tape-sides::before,
+  .tape-sides::after,
+  .tape-corners::before,
+  .tape-corners::after,
+  .pin-top::after,
+  .pin-top-corners::after,
+  .pin-corners::after {
     display: none;
   }
 

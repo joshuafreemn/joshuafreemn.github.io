@@ -3,11 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TNQ9L5VZ');</script>
+  <!-- End Google Tag Manager -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BY3Z1D5197"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-BY3Z1D5197');
+  </script>
   <title>Snapshots</title>
   <link href="styles.css" rel="stylesheet">
   <link rel="icon" type="image/png" href="Assets/favicon.png">
 </head>
 <body class="">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TNQ9L5VZ"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
   <div class="container">
     <nav class="closeBtn">
       <a href="index.html" aria-label="Close Content">
@@ -21,7 +41,10 @@
       <a href="work.html" class="menuBtn unselcted">
         <h4>Work</h4>
       </a>
-      <a href="about.html" class="menuBtn unselcted">
+      <a href="cv.html" class="menuBtn menuBtnDesktopOnly unselcted">
+        <h4>About</h4>
+      </a>
+      <a href="about.html" class="menuBtn menuBtnMobileOnly unselcted">
         <h4>About</h4>
       </a>
       <a href="snapshots.html" class="menuBtn">
@@ -30,37 +53,39 @@
     </nav>
 
     <div class="snapshotsContentBlock">
-      <a href="snap/ft.html" class="punchCard punchCard1">
-        <div class="snapshotsIMG FThero"></div>
-        <div class="snapshotsTextBox snapshotsTextBox1">
-            <h4 class="textbg">Frosh Toons</h4>
-        </div>
-        <img src="Assets/Tape 1.svg" alt="Tape" id="Tape1" />
-      </a>
-      <a href="snap/icis.html" class="punchCard punchCard2">
-        <div class="snapshotsIMG ICIShero"></div>
-        <div class="snapshotsTextBox snapshotsTextBox2">
-            <h3 class="textbg">ICE CREAM IN SPACE</h3>
-        </div>
-        <img src="Assets/Tape 2.svg" alt="Tape" id="Tape2a" />
-        <img src="Assets/Tape 2.svg" alt="Tape" id="Tape2b" />
-      </a>
-      <a href="snap/ltp.html" class="punchCard punchCard3">
-        <div class="snapshotsIMG LTPhero"></div>
-        <div class="snapshotsTextBox snapshotsTextBox3">
-            <h3 class="textbg">Lost the</h3>
-            <h3 class="textbg">Pot</h3>
-        </div>
-        <img src="Assets/Tape 3.svg" alt="Tape" id="Tape3" />
-      </a>
-      <a href="snap/df.html" class="punchCard punchCard4">
-        <div class="snapshotsIMG DFhero"></div>
-        <div class="snapshotsTextBox snapshotsTextBox4">
-            <h4 class="textbg">DREAM FACATORY</h4>
-        </div>
-        <img src="Assets/Tape 4.svg" alt="Tape" id="Tape4a" />
-        <img src="Assets/Tape 4.svg" alt="Tape" id="Tape4b" />
-      </a>
+      <div class="punchCard1 tape-top">
+        <a href="snap/ft.html" class="punchCard" style="height: 100%; box-sizing: border-box;">
+          <div class="snapshotsIMG FThero"></div>
+          <div class="snapshotsTextBox snapshotsTextBox1">
+              <h4 class="textbg">Frosh Toons</h4>
+          </div>
+        </a>
+      </div>
+      <div class="punchCard2 tape-sides">
+        <a href="snap/icis.html" class="punchCard" style="height: 100%; box-sizing: border-box;">
+          <div class="snapshotsIMG ICIShero"></div>
+          <div class="snapshotsTextBox snapshotsTextBox2">
+              <h3 class="textbg">ICE CREAM IN SPACE</h3>
+          </div>
+        </a>
+      </div>
+      <div class="punchCard3 tape-top-long">
+        <a href="snap/ltp.html" class="punchCard" style="height: 100%; box-sizing: border-box;">
+          <div class="snapshotsIMG LTPhero"></div>
+          <div class="snapshotsTextBox snapshotsTextBox3">
+              <h3 class="textbg">Lost the</h3>
+              <h3 class="textbg">Pot</h3>
+          </div>
+        </a>
+      </div>
+      <div class="punchCard4 tape-corners">
+        <a href="snap/df.html" class="punchCard" style="height: 100%; box-sizing: border-box;">
+          <div class="snapshotsIMG DFhero"></div>
+          <div class="snapshotsTextBox snapshotsTextBox4">
+              <h4 class="textbg">DREAM FACATORY</h4>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 </body>

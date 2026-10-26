@@ -1,0 +1,204 @@
+---
+// The folder stack from the Figma "Folders" group: four tabs over a lilac
+// folder body. Desktop tabs run along the bottom edge; on mobile they turn
+// 90° and run down the left edge (frame "iPhone 13 & 14 - 1").
+export interface Tab {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  tabs: Tab[];
+  /** Index of the tab drawn in front, attached to the folder body. */
+  front?: number;
+}
+
+const { tabs, front = 0 } = Astro.props;
+
+// The front tab's fill runs past the folder's top edge so it hides the
+// stroke there; back tabs stop at the edge so the stroke shows under them.
+const fillH = (isFront: boolean) => (isFront ? '0,49 40,1 302,1 342,49' : '0,44 40,1 302,1 342,44');
+const fillV = (isFront: boolean) => (isFront ? '-3,0 28,26 28,195 -3,221' : '0,0 28,26 28,195 0,221');
+---
+
+<nav class="folders" aria-label="Main">
+  <div class="body" aria-hidden="true"></div>
+  <ul>
+    {
+      tabs.map((tab, i) => (
+        <li class:list={['tab', { front: i === front }]} style={`--i: ${i}; --z: ${tabs.length - i}`}>
+          <a href={tab.href}>
+            <svg class="shape shape-h" viewBox="0 0 342 46" preserveAspectRatio="none" aria-hidden="true">
+              <polygon points={fillH(i === front)} />
+              <polyline points="0,46 40,1 302,1 342,46" />
+            </svg>
+            <svg class="shape shape-v" viewBox="0 0 29 221" preserveAspectRatio="none" aria-hidden="true">
+              <polygon points={fillV(i === front)} />
+              <polyline points="0,0 28,26 28,195 0,221" />
+            </svg>
+            <span>{tab.label}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<style>
+  .folders {
+    --line: max(1.5px, calc(2 * var(--px)));
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: calc(1240 * var(--px));
+    height: calc(100 * var(--px));
+    transform: translateX(-50%);
+    overflow: hidden;
+  }
+
+  .body {
+    position: absolute;
+    inset: calc(45 * var(--px)) 0 0;
+    background: var(--baby-pink);
+    border: var(--line) solid var(--pink);
+    border-bottom: 0;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .tab {
+    position: absolute;
+    top: 0;
+    left: calc(var(--i) * 299.33 * var(--px));
+    width: calc(342 * var(--px));
+    height: calc(46 * var(--px));
+    z-index: var(--z);
+    transition: transform 180ms ease;
+  }
+
+  .tab.front {
+    z-index: 10;
+  }
+
+  .tab:not(.front):hover,
+  .tab:not(.front):focus-within {
+    transform: translateY(calc(-6 * var(--px)));
+  }
+
+  a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: var(--pink);
+    text-decoration: none;
+  }
+
+  a:focus-visible {
+    outline: none;
+  }
+
+  a:focus-visible span {
+    outline: var(--line) solid var(--purple);
+    outline-offset: calc(4 * var(--px));
+  }
+
+  .shape {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .shape polygon {
+    fill: var(--baby-pink);
+  }
+
+  .shape polyline {
+    fill: none;
+    stroke: var(--pink);
+    stroke-width: var(--line);
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .shape-v {
+    display: none;
+  }
+
+  span {
+    position: relative;
+    font-family: var(--font-display);
+    font-size: calc(40 * var(--px));
+    line-height: 1;
+    letter-spacing: calc(2 * var(--px));
+    text-transform: uppercase;
+    padding-top: calc(4 * var(--px));
+  }
+
+  .front span {
+    padding-top: calc(14 * var(--px));
+  }
+
+  @media (max-width: 700px) {
+    .folders {
+      left: 0;
+      top: calc(43 * var(--px));
+      bottom: 0;
+      width: calc(60 * var(--px));
+      height: auto;
+      transform: none;
+    }
+
+    .body {
+      inset: 0 auto 0 0;
+      width: calc(31 * var(--px));
+      border-left: 0;
+      border-bottom: var(--line) solid var(--pink);
+    }
+
+    .tab {
+      top: calc(var(--i) * 194 * var(--px));
+      left: calc(31 * var(--px));
+      width: calc(29 * var(--px));
+      height: calc(221 * var(--px));
+    }
+
+    .tab:not(.front):hover,
+    .tab:not(.front):focus-within {
+      transform: translateX(calc(4 * var(--px)));
+    }
+
+    .shape-h {
+      display: none;
+    }
+
+    .shape-v {
+      display: block;
+    }
+
+    span {
+      writing-mode: vertical-rl;
+      font-size: calc(28.125 * var(--px));
+      letter-spacing: calc(1.4 * var(--px));
+      padding: 0 calc(3 * var(--px)) 0 0;
+    }
+
+    .front span {
+      padding: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tab {
+      transition: none;
+    }
+  }
+</style>

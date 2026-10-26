@@ -1,0 +1,15 @@
+{
+  "name": "joshuafreemn-space",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@fontsource/cute-font": "5.3.0",
+    "@fontsource/dm-sans": "5.3.0",
+    "astro": "5.18.2"
+  }
+}

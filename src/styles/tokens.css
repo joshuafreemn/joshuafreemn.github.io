@@ -1,0 +1,41 @@
+/* Mirrors public/Assets/tokens.json (exported from Figma). */
+:root {
+  --black: #000000;
+  --baby-pink: #e9d8f2;
+  --white: #ffffff;
+  --pink: #f28bca;
+  --pink-bg: #f58ac3;
+  --purple: #a05d88;
+  --blue: #83bbe5;
+
+  --font-display: 'Cute Font', system-ui, sans-serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+
+  /* One Figma pixel. Desktop frames are 1440 wide, mobile frames 390. Scale
+     by width, but shrink on short screens so the title never meets the tabs. */
+  --px: min(100vw / 1440, 100dvh / 640);
+}
+
+@media (max-width: 700px) {
+  :root {
+    --px: calc(100vw / 390);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  background: var(--pink-bg);
+  color: var(--pink);
+  font-family: var(--font-body);
+}

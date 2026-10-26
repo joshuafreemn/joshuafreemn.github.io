@@ -1,0 +1,100 @@
+---
+import Base from '../layouts/Base.astro';
+import FolderTabs from '../components/FolderTabs.astro';
+
+const tabs = [
+  { label: 'Motion', href: '/showreel.html' },
+  { label: 'Design', href: '/work.html' },
+  { label: 'Web', href: '/work.html' },
+  { label: 'About', href: '/cv.html' },
+];
+---
+
+<Base>
+  <main class="home">
+    <header class="title">
+      <h1>
+        <img src="/Assets/Joshua Freeman Title.svg" alt="Joshua Freeman" width="685" height="230" />
+      </h1>
+      <p class="role">Multidisciplinary designer</p>
+    </header>
+  </main>
+  <FolderTabs tabs={tabs} />
+</Base>
+
+<style>
+  :global(body) {
+    overflow: hidden;
+  }
+
+  .home {
+    position: relative;
+    width: calc(1440 * var(--px));
+    height: 100dvh;
+    margin: 0 auto;
+  }
+
+  .title {
+    position: absolute;
+    top: calc(104 * var(--px));
+    right: calc(91 * var(--px));
+    width: calc(685 * var(--px));
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  h1 {
+    margin: 0;
+    line-height: 0;
+  }
+
+  h1 img {
+    display: block;
+    width: calc(685 * var(--px));
+    height: auto;
+  }
+
+  .role {
+    margin: calc(24 * var(--px)) calc(9 * var(--px)) 0 0;
+    width: calc(664 * var(--px));
+    height: calc(40 * var(--px));
+    padding: calc(3 * var(--px)) 0 0;
+    background: var(--white);
+    border-radius: calc(5 * var(--px));
+    font-family: var(--font-display);
+    font-size: calc(79.58 * var(--px));
+    line-height: calc(36.6 * var(--px));
+    letter-spacing: calc(-3.75 * var(--px));
+    text-align: right;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 700px) {
+    .home {
+      width: 100%;
+    }
+
+    .title {
+      top: calc(46 * var(--px));
+      right: calc(30 * var(--px));
+      width: calc(256 * var(--px));
+    }
+
+    h1 img {
+      width: calc(256 * var(--px));
+    }
+
+    .role {
+      margin: calc(9 * var(--px)) 0 0;
+      width: calc(257 * var(--px));
+      height: calc(15.5 * var(--px));
+      padding: calc(1 * var(--px)) 0 0;
+      border-radius: calc(2 * var(--px));
+      font-size: calc(30.76 * var(--px));
+      line-height: calc(14.15 * var(--px));
+      letter-spacing: calc(-1.4 * var(--px));
+    }
+  }
+</style>
